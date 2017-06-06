@@ -5,12 +5,12 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Tue Jun  6 13:54:52 2017 Arthur Josso
+## Last update Tue Jun  6 15:43:43 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
 
-CC	=	gcc
+CC	=	gcc -g
 
 INC	=	./inc/
 
@@ -19,9 +19,18 @@ CFLAGS	+=	-I$(INC)		\
 
 LDFLAGS	+=
 
-SRC	=	./src/
+SRC		=	./src/
 
-SRCS	=	$(SRC)main.c
+SRC_UTILS	=	$(SRC)utils/
+
+SRCS	=	$(SRC)main.c			\
+		$(SRC)parse_arg.c		\
+		$(SRC)run.c			\
+		$(SRC_UTILS)alloc.c		\
+		$(SRC_UTILS)cleaner.c		\
+		$(SRC_UTILS)cleaner_utils.c	\
+		$(SRC_UTILS)error.c		\
+		$(SRC_UTILS)string.c
 
 OBJS	=	$(SRCS:.c=.o)
 
