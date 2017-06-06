@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed May 10 11:08:14 2017 Arthur Josso
-** Last update Tue Jun  6 15:45:48 2017 Arthur Josso
+** Last update Tue Jun  6 17:19:28 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -31,7 +31,7 @@ void	cleaner_add_fd(int fd)
 
 void	cleaner_add_addr(void *addr)
 {
-  if (nbr_fds == max_addrs)
+  if (nbr_addrs == max_addrs)
     addrs = cleaner_resize_container(addrs, &max_addrs, sizeof(void*));
   addrs[nbr_addrs] = addr;
   nbr_addrs++;

@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Tue Jun  6 15:46:34 2017 Arthur Josso
+** Last update Tue Jun  6 16:26:20 2017 Arthur Josso
 */
 
 #include <signal.h>
@@ -35,6 +35,8 @@ int		main(int ac, char **av)
     fat_err("signal");
   if (!parse_arg(ac, av))
     fat_err_custom("parse_arg");
+  if (!init_server())
+    fat_err_custom("init_server");
   run_server();
   return (0);
 }
