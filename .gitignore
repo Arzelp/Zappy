@@ -1,0 +1,5 @@
+*~
+*.o
+a.out
+zappy_server
+zappy_ai
