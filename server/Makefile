@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Wed Jun  7 15:48:15 2017 Arthur Josso
+## Last update Wed Jun  7 15:57:14 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -23,13 +23,15 @@ DEV_FLAG	=	-g -D IN_DEV
 
 SRC		=	./src/
 
+SRC_PARSE	=	$(SRC)parse/
+
 SRC_UTILS	=	$(SRC)utils/
 
 SRC_CORE	=	$(SRC)core/
 
 SRCS	=	$(SRC)main.c			\
-		$(SRC)parse_arg.c		\
-		$(SRC)parse_func.c		\
+		$(SRC_PARSE)run.c		\
+		$(SRC_PARSE)funcs.c		\
 		$(SRC_UTILS)alloc.c		\
 		$(SRC_UTILS)cleaner.c		\
 		$(SRC_UTILS)cleaner_utils.c	\
