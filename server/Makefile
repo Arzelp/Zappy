@@ -5,12 +5,12 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Wed Jun  7 14:05:45 2017 Arthur Josso
+## Last update Wed Jun  7 15:48:15 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
 
-CC	=	gcc -g
+CC	=	gcc
 
 INC	=	./inc/
 
@@ -18,6 +18,8 @@ CFLAGS	+=	-I$(INC)	\
 		-Wall -Wextra
 
 LDFLAGS	+=
+
+DEV_FLAG	=	-g -D IN_DEV
 
 SRC		=	./src/
 
@@ -47,7 +49,7 @@ RM	=	rm -f
 
 %.o:		%.c
 		@echo [Compiling]: $<
-		@$(CC) $(CFLAGS) -o $@ -c $<
+		@$(CC) $(DEV_FLAG) $(CFLAGS) -o $@ -c $<
 
 all:		$(NAME)
 

@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Wed Jun  7 14:59:25 2017 Arthur Josso
+** Last update Wed Jun  7 15:28:35 2017 Arthur Josso
 */
 
 #pragma once
@@ -76,12 +76,19 @@ typedef struct
   t_parse_func	func;
 } t_parse_opt;
 
-bool	parse_p_opt();
-bool    parse_x_opt();
-bool    parse_y_opt();
-bool    parse_n_opt();
-bool    parse_c_opt();
-bool    parse_t_opt();
+typedef enum
+  {
+    PARSE_INIT,
+    PARSE_FILL,
+    PARSE_CHECK
+  } t_parse_action;
+
+bool	parse_p_opt(t_parse_action action);
+bool    parse_x_opt(t_parse_action action);
+bool    parse_y_opt(t_parse_action action);
+bool    parse_n_opt(t_parse_action action);
+bool    parse_c_opt(t_parse_action action);
+bool    parse_t_opt(t_parse_action action);
 
 bool    parse_arg(int ac, char **av);
 

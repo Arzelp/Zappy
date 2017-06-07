@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:32:34 2017 Arthur Josso
-** Last update Wed Jun  7 15:07:05 2017 Arthur Josso
+** Last update Wed Jun  7 15:50:24 2017 Arthur Josso
 */
 
 #include <unistd.h>
@@ -25,58 +25,68 @@ static t_parse_opt parse_opt[] =
 
 static char **g_av;
 
-bool    parse_n_opt()
+bool    parse_n_opt(t_parse_action action)
 {
   int	idx;
 
-  idx = 0;
-  while (g_av[idx] != optarg)
-    idx++;
-  idx++;
-  g_game->team[0].name = optarg;
-  if (g_av[idx] == NULL ||
-      g_av[idx][0] == '-' ||
-      g_av[idx][0] == '\0')
-    return (false);
-  g_game->team[1].name = g_av[idx];
+  if (action == PARSE_INIT)
+    {
+      g_game->team[0].name = NULL;
+      g_game->team[1].name = NULL;
+    }
+  else if (action == PARSE_FILL)
+    {
+      idx = 0;
+      while (g_av[idx] != optarg)
+	idx++;
+      idx++;
+      g_game->team[0].name = optarg;
+      if (g_av[idx] == NULL || g_av[idx][0] == '-' || g_av[idx][0] == '\0')
+	return (false);
+      g_game->team[1].name = g_av[idx];
+    }
+  else if (action == PARSE_CHECK)
+    {
+      if (g_game->team[0].name == NULL || g_game->team[1].name == NULL)
+        return (false);
+    }
   return (true);
 }
 
 static void	set_default_values()
 {
-  g_server->port = 4242;
   g_server->fd = -1;
   g_server->clients = NULL;
-  g_game->map_size.x = -1;
-  g_game->map_size.y = -1;
-  g_game->max_players = -1;
-  g_game->frequency = -1;
-  g_game->team[0].name = NULL;
-  g_game->team[1].name = NULL;
+}
+
+static bool	for_each_parse_func(t_parse_action action, char opt)
+{
+  int		i;
+
+  i = 0;
+  while (parse_opt[i].opt)
+    {
+      if (opt == -1 || parse_opt[i].opt == opt)
+        {
+          if ((parse_opt[i].func)(action) == false)
+            return (false);
+        }
+      i++;
+    }
+  return (true);
 }
 
 static bool	check_opts(int ac, char **av)
 {
   int		opt;
-  int		i;
 
   opterr = 0;
   while ((opt = getopt(ac, av, "p:x:y:n:c:t:")) != -1)
     {
       if (opt == '?')
 	return (false);
-      i = 0;
-      while (parse_opt[i].opt)
-        {
-          if (parse_opt[i].opt == opt)
-            {
-              if ((parse_opt[i].func)() == false)
-                return (false);
-              else
-                break;
-            }
-          i++;
-        }
+      if (!for_each_parse_func(PARSE_FILL, opt))
+	return (false);
     }
   return (true);
 }
@@ -85,7 +95,15 @@ bool		parse_arg(int ac, char **av)
 {
   g_av = av;
   set_default_values();
+  if (!for_each_parse_func(PARSE_INIT, -1))
+    return (false);
   if (!check_opts(ac, av))
     return (false);
+  #ifdef IN_DEV
+  g_server->port = 4242;
+  #else
+  if (!for_each_parse_func(PARSE_CHECK, -1))
+    return (false);
+  #endif
   return (true);
 }

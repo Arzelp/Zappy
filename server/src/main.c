@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Wed Jun  7 14:30:13 2017 Arthur Josso
+** Last update Wed Jun  7 15:43:42 2017 Arthur Josso
 */
 
 #include <signal.h>
@@ -25,10 +25,10 @@ static void	sig_handler(int sig)
     }
 }
 
-static int	print_usage()
+static int	print_usage(const char *prog_name)
 {
-  fprintf(stderr, "USAGE: ./server -p port -x width -y height " \
-          "-n name1 name2 -c nbClients -t time\n");
+  fprintf(stderr, "USAGE: %s -p port -x width -y height " \
+          "-n name1 name2 -c nbClients -t time\n", prog_name);
   fprintf(stderr, "\tport\t\tis the port number\n");
   fprintf(stderr, "\twidth\t\tis the width of the world\n");
   fprintf(stderr, "\theight\t\tis the height of the world\n");
@@ -51,7 +51,7 @@ int		main(int ac, char **av)
   if (signal(SIGINT, &sig_handler) == SIG_ERR)
     fat_err("signal");
   if (!parse_arg(ac, av))
-    return (print_usage());
+    return (print_usage(av[0]));
   if (!init_server())
     fat_err_custom("init_server");
   run_server();
