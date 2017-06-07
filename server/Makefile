@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Tue Jun  6 16:25:16 2017 Arthur Josso
+## Last update Wed Jun  7 14:05:45 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -27,11 +27,13 @@ SRC_CORE	=	$(SRC)core/
 
 SRCS	=	$(SRC)main.c			\
 		$(SRC)parse_arg.c		\
+		$(SRC)parse_func.c		\
 		$(SRC_UTILS)alloc.c		\
 		$(SRC_UTILS)cleaner.c		\
 		$(SRC_UTILS)cleaner_utils.c	\
 		$(SRC_UTILS)error.c		\
 		$(SRC_UTILS)string.c		\
+		$(SRC_UTILS)checker.c		\
 		$(SRC_CORE)run.c		\
 		$(SRC_CORE)client_init.c	\
 		$(SRC_CORE)client_io.c		\

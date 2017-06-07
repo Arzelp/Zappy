@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Tue Jun  6 16:26:20 2017 Arthur Josso
+** Last update Wed Jun  7 14:30:13 2017 Arthur Josso
 */
 
 #include <signal.h>
@@ -14,6 +14,7 @@
 #include "core.h"
 
 t_server	*g_server = NULL;
+t_game		*g_game = NULL;
 
 static void	sig_handler(int sig)
 {
@@ -24,17 +25,33 @@ static void	sig_handler(int sig)
     }
 }
 
+static int	print_usage()
+{
+  fprintf(stderr, "USAGE: ./server -p port -x width -y height " \
+          "-n name1 name2 -c nbClients -t time\n");
+  fprintf(stderr, "\tport\t\tis the port number\n");
+  fprintf(stderr, "\twidth\t\tis the width of the world\n");
+  fprintf(stderr, "\theight\t\tis the height of the world\n");
+  fprintf(stderr, "\tname1\t\tis the name of the team 1\n");
+  fprintf(stderr, "\tname2\t\tis the name of the team 2\n");
+  fprintf(stderr, "\tnbClients\tis the number of authorized " \
+          "clients per team\n");
+  fprintf(stderr, "\ttime\t\tis the time limit for execution of actions\n");
+  return (1);
+}
+
 int		main(int ac, char **av)
 {
   t_server	server;
 
   g_server = &server;
+  g_game = &server.game;
   if (atexit(&cleaner_func) != 0)
     fat_err("atexit");
   if (signal(SIGINT, &sig_handler) == SIG_ERR)
     fat_err("signal");
   if (!parse_arg(ac, av))
-    fat_err_custom("parse_arg");
+    return (print_usage());
   if (!init_server())
     fat_err_custom("init_server");
   run_server();
