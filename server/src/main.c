@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Wed Jun  7 15:43:42 2017 Arthur Josso
+** Last update Thu Jun  8 17:40:19 2017 Arthur Josso
 */
 
 #include <signal.h>
@@ -15,6 +15,7 @@
 
 t_server	*g_server = NULL;
 t_game		*g_game = NULL;
+t_client	*g_client = NULL;
 
 static void	sig_handler(int sig)
 {

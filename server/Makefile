@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Wed Jun  7 15:57:14 2017 Arthur Josso
+## Last update Thu Jun  8 17:40:49 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -42,6 +42,7 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_CORE)client_init.c	\
 		$(SRC_CORE)client_io.c		\
 		$(SRC_CORE)client_manager.c	\
+		$(SRC_CORE)client_send_cmd.c	\
 		$(SRC_CORE)fd_list.c		\
 		$(SRC_CORE)init.c
 

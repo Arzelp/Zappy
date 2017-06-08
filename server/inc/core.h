@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Wed Jun  7 15:28:35 2017 Arthur Josso
+** Last update Thu Jun  8 17:49:09 2017 Arthur Josso
 */
 
 #pragma once
@@ -25,6 +25,7 @@ typedef struct s_team t_team;
 
 extern t_server	*g_server;
 extern t_game	*g_game;
+extern t_client	*g_client;
 
 /*
 ** Core funcs
@@ -45,7 +46,7 @@ struct s_team
 };
 
 #define MAX_MAP_SIZE	0x400
-#define MAX_PLAYERS	0x40
+#define MAX_PLAYERS	0x80
 #define MAX_FERQUENCY	1e5
 
 struct s_game
@@ -101,10 +102,12 @@ struct s_client
   int		fd;
   char		*ibuff;
   char		*obuff;
+  void		*entity;
   t_client	*prev;
   t_client	*next;
 };
 
+typedef bool (*t_entity_callback)(void *entity);
 typedef bool (*t_client_callback)(t_client *client);
 
 typedef struct
@@ -115,7 +118,7 @@ typedef struct
 
 void	client_add(int fd);
 bool	client_rm(t_client *client);
-void	client_for_each(t_client_callback callback);
+void	client_for_each(t_entity_callback callback);
 void	client_poll_handler();
 
 void	client_init(t_client *client, int fd);
@@ -127,8 +130,29 @@ void	client_fini(t_client *client);
 
 #define BUFF_SIZE       (1024)
 
+typedef enum
+  {
+    CMD_NONE,
+    CMD_PLAYER_WELCOME,
+    CMD_PLAYER_NBR_FREE_SLOT,
+    CMD_PLAYER_MAP_SIZE,
+    CMD_PLAYER_OK,
+    CMD_PLAYER_KO,
+    CMD_PLAYER_DEAD,
+    CMD_PLAYER_INCANTATION_START,
+    CMD_PLAYER_INCANTATION_END
+  } t_cmd_type;
+
+typedef struct
+{
+  t_cmd_type	type;
+  const char	*fmt;
+} t_cmd_fmt;
+
 bool	write_on_client(t_client *client);
 bool	read_on_client(t_client *client);
+
+void	send_cmd(t_cmd_type type, ...);
 
 /*
 ** FD Manager
