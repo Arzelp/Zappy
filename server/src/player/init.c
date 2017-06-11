@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:40:33 2017 Arthur Josso
-** Last update Sun Jun 11 21:44:54 2017 Arthur Josso
+** Last update Sun Jun 11 21:55:27 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -47,11 +47,6 @@ bool		client_player_fini(t_player *player)
 {
   uint32_t	i;
 
-  if (player == NULL)
-    {
-      g_client->callback = &client_entity_fini;
-      return (true);
-    }
   i = 0;
   while (i < player->team->nbr_players &&
 	 player->team->players[i] != player)

@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:40:33 2017 Arthur Josso
-** Last update Sun Jun 11 21:46:27 2017 Arthur Josso
+** Last update Sun Jun 11 21:55:47 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -27,11 +27,7 @@ bool	client_graphic_init()
 
 bool	client_graphic_fini(t_graphic *graphic)
 {
-  if (graphic == NULL)
-    {
-      g_client->callback = &client_entity_fini;
-      return (true);
-    }
+  (void)graphic;
   g_client->callback = &client_entity_fini;
   g_client->callback_dtor = NULL;
   return (true);
