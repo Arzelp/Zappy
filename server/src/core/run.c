@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 16:01:08 2017 Arthur Josso
-** Last update Tue Jun  6 16:19:44 2017 Arthur Josso
+** Last update Fri Jun  9 14:39:08 2017 Arthur Josso
 */
 
 #include <netdb.h>
@@ -26,6 +26,11 @@ static void		accept_client()
   client_add(fd_client);
 }
 
+static bool	exec_client_behavior(t_client *client)
+{
+  return (client->callback(client->entity));
+}
+
 void	run_server()
 {
   while (1)
@@ -35,7 +40,7 @@ void	run_server()
       if (fd_list_get_revents(g_server->fd) & POLLIN)
 	accept_client();
       client_poll_handler();
-      //client_for_each(&DOTHINGS);
+      client_for_each(&exec_client_behavior);
       usleep(5000);
     }
 }

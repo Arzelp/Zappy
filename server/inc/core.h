@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Thu Jun  8 17:49:09 2017 Arthur Josso
+** Last update Sun Jun 11 21:20:20 2017 Arthur Josso
 */
 
 #pragma once
@@ -14,24 +14,26 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <limits.h>
+#include "player.h"
+#include "graphic.h"
 #include "misc.h"
 #include "cleaner.h"
 #include "types.h"
+#include "default_values.h"
 
 typedef struct s_client t_client;
 typedef struct s_game t_game;
 typedef struct s_server t_server;
 typedef struct s_team t_team;
 
-extern t_server	*g_server;
-extern t_game	*g_game;
-extern t_client	*g_client;
+extern t_server		*g_server;
+extern t_game		*g_game;
+extern t_client		*g_client;
+extern const char	*g_ressources[];
 
 /*
 ** Core funcs
 */
-
-#define MAX_PENDING_CONNECTIONS	(0x100)
 
 bool	init_server();
 void	run_server();
@@ -42,16 +44,14 @@ void	run_server();
 
 struct s_team
 {
-  const char *name;
+  const char	*name;
+  t_player	**players;
+  uint32_t	nbr_players;
 };
-
-#define MAX_MAP_SIZE	0x400
-#define MAX_PLAYERS	0x80
-#define MAX_FERQUENCY	1e5
 
 struct s_game
 {
-  t_size        map_size;
+  t_size	map_size;
   uint32_t	max_players;
   uint32_t	frequency;
   t_team	team[2];
@@ -97,17 +97,20 @@ bool    parse_arg(int ac, char **av);
 ** Client Manager
 */
 
+typedef bool (*t_entity_func)(void *entity);
+
 struct s_client
 {
   int		fd;
   char		*ibuff;
   char		*obuff;
   void		*entity;
+  t_entity_func	callback;
+  t_entity_func	callback_dtor;
   t_client	*prev;
   t_client	*next;
 };
 
-typedef bool (*t_entity_callback)(void *entity);
 typedef bool (*t_client_callback)(t_client *client);
 
 typedef struct
@@ -118,11 +121,15 @@ typedef struct
 
 void	client_add(int fd);
 bool	client_rm(t_client *client);
-void	client_for_each(t_entity_callback callback);
+void	client_for_each(t_client_callback callback);
 void	client_poll_handler();
 
 void	client_init(t_client *client, int fd);
 void	client_fini(t_client *client);
+
+bool    client_entity_init(void *entity);
+bool    client_entity_define(void *entity);
+bool	client_entity_fini(void *entity);
 
 /*
 ** Client IO
@@ -133,7 +140,7 @@ void	client_fini(t_client *client);
 typedef enum
   {
     CMD_NONE,
-    CMD_PLAYER_WELCOME,
+    CMD_WELCOME,
     CMD_PLAYER_NBR_FREE_SLOT,
     CMD_PLAYER_MAP_SIZE,
     CMD_PLAYER_OK,
@@ -153,6 +160,7 @@ bool	write_on_client(t_client *client);
 bool	read_on_client(t_client *client);
 
 void	send_cmd(t_cmd_type type, ...);
+char	*recv_cmd();
 
 /*
 ** FD Manager

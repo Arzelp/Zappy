@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:32:34 2017 Arthur Josso
-** Last update Wed Jun  7 15:50:24 2017 Arthur Josso
+** Last update Fri Jun  9 15:01:22 2017 Arthur Josso
 */
 
 #include <unistd.h>
@@ -53,10 +53,16 @@ bool    parse_n_opt(t_parse_action action)
   return (true);
 }
 
-static void	set_default_values()
+static void	set_init_values()
 {
   g_server->fd = -1;
   g_server->clients = NULL;
+  g_game->team[0].players =
+    cleaner_malloc(g_game->max_players * sizeof(t_player*));
+  g_game->team[0].nbr_players = 0;
+  g_game->team[1].players =
+    cleaner_malloc(g_game->max_players * sizeof(t_player*));
+  g_game->team[1].nbr_players = 0;
 }
 
 static bool	for_each_parse_func(t_parse_action action, char opt)
@@ -94,16 +100,12 @@ static bool	check_opts(int ac, char **av)
 bool		parse_arg(int ac, char **av)
 {
   g_av = av;
-  set_default_values();
   if (!for_each_parse_func(PARSE_INIT, -1))
     return (false);
   if (!check_opts(ac, av))
     return (false);
-  #ifdef IN_DEV
-  g_server->port = 4242;
-  #else
   if (!for_each_parse_func(PARSE_CHECK, -1))
     return (false);
-  #endif
+  set_init_values();
   return (true);
 }

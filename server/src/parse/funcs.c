@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun  7 14:00:35 2017 Arthur Josso
-** Last update Wed Jun  7 15:50:07 2017 Arthur Josso
+** Last update Fri Jun  9 15:00:34 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -17,7 +17,7 @@ bool    parse_p_opt(t_parse_action action)
   int	tmp;
 
   if (action == PARSE_INIT)
-    g_server->port = 0;
+    g_server->port = DFLT_SERVER_PORT;
   else if (action == PARSE_FILL)
     {
       if (!is_nbr(optarg))
@@ -38,7 +38,7 @@ bool    parse_p_opt(t_parse_action action)
 bool    parse_x_opt(t_parse_action action)
 {
   if (action == PARSE_INIT)
-    g_game->map_size.x = -1;
+    g_game->map_size.x = DFLT_MAP_SIZE_X;
   else if (action == PARSE_FILL)
     {
       if (!is_nbr(optarg))
@@ -59,7 +59,7 @@ bool    parse_x_opt(t_parse_action action)
 bool    parse_y_opt(t_parse_action action)
 {
   if (action == PARSE_INIT)
-    g_game->map_size.y = -1;
+    g_game->map_size.y = DFLT_MAP_SIZE_Y;
   else if (action == PARSE_FILL)
     {
       if (!is_nbr(optarg))
@@ -80,7 +80,7 @@ bool    parse_y_opt(t_parse_action action)
 bool    parse_c_opt(t_parse_action action)
 {
   if (action == PARSE_INIT)
-    g_game->max_players = -1;
+    g_game->max_players = DFLT_MAX_PLAYERS;
   else if (action == PARSE_FILL)
     {
       if (!is_nbr(optarg))
@@ -101,7 +101,7 @@ bool    parse_c_opt(t_parse_action action)
 bool    parse_t_opt(t_parse_action action)
 {
   if (action == PARSE_INIT)
-    g_game->frequency = -1;
+    g_game->frequency = DFLT_FREQUENCY;
   else if (action == PARSE_FILL)
     {
       if (!is_nbr(optarg))

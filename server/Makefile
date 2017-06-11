@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Thu Jun  8 17:40:49 2017 Arthur Josso
+## Last update Sun Jun 11 20:43:24 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -19,7 +19,7 @@ CFLAGS	+=	-I$(INC)	\
 
 LDFLAGS	+=
 
-DEV_FLAG	=	-g -D IN_DEV
+DEV_FLAG	=	-g
 
 SRC		=	./src/
 
@@ -28,6 +28,12 @@ SRC_PARSE	=	$(SRC)parse/
 SRC_UTILS	=	$(SRC)utils/
 
 SRC_CORE	=	$(SRC)core/
+
+SRC_CLIENT	=	$(SRC)client/
+
+SRC_PLAYER	=	$(SRC)player/
+
+SRC_GRAPHIC	=	$(SRC)graphic/
 
 SRCS	=	$(SRC)main.c			\
 		$(SRC_PARSE)run.c		\
@@ -39,12 +45,18 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_UTILS)string.c		\
 		$(SRC_UTILS)checker.c		\
 		$(SRC_CORE)run.c		\
-		$(SRC_CORE)client_init.c	\
-		$(SRC_CORE)client_io.c		\
-		$(SRC_CORE)client_manager.c	\
-		$(SRC_CORE)client_send_cmd.c	\
 		$(SRC_CORE)fd_list.c		\
-		$(SRC_CORE)init.c
+		$(SRC_CORE)init.c		\
+		$(SRC_CORE)ressource_tab.c	\
+		$(SRC_CLIENT)init.c		\
+		$(SRC_CLIENT)io.c		\
+		$(SRC_CLIENT)manager.c		\
+		$(SRC_CLIENT)cmd_io.c		\
+		$(SRC_CLIENT)entity_callback.c	\
+		$(SRC_PLAYER)run.c		\
+		$(SRC_PLAYER)init.c		\
+		$(SRC_GRAPHIC)run.c		\
+		$(SRC_GRAPHIC)init.c
 
 OBJS	=	$(SRCS:.c=.o)
 

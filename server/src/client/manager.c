@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 16:27:14 2017 Arthur Josso
-** Last update Thu Jun  8 17:49:18 2017 Arthur Josso
+** Last update Sun Jun 11 21:41:20 2017 Arthur Josso
 */
 
 #include <stdio.h>
@@ -48,32 +48,38 @@ bool		client_rm(t_client *client)
   return (false);
 }
 
-void		client_for_each(t_entity_callback callback)
+void		client_for_each(t_client_callback callback)
 {
   t_client	*client;
   t_client	*tmp;
+  t_client	*save;
 
+  save = g_client;
   client = g_server->clients;
   while (client)
     {
       tmp = client->next;
       g_client = client;
-      callback(client->entity);
+      if (callback(client) == false)
+	client_rm(client);
       client = tmp;
     }
-  g_client = NULL;
+  g_client = save;
 }
 
 void		client_poll_handler()
 {
   t_client      *client;
   t_client      *tmp;
+  t_client	*save;
   size_t	i;
 
+  save = g_client;
   client = g_server->clients;
   while (client)
     {
       tmp = client->next;
+      g_client = client;
       i = 0;
       while (poll_funcs[i].func)
 	{
@@ -86,4 +92,5 @@ void		client_poll_handler()
 	}
       client = tmp;
     }
+  g_client = save;
 }
