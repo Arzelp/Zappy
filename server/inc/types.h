@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun  7 14:08:32 2017 Arthur Josso
-** Last update Wed Jun  7 14:10:44 2017 Arthur Josso
+** Last update Mon Jun 12 19:11:56 2017 Arthur Josso
 */
 
 #pragma once
@@ -21,3 +21,14 @@ typedef struct
 } t_pos;
 
 typedef t_pos t_size;
+
+typedef enum
+  {
+    RES_FOOD = 0,
+    RES_LINEMATE,
+    RES_DERAUMERE,
+    RES_SIBUR,
+    RES_MENDIANE,
+    RES_PHIRAS,
+    RES_THYSTAME
+  } t_ressource;

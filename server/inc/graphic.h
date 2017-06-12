@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 18:03:11 2017 Arthur Josso
-** Last update Mon Jun 12 15:30:04 2017 Arthur Josso
+** Last update Mon Jun 12 22:04:02 2017 Arthur Josso
 */
 
 #pragma once
@@ -23,3 +23,9 @@ bool	client_graphic_init();
 bool	client_graphic_welcome(t_graphic *graphic);
 bool    client_graphic_run(t_graphic *graphic);
 bool	client_graphic_fini(t_graphic *graphic);
+
+/*
+** Commands
+*/
+
+bool	cmd_graphic_msz(t_graphic *graphic, const char *arg);

@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Mon Jun 12 15:36:02 2017 Arthur Josso
+** Last update Mon Jun 12 22:54:24 2017 Arthur Josso
 */
 
 #pragma once
@@ -147,7 +147,8 @@ typedef enum
     CMD_PLAYER_KO,
     CMD_PLAYER_DEAD,
     CMD_PLAYER_INCANTATION_START,
-    CMD_PLAYER_INCANTATION_END
+    CMD_PLAYER_INCANTATION_END,
+    CMD_GRAPHIC_BAD_CMD
   } t_cmd_type;
 
 typedef struct
@@ -162,6 +163,23 @@ bool	read_on_client(t_client *client);
 void	send_cmd(t_cmd_type type, ...);
 void	send_graphics_cmd(t_cmd_type type, ...);
 char	*recv_cmd();
+
+/*
+** Entity Commands
+*/
+
+#define ADD_CMD_FUNC(type, func) {#func,(t_entity_cmd_func)&cmd_##type##_##func}
+
+typedef bool (*t_entity_cmd_func)(void *entity, const char *arg);
+
+typedef struct s_entity_cmd
+{
+  const char		*name;
+  t_entity_cmd_func	func;
+} t_entity_cmd;
+
+bool	exec_entity_cmd(const t_entity_cmd *cmds, void *entity,
+			t_cmd_type bad_cmd);
 
 /*
 ** FD Manager

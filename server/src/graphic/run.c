@@ -5,13 +5,19 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 21:04:50 2017 Arthur Josso
-** Last update Mon Jun 12 18:57:17 2017 Arthur Josso
+** Last update Mon Jun 12 22:53:15 2017 Arthur Josso
 */
 
 #include "core.h"
 
+static const t_entity_cmd	cmd_graphic[] =
+  {
+    ADD_CMD_FUNC(graphic, msz),
+    {NULL, NULL}
+  };
+
 bool	client_graphic_run(t_graphic *graphic)
 {
-  (void)graphic;
+  exec_entity_cmd(cmd_graphic, graphic, CMD_GRAPHIC_BAD_CMD);
   return (true);
 }

@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 17:11:02 2017 Arthur Josso
-** Last update Mon Jun 12 15:35:37 2017 Arthur Josso
+** Last update Mon Jun 12 22:49:29 2017 Arthur Josso
 */
 
 #include <stdarg.h>
@@ -23,6 +23,7 @@ static t_cmd_fmt cmd_fmt[] =
     {CMD_PLAYER_DEAD, "dead\n"},
     {CMD_PLAYER_INCANTATION_START, "Elevation underway\n"},
     {CMD_PLAYER_INCANTATION_END, "Current level: %d\n"},
+    {CMD_GRAPHIC_BAD_CMD, "suc\n"},
     {CMD_NONE, NULL},
   };
 
