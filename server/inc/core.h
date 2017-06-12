@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Sun Jun 11 21:20:20 2017 Arthur Josso
+** Last update Mon Jun 12 15:36:02 2017 Arthur Josso
 */
 
 #pragma once
@@ -160,6 +160,7 @@ bool	write_on_client(t_client *client);
 bool	read_on_client(t_client *client);
 
 void	send_cmd(t_cmd_type type, ...);
+void	send_graphics_cmd(t_cmd_type type, ...);
 char	*recv_cmd();
 
 /*

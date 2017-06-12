@@ -5,10 +5,14 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 18:03:11 2017 Arthur Josso
-** Last update Sun Jun 11 21:46:18 2017 Arthur Josso
+** Last update Mon Jun 12 15:30:04 2017 Arthur Josso
 */
 
 #pragma once
+
+#define IS_GRAPHIC(client)	(client->callback_dtor == \
+				 (t_entity_func)&client_graphic_fini \
+				 ? true : false)
 
 typedef struct
 {
