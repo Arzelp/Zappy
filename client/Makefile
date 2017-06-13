@@ -1,11 +1,11 @@
 ##
 ## Makefile for lol in /home/tetra/rendu/psu/PSU_2016_zappy
-## 
+##
 ## Made by Arthur Josso
 ## Login   <arthur.josso@epitech.eu>
-## 
+##
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Tue Jun  6 14:20:48 2017 Arthur Josso
+## Last update Tue Jun 13 17:16:02 2017 Paskal Arzel
 ##
 
 NAME	=	zappy_ai
@@ -21,7 +21,8 @@ LDFLAGS	+=
 
 SRC	=	./src/
 
-SRCS	=	$(SRC)main.c
+SRCS	=	$(SRC)main.c \
+			$(SRC)help.c
 
 OBJS	=	$(SRCS:.c=.o)
 
