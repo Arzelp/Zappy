@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 **
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Tue Jun 13 17:15:12 2017 Paskal Arzel
+** Last update Tue Jun 13 17:57:40 2017 Paskal Arzel
 */
 
 #include "core.h"
@@ -16,5 +16,6 @@ int	main(int ac, char **av)
 
   if (ac == 1 || !strcmp(av[1], "--help"))
     return (help());
+  (void)client;
   return (0);
 }
