@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Tue Jun 13 13:39:52 2017 Arthur Josso
+** Last update Tue Jun 13 18:13:41 2017 Arthur Josso
 */
 
 #pragma once
@@ -141,28 +141,6 @@ bool	client_entity_fini(void *entity);
 */
 
 #define BUFF_SIZE       (1024)
-
-typedef enum
-  {
-    CMD_NONE,
-    CMD_WELCOME,
-    CMD_PLAYER_NBR_FREE_SLOT,
-    CMD_PLAYER_MAP_SIZE,
-    CMD_PLAYER_OK,
-    CMD_PLAYER_KO,
-    CMD_PLAYER_DEAD,
-    CMD_PLAYER_INCANTATION_START,
-    CMD_PLAYER_INCANTATION_END,
-    CMD_GRAPHIC_BAD_CMD,
-    CMD_GRAPHIC_BAD_ARG,
-    CMD_GRAPHIC_MAP_SIZE,
-    CMD_GRAPHIC_TILE_CONTENT,
-    CMD_GRAPHIC_TEAM_NAME,
-    CMD_GRAPHIC_PLAYER_POS,
-    CMD_GRAPHIC_PLAYER_LVL,
-    CMD_GRAPHIC_PLAYER_INVENTORY,
-    CMD_GRAPHIC_TIME_REF
-  } t_cmd_type;
 
 typedef struct
 {

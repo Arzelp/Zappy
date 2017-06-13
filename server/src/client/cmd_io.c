@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 17:11:02 2017 Arthur Josso
-** Last update Tue Jun 13 13:40:06 2017 Arthur Josso
+** Last update Tue Jun 13 18:15:26 2017 Arthur Josso
 */
 
 #include <stdarg.h>
@@ -32,7 +32,21 @@ static t_cmd_fmt cmd_fmt[] =
     {CMD_GRAPHIC_PLAYER_LVL, "plv #%d %d\n"},
     {CMD_GRAPHIC_PLAYER_INVENTORY, "pin #%d %d %d %d %d %d %d %d %d %d\n"},
     {CMD_GRAPHIC_TIME_REF, "sgt %d\n"},
-    {CMD_NONE, NULL},
+    {CMD_GRAPHIC_NEW_PLAYER, "pnw #%d %d %d %d %d %s\n"},
+    {CMD_GRAPHIC_PUSH, "pex #%d\n"},
+    {CMD_GRAPHIC_BROADCAST, "pbc #%d %s\n"},
+    {CMD_GRAPHIC_INCANTATION_START, "pic %d %d %d %s\n"},
+    {CMD_GRAPHIC_INCANTATION_END, "pie %d %d %d\n"},
+    {CMD_GRAPHIC_FORK_START, "pfk #%d\n"},
+    {CMD_GRAPHIC_FORK_DROP, "enw #%d #%d %d %d\n"},
+    {CMD_GRAPHIC_FORK_END, "eht #%d\n"},
+    {CMD_GRAPHIC_DROP, "pdr #%d %d\n"},
+    {CMD_GRAPHIC_TAKE, "pgt #%d %d\n"},
+    {CMD_GRAPHIC_DIE, "pdi #%d\n"},
+    {CMD_GRAPHIC_EGG_CONNECT, "ebo #%d\n"},
+    {CMD_GRAPHIC_EGG_DIES, "edi #%d\n"},
+    {CMD_GRAPHIC_END, "seg %s\n"},
+    {CMD_NONE, NULL}
   };
 
 static const char	*get_fmt(t_cmd_type type)
