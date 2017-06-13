@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun  7 14:08:32 2017 Arthur Josso
-** Last update Tue Jun 13 11:59:35 2017 Arthur Josso
+** Last update Tue Jun 13 15:12:37 2017 Arthur Josso
 */
 
 #pragma once
@@ -40,3 +40,12 @@ typedef enum
     RES_THYSTAME,
     RES_NBR
   } t_ressource;
+
+typedef enum
+  {
+    DIR_NORTH = 0,
+    DIR_EAST,
+    DIR_SOUTH,
+    DIR_WEST,
+    DIR_NBR
+  } t_direction;
