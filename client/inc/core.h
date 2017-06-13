@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Tue Jun 13 17:15:42 2017 Paskal Arzel
+** Last update Tue Jun 13 17:57:51 2017 Paskal Arzel
 */
 
 #ifndef CORE_H__
@@ -13,6 +13,7 @@
 
 #include	<stdio.h>
 #include	<stdlib.h>
+#include	<string.h>
 
 typedef struct s_conn
 {
