@@ -5,17 +5,21 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Thu Jun  8 17:40:19 2017 Arthur Josso
+** Last update Tue Jun 13 13:10:28 2017 Arthur Josso
 */
 
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <time.h>
 #include "core.h"
 
 t_server	*g_server = NULL;
 t_game		*g_game = NULL;
 t_client	*g_client = NULL;
+uint32_t	g_player_id = 0;
 
 static void	sig_handler(int sig)
 {
@@ -47,6 +51,7 @@ int		main(int ac, char **av)
 
   g_server = &server;
   g_game = &server.game;
+  srand(getpid() * time(NULL));
   if (atexit(&cleaner_func) != 0)
     fat_err("atexit");
   if (signal(SIGINT, &sig_handler) == SIG_ERR)
@@ -55,6 +60,7 @@ int		main(int ac, char **av)
     return (print_usage(av[0]));
   if (!init_server())
     fat_err_custom("init_server");
+  init_map();
   run_server();
   return (0);
 }

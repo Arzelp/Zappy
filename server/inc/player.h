@@ -5,15 +5,20 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 18:03:11 2017 Arthur Josso
-** Last update Sun Jun 11 21:37:00 2017 Arthur Josso
+** Last update Tue Jun 13 11:14:55 2017 Arthur Josso
 */
 
 #pragma once
+
+#include "types.h"
 
 typedef struct s_team t_team;
 
 typedef struct
 {
+  uint32_t	id;
+  t_pos		pos;
+  uint16_t	inventory[RES_NBR];
   t_team	*team;
 } t_player;
 

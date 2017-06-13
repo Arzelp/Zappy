@@ -5,9 +5,10 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:40:33 2017 Arthur Josso
-** Last update Sun Jun 11 21:55:27 2017 Arthur Josso
+** Last update Tue Jun 13 11:59:02 2017 Arthur Josso
 */
 
+#include <stdlib.h>
 #include "core.h"
 
 bool		client_player_init(t_team *team)
@@ -22,12 +23,16 @@ bool		client_player_init(t_team *team)
       return (true);
     }
   player = cleaner_malloc(sizeof(t_player));
+  player->id = g_player_id++;
   player->team = team;
+  player->pos.x = rand() % g_game->map_size.x;
+  player->pos.y	= rand() % g_game->map_size.y;
   i = 0;
   while (team->players[i])
     i++;
   team->players[i] = player;
   team->nbr_players++;
+  g_client->type = ENTITY_PLAYER;
   g_client->entity = player;
   g_client->callback = (t_entity_func)&client_player_welcome;
   g_client->callback_dtor = (t_entity_func)&client_player_fini;

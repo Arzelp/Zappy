@@ -5,14 +5,10 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 18:03:11 2017 Arthur Josso
-** Last update Mon Jun 12 22:04:02 2017 Arthur Josso
+** Last update Tue Jun 13 14:10:47 2017 Arthur Josso
 */
 
 #pragma once
-
-#define IS_GRAPHIC(client)	(client->callback_dtor == \
-				 (t_entity_func)&client_graphic_fini \
-				 ? true : false)
 
 typedef struct
 {
@@ -25,7 +21,15 @@ bool    client_graphic_run(t_graphic *graphic);
 bool	client_graphic_fini(t_graphic *graphic);
 
 /*
+** Argument getter
+*/
+
+bool	cmd_arg_get_pos(const char *arg, t_pos *pos);
+
+/*
 ** Commands
 */
 
 bool	cmd_graphic_msz(t_graphic *graphic, const char *arg);
+bool	cmd_graphic_bct(t_graphic *graphic, const char *arg);
+bool	cmd_graphic_mct(t_graphic *graphic, const char *arg);

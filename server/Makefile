@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Mon Jun 12 22:42:30 2017 Arthur Josso
+## Last update Tue Jun 13 14:13:34 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -49,7 +49,7 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_CORE)run.c		\
 		$(SRC_CORE)fd_list.c		\
 		$(SRC_CORE)init.c		\
-		$(SRC_CORE)ressource_tab.c	\
+		$(SRC_CORE)map.c		\
 		$(SRC_CLIENT)init.c		\
 		$(SRC_CLIENT)io.c		\
 		$(SRC_CLIENT)manager.c		\
@@ -60,7 +60,10 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_PLAYER)init.c		\
 		$(SRC_GRAPHIC)run.c		\
 		$(SRC_GRAPHIC)init.c		\
-		$(SRC_G_CMD)msz.c
+		$(SRC_G_CMD)get_arg.c		\
+		$(SRC_G_CMD)msz.c		\
+		$(SRC_G_CMD)bct.c		\
+		$(SRC_G_CMD)mct.c
 
 OBJS	=	$(SRCS:.c=.o)
 

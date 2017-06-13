@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Mon Jun 12 22:54:24 2017 Arthur Josso
+** Last update Tue Jun 13 13:39:52 2017 Arthur Josso
 */
 
 #pragma once
@@ -24,17 +24,20 @@
 typedef struct s_client t_client;
 typedef struct s_game t_game;
 typedef struct s_server t_server;
+typedef struct s_tile t_tile;
 typedef struct s_team t_team;
 
 extern t_server		*g_server;
 extern t_game		*g_game;
 extern t_client		*g_client;
 extern const char	*g_ressources[];
+extern uint32_t		g_player_id;
 
 /*
 ** Core funcs
 */
 
+void	init_map();
 bool	init_server();
 void	run_server();
 
@@ -52,6 +55,7 @@ struct s_team
 struct s_game
 {
   t_size	map_size;
+  uint16_t	***map;
   uint32_t	max_players;
   uint32_t	frequency;
   t_team	team[2];
@@ -104,6 +108,7 @@ struct s_client
   int		fd;
   char		*ibuff;
   char		*obuff;
+  t_entity_type	type;
   void		*entity;
   t_entity_func	callback;
   t_entity_func	callback_dtor;
@@ -148,7 +153,15 @@ typedef enum
     CMD_PLAYER_DEAD,
     CMD_PLAYER_INCANTATION_START,
     CMD_PLAYER_INCANTATION_END,
-    CMD_GRAPHIC_BAD_CMD
+    CMD_GRAPHIC_BAD_CMD,
+    CMD_GRAPHIC_BAD_ARG,
+    CMD_GRAPHIC_MAP_SIZE,
+    CMD_GRAPHIC_TILE_CONTENT,
+    CMD_GRAPHIC_TEAM_NAME,
+    CMD_GRAPHIC_PLAYER_POS,
+    CMD_GRAPHIC_PLAYER_LVL,
+    CMD_GRAPHIC_PLAYER_INVENTORY,
+    CMD_GRAPHIC_TIME_REF
   } t_cmd_type;
 
 typedef struct

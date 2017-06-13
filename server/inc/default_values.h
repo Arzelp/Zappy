@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:57:01 2017 Arthur Josso
-** Last update Fri Jun  9 15:00:52 2017 Arthur Josso
+** Last update Tue Jun 13 14:15:58 2017 Arthur Josso
 */
 
 #pragma once
@@ -30,3 +30,4 @@
 #define DFLT_MAX_PLAYERS	1
 #define DFLT_FREQUENCY		100
 
+#define DROP_PROBABILITY	24

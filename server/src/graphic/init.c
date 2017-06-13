@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:40:33 2017 Arthur Josso
-** Last update Sun Jun 11 21:55:47 2017 Arthur Josso
+** Last update Tue Jun 13 11:59:29 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -19,6 +19,7 @@ bool	client_graphic_welcome(t_graphic *graphic)
 
 bool	client_graphic_init()
 {
+  g_client->type = ENTITY_GRAPHIC;
   g_client->entity = cleaner_malloc(sizeof(t_graphic));
   g_client->callback = (t_entity_func)&client_graphic_welcome;
   g_client->callback_dtor = (t_entity_func)&client_graphic_fini;

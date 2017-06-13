@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 17:11:02 2017 Arthur Josso
-** Last update Mon Jun 12 22:49:29 2017 Arthur Josso
+** Last update Tue Jun 13 13:40:06 2017 Arthur Josso
 */
 
 #include <stdarg.h>
@@ -24,6 +24,14 @@ static t_cmd_fmt cmd_fmt[] =
     {CMD_PLAYER_INCANTATION_START, "Elevation underway\n"},
     {CMD_PLAYER_INCANTATION_END, "Current level: %d\n"},
     {CMD_GRAPHIC_BAD_CMD, "suc\n"},
+    {CMD_GRAPHIC_BAD_ARG, "sbp\n"},
+    {CMD_GRAPHIC_MAP_SIZE, "msz %d %d\n"},
+    {CMD_GRAPHIC_TILE_CONTENT, "bct %d %d %d %d %d %d %d %d %d\n"},
+    {CMD_GRAPHIC_TEAM_NAME, "tna %s\n"},
+    {CMD_GRAPHIC_PLAYER_POS, "ppo #%d %d %d %d\n"},
+    {CMD_GRAPHIC_PLAYER_LVL, "plv #%d %d\n"},
+    {CMD_GRAPHIC_PLAYER_INVENTORY, "pin #%d %d %d %d %d %d %d %d %d %d\n"},
+    {CMD_GRAPHIC_TIME_REF, "sgt %d\n"},
     {CMD_NONE, NULL},
   };
 
@@ -77,7 +85,7 @@ void		send_graphics_cmd(t_cmd_type type, ...)
   client = g_server->clients;
   while (client)
     {
-      if (IS_GRAPHIC(client))
+      if (client->type == ENTITY_GRAPHIC)
 	client->obuff = cleaner_strcat(client->obuff, buff);
       client = client->next;
     }
