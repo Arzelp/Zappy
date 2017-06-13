@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:57:01 2017 Arthur Josso
-** Last update Tue Jun 13 14:15:58 2017 Arthur Josso
+** Last update Tue Jun 13 17:42:24 2017 Arthur Josso
 */
 
 #pragma once
@@ -18,7 +18,7 @@
 
 #define MAX_MAP_SIZE    0x400
 #define MAX_PLAYERS     0x80
-#define MAX_FERQUENCY   1e5
+#define MAX_FREQUENCY	1e5
 
 /*
 ** Default game values

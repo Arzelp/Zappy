@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun  7 14:00:35 2017 Arthur Josso
-** Last update Fri Jun  9 15:00:34 2017 Arthur Josso
+** Last update Tue Jun 13 17:42:39 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -108,7 +108,7 @@ bool    parse_t_opt(t_parse_action action)
 	return (false);
       g_game->frequency = atoi(optarg);
       if (g_game->frequency == 0 ||
-	  g_game->frequency > MAX_FERQUENCY)
+	  g_game->frequency > MAX_FREQUENCY)
 	return (false);
     }
   else if (action == PARSE_CHECK)

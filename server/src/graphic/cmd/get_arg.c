@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun 13 13:17:28 2017 Arthur Josso
-** Last update Tue Jun 13 15:25:21 2017 Arthur Josso
+** Last update Tue Jun 13 17:44:59 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -22,6 +22,18 @@ static int	secured_atoi(const char *arg, int max)
   if (max >= 0 && nbr >= max)
     return (-1);
   return (nbr);
+}
+
+int	cmd_arg_get_freq(const char *arg)
+{
+  int	freq;
+
+  if (*arg == '\0')
+    return (-1);
+  freq = secured_atoi(arg, MAX_FREQUENCY);
+  if (freq == 0)
+    return (-1);
+  return (freq);
 }
 
 int	cmd_arg_get_team_id(const char *arg)

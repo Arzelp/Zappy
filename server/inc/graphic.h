@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 18:03:11 2017 Arthur Josso
-** Last update Tue Jun 13 16:16:00 2017 Arthur Josso
+** Last update Tue Jun 13 17:42:59 2017 Arthur Josso
 */
 
 #pragma once
@@ -26,6 +26,7 @@ bool	client_graphic_fini(t_graphic *graphic);
 
 bool	cmd_arg_get_pos(const char *arg, t_pos *pos);
 int	cmd_arg_get_team_id(const char *arg);
+int	cmd_arg_get_freq(const char *arg);
 
 /*
 ** Utils
@@ -44,3 +45,5 @@ bool	cmd_graphic_tna(t_graphic *graphic, const char *arg);
 bool	cmd_graphic_ppo(t_graphic *graphic, const char *arg);
 bool	cmd_graphic_plv(t_graphic *graphic, const char *arg);
 bool	cmd_graphic_pin(t_graphic *graphic, const char *arg);
+bool	cmd_graphic_sgt(t_graphic *graphic, const char *arg);
+bool	cmd_graphic_sst(t_graphic *graphic, const char *arg);
