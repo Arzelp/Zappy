@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 21:04:50 2017 Arthur Josso
-** Last update Tue Jun 13 14:13:18 2017 Arthur Josso
+** Last update Tue Jun 13 16:20:09 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -15,6 +15,10 @@ static const t_entity_cmd	cmd_graphic[] =
     ADD_CMD_FUNC(graphic, msz),
     ADD_CMD_FUNC(graphic, bct),
     ADD_CMD_FUNC(graphic, mct),
+    ADD_CMD_FUNC(graphic, tna),
+    ADD_CMD_FUNC(graphic, ppo),
+    ADD_CMD_FUNC(graphic, plv),
+    ADD_CMD_FUNC(graphic, pin),
     {NULL, NULL}
   };
 

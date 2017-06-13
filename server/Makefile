@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Tue Jun 13 14:13:34 2017 Arthur Josso
+## Last update Tue Jun 13 16:15:31 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -63,7 +63,11 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_G_CMD)get_arg.c		\
 		$(SRC_G_CMD)msz.c		\
 		$(SRC_G_CMD)bct.c		\
-		$(SRC_G_CMD)mct.c
+		$(SRC_G_CMD)mct.c		\
+		$(SRC_G_CMD)tna.c		\
+		$(SRC_G_CMD)ppo.c		\
+		$(SRC_G_CMD)plv.c		\
+		$(SRC_G_CMD)pin.c
 
 OBJS	=	$(SRCS:.c=.o)
 
