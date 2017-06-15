@@ -1,0 +1,129 @@
+commit 7ebc8c551276dd1425abfda285fd53c6f8994c73
+Merge: cba13f1 53fa264
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Tue Jun 13 18:16:58 2017 +0200
+
+    Merge branch 'master' of git.epitech.eu:/oddou_f/PSU_2016_zappy
+
+commit cba13f15fc4c7180b598c870c6b9dcfcf2ce7ddc
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Tue Jun 13 18:16:47 2017 +0200
+
+    graphic cmd out completed
+
+commit 53fa264e9fd06a139a334fdd211a2d3db79ee960
+Merge: 3f0f21f fba031a
+Author: Paskal <paskal.arzel@epitech.eu>
+Date:   Tue Jun 13 17:58:11 2017 +0200
+
+    Merge branch 'master' of git.epitech.eu:/oddou_f/PSU_2016_zappy
+
+commit 3f0f21fff0543f1ac11d4dabb1663b99c80a52bd
+Author: Paskal <paskal.arzel@epitech.eu>
+Date:   Tue Jun 13 17:58:02 2017 +0200
+
+    --help c bn g fini (v2)
+
+commit fba031ac1b125ade7c7a0f6d3fda5b08906ddf25
+Merge: d44d370 2dfaa83
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Tue Jun 13 17:46:07 2017 +0200
+
+    Merge branch 'master' of git.epitech.eu:/oddou_f/PSU_2016_zappy
+
+commit d44d370cc7d244d6fac3cbb75e2c62fa78bd4a22
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Tue Jun 13 17:45:57 2017 +0200
+
+    graphic response cmd FINISHED
+
+commit 2dfaa837a17dc2c87102848473cf7c1853722156
+Merge: 2bd4b5d c4158af
+Author: Paskal <paskal.arzel@epitech.eu>
+Date:   Tue Jun 13 17:21:52 2017 +0200
+
+    Merge branch 'master' of git.epitech.eu:/oddou_f/PSU_2016_zappy
+
+commit 2bd4b5de6683379dec9e177122d2c9dbc3e685c5
+Author: Paskal <paskal.arzel@epitech.eu>
+Date:   Tue Jun 13 17:21:40 2017 +0200
+
+    --help c bn g fini
+
+commit c4158af370c95b45745b20e4c5b811e72c5a650d
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Tue Jun 13 16:25:02 2017 +0200
+
+    graphic cmd whith player arg
+
+commit 1c2c5ccd01ae447ef82d472a854a1fe556a93001
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Tue Jun 13 14:16:47 2017 +0200
+
+    graphic cmd map viewer
+
+commit abb1b2dd4964c98cc542243c6324aa62d0a0769a
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Mon Jun 12 22:57:05 2017 +0200
+
+    begin of graphic cmd implementatio
+
+commit 46821011d5157c0d4095b15c4a1d2a0825db8b31
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Mon Jun 12 19:02:04 2017 +0200
+
+    graphic cmd sender
+
+commit 4da5a7339fb33ae5f0faf1c6ca743086cf8cf8a6
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Sun Jun 11 21:57:38 2017 +0200
+
+    remove useless protection in specific entity destructor
+
+commit a949a624374e531daa82214a39252c91cfe23276
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Sun Jun 11 21:47:45 2017 +0200
+
+    entity core finished
+
+commit eeb2364b8cbc397b255a728e20cfcc121ee55918
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Thu Jun 8 17:49:43 2017 +0200
+
+    send_cmd and entity concept
+
+commit f4c545511fe160740e563391a1d240b7775b4909
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Wed Jun 7 15:57:35 2017 +0200
+
+    directory for parsing
+
+commit 3689a2cc05052021e14f00e0ed326f06ec6383f7
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Wed Jun 7 15:53:13 2017 +0200
+
+    parsing check with dev flag
+
+commit f56e5f752bd85fd8edafc3fa87640e7ff8a904ca
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Wed Jun 7 15:09:08 2017 +0200
+
+    parse arguments without checking force entering
+
+commit 97d13612a129fd52729fa1f4d10794931630f2f5
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Tue Jun 6 17:20:58 2017 +0200
+
+    network core
+
+commit c7dd7c4d0b5cc894cdef5519de4d494ec361e0e4
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Tue Jun 6 15:47:50 2017 +0200
+
+    tools
+
+commit b8148fac04467a9d06893c879652665f0468d521
+Author: Arthur Josso <arthur.josso@epitech.eu>
+Date:   Tue Jun 6 14:22:35 2017 +0200
+
+    basics
