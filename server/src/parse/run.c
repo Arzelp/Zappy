@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:32:34 2017 Arthur Josso
-** Last update Thu Jun 15 13:55:12 2017 Arthur Josso
+** Last update Thu Jun 15 16:23:19 2017 Arthur Josso
 */
 
 #include <unistd.h>
@@ -33,8 +33,9 @@ static void	set_init_values()
   while (g_game->team[i])
     {
       g_game->team[i]->players =
-	cleaner_malloc(g_game->max_players * sizeof(t_player*));
+	cleaner_malloc(g_game->max_players_init * sizeof(t_player*));
       g_game->team[i]->nbr_players = 0;
+      g_game->team[i]->max_players = g_game->max_players_init;
       i++;
     }
 }
