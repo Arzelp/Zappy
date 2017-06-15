@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:32:34 2017 Arthur Josso
-** Last update Fri Jun  9 15:01:22 2017 Arthur Josso
+** Last update Thu Jun 15 13:55:12 2017 Arthur Josso
 */
 
 #include <unistd.h>
@@ -23,46 +23,20 @@ static t_parse_opt parse_opt[] =
     {'\0', NULL}
   };
 
-static char **g_av;
-
-bool    parse_n_opt(t_parse_action action)
-{
-  int	idx;
-
-  if (action == PARSE_INIT)
-    {
-      g_game->team[0].name = NULL;
-      g_game->team[1].name = NULL;
-    }
-  else if (action == PARSE_FILL)
-    {
-      idx = 0;
-      while (g_av[idx] != optarg)
-	idx++;
-      idx++;
-      g_game->team[0].name = optarg;
-      if (g_av[idx] == NULL || g_av[idx][0] == '-' || g_av[idx][0] == '\0')
-	return (false);
-      g_game->team[1].name = g_av[idx];
-    }
-  else if (action == PARSE_CHECK)
-    {
-      if (g_game->team[0].name == NULL || g_game->team[1].name == NULL)
-        return (false);
-    }
-  return (true);
-}
-
 static void	set_init_values()
 {
+  int		i;
+
   g_server->fd = -1;
   g_server->clients = NULL;
-  g_game->team[0].players =
-    cleaner_malloc(g_game->max_players * sizeof(t_player*));
-  g_game->team[0].nbr_players = 0;
-  g_game->team[1].players =
-    cleaner_malloc(g_game->max_players * sizeof(t_player*));
-  g_game->team[1].nbr_players = 0;
+  i = 0;
+  while (g_game->team[i])
+    {
+      g_game->team[i]->players =
+	cleaner_malloc(g_game->max_players * sizeof(t_player*));
+      g_game->team[i]->nbr_players = 0;
+      i++;
+    }
 }
 
 static bool	for_each_parse_func(t_parse_action action, char opt)
@@ -99,7 +73,7 @@ static bool	check_opts(int ac, char **av)
 
 bool		parse_arg(int ac, char **av)
 {
-  g_av = av;
+  parse_team_set_av(av);
   if (!for_each_parse_func(PARSE_INIT, -1))
     return (false);
   if (!check_opts(ac, av))
