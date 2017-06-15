@@ -5,14 +5,38 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:40:33 2017 Arthur Josso
-** Last update Tue Jun 13 11:59:29 2017 Arthur Josso
+** Last update Thu Jun 15 15:31:00 2017 Arthur Josso
 */
 
 #include "core.h"
 
+static void	list_players()
+{
+  t_client	*client;
+  t_player	*p;
+
+  client = g_server->clients;
+  while (client)
+    {
+      if (client->type == ENTITY_PLAYER)
+	{
+	  p = client->entity;
+	  send_cmd(CMD_GRAPHIC_NEW_PLAYER, p->id, p->pos.x, p->pos.y,
+		   p->dir, p->lvl, p->team->name);
+	}
+      client = client->next;
+    }
+}
+
 bool	client_graphic_welcome(t_graphic *graphic)
 {
   (void)graphic;
+  send_cmd(CMD_GRAPHIC_MAP_SIZE, g_game->map_size.x,  g_game->map_size.y);
+  send_cmd(CMD_GRAPHIC_TIME_REF, g_game->frequency);
+  cmd_graphic_mct(graphic, "");
+  cmd_graphic_tna(graphic, "");
+  list_players();
+  // list eggs
   g_client->callback = (t_entity_func)&client_graphic_run;
   return (true);
 }

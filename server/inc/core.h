@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Tue Jun 13 18:13:41 2017 Arthur Josso
+** Last update Thu Jun 15 16:16:02 2017 Arthur Josso
 */
 
 #pragma once
@@ -50,15 +50,16 @@ struct s_team
   const char	*name;
   t_player	**players;
   uint32_t	nbr_players;
+  uint32_t	max_players;
 };
 
 struct s_game
 {
   t_size	map_size;
   uint16_t	***map;
-  uint32_t	max_players;
+  uint32_t	max_players_init;
   uint32_t	frequency;
-  t_team	team[2];
+  t_team	**team;
 };
 
 struct s_server
@@ -96,6 +97,8 @@ bool    parse_c_opt(t_parse_action action);
 bool    parse_t_opt(t_parse_action action);
 
 bool    parse_arg(int ac, char **av);
+
+void	parse_team_set_av(char **av);
 
 /*
 ** Client Manager

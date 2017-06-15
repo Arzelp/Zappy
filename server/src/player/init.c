@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:40:33 2017 Arthur Josso
-** Last update Tue Jun 13 16:23:06 2017 Arthur Josso
+** Last update Thu Jun 15 16:21:45 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -30,7 +30,7 @@ bool		client_player_init(t_team *team)
   t_player	*player;
   int		i;
 
-  if (team->nbr_players == g_game->max_players)
+  if (team->nbr_players == team->max_players)
     {
       send_cmd(CMD_PLAYER_KO);
       g_client->callback = &client_entity_fini;
@@ -52,7 +52,7 @@ bool		client_player_init(t_team *team)
 bool	client_player_welcome(t_player *player)
 {
   send_cmd(CMD_PLAYER_NBR_FREE_SLOT,
-	   g_game->max_players - player->team->nbr_players);
+	   player->team->max_players - player->team->nbr_players);
   send_cmd(CMD_PLAYER_MAP_SIZE, g_game->map_size.x, g_game->map_size.y);
   g_client->callback = (t_entity_func)&client_player_run;
   return (true);

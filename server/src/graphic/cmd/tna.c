@@ -5,16 +5,19 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Mon Jun 12 22:00:58 2017 Arthur Josso
-** Last update Tue Jun 13 15:08:00 2017 Arthur Josso
+** Last update Thu Jun 15 14:20:58 2017 Arthur Josso
 */
 
 #include "core.h"
 
 bool	cmd_graphic_tna(t_graphic *graphic, const char *arg)
 {
+  int	i;
+
   (void)graphic;
   (void)arg;
-  send_cmd(CMD_GRAPHIC_TEAM_NAME, g_game->team[0].name);
-  send_cmd(CMD_GRAPHIC_TEAM_NAME, g_game->team[1].name);
+  i = 0;
+  while (g_game->team[i])
+    send_cmd(CMD_GRAPHIC_TEAM_NAME, g_game->team[i++]->name);
   return (true);
 }

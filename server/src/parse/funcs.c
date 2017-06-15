@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun  7 14:00:35 2017 Arthur Josso
-** Last update Tue Jun 13 17:42:39 2017 Arthur Josso
+** Last update Thu Jun 15 16:18:10 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -80,19 +80,19 @@ bool    parse_y_opt(t_parse_action action)
 bool    parse_c_opt(t_parse_action action)
 {
   if (action == PARSE_INIT)
-    g_game->max_players = DFLT_MAX_PLAYERS;
+    g_game->max_players_init = DFLT_MAX_PLAYERS;
   else if (action == PARSE_FILL)
     {
       if (!is_nbr(optarg))
 	return (false);
-      g_game->max_players = atoi(optarg);
-      if (g_game->max_players == 0 ||
-	  g_game->max_players > MAX_PLAYERS)
+      g_game->max_players_init = atoi(optarg);
+      if (g_game->max_players_init == 0 ||
+	  g_game->max_players_init > MAX_PLAYERS)
 	return (false);
     }
   else if (action == PARSE_CHECK)
     {
-      if (g_game->max_players == (uint32_t)-1)
+      if (g_game->max_players_init == (uint32_t)-1)
         return (false);
     }
   return (true);

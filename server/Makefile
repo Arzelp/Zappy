@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Tue Jun 13 17:36:36 2017 Arthur Josso
+## Last update Thu Jun 15 14:12:13 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -40,6 +40,7 @@ SRC_G_CMD	=	$(SRC_GRAPHIC)cmd/
 SRCS	=	$(SRC)main.c			\
 		$(SRC_PARSE)run.c		\
 		$(SRC_PARSE)funcs.c		\
+		$(SRC_PARSE)team.c		\
 		$(SRC_UTILS)alloc.c		\
 		$(SRC_UTILS)cleaner.c		\
 		$(SRC_UTILS)cleaner_utils.c	\
