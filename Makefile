@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ##
 ## Started on  Tue Jun  6 13:55:56 2017 Arthur Josso
-## Last update Thu Jun 15 17:46:47 2017 Paskal Arzel
+## Last update Thu Jun 15 17:50:57 2017 Arthur Josso
 ##
 
 NAME_SERVER	=	zappy_server
@@ -26,7 +26,7 @@ RM		=	rm -f
 
 CP		=	cp
 
-all:		$(NAME_SERVER) $(NAME_CLIENT) $(NAME_GRAPHIC)
+all:		$(NAME_SERVER) $(NAME_CLIENT)
 
 $(NAME_SERVER):
 		@echo "---Compiling Zappy Server---"
