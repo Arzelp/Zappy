@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Thu Jun 15 16:16:02 2017 Arthur Josso
+** Last update Thu Jun 15 17:01:35 2017 Arthur Josso
 */
 
 #pragma once
@@ -94,7 +94,7 @@ bool    parse_x_opt(t_parse_action action);
 bool    parse_y_opt(t_parse_action action);
 bool    parse_n_opt(t_parse_action action);
 bool    parse_c_opt(t_parse_action action);
-bool    parse_t_opt(t_parse_action action);
+bool    parse_f_opt(t_parse_action action);
 
 bool    parse_arg(int ac, char **av);
 

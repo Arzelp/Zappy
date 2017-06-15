@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun  7 14:00:35 2017 Arthur Josso
-** Last update Thu Jun 15 16:18:10 2017 Arthur Josso
+** Last update Thu Jun 15 17:01:23 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -98,7 +98,7 @@ bool    parse_c_opt(t_parse_action action)
   return (true);
 }
 
-bool    parse_t_opt(t_parse_action action)
+bool    parse_f_opt(t_parse_action action)
 {
   if (action == PARSE_INIT)
     g_game->frequency = DFLT_FREQUENCY;

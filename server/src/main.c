@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Tue Jun 13 13:10:28 2017 Arthur Josso
+** Last update Thu Jun 15 17:01:02 2017 Arthur Josso
 */
 
 #include <signal.h>
@@ -33,7 +33,7 @@ static void	sig_handler(int sig)
 static int	print_usage(const char *prog_name)
 {
   fprintf(stderr, "USAGE: %s -p port -x width -y height " \
-          "-n name1 name2 -c nbClients -t time\n", prog_name);
+          "-n name1 name2 -c nbClients -f freq\n", prog_name);
   fprintf(stderr, "\tport\t\tis the port number\n");
   fprintf(stderr, "\twidth\t\tis the width of the world\n");
   fprintf(stderr, "\theight\t\tis the height of the world\n");
@@ -41,7 +41,8 @@ static int	print_usage(const char *prog_name)
   fprintf(stderr, "\tname2\t\tis the name of the team 2\n");
   fprintf(stderr, "\tnbClients\tis the number of authorized " \
           "clients per team\n");
-  fprintf(stderr, "\ttime\t\tis the time limit for execution of actions\n");
+  fprintf(stderr, "\tfreq\t\tis the reciprocal of time unit " \
+	  "for execution of actions\n");
   return (1);
 }
 

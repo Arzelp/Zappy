@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:32:34 2017 Arthur Josso
-** Last update Thu Jun 15 16:23:19 2017 Arthur Josso
+** Last update Thu Jun 15 17:01:13 2017 Arthur Josso
 */
 
 #include <unistd.h>
@@ -19,7 +19,7 @@ static t_parse_opt parse_opt[] =
     {'y', &parse_y_opt},
     {'n', &parse_n_opt},
     {'c', &parse_c_opt},
-    {'t', &parse_t_opt},
+    {'f', &parse_f_opt},
     {'\0', NULL}
   };
 
