@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Thu Jun 15 14:12:13 2017 Arthur Josso
+## Last update Fri Jun 16 18:56:00 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -36,6 +36,8 @@ SRC_PLAYER	=	$(SRC)player/
 SRC_GRAPHIC	=	$(SRC)graphic/
 
 SRC_G_CMD	=	$(SRC_GRAPHIC)cmd/
+
+SRC_C_CMD	=	$(SRC_PLAYER)cmd/
 
 SRCS	=	$(SRC)main.c			\
 		$(SRC_PARSE)run.c		\
@@ -70,7 +72,8 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_G_CMD)plv.c		\
 		$(SRC_G_CMD)pin.c		\
 		$(SRC_G_CMD)sgt.c		\
-		$(SRC_G_CMD)sst.c
+		$(SRC_G_CMD)sst.c		\
+		$(SRC_C_CMD)nbr_slot.c
 
 OBJS	=	$(SRCS:.c=.o)
 
