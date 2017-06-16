@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 **
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Fri Jun 16 13:55:52 2017 Frederic Oddou
+** Last update Fri Jun 16 23:54:19 2017 Frederic Oddou
 */
 
 #include <string.h>
@@ -30,6 +30,18 @@ static void	usage(const char *name)
 	  "localhost by default\n");
 }
 
+void		test_server_features(void)
+{
+  if (player_right(NULL))
+    printf("1- Player turned right.\n");
+  if (player_left(NULL))
+    printf("2- Player turned left.\n");
+  if (player_forward(NULL))
+    printf("3- Player forward.\n");
+  if (player_broadcast("message"))
+    printf("4- Player broadcast.\n");
+}
+
 int		main(int ac, char **av)
 {
   t_core	core;
@@ -42,5 +54,7 @@ int		main(int ac, char **av)
     }
   if (!open_socket() || !get_player())
     return (EXIT_FAILURE);
+  test_server_features();
+  close_socket();
   return (EXIT_SUCCESS);
 }

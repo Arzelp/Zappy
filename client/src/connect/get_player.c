@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 13:47:22 2017 Frederic Oddou
-** Last update Fri Jun 16 13:55:22 2017 Frederic Oddou
+** Last update Fri Jun 16 23:23:54 2017 Frederic Oddou
 */
 
 #include <string.h>
@@ -16,22 +16,24 @@
 bool		get_player(void)
 {
   char		buffer[BUFFER_SIZE];
-  char		*str;
+  char		*line1;
+  char		*line2;
 
   if (!receive_msg(buffer, BUFFER_SIZE) || strcmp(buffer, "WELCOME"))
     return (false);
   if (!send_msg(g_core->name_team))
     return (false);
-  if (!receive_msg(buffer, BUFFER_SIZE) || !is_nbr(buffer))
-    return (false);
-  g_core->player.client_num = atoi(buffer);
   if (!receive_msg(buffer, BUFFER_SIZE))
     return (false);
-  if ((str = strtok(buffer, " ")) == NULL || !is_nbr(str))
+  if ((line1 = strtok(buffer, "\n")) == NULL || !is_nbr(line1))
     return (false);
-  g_core->player.pos[POS_X] = atoi(str);
-  if ((str = strtok(NULL, " ")) == NULL || !is_nbr(str))
+  g_core->player.client_num = atoi(line1);
+  if ((line1 = strtok(NULL, "\n")) == NULL ||
+      (line2 = strtok(line1, " ")) == NULL || !is_nbr(line2))
     return (false);
-  g_core->player.pos[POS_Y] = atoi(str);
+  g_core->map_size[POS_X] = atoi(line2);
+  if ((line2 = strtok(NULL, " ")) == NULL || !is_nbr(line2))
+    return (false);
+  g_core->map_size[POS_Y] = atoi(line2);
   return (true);
 }

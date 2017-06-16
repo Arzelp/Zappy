@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Fri Jun 16 14:26:06 2017 Frederic Oddou
+** Last update Fri Jun 16 23:54:10 2017 Frederic Oddou
 */
 
 #pragma once
@@ -37,6 +37,7 @@ typedef struct
 typedef struct		s_core
 {
   t_player		player;
+  int			map_size[POS_SIZE];
   uint16_t		port;
   char			name_team[NAME_SIZE];
   char			host[HOST_SIZE];
@@ -78,6 +79,7 @@ bool		parse_h_opt(t_parse_action action);
 */
 
 bool		open_socket(void);
+bool		close_socket(void);
 bool		get_player(void);
 bool		send_msg(const char *str);
 bool		receive_msg(char *str, size_t len);
