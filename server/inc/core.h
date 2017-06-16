@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Thu Jun 15 17:01:35 2017 Arthur Josso
+** Last update Fri Jun 16 19:25:13 2017 Arthur Josso
 */
 
 #pragma once
@@ -20,6 +20,7 @@
 #include "cleaner.h"
 #include "types.h"
 #include "default_values.h"
+#include "task.h"
 
 typedef struct s_client t_client;
 typedef struct s_game t_game;

@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:40:33 2017 Arthur Josso
-** Last update Fri Jun 16 18:46:37 2017 Arthur Josso
+** Last update Fri Jun 16 20:52:51 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -22,6 +22,7 @@ static t_player	*init_player_data(t_team *team)
   player->pos.y = rand() % g_game->map_size.y;
   player->dir = rand() % DIR_NBR;
   player->lvl = 1;
+  player->tasks = NULL;
   return (player);
 }
 
@@ -64,6 +65,8 @@ bool		client_player_fini(t_player *player)
 {
   uint32_t	i;
 
+  //send_cmd(CMD_PLAYER_DEAD);
+  task_rm_all(player->tasks);
   i = 0;
   while (i < player->team->nbr_players &&
 	 player->team->players[i] != player)

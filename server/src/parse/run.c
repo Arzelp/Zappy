@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:32:34 2017 Arthur Josso
-** Last update Thu Jun 15 17:01:13 2017 Arthur Josso
+** Last update Fri Jun 16 20:54:42 2017 Arthur Josso
 */
 
 #include <unistd.h>
@@ -62,7 +62,7 @@ static bool	check_opts(int ac, char **av)
   int		opt;
 
   opterr = 0;
-  while ((opt = getopt(ac, av, "p:x:y:n:c:t:")) != -1)
+  while ((opt = getopt(ac, av, "p:x:y:n:c:f:")) != -1)
     {
       if (opt == '?')
 	return (false);
