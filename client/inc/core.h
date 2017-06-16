@@ -1,31 +1,94 @@
 /*
-** core.h for core in /home/paskal/rendu/System_Unix/PSU_2016_zappy/client/inc/
+** core.h for core in /client/inc/
 **
 ** Made by Paskal Arzel
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Tue Jun 13 17:57:51 2017 Paskal Arzel
+** Last update Fri Jun 16 14:26:06 2017 Frederic Oddou
 */
 
-#ifndef CORE_H__
-#define CORE_H__
+#pragma once
 
-#include	<stdio.h>
-#include	<stdlib.h>
-#include	<string.h>
+#include <stdbool.h>
+#include <limits.h>
+#include <stdint.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include "default_values.h"
 
-typedef struct s_conn
+#define NAME_SIZE	256
+#define HOST_SIZE	2048
+#define BUFFER_SIZE	2048
+
+enum e_position
 {
-  int		port;
-  char	*mach;
-}t_conn;
+  POS_X,
+  POS_Y,
+  POS_SIZE,
+};
 
-typedef struct s_client
+typedef struct
 {
-  t_conn	infos;
-}t_client;
+  int			pos[POS_SIZE];
+  int			client_num;
+}			t_player;
 
-int	help(void);
+typedef struct		s_core
+{
+  t_player		player;
+  uint16_t		port;
+  char			name_team[NAME_SIZE];
+  char			host[HOST_SIZE];
+  int			socket_fd;
+  struct sockaddr_in	port_socket;
+}			t_core;
 
-#endif
+/*
+** @parse
+** Parse all arguments given in parameters.
+*/
+
+typedef enum
+  {
+    PARSE_INIT,
+    PARSE_FILL,
+    PARSE_CHECK
+  } t_parse_action;
+
+typedef bool (*t_parse_func)(t_parse_action action);
+
+typedef struct	s_parse_opt
+{
+  char		opt;
+  t_parse_func	func;
+}		t_parse_opt;
+
+bool		parse(int ac, char **av);
+bool		parse_p_opt(t_parse_action action);
+bool		parse_n_opt(t_parse_action action);
+bool		parse_h_opt(t_parse_action action);
+
+/*
+** @connect
+** - open_socket.c : Open the connection from an ip or host.
+** - get_player.c : Get the position and give the team name before starting.
+** - send_msg.c : Send a message to the server.
+** - get_msg.c : Receive a message from the server.
+*/
+
+bool		open_socket(void);
+bool		get_player(void);
+bool		send_msg(const char *str);
+bool		receive_msg(char *str, size_t len);
+
+/*
+** @commands
+*/
+
+bool		player_forward(const char *str);
+bool		player_right(const char *str);
+bool		player_left(const char *str);
+bool		player_broadcast(const char *str);
+
+extern t_core	*g_core;
