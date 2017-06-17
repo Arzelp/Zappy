@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun  7 14:08:32 2017 Arthur Josso
-** Last update Tue Jun 13 18:14:57 2017 Arthur Josso
+** Last update Sat Jun 17 16:24:36 2017 Arthur Josso
 */
 
 #pragma once
@@ -16,8 +16,8 @@ typedef struct pollfd t_poll;
 
 typedef struct
 {
-  int	x;
-  int	y;
+  uint32_t	x;
+  uint32_t	y;
 } t_pos;
 
 typedef t_pos t_size;
@@ -49,6 +49,20 @@ typedef enum
     DIR_WEST,
     DIR_NBR
   } t_direction;
+
+typedef enum
+  {
+    MOVE_LEFT = -1,
+    MOVE_FORWARD,
+    MOVE_RIGHT
+  } t_move;
+
+typedef enum
+  {
+    COORD_X = 0,
+    COORD_Y,
+    COORD_NBR
+  } t_coordinate;
 
 typedef enum
   {
