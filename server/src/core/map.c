@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 18:16:48 2017 Arthur Josso
-** Last update Tue Jun 13 14:15:07 2017 Arthur Josso
+** Last update Sat Jun 17 20:47:08 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -13,13 +13,13 @@
 
 const char	*g_ressources[] =
   {
-    "food",
-    "linemate",
-    "deraumere",
-    "sibur",
-    "mendiane",
-    "phiras",
-    "thystame",
+    " food",
+    " linemate",
+    " deraumere",
+    " sibur",
+    " mendiane",
+    " phiras",
+    " thystame",
     NULL
   };
 

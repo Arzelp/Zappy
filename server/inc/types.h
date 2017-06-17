@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun  7 14:08:32 2017 Arthur Josso
-** Last update Sat Jun 17 14:27:05 2017 Arthur Josso
+** Last update Sat Jun 17 16:24:36 2017 Arthur Josso
 */
 
 #pragma once
@@ -54,8 +54,7 @@ typedef enum
   {
     MOVE_LEFT = -1,
     MOVE_FORWARD,
-    MOVE_RIGHT,
-    MOVE_NBR
+    MOVE_RIGHT
   } t_move;
 
 typedef enum
