@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:23:40 2017 Arthur Josso
-** Last update Fri Jun 16 20:43:52 2017 Arthur Josso
+** Last update Sat Jun 17 14:07:16 2017 Arthur Josso
 */
 
 #pragma once
@@ -20,7 +20,9 @@ typedef bool (*t_task_func)(t_player *player, char *arg);
 
 typedef enum
   {
-    TASK_FORWARD = 0
+    TASK_FORWARD = 0,
+    TASK_LEFT,
+    TASK_RIGHT
   } t_task_type;
 
 typedef struct s_task t_task;
@@ -62,3 +64,5 @@ extern const t_task_list	task_list[];
 */
 
 bool	task_forward(t_player *player, char *arg);
+bool	task_left(t_player *player, char *arg);
+bool	task_right(t_player *player, char *arg);

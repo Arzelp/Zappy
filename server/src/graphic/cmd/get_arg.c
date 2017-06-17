@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun 13 13:17:28 2017 Arthur Josso
-** Last update Tue Jun 13 17:44:59 2017 Arthur Josso
+** Last update Sat Jun 17 14:28:14 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -60,13 +60,13 @@ bool		cmd_arg_get_pos(const char *arg, t_pos *pos)
     return (false);
   strncpy(buff, arg, len);
   buff[len] = '\0';
-  if ((pos->x = secured_atoi(buff, g_game->map_size.x)) == -1)
+  if ((pos->x = secured_atoi(buff, g_game->map_size.x)) == (uint32_t)-1)
     return (false);
   while (*tmp == ' ')
     tmp++;
   if (*tmp == '\0')
     return (false);
-  if ((pos->y = secured_atoi(tmp, g_game->map_size.y)) == -1)
+  if ((pos->y = secured_atoi(tmp, g_game->map_size.y)) == (uint32_t)-1)
     return (false);
   return (true);
 }
