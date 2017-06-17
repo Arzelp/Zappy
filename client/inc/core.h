@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Fri Jun 16 23:54:10 2017 Frederic Oddou
+** Last update Sat Jun 17 22:25:34 2017 Frederic Oddou
 */
 
 #pragma once
@@ -28,13 +28,28 @@ enum e_position
   POS_SIZE,
 };
 
+enum e_obj
+{
+  FOOD,
+  LINEMATE,
+  DERAUMERE,
+  SIBUR,
+  MENDIANE,
+  PHIRAS,
+  THYSTAME,
+  OBJ_NB
+};
+
 typedef struct
 {
-  int			pos[POS_SIZE];
+  char			view[(DELT_MAX_LVL * DELT_MAX_LVL) + 1][BUFFER_SIZE];
   int			client_num;
+  int			inventory[OBJ_NB];
+  int			level;
+  int			connect_nbr;
 }			t_player;
 
-typedef struct		s_core
+typedef struct
 {
   t_player		player;
   int			map_size[POS_SIZE];
@@ -59,7 +74,7 @@ typedef enum
 
 typedef bool (*t_parse_func)(t_parse_action action);
 
-typedef struct	s_parse_opt
+typedef struct
 {
   char		opt;
   t_parse_func	func;
@@ -92,5 +107,13 @@ bool		player_forward(const char *str);
 bool		player_right(const char *str);
 bool		player_left(const char *str);
 bool		player_broadcast(const char *str);
+bool		player_look(const char *str);
+bool		player_inventory(const char *str);
+bool		player_eject(const char *str);
+bool		player_incantation(const char *str);
+bool		player_fork(const char *str);
+bool		player_take(const char *str);
+bool		player_set(const char *str);
+bool		player_connect_nbr(const char *str);
 
 extern t_core	*g_core;

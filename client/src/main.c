@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 **
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Fri Jun 16 23:54:19 2017 Frederic Oddou
+** Last update Sat Jun 17 22:30:03 2017 Frederic Oddou
 */
 
 #include <string.h>
@@ -32,6 +32,7 @@ static void	usage(const char *name)
 
 void		test_server_features(void)
 {
+  printf("Trying 12 actions:\n");
   if (player_right(NULL))
     printf("1- Player turned right.\n");
   if (player_left(NULL))
@@ -40,6 +41,22 @@ void		test_server_features(void)
     printf("3- Player forward.\n");
   if (player_broadcast("message"))
     printf("4- Player broadcast.\n");
+  if (player_look(NULL))
+    printf("5- Look.\n");
+  if (player_inventory(NULL))
+    printf("6- Inventory.\n");
+  if (player_take("food"))
+    printf("7- Take food.\n");
+  if (player_set("food"))
+    printf("8- Set food.\n");
+  if (player_connect_nbr(NULL))
+    printf("9- Connect_nbr.\n");
+  if (player_eject(NULL))
+    printf("10- Eject.\n");
+  if (player_fork(NULL))
+    printf("11- Fork.\n");
+  if (player_incantation(NULL))
+    printf("12- Incantation.\n");
 }
 
 int		main(int ac, char **av)

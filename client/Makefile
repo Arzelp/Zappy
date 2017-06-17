@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ##
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Fri Jun 16 23:54:32 2017 Frederic Oddou
+## Last update Sat Jun 17 22:25:12 2017 Frederic Oddou
 ##
 
 NAME	=	zappy_ai
@@ -27,6 +27,10 @@ CMD	=	$(SRC)commands/
 
 SRCS	=	$(SRC)main.c			\
 		$(UTILS)checker.c		\
+		$(UTILS)trim.c			\
+		$(UTILS)strtok_single.c		\
+		$(UTILS)replace_letter.c	\
+		$(UTILS)get_objects_type.c	\
 		$(PARSE)parse.c			\
 		$(PARSE)funcs.c			\
 		$(CONNECT)open_socket.c		\
@@ -36,8 +40,16 @@ SRCS	=	$(SRC)main.c			\
 		$(CONNECT)receive_msg.c		\
 		$(CMD)player_forward.c		\
 		$(CMD)player_broadcast.c	\
+		$(CMD)player_inventory.c	\
+		$(CMD)player_incantation.c	\
 		$(CMD)player_left.c		\
-		$(CMD)player_right.c
+		$(CMD)player_right.c		\
+		$(CMD)player_eject.c		\
+		$(CMD)player_fork.c		\
+		$(CMD)player_connect_nbr.c	\
+		$(CMD)player_take.c		\
+		$(CMD)player_set.c		\
+		$(CMD)player_look.c
 
 OBJS	=	$(SRCS:.c=.o)
 
