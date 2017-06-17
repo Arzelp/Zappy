@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 12:01:22 2017 Frederic Oddou
-** Last update Fri Jun 16 13:23:08 2017 Frederic Oddou
+** Last update Fri Jun 16 23:09:39 2017 Frederic Oddou
 */
 
 #include <netdb.h>
@@ -41,7 +41,7 @@ static void		init_port_socket(const int *tab)
 
   memset(buffer, '\0', BUFFER_SIZE);
   g_core->port_socket.sin_family = AF_INET;
-  g_core->port_socket.sin_port = htons(tab[4]);
+  g_core->port_socket.sin_port = htons(g_core->port);
   sprintf(buffer, "%d.%d.%d.%d", tab[0], tab[1], tab[2], tab[3]);
   g_core->port_socket.sin_addr.s_addr = inet_addr(buffer);
 }

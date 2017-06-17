@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ##
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Fri Jun 16 14:28:42 2017 Frederic Oddou
+## Last update Fri Jun 16 23:54:32 2017 Frederic Oddou
 ##
 
 NAME	=	zappy_ai
@@ -30,6 +30,7 @@ SRCS	=	$(SRC)main.c			\
 		$(PARSE)parse.c			\
 		$(PARSE)funcs.c			\
 		$(CONNECT)open_socket.c		\
+		$(CONNECT)close_socket.c	\
 		$(CONNECT)get_player.c		\
 		$(CONNECT)send_msg.c		\
 		$(CONNECT)receive_msg.c		\
