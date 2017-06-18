@@ -5,13 +5,14 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 11:00:19 2017 Frederic Oddou
-** Last update Fri Jun 16 11:43:49 2017 Frederic Oddou
+** Last update Sun Jun 18 20:50:48 2017 Frederic Oddou
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
 #include "core.h"
+#include "parse.h"
 #include "utils.h"
 
 bool		parse_p_opt(t_parse_action action)

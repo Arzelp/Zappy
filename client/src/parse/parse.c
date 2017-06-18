@@ -5,11 +5,12 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 10:34:50 2017 Frederic Oddou
-** Last update Fri Jun 16 11:28:04 2017 Frederic Oddou
+** Last update Sun Jun 18 20:50:54 2017 Frederic Oddou
 */
 
 #include <unistd.h>
 #include "core.h"
+#include "parse.h"
 
 static const t_parse_opt g_parse_opt[] =
   {

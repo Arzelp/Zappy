@@ -5,20 +5,40 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 11:11:42 2017 Frederic Oddou
-** Last update Sun Jun 18 18:06:00 2017 Frederic Oddou
+** Last update Sun Jun 18 20:49:11 2017 Frederic Oddou
 */
 
 #pragma once
 
 #include "core.h"
 
+/*
+** @checker.c
+*/
+
 bool		is_nbr(const char *s);
 bool		is_answer_ok(const char *s);
 bool		is_answer_ko(const char *s);
 
+/*
+** @strtok_single.c
+** - The function could return an empty string if the string contrain several
+** delimiters.
+*/
+
 char		*strtok_single(char *str, char const *delims);
 
+/*
+** @trim.c
+** - The function deletes the extra spaces.
+*/
+
 char		*trim(char *str);
+
+/*
+** @replace_letter.c
+** - Replace into the string passed as parameter, a char by an other one.
+*/
 
 char		*replace_letter(char *str, char find, char replace);
 
@@ -34,6 +54,8 @@ typedef struct
 
 const char	*get_object_name_from_type(enum e_obj obj_id);
 enum e_obj	get_object_id_from_name(const char *name);
+
+extern const t_get_objects_type g_get_objects_type[];
 
 /*
 ** @debug.c

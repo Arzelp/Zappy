@@ -5,14 +5,14 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 21:55:59 2017 Frederic Oddou
-** Last update Sat Jun 17 22:15:44 2017 Frederic Oddou
+** Last update Sun Jun 18 20:42:36 2017 Frederic Oddou
 */
 
 #include <string.h>
 #include "core.h"
 #include "utils.h"
 
-static const t_get_objects_type	g_get_objects_type[] = {
+const t_get_objects_type	g_get_objects_type[] = {
   {FOOD, "food"},
   {LINEMATE, "linemate"},
   {DERAUMERE, "deraumere"},

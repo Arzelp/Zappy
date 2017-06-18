@@ -5,9 +5,10 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sun Jun 18 18:27:53 2017 Frederic Oddou
-** Last update Sun Jun 18 18:52:47 2017 Frederic Oddou
+** Last update Sun Jun 18 20:26:00 2017 Frederic Oddou
 */
 
+#include <stdlib.h>
 #include "core.h"
 
 const t_elevation	g_elevation[] = {
@@ -20,3 +21,25 @@ const t_elevation	g_elevation[] = {
   {7, 6, {2, 2, 2, 2, 2, 0, 0}},
   {-1, -1, {-1}}
 };
+
+const t_elevation	*elevation_get_infos(void)
+{
+  size_t		i;
+
+  i = 0;
+  while (g_elevation[i].level != -1)
+    {
+      if (g_elevation[i].level == g_core->player.level)
+	return (&g_elevation[i]);
+    }
+  return (NULL);
+}
+
+int			elevation_need_object(enum e_obj obj_id)
+{
+  const t_elevation	*elevation;
+
+  if (obj_id == OBJ_NB || (elevation = elevation_get_infos()) == NULL)
+    return (-1);
+  return (elevation->object[obj_id]);
+}

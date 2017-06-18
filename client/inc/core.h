@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Sun Jun 18 18:54:02 2017 Frederic Oddou
+** Last update Sun Jun 18 20:51:18 2017 Frederic Oddou
 */
 
 #pragma once
@@ -74,31 +74,6 @@ typedef struct
 }			t_core;
 
 /*
-** @parse
-** Parse all arguments given in parameters.
-*/
-
-typedef enum
-  {
-    PARSE_INIT,
-    PARSE_FILL,
-    PARSE_CHECK
-  } t_parse_action;
-
-typedef bool (*t_parse_func)(t_parse_action action);
-
-typedef struct
-{
-  char		opt;
-  t_parse_func	func;
-}		t_parse_opt;
-
-bool		parse(int ac, char **av);
-bool		parse_p_opt(t_parse_action action);
-bool		parse_n_opt(t_parse_action action);
-bool		parse_h_opt(t_parse_action action);
-
-/*
 ** @connect
 ** - open_socket.c : Open the connection from an ip or host.
 ** - close_socket.c : Close the fd socket after used.
@@ -115,6 +90,8 @@ bool		receive_msg(char *str, size_t len);
 
 /*
 ** @commands
+** For each command, the function send the command and wait for the answer.
+** The functions treat and return if the command succed.
 */
 
 bool		player_forward(const char *str);
@@ -132,8 +109,15 @@ bool		player_connect_nbr(const char *str);
 
 /*
 ** @game
+**
+** @elevation.c
+** - elevation_get_infos : Get the struct that contains all information we need
+**   for the next elevation.
+** - elevation_need_object : Give a obj_id in parameters and the function
+**   return the number of this object that we need for the next elevation.
 */
 
+const t_elevation	*elevation_get_infos(void);
+int			elevation_need_object(enum e_obj obj_id);
 
-
-extern t_core	*g_core;
+extern t_core		*g_core;

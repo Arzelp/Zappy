@@ -5,13 +5,14 @@
 ** Login   <arthur.josso@epitech.eu>
 **
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Sat Jun 17 22:30:03 2017 Frederic Oddou
+** Last update Sun Jun 18 20:50:58 2017 Frederic Oddou
 */
 
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "core.h"
+#include "parse.h"
 
 t_core	*g_core = NULL;
 
