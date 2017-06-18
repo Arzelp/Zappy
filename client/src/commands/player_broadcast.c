@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 14:25:07 2017 Frederic Oddou
-** Last update Fri Jun 16 14:29:21 2017 Frederic Oddou
+** Last update Sun Jun 18 18:03:23 2017 Frederic Oddou
 */
 
 #include <stdio.h>
@@ -20,6 +20,10 @@ bool		player_broadcast(const char *str)
   if (!send_msg(buffer))
     return (false);
   if (!receive_msg(buffer, BUFFER_SIZE) || !is_answer_ok(buffer))
-    return (false);
+    {
+      debug_message_error("Broadcast", str, NULL);
+      return (false);
+    }
+  debug_message_confirm("Broadcast", str, NULL);
   return (true);
 }

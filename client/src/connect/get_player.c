@@ -5,13 +5,27 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 13:47:22 2017 Frederic Oddou
-** Last update Fri Jun 16 23:23:54 2017 Frederic Oddou
+** Last update Sun Jun 18 18:25:06 2017 Frederic Oddou
 */
 
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "core.h"
 #include "utils.h"
+
+static void	confirm_new_player()
+{
+  if (DEBUG)
+    {
+      fprintf(stderr, "Player from the team %s entering on the game.\n",
+	      g_core->name_team);
+      fprintf(stderr, "The size of the map is %d:%d and the client number "
+	      "is %d.\n", g_core->map_size[POS_X], g_core->map_size[POS_Y],
+	      g_core->player.client_num);
+    }
+
+}
 
 bool		get_player(void)
 {
@@ -35,5 +49,7 @@ bool		get_player(void)
   if ((line2 = strtok(NULL, " ")) == NULL || !is_nbr(line2))
     return (false);
   g_core->map_size[POS_Y] = atoi(line2);
+  g_core->player.level = 1;
+  confirm_new_player();
   return (true);
 }

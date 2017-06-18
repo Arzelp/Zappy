@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ##
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Sat Jun 17 22:25:12 2017 Frederic Oddou
+## Last update Sun Jun 18 18:54:21 2017 Frederic Oddou
 ##
 
 NAME	=	zappy_ai
@@ -24,6 +24,7 @@ PARSE	=	$(SRC)parse/
 UTILS	=	$(SRC)utils/
 CONNECT	=	$(SRC)connect/
 CMD	=	$(SRC)commands/
+GAME	=	$(SRC)game/
 
 SRCS	=	$(SRC)main.c			\
 		$(UTILS)checker.c		\
@@ -31,6 +32,7 @@ SRCS	=	$(SRC)main.c			\
 		$(UTILS)strtok_single.c		\
 		$(UTILS)replace_letter.c	\
 		$(UTILS)get_objects_type.c	\
+		$(UTILS)debug.c			\
 		$(PARSE)parse.c			\
 		$(PARSE)funcs.c			\
 		$(CONNECT)open_socket.c		\
@@ -49,7 +51,8 @@ SRCS	=	$(SRC)main.c			\
 		$(CMD)player_connect_nbr.c	\
 		$(CMD)player_take.c		\
 		$(CMD)player_set.c		\
-		$(CMD)player_look.c
+		$(CMD)player_look.c		\
+		$(GAME)elevation.c
 
 OBJS	=	$(SRCS:.c=.o)
 
@@ -64,6 +67,9 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 		@$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
 
+debug:
+		@make re CC="gcc -D DEBUG_MODE" -C ./ -f Makefile -s
+
 clean:
 		@$(RM) $(OBJS)
 
@@ -72,4 +78,4 @@ fclean:		clean
 
 re:		fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re debug $(NAME)

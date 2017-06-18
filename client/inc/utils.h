@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 11:11:42 2017 Frederic Oddou
-** Last update Sat Jun 17 22:14:44 2017 Frederic Oddou
+** Last update Sun Jun 18 18:06:00 2017 Frederic Oddou
 */
 
 #pragma once
@@ -34,3 +34,15 @@ typedef struct
 
 const char	*get_object_name_from_type(enum e_obj obj_id);
 enum e_obj	get_object_id_from_name(const char *name);
+
+/*
+** @debug.c
+*/
+
+#define DEBUG_OK	"[\e[32mOK\e[0m]"
+#define DEBUG_KO	"[\e[31mKO\e[0m]"
+
+void		debug_message_confirm(const char *action, const char *opt,
+				      const char *answer);
+void		debug_message_error(const char *action, const char *opt,
+				    const char *answer);

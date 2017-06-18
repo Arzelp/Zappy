@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 22:24:07 2017 Frederic Oddou
-** Last update Sat Jun 17 22:26:56 2017 Frederic Oddou
+** Last update Sun Jun 18 18:15:57 2017 Frederic Oddou
 */
 
 #include <stdlib.h>
@@ -16,11 +16,14 @@ bool		player_connect_nbr(const char *str)
 {
   char		buffer[BUFFER_SIZE];
 
-  (void)str;
   if (!send_msg("Connect_nbr"))
     return (false);
   if (!receive_msg(buffer, BUFFER_SIZE) || !is_nbr(buffer))
-    return (false);
+    {
+      debug_message_error("Connect_nbr", str, buffer);
+      return (false);
+    }
   g_core->player.connect_nbr = atoi(buffer);
+  debug_message_confirm("Connect_nbr", str, buffer);
   return (true);
 }

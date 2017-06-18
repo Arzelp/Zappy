@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 22:13:17 2017 Frederic Oddou
-** Last update Sat Jun 17 22:19:09 2017 Frederic Oddou
+** Last update Sun Jun 18 18:16:58 2017 Frederic Oddou
 */
 
 #include <string.h>
@@ -17,12 +17,15 @@ bool		player_incantation(const char *str)
 {
   char		buffer[BUFFER_SIZE];
 
-  (void)str;
   if (!send_msg("Incantation"))
     return (false);
   if (!receive_msg(buffer, BUFFER_SIZE) || is_answer_ko(buffer))
-    return (false);
+    {
+      debug_message_error("Incantation", str, NULL);
+      return (false);
+    }
   scanf(buffer, "Elevation underway\nCurrent level: %d",
 	&g_core->player.level);
+  debug_message_confirm("Incantation", str, NULL);
   return (true);
 }

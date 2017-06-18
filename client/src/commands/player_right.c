@@ -5,9 +5,10 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 14:20:50 2017 Frederic Oddou
-** Last update Fri Jun 16 14:24:06 2017 Frederic Oddou
+** Last update Sun Jun 18 18:17:41 2017 Frederic Oddou
 */
 
+#include <stdlib.h>
 #include "core.h"
 #include "utils.h"
 
@@ -15,10 +16,13 @@ bool		player_right(const char *str)
 {
   char		buffer[BUFFER_SIZE];
 
-  (void)str;
   if (!send_msg("Right"))
     return (false);
   if (!receive_msg(buffer, BUFFER_SIZE) || !is_answer_ok(buffer))
-    return (false);
+    {
+      debug_message_error("Right", str, NULL);
+      return (false);
+    }
+  debug_message_confirm("Right", str, NULL);
   return (true);
 }

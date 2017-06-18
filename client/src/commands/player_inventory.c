@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 21:29:39 2017 Frederic Oddou
-** Last update Sat Jun 17 22:18:58 2017 Frederic Oddou
+** Last update Sun Jun 18 18:18:07 2017 Frederic Oddou
 */
 
 #include <string.h>
@@ -17,7 +17,6 @@ bool		player_inventory(const char *str)
 {
   char		buffer[BUFFER_SIZE];
 
-  (void)str;
   if (!send_msg("Inventory"))
     return (false);
   if (!receive_msg(buffer, BUFFER_SIZE))
@@ -32,6 +31,10 @@ bool		player_inventory(const char *str)
 	     &g_core->player.inventory[MENDIANE],
 	     &g_core->player.inventory[PHIRAS],
 	     &g_core->player.inventory[THYSTAME]) != 7)
-    return (false);
+    {
+      debug_message_error("Inventory", str, buffer);
+      return (false);
+    }
+  debug_message_confirm("Inventory", str, buffer);
   return (true);
 }
