@@ -1,48 +1,82 @@
-##
-## Makefile for makefile in /home/paskal/rendu/System_Unix/PSU_2016_zappy/graphic/
-##
-## Made by Paskal Arzel
-## Login   <paskal.arzel@epitech.eu>
-##
-## Started on  Thu Jun 15 17:36:53 2017 Paskal Arzel
-## Last update Thu Jun 15 17:37:02 2017 Paskal Arzel
-##
 
-NAME	=	zappy_graphic
+Target = hitler
 
-CC	=	gcc
+SRC = ./src/
 
-INC	=	./inc/
+Sources =	$(SRC)main.cpp \
+		$(SRC)Random.cpp \
+		$(SRC)Settings.cpp \
+		$(SRC)Core.cpp \
+		$(SRC)Image.cpp \
+		$(SRC)List.cpp \
+		$(SRC)MyEventReceiver.cpp \
+		$(SRC)Welcome.cpp \
+		$(SRC)MainMenu.cpp \
+		$(SRC)SettingsMenu.cpp \
+		$(SRC)GameSelectMenu.cpp \
+		$(SRC)BombermanSolo.cpp \
+		$(SRC)BombermanDuo.cpp \
+		$(SRC)SoloEndMenu.cpp \
+		$(SRC)DuoEndMenu.cpp \
+		$(SRC)Mesh.cpp \
+		$(SRC)Map.cpp \
+		$(SRC)AEntity.cpp \
+		$(SRC)EntityManager.cpp \
+		$(SRC)Bomb.cpp \
+		$(SRC)Explosion.cpp \
+		$(SRC)Gate.cpp \
+		$(SRC)APlayer.cpp \
+		$(SRC)Player1.cpp \
+		$(SRC)Player2.cpp \
+		$(SRC)Monster.cpp \
+		$(SRC)Plane.cpp \
+		$(SRC)Powerup.cpp \
+		$(SRC)Box.cpp \
 
-CFLAGS	+=	-I$(INC)		\
-		-Wall -Wextra
+IRRLITCHT = ./irrlicht-1.8.4/
 
-LDFLAGS	+=
+# general compiler settings
+CPPFLAGS = -I$(IRRLITCHT)include -I/usr/X11R6/include -I./include/
+CXXFLAGS = -O3 -ffast-math -g -std=c++11
+#CXXFLAGS = -g -Wall
 
-SRC	=	./src/
+#default target is Linux
+all: all_linux
 
-SRCS	=	$(SRC)main.c \
-			$(SRC)help.c
+ifeq ($(HOSTTYPE), x86_64)
+LIBSELECT=64
+endif
 
-OBJS	=	$(SRCS:.c=.o)
+# target specific settings
+all_linux: LDFLAGS = -L/usr/X11R6/lib$(LIBSELECT) -L$(IRRLITCHT)lib/Linux -lIrrlicht -lGL -lXxf86vm -lXext -lX11 -lXcursor -lsfml-audio
+all_linux clean_linux: SYSTEM=Linux
+all_win32: LDFLAGS = -L$(IRRLITCHT)lib/Win32-gcc -lIrrlicht
+static_win32: LDFLAGS += -lgdi32 -lopengl32 -ld3dx9d -lwinmm -lm -lsfml-audio
+static_win32: CPPFLAGS += -D_IRR_STATIC_LIB_
+static_win32 all_win32 clean_win32: SYSTEM=Win32-gcc
+static_win32 all_win32 clean_win32: SUF=.exe
+# name of the binary - only valid for targets which set SYSTEM
+DESTPATH = $(Target)$(SUF)
 
-RM	=	rm -f
+all_linux all_win32 static_win32:
+	$(warning Building...)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(Sources) -o $(DESTPATH) $(LDFLAGS)
 
-%.o:		%.c
-		@echo [Compiling]: $<
-		@$(CC) $(CFLAGS) -o $@ -c $<
+clean: clean_linux clean_win32
+	$(warning Cleaning...)
 
-all:		$(NAME)
+clean_linux clean_win32:
+	@$(RM) $(DESTPATH)
 
-$(NAME):	$(OBJS)
-		@$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
+re:	clean all
 
-clean:
-		@$(RM) $(OBJS)
+install:
+	-sudo dnf install SFML-devel
+	-sudo apt-get install libsfml-dev
+	wget "http://downloads.sourceforge.net/irrlicht/irrlicht-1.8.4.zip"
+	unzip "irrlicht-1.8.4.zip"
+	make -C "irrlicht-1.8.4/source/Irrlicht/"
+	-rm -f "irrlicht-1.8.4.zip"
+	echo "DONE: If successful run 'make'"
 
-fclean:		clean
-		@$(RM) $(NAME)
-
-re:		fclean all
-
-.PHONY:		all clean fclean re
+.PHONY: all all_win32 clean clean_linux clean_win32 static_win32 re install

@@ -1,7 +1,12 @@
 *~
+*#
 *.o
 a.out
 zappy_server
 zappy_server_ref
 zappy_ai
 vgcore.*
+*.hcp
+*.out
+*.so
+irrlicht-1.8.4
