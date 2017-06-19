@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:40:33 2017 Arthur Josso
-** Last update Fri Jun 16 20:52:51 2017 Arthur Josso
+** Last update Mon Jun 19 16:38:41 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -23,6 +23,7 @@ static t_player	*init_player_data(t_team *team)
   player->dir = rand() % DIR_NBR;
   player->lvl = 1;
   player->tasks = NULL;
+  player->inventory[RES_FOOD] = 10;
   return (player);
 }
 
