@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:23:40 2017 Arthur Josso
-** Last update Mon Jun 19 16:22:44 2017 Arthur Josso
+** Last update Mon Jun 19 19:15:57 2017 Arthur Josso
 */
 
 #pragma once
@@ -25,7 +25,8 @@ typedef enum
     TASK_LEFT,
     TASK_RIGHT,
     TASK_LOOK,
-    TASK_INVENTORY
+    TASK_INVENTORY,
+    TASK_EJECT
   } t_task_type;
 
 typedef struct s_task t_task;
@@ -76,3 +77,4 @@ bool	task_left(t_player *player, char *arg);
 bool	task_right(t_player *player, char *arg);
 bool	task_look(t_player *player, char *arg);
 bool	task_inventory(t_player *player, char *arg);
+bool	task_eject(t_player *player, char *arg);

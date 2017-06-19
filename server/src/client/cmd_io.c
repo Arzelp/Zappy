@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 17:11:02 2017 Arthur Josso
-** Last update Tue Jun 13 18:15:26 2017 Arthur Josso
+** Last update Mon Jun 19 18:51:24 2017 Arthur Josso
 */
 
 #include <stdarg.h>
@@ -23,6 +23,7 @@ static t_cmd_fmt cmd_fmt[] =
     {CMD_PLAYER_DEAD, "dead\n"},
     {CMD_PLAYER_INCANTATION_START, "Elevation underway\n"},
     {CMD_PLAYER_INCANTATION_END, "Current level: %d\n"},
+    {CMD_PLAYER_EJECT, "eject: %d\n"},
     {CMD_GRAPHIC_BAD_CMD, "suc\n"},
     {CMD_GRAPHIC_BAD_ARG, "sbp\n"},
     {CMD_GRAPHIC_MAP_SIZE, "msz %d %d\n"},
