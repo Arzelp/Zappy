@@ -5,14 +5,14 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 12:36:35 2017 arnaud.alies
-// Last update Wed Jun 14 15:35:52 2017 arnaud.alies
+// Last update Mon Jun 19 16:42:51 2017 arnaud.alies
 //
 
 #include <chrono>
 #include <ctime>
 #include <iostream>
 #include "Core.hpp"
-#include "Welcome.hpp"
+#include "MainMenu.hpp"
 
 int Core::getTime()
 {
@@ -53,7 +53,7 @@ Core::Core()
     std::cerr << "error while loading font" << std::endl;
   //
   cam = scene->addCameraSceneNode();
-  state = new Welcome();
+  state = new MainMenu();
   state->begin(this);
 }
 

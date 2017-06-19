@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 15:13:35 2017 arnaud.alies
-// Last update Sun Jun 11 10:51:06 2017 arnaud.alies
+// Last update Mon Jun 19 18:14:29 2017 arnaud.alies
 //
 
 #include "APlayer.hpp"
@@ -15,10 +15,8 @@ APlayer::APlayer() :
   _offset(irr::core::vector3df(0, 50, 0)),
   _state(S_IDLE),
   _speed(10),
-  _bomb_range(1),
   _alive(true),
-  _id(0),
-  _max_bombs(1)
+  _id(0)
 {
 }
 
@@ -42,46 +40,6 @@ void APlayer::kill()
 void APlayer::validMove(irr::core::vector3df dir)
 {
   this->setPos(_map->getValidPos(this->getPos(), dir));
-}
-
-void APlayer::applyPowerup(EPowerup power)
-{
-  if (power == P_SPEED)
-    _speed += 1;
-  if (power == P_RANGE)
-    _bomb_range += 1;
-  if (power == P_ADD_BOMB)
-    _max_bombs += 1;
-}
-
-int APlayer::countMyBombs() const
-{
-  std::vector<AEntity*> bombs;
-  int c = 0;
-
-  bombs = _entity_manager->getAll("bomb");
-  for (auto bomb_ent : bombs)
-    {
-      Bomb* bomb = static_cast<Bomb*>(bomb_ent);
-      if (bomb->id == _id)
-	c += 1;
-    }
-  return (c);
-}
-
-Bomb* APlayer::plantBomb()
-{
-  std::vector<AEntity*> bombs = _entity_manager->getInRange(this->getPos(), UNIT, "bomb");
-  if (bombs.size() <= 0
-      && this->countMyBombs() < _max_bombs)
-    {
-      Bomb* bomb = _entity_manager->addEntityMap<Bomb>(Map::getX(this->getPos()),
-						       Map::getY(this->getPos()));
-      bomb->range = _bomb_range;
-      bomb->id = _id;
-      return (bomb);
-    }
-  return (nullptr);
 }
 
 void APlayer::update()
@@ -114,7 +72,6 @@ void APlayer::update()
     }
   else if (_state == S_PLANT)
     {
-      this->plantBomb();
     }
   /* animations */
   if (old_state != _state)

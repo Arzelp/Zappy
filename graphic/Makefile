@@ -10,27 +10,14 @@ Sources =	$(SRC)main.cpp \
 		$(SRC)Image.cpp \
 		$(SRC)List.cpp \
 		$(SRC)MyEventReceiver.cpp \
-		$(SRC)Welcome.cpp \
 		$(SRC)MainMenu.cpp \
 		$(SRC)SettingsMenu.cpp \
-		$(SRC)GameSelectMenu.cpp \
-		$(SRC)BombermanSolo.cpp \
-		$(SRC)BombermanDuo.cpp \
-		$(SRC)SoloEndMenu.cpp \
-		$(SRC)DuoEndMenu.cpp \
+		$(SRC)Zappy.cpp \
 		$(SRC)Mesh.cpp \
 		$(SRC)Map.cpp \
 		$(SRC)AEntity.cpp \
 		$(SRC)EntityManager.cpp \
-		$(SRC)Bomb.cpp \
-		$(SRC)Explosion.cpp \
-		$(SRC)Gate.cpp \
 		$(SRC)APlayer.cpp \
-		$(SRC)Player1.cpp \
-		$(SRC)Player2.cpp \
-		$(SRC)Monster.cpp \
-		$(SRC)Plane.cpp \
-		$(SRC)Powerup.cpp \
 		$(SRC)Box.cpp \
 
 IRRLITCHT = ./irrlicht-1.8.4/

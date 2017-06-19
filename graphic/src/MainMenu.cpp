@@ -5,14 +5,12 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Tue Jun 13 14:50:51 2017 arnaud.alies
+// Last update Mon Jun 19 16:43:19 2017 arnaud.alies
 //
 
 #include <iostream>
-#include "BombermanSolo.hpp"
-#include "BombermanDuo.hpp"
+#include "Zappy.hpp"
 #include "MainMenu.hpp"
-#include "GameSelectMenu.hpp"
 #include "SettingsMenu.hpp"
 
 MainMenu::MainMenu() :
@@ -41,7 +39,7 @@ State *MainMenu::update()
   else if (in == K_SPACE)
     {
       if (_list->selected() == 0)
-	return (new GameSelectMenu());
+	return (new Zappy());
       if (_list->selected() == 1)
 	return (new SettingsMenu());
       if (_list->selected() == 2)

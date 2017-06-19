@@ -5,17 +5,15 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 14:56:43 2017 arnaud.alies
-// Last update Thu Jun  8 14:00:36 2017 arnaud.alies
+// Last update Mon Jun 19 18:13:51 2017 arnaud.alies
 //
 
 #ifndef APLAYER_HPP_
 #define APLAYER_HPP_
 
 #include <vector>
-#include "Bomb.hpp"
 #include "AEntity.hpp"
 #include "Mesh.hpp"
-#include "Powerup.hpp"
 
 enum EState
   {
@@ -33,10 +31,8 @@ protected:
   bool _alive;
   int _id;
   int _speed;
-  int _bomb_range;
   EState _state;
   Mesh* _mesh;
-  int _max_bombs;
   
   irr::core::vector3df _heading;
   irr::core::vector3df _offset;
@@ -52,10 +48,7 @@ public:
   void setRotation(irr::core::vector3df rot);
   std::string getType() const;
   void kill();
-  void applyPowerup(EPowerup power);
-  Bomb* plantBomb();
   bool isAlive() const;
-  int countMyBombs() const;
   /* pure virtual */
   virtual EState getState() = 0;
 };
