@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Sat Jun 17 20:50:24 2017 Arthur Josso
+## Last update Mon Jun 19 16:21:55 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -86,7 +86,8 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_TASK)time.c		\
 		$(SRC_TASK)run.c		\
 		$(SRC_T_CMD)move.c		\
-		$(SRC_T_CMD)look.c
+		$(SRC_T_CMD)look.c		\
+		$(SRC_T_CMD)inventory.c
 
 OBJS	=	$(SRCS:.c=.o)
 

@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:35:56 2017 Arthur Josso
-** Last update Sat Jun 17 20:48:36 2017 Arthur Josso
+** Last update Mon Jun 19 16:13:27 2017 Arthur Josso
 */
 
 #include "task.h"
@@ -16,5 +16,6 @@ const t_task_list	task_list[] =
     {&task_left, 7},
     {&task_right, 7},
     {&task_look, 7},
+    {&task_inventory, 1},
     {NULL, 0}
   };
