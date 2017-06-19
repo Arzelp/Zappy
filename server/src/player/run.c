@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 21:04:50 2017 Arthur Josso
-** Last update Mon Jun 19 19:16:40 2017 Arthur Josso
+** Last update Mon Jun 19 19:40:43 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -19,6 +19,8 @@ static const t_entity_cmd	cmd_player[] =
     ADD_CMD_FUNC(player, Look),
     ADD_CMD_FUNC(player, Inventory),
     ADD_CMD_FUNC(player, Eject),
+    ADD_CMD_FUNC(player, Take),
+    ADD_CMD_FUNC(player, Set),
     {NULL, NULL}
   };
 

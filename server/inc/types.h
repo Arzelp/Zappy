@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun  7 14:08:32 2017 Arthur Josso
-** Last update Mon Jun 19 18:52:12 2017 Arthur Josso
+** Last update Mon Jun 19 19:30:01 2017 Arthur Josso
 */
 
 #pragma once
@@ -31,6 +31,7 @@ typedef enum
 
 typedef enum
   {
+    RES_NONE = -1,
     RES_FOOD = 0,
     RES_LINEMATE,
     RES_DERAUMERE,
