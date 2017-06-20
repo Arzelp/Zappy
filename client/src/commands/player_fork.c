@@ -5,16 +5,18 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 22:22:49 2017 Frederic Oddou
-** Last update Sun Jun 18 18:17:22 2017 Frederic Oddou
+** Last update Tue Jun 20 22:32:52 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include "core.h"
 #include "utils.h"
 
 bool		player_fork(const char *str)
 {
   char		buffer[BUFFER_SIZE];
+  int			pid;
 
   if (!send_msg("Fork"))
     return (false);
@@ -23,6 +25,14 @@ bool		player_fork(const char *str)
       debug_message_error("Fork", str, NULL);
       return (false);
     }
+  if ((pid = fork()) == -1)
+    {
+      debug_message_error("Fork", str, NULL);
+      return (false);
+    }
+  if (pid != 0)
+    return (true);
+  init_new_player();
   debug_message_confirm("Fork", str, NULL);
   return (true);
 }

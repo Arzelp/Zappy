@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Tue Jun 20 11:49:16 2017 Paskal Arzel
+** Last update Tue Jun 20 22:25:18 2017 Paskal Arzel
 */
 
 #pragma once
@@ -60,6 +60,8 @@ typedef struct
   int			inventory[OBJ_NB];
   int			level;
   int			connect_nbr;
+  int			cd_fertility;
+  bool    is_alive;
 }			t_player;
 
 typedef struct
@@ -124,9 +126,13 @@ int			elevation_need_object(enum e_obj obj_id);
 ** @bot
 **
 ** @ia_main.c
-** Start
-**
+** Start the player
 **
 */
+
+bool		ia_main(void);
+bool		check_mom(void);
+bool		init_new_player(void);
+bool		look(void);
 
 extern t_core		*g_core;

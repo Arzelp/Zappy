@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ##
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Tue Jun 20 13:25:16 2017 Paskal Arzel
+## Last update Tue Jun 20 22:17:18 2017 Paskal Arzel
 ##
 
 NAME	=	zappy_ai
@@ -26,7 +26,7 @@ CONNECT	=	$(SRC)connect/
 CMD	=	$(SRC)commands/
 GAME	=	$(SRC)game/
 IA = $(SRC)ia/
-MASTER = $(IA)master/
+IA_INIT = $(IA)init/
 
 SRCS	=	$(SRC)main.c			\
 		$(UTILS)checker.c		\
@@ -34,6 +34,7 @@ SRCS	=	$(SRC)main.c			\
 		$(UTILS)strtok_single.c		\
 		$(UTILS)replace_letter.c	\
 		$(UTILS)get_objects_type.c	\
+		$(UTILS)is_object.c		\
 		$(UTILS)debug.c			\
 		$(PARSE)parse.c			\
 		$(PARSE)funcs.c			\
@@ -55,6 +56,9 @@ SRCS	=	$(SRC)main.c			\
 		$(CMD)player_set.c		\
 		$(CMD)player_look.c		\
 		$(IA)ia_main.c		\
+		$(IA)check_mom.c		\
+		$(IA)look.c		\
+		$(IA_INIT)init_new_player.c \
 		$(GAME)elevation.c
 
 OBJS	=	$(SRCS:.c=.o)

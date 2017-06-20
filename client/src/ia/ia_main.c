@@ -5,13 +5,20 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Mon Jun 19 20:13:12 2017 Paskal Arzel
-** Last update Tue Jun 20 16:16:10 2017 Paskal Arzel
+** Last update Tue Jun 20 22:32:28 2017 Paskal Arzel
 */
 
+#include <stdio.h>
 #include "core.h"
 
-bool		ia_main(t_core *core)
+bool		ia_main(void)
 {
-  init_master_data()
-  return (0);
+  g_core->player.is_alive = true;
+  g_core->player.cd_fertility = START_FERT;
+  while (g_core->player.is_alive)
+  {
+    if (!check_mom())
+  		look();
+  }
+  return (true);
 }

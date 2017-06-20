@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun  7 14:08:32 2017 Arthur Josso
-** Last update Sat Jun 17 16:24:36 2017 Arthur Josso
+** Last update Mon Jun 19 19:30:01 2017 Arthur Josso
 */
 
 #pragma once
@@ -31,6 +31,7 @@ typedef enum
 
 typedef enum
   {
+    RES_NONE = -1,
     RES_FOOD = 0,
     RES_LINEMATE,
     RES_DERAUMERE,
@@ -75,6 +76,7 @@ typedef enum
     CMD_PLAYER_DEAD,
     CMD_PLAYER_INCANTATION_START,
     CMD_PLAYER_INCANTATION_END,
+    CMD_PLAYER_EJECT,
     CMD_GRAPHIC_BAD_CMD,
     CMD_GRAPHIC_BAD_ARG,
     CMD_GRAPHIC_MAP_SIZE,

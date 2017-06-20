@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 **
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Mon Jun 19 20:13:32 2017 Paskal Arzel
+** Last update Tue Jun 20 22:25:49 2017 Paskal Arzel
 */
 
 #include <string.h>
@@ -75,7 +75,7 @@ int		main(int ac, char **av)
   if (DEBUG)
     test_server_features();
   else
-    ia_main(&core);
+    ia_main();
   close_socket();
   return (EXIT_SUCCESS);
 }
