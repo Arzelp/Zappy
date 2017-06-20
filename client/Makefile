@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ##
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Sun Jun 18 18:54:21 2017 Frederic Oddou
+## Last update Mon Jun 19 13:08:55 2017 Frederic Oddou
 ##
 
 NAME	=	zappy_ai
@@ -32,6 +32,7 @@ SRCS	=	$(SRC)main.c			\
 		$(UTILS)strtok_single.c		\
 		$(UTILS)replace_letter.c	\
 		$(UTILS)get_objects_type.c	\
+		$(UTILS)is_object.c		\
 		$(UTILS)debug.c			\
 		$(PARSE)parse.c			\
 		$(PARSE)funcs.c			\

@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ##
 ## Started on  Tue Jun  6 13:55:56 2017 Arthur Josso
-## Last update Thu Jun 15 17:50:57 2017 Arthur Josso
+## Last update Tue Jun 20 13:25:14 2017 Frederic Oddou
 ##
 
 NAME_SERVER	=	zappy_server
@@ -51,7 +51,7 @@ clean:
 fclean:		clean
 		@$(MAKE_SILENT) $(DIR_SERVER) fclean
 		@$(MAKE_SILENT) $(DIR_CLIENT) fclean
-		@$(MAKE_SILENT) $(DIR_GRAPHIC) fclean
+		@$(MAKE_SILENT) $(DIR_GRAPHIC) clean
 		@$(RM) $(NAME_GRAPHIC)
 		@$(RM) $(NAME_SERVER)
 		@$(RM) $(NAME_CLIENT)
