@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ##
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Sun Jun 18 18:54:21 2017 Frederic Oddou
+## Last update Tue Jun 20 13:25:16 2017 Paskal Arzel
 ##
 
 NAME	=	zappy_ai
@@ -25,6 +25,8 @@ UTILS	=	$(SRC)utils/
 CONNECT	=	$(SRC)connect/
 CMD	=	$(SRC)commands/
 GAME	=	$(SRC)game/
+IA = $(SRC)ia/
+MASTER = $(IA)master/
 
 SRCS	=	$(SRC)main.c			\
 		$(UTILS)checker.c		\
@@ -52,6 +54,7 @@ SRCS	=	$(SRC)main.c			\
 		$(CMD)player_take.c		\
 		$(CMD)player_set.c		\
 		$(CMD)player_look.c		\
+		$(IA)ia_main.c		\
 		$(GAME)elevation.c
 
 OBJS	=	$(SRCS:.c=.o)

@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Sun Jun 18 20:51:18 2017 Frederic Oddou
+** Last update Tue Jun 20 11:49:16 2017 Paskal Arzel
 */
 
 #pragma once
@@ -119,5 +119,14 @@ bool		player_connect_nbr(const char *str);
 
 const t_elevation	*elevation_get_infos(void);
 int			elevation_need_object(enum e_obj obj_id);
+
+/*
+** @bot
+**
+** @ia_main.c
+** Start
+**
+**
+*/
 
 extern t_core		*g_core;
