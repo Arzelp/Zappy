@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Tue Jun 20 13:58:31 2017 Arthur Josso
+## Last update Tue Jun 20 19:58:51 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -17,7 +17,7 @@ INC	=	./inc/
 CFLAGS	+=	-I$(INC)	\
 		-Wall -Wextra
 
-LDFLAGS	+=
+LDFLAGS	+=	-lm
 
 DEV_FLAG	=	-g
 
@@ -53,6 +53,7 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_UTILS)error.c		\
 		$(SRC_UTILS)string.c		\
 		$(SRC_UTILS)checker.c		\
+		$(SRC_UTILS)math.c		\
 		$(SRC_CORE)run.c		\
 		$(SRC_CORE)fd_list.c		\
 		$(SRC_CORE)init.c		\
@@ -91,7 +92,8 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_T_CMD)inventory.c		\
 		$(SRC_T_CMD)eject.c		\
 		$(SRC_T_CMD)object.c		\
-		$(SRC_T_CMD)incantation.c
+		$(SRC_T_CMD)incantation.c	\
+		$(SRC_T_CMD)broadcast.c
 
 OBJS	=	$(SRCS:.c=.o)
 

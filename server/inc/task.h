@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:23:40 2017 Arthur Josso
-** Last update Tue Jun 20 13:55:45 2017 Arthur Josso
+** Last update Tue Jun 20 17:33:07 2017 Arthur Josso
 */
 
 #pragma once
@@ -29,7 +29,8 @@ typedef enum
     TASK_EJECT,
     TASK_TAKE,
     TASK_SET,
-    TASK_INCANTATION
+    TASK_INCANTATION,
+    TASK_BROADCAST
   } t_task_type;
 
 typedef struct s_task t_task;
@@ -94,3 +95,4 @@ bool	task_eject(t_player *player, char *arg);
 bool	task_take(t_player *player, char *arg);
 bool	task_set(t_player *player, char *arg);
 bool	task_incantation(t_player *player, char *arg);
+bool	task_broadcast(t_player *player, char *arg);

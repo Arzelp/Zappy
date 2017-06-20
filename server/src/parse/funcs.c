@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun  7 14:00:35 2017 Arthur Josso
-** Last update Sat Jun 17 14:27:46 2017 Arthur Josso
+** Last update Tue Jun 20 17:53:59 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -50,7 +50,7 @@ bool    parse_x_opt(t_parse_action action)
     }
   else if (action == PARSE_CHECK)
     {
-      if (g_game->map_size.x == (uint32_t)-1)
+      if (g_game->map_size.x == -1)
         return (false);
     }
   return (true);
@@ -71,7 +71,7 @@ bool    parse_y_opt(t_parse_action action)
     }
   else if (action == PARSE_CHECK)
     {
-      if (g_game->map_size.y == (uint32_t)-1)
+      if (g_game->map_size.y == -1)
         return (false);
     }
   return (true);
