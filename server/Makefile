@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Mon Jun 19 20:04:49 2017 Arthur Josso
+## Last update Tue Jun 20 13:58:31 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -80,7 +80,8 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_G_CMD)sst.c		\
 		$(SRC_C_CMD)nbr_slot.c		\
 		$(SRC_C_CMD)move.c		\
-		$(SRC_C_CMD)map.c		\
+		$(SRC_C_CMD)task_adder_1.c	\
+		$(SRC_C_CMD)task_adder_2.c	\
 		$(SRC_TASK)init.c		\
 		$(SRC_TASK)list.c		\
 		$(SRC_TASK)time.c		\
@@ -89,7 +90,8 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_T_CMD)look.c		\
 		$(SRC_T_CMD)inventory.c		\
 		$(SRC_T_CMD)eject.c		\
-		$(SRC_T_CMD)object.c
+		$(SRC_T_CMD)object.c		\
+		$(SRC_T_CMD)incantation.c
 
 OBJS	=	$(SRCS:.c=.o)
 

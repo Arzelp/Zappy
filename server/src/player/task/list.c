@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:35:56 2017 Arthur Josso
-** Last update Mon Jun 19 19:46:40 2017 Arthur Josso
+** Last update Tue Jun 20 13:11:55 2017 Arthur Josso
 */
 
 #include "task.h"
@@ -20,5 +20,6 @@ const t_task_list	task_list[] =
     {&task_eject, 7},
     {&task_take, 7},
     {&task_set, 7},
+    {&task_incantation, 300},
     {NULL, 0}
   };

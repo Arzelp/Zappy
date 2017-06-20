@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 18:03:11 2017 Arthur Josso
-** Last update Mon Jun 19 19:36:31 2017 Arthur Josso
+** Last update Tue Jun 20 13:57:44 2017 Arthur Josso
 */
 
 #pragma once
@@ -46,3 +46,4 @@ bool	cmd_player_Inventory(t_player *player, const char *arg);
 bool	cmd_player_Eject(t_player *player, const char *arg);
 bool	cmd_player_Take(t_player *player, const char *arg);
 bool	cmd_player_Set(t_player *player, const char *arg);
+bool	cmd_player_Incantation(t_player *player, const char *arg);
