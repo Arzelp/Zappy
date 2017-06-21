@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Wed Jun 21 13:37:57 2017 arnaud.alies
+// Last update Wed Jun 21 14:41:23 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -19,10 +19,12 @@
 #include "EntityManager.hpp"
 #include "AEntity.hpp"
 #include "Image.hpp"
+#include "Camera.hpp"
 
 class Zappy : public State
 {
 protected:
+  Camera* _cam;
   Core* _core;
   EntityManager* _entity_manager;
   Map* _map;

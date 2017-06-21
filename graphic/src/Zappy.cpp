@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Wed Jun 21 13:47:23 2017 arnaud.alies
+// Last update Wed Jun 21 15:27:34 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -13,7 +13,6 @@
 #include "Zappy.hpp"
 #include "Box.hpp"
 #include "Random.hpp"
-#include "Camera.hpp"
 
 Zappy::Zappy() :
   _core(nullptr),
@@ -30,8 +29,14 @@ Zappy::~Zappy()
 State *Zappy::update()
 {
   E_INPUT in = _core->receiver->lastKey();
+
   if (in == K_ESCAPE)
     return (new MainMenu());
+  if (in == K_UP)
+    {
+      _cam->setPos(Map::getAbs(0, 0));
+    }
+  _entity_manager->update();
   return (nullptr);
 }
 
@@ -47,5 +52,5 @@ void Zappy::begin(Core* core)
   //_core->cam->setPosition(irr::core::vector3df(width / 4, width, height / 2));
   //_core->cam->setTarget(irr::core::vector3df(width / 2, 0, height / 2));
   
-  _entity_manager->addEntityMap<Camera>(_map->getWidth() / 2, _map->getHeight() / 2);
+  _cam = _entity_manager->addEntityMap<Camera>(_map->getWidth() / 2, _map->getHeight() / 2);
 }
