@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Tue Jun 13 18:02:17 2017 arnaud.alies
+// Last update Wed Jun 21 11:00:11 2017 arnaud.alies
 //
 
 #include "SettingsMenu.hpp"
@@ -68,8 +68,8 @@ void	SettingsMenu::begin(Core* core)
 			 irr::core::rect<irr::s32>(10, 10, 500, 500));
   */
   _map_size_text = _core->gui->addStaticText(irr::core::stringw("Map size").c_str(),
-                                          SettingsMenu::getDim(0.2, 30),
-                                          false);
+					     SettingsMenu::getDim(0.2, 30),
+					     false);
   
   _scrollbar = _core->gui->addScrollBar(true, SettingsMenu::getDim(0.2, 80));
   _scrollbar->setMin(9);

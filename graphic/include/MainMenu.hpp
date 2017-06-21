@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Thu Jun  8 10:52:36 2017 arnaud.alies
+// Last update Wed Jun 21 11:11:39 2017 arnaud.alies
 //
 
 #ifndef MAINMENU_HPP_
@@ -21,11 +21,11 @@
 class MainMenu : public State
 {
 private:
-  List* _list;
+  irr::gui::IGUIButton* _start_button;
+  irr::gui::IGUIButton* _settings_button;
+  irr::gui::IGUIButton* _exit_button;
   Image* _img;
   Core* _core;
-  Mesh* _bomb_left;
-  Mesh* _bomb_right;
 public:
   MainMenu();
   virtual ~MainMenu();

@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Mon Jun 19 18:18:25 2017 arnaud.alies
+// Last update Wed Jun 21 11:03:04 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -39,6 +39,7 @@ State *Zappy::update()
 
 void Zappy::spawnBoxes()
 {
+  /*
   std::vector<AEntity*> in_range;
 
   for (int y = 0; y < _map->getHeight(); y += 1)
@@ -52,6 +53,7 @@ void Zappy::spawnBoxes()
 	      _entity_manager->addEntityMap<Box>(x, y);
 	  }
       }
+*/
 }
 
 void Zappy::begin(Core* core)
