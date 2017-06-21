@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Mon Jun 19 16:47:02 2017 arnaud.alies
+// Last update Wed Jun 21 11:50:52 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -30,7 +30,6 @@ protected:
   EntityManager* _entity_manager;
   bool _running;
   int _time_end;
-  Image* _background;
 public:
   Zappy();
   virtual ~Zappy();

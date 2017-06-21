@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Tue Jun 13 18:02:17 2017 arnaud.alies
+// Last update Wed Jun 21 11:46:10 2017 arnaud.alies
 //
 
 #include "SettingsMenu.hpp"
@@ -24,13 +24,14 @@ SettingsMenu::~SettingsMenu()
   _music_checkbox->setEnabled(false);
   _music_checkbox->remove();
   _music_text->remove();
+  _back_button->remove();
 }
 
-State *SettingsMenu::update()
+State* SettingsMenu::update()
 {
   E_INPUT in;
   in = _core->receiver->lastKey();
-  if (in == K_ESCAPE)
+  if (in == K_ESCAPE || _back_button->isPressed())
     return (new MainMenu());
   SETTINGS.map_size = _scrollbar->getPos();
   if (SETTINGS.map_size % 2 == 0)
@@ -68,8 +69,8 @@ void	SettingsMenu::begin(Core* core)
 			 irr::core::rect<irr::s32>(10, 10, 500, 500));
   */
   _map_size_text = _core->gui->addStaticText(irr::core::stringw("Map size").c_str(),
-                                          SettingsMenu::getDim(0.2, 30),
-                                          false);
+					     SettingsMenu::getDim(0.2, 30),
+					     false);
   
   _scrollbar = _core->gui->addScrollBar(true, SettingsMenu::getDim(0.2, 80));
   _scrollbar->setMin(9);
@@ -81,6 +82,9 @@ void	SettingsMenu::begin(Core* core)
   _music_text = _core->gui->addStaticText(irr::core::stringw("Music").c_str(),
 					  SettingsMenu::getDim(0.2, 120),
 					  false);
-
   _music_checkbox = _core->gui->addCheckBox(SETTINGS.music, SettingsMenu::getDim(0.4, 140));
+  _back_button = _core->gui->addButton(SettingsMenu::getDim(0.2, HEIGHT * 0.8),
+				       0, -1,
+				       irr::core::stringw("back").c_str());
+
 }
