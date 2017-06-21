@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Wed Jun 21 13:17:13 2017 arnaud.alies
-// Last update Wed Jun 21 15:32:15 2017 arnaud.alies
+// Last update Wed Jun 21 15:49:18 2017 arnaud.alies
 //
 
 #include "Camera.hpp"
@@ -33,7 +33,6 @@ void Camera::update()
   irr::core::vector3df diff = _target - curr;
   irr::core::vector3df move = diff / CAMERA_SPEED;
 
-  //printf("%d %d %d\n", _target.X, _target.Y, _target.Z);
   this->setPosFast(curr + move);
 }
 

@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Wed Jun 21 15:27:34 2017 arnaud.alies
+// Last update Wed Jun 21 17:26:11 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -34,8 +34,24 @@ State *Zappy::update()
     return (new MainMenu());
   if (in == K_UP)
     {
-      _cam->setPos(Map::getAbs(0, 0));
+      //_cam->setPos(Map::getAbs(0, 0));
     }
+  //
+  if (in == K_DOWN)
+    {
+      //scene::ITriangleSelector* selector;
+      
+      irr::scene::ISceneCollisionManager* scm = _core->scene->getSceneCollisionManager();
+      irr::core::line3d<irr::f32> ray =
+	scm->getRayFromScreenCoordinates(_core->device->getCursorControl()->getPosition(),
+					 _core->cam);
+      irr::core::triangle3df tri;
+      irr::core::vector3df col;
+      irr::scene::ISceneNode* node = scm->getSceneNodeAndCollisionPointFromRay(ray, col, tri);
+      if (node != nullptr)
+	_cam->setPos(node->getPosition());
+    }
+  //
   _entity_manager->update();
   return (nullptr);
 }
