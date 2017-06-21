@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun 20 13:11:07 2017 Arthur Josso
-** Last update Tue Jun 20 13:53:48 2017 Arthur Josso
+** Last update Wed Jun 21 11:25:59 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -28,6 +28,8 @@ static const t_incantation	*get_incant(t_player *player)
   if (player->lvl == 8)
     {
       send_cmd(CMD_PLAYER_KO);
+      send_graphics_cmd(CMD_GRAPHIC_INCANTATION_END,
+			player->pos.x, player->pos.y, 0);
       return (NULL);
     }
   return (incant_tab + player->lvl - 1);
@@ -43,6 +45,8 @@ static bool	is_enough_ressource(t_player *player, const t_incantation *inc)
       if (player->inventory[res] < inc->ressource[res])
 	{
 	  send_cmd(CMD_PLAYER_KO);
+	  send_graphics_cmd(CMD_GRAPHIC_INCANTATION_END,
+			    player->pos.x, player->pos.y, 0);
 	  return (false);
 	}
       res++;
@@ -57,7 +61,7 @@ static bool	is_enough_player(t_player *player, const t_incantation *inc)
   int		nbr_player;
 
   client = g_server->clients;
-  nbr_player = 1;
+  nbr_player = 0;
   while (client)
     {
       if (client->type == ENTITY_PLAYER)
@@ -73,6 +77,8 @@ static bool	is_enough_player(t_player *player, const t_incantation *inc)
   if (nbr_player >= inc->nbr_player)
     return (true);
   send_cmd(CMD_PLAYER_KO);
+  send_graphics_cmd(CMD_GRAPHIC_INCANTATION_END,
+		    player->pos.x, player->pos.y, 0);
   return (false);
 }
 
@@ -86,7 +92,10 @@ static bool	launch_incantation(t_client *client)
   if (act_player->lvl == player->lvl &&
       act_player->pos.x == player->pos.x &&
       act_player->pos.y == player->pos.y)
-    player->lvl++;
+    {
+      player->lvl++;
+      send_graphics_cmd(CMD_GRAPHIC_PLAYER_LVL, player->id, player->lvl);
+    }
   return (true);
 }
 
@@ -102,8 +111,10 @@ bool			task_incantation(t_player *player, char *arg)
   if (!is_enough_player(player, inc))
     return (true);
   act_player = player;
+  send_graphics_cmd(CMD_GRAPHIC_INCANTATION_END,
+                    player->pos.x, player->pos.y, 1);
   client_for_each(&launch_incantation);
-  player->lvl++;
   send_cmd(CMD_PLAYER_INCANTATION_END, player->lvl);
+  for_each_graphic(&cmd_graphic_mct, NULL);
   return (true);
 }
