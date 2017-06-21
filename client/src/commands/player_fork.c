@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 22:22:49 2017 Frederic Oddou
-** Last update Tue Jun 20 22:32:52 2017 Paskal Arzel
+** Last update Wed Jun 21 11:15:45 2017 Frederic Oddou
 */
 
 #include <stdlib.h>
@@ -16,7 +16,7 @@
 bool		player_fork(const char *str)
 {
   char		buffer[BUFFER_SIZE];
-  int			pid;
+  int		pid;
 
   if (!send_msg("Fork"))
     return (false);

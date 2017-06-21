@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Mon Jun 19 20:13:12 2017 Paskal Arzel
-** Last update Tue Jun 20 22:32:28 2017 Paskal Arzel
+** Last update Wed Jun 21 11:21:08 2017 Frederic Oddou
 */
 
 #include <stdio.h>
@@ -16,9 +16,9 @@ bool		ia_main(void)
   g_core->player.is_alive = true;
   g_core->player.cd_fertility = START_FERT;
   while (g_core->player.is_alive)
-  {
-    if (!check_mom())
-  		look();
-  }
+    {
+      if (!check_mom())
+	look();
+    }
   return (true);
 }
