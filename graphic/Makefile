@@ -8,7 +8,6 @@ Sources =	$(SRC)main.cpp \
 		$(SRC)Settings.cpp \
 		$(SRC)Core.cpp \
 		$(SRC)Image.cpp \
-		$(SRC)List.cpp \
 		$(SRC)MyEventReceiver.cpp \
 		$(SRC)MainMenu.cpp \
 		$(SRC)SettingsMenu.cpp \
@@ -16,6 +15,7 @@ Sources =	$(SRC)main.cpp \
 		$(SRC)Mesh.cpp \
 		$(SRC)Map.cpp \
 		$(SRC)AEntity.cpp \
+		$(SRC)Camera.cpp \
 		$(SRC)EntityManager.cpp \
 		$(SRC)APlayer.cpp \
 		$(SRC)NetWork.cpp \

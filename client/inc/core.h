@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Tue Jun 20 22:25:18 2017 Paskal Arzel
+** Last update Wed Jun 21 11:16:04 2017 Frederic Oddou
 */
 
 #pragma once
@@ -61,7 +61,7 @@ typedef struct
   int			level;
   int			connect_nbr;
   int			cd_fertility;
-  bool    is_alive;
+  bool    		is_alive;
 }			t_player;
 
 typedef struct

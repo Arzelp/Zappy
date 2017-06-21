@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 23 13:46:12 2017 arnaud.alies
-// Last update Mon Jun  5 14:53:46 2017 arnaud.alies
+// Last update Wed Jun 21 13:08:36 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -36,6 +36,7 @@ void Map::initMap()
   for (int y = 0; y < _height; y += 1)
     for (int x = 0; x < _width; x += 1)
       {
+	/*
         if (x % 2 == 0
 	    && y % 2 == 0)
           _map.push_back(M_WALL);
@@ -45,7 +46,8 @@ void Map::initMap()
 		 || y == _height - 1)
 	  _map.push_back(M_WALL);
         else
-          _map.push_back(M_EMPTY);
+	*/
+	_map.push_back(M_EMPTY);
       }
 }
 

@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 12:36:35 2017 arnaud.alies
-// Last update Mon Jun 19 16:42:51 2017 arnaud.alies
+// Last update Wed Jun 21 14:12:23 2017 arnaud.alies
 //
 
 #include <chrono>
@@ -40,7 +40,7 @@ Core::Core()
 			     irr::core::dimension2d<irr::u32>(WIDTH, HEIGHT), 16,
 			     false, false, true, receiver);
   //!device
-  device->setWindowCaption(L"ISIS rp");
+  device->setWindowCaption(L"bork");
   video = device->getVideoDriver();
   scene = device->getSceneManager();
   gui = device->getGUIEnvironment();

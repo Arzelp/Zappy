@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Mon Jun 19 16:43:19 2017 arnaud.alies
+// Last update Wed Jun 21 11:36:21 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -15,43 +15,26 @@
 
 MainMenu::MainMenu() :
   _core(nullptr),
-  _img(nullptr),
-  _list(nullptr)
+  _img(nullptr)
 {
 }
 
 MainMenu::~MainMenu()
 {
-  delete _list;
   delete _img;
-  delete _bomb_left;
-  delete _bomb_right;
+  _start_button->remove();
+  _settings_button->remove();
+  _exit_button->remove();
 }
 
 State *MainMenu::update()
 {
-  E_INPUT in;
-  in = _core->receiver->lastKey();
-  if (in == K_RIGHT)
-    _list->next();
-  else if (in == K_LEFT)
-    _list->prev();
-  else if (in == K_SPACE)
-    {
-      if (_list->selected() == 0)
-	return (new Zappy());
-      if (_list->selected() == 1)
-	return (new SettingsMenu());
-      if (_list->selected() == 2)
-	_core->stop();
-    }
-  /* rotation */
-  irr::core::vector3df rot;
-  
-  rot = _bomb_left->node->getRotation();
-  _bomb_left->node->setRotation(rot + irr::core::vector3df(1, 1.5, 0.2));
-  rot = _bomb_right->node->getRotation();
-  _bomb_right->node->setRotation(rot + irr::core::vector3df(1.5, 1, 0.2));
+  if (_start_button->isPressed())
+    return (new Zappy());
+  else if (_settings_button->isPressed())
+    return (new SettingsMenu());
+  else if (_exit_button->isPressed())
+    _core->stop();
   return (nullptr);
 }
 
@@ -61,25 +44,19 @@ void	MainMenu::begin(Core* core)
   _core->cam->setPosition(irr::core::vector3df(100, 0, 0));
   _core->cam->setTarget(irr::core::vector3df(0, 0, 0));
 
-  _list = new List(core,
-		   irr::core::position2d<irr::s32>(WIDTH / 2, HEIGHT / 1.2),
-		   irr::core::position2d<irr::s32>(60, 0));
-  _list->addButton("./res/play.png", "./res/iplay.png");
-  _list->addButton("./res/setting.png", "./res/isetting.png");
-  _list->addButton("./res/exit.png", "./res/iexit.png");
-  _list->update();
-  _img = new Image(core,
-		   core->video->getTexture((char*)"./res/benladen.png"),
-		   irr::core::position2d<irr::s32>(WIDTH / 2, HEIGHT / 4));
-  _bomb_left = new Mesh(_core,
-			"./res/bomb/Bomb.obj",
-			irr::core::vector3df(80,80,80),
-			"./res/bomb/Albedo.png");
-  _bomb_right = new Mesh(_core,
-			 "./res/bomb/Bomb.obj",
-			 irr::core::vector3df(80,80,80),
-			 "./res/bomb/Albedo.png");
   
-  _bomb_left->node->setPosition(irr::core::vector3df(0, 0, 60));
-  _bomb_right->node->setPosition(irr::core::vector3df(0, 0, -60));
+  _img = new Image(core,
+		   core->video->getTexture((char*)"./res/doggo.png"),
+		   irr::core::position2d<irr::s32>(WIDTH / 2, HEIGHT / 3));
+
+  int off = HEIGHT / 1.5;
+  _start_button = _core->gui->addButton(SettingsMenu::getDim(0.3, off),
+					0, -1,
+					irr::core::stringw("Start").c_str());
+  _settings_button = _core->gui->addButton(SettingsMenu::getDim(0.3, off + 50),
+					   0, -1,
+					   irr::core::stringw("Settings").c_str());
+  _exit_button = _core->gui->addButton(SettingsMenu::getDim(0.3, off + 100),
+				       0, -1,
+				       irr::core::stringw("Exit").c_str());
 }
