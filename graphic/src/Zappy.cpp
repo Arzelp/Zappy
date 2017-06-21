@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Wed Jun 21 11:03:04 2017 arnaud.alies
+// Last update Wed Jun 21 11:50:46 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -26,7 +26,6 @@ Zappy::~Zappy()
 {
   delete _entity_manager;
   delete _map;
-  delete _background;
 }
 
 State *Zappy::update()
@@ -61,12 +60,6 @@ void Zappy::begin(Core* core)
   _core = core;
   _map = new Map(_core, SETTINGS.map_size, SETTINGS.map_size);
   _entity_manager = new	EntityManager(_core, _map);
-
-
-  _background = new Image(core,
-			  core->video->getTexture((char*)"./res/background.png"),
-			  irr::core::position2d<irr::s32>(WIDTH / 2, HEIGHT * 0.86));
-  
   
   int width = _map->getWidth() * UNIT;
   int height = _map->getHeight() * UNIT;

@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Tue Jun 13 15:35:27 2017 arnaud.alies
+// Last update Wed Jun 21 11:42:16 2017 arnaud.alies
 //
 
 #ifndef SETTINGSMENU_HPP_
@@ -26,6 +26,7 @@ private:
   irr::gui::IGUIScrollBar* _scrollbar;
   irr::gui::IGUIStaticText* _music_text;
   irr::gui::IGUICheckBox* _music_checkbox;
+  irr::gui::IGUIButton* _back_button;
 public:
   SettingsMenu();
   virtual ~SettingsMenu();
