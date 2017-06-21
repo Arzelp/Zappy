@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 23 17:24:51 2017 arnaud.alies
-// Last update Tue May 30 11:05:07 2017 arnaud.alies
+// Last update Wed Jun 21 17:37:38 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -18,7 +18,7 @@ Mesh::Mesh(Core* core,
 	   std::string texture_path) :
   _core(core)
 {
-  irr::video::ITexture *texture = nullptr;
+  irr::video::ITexture* texture = nullptr;
 
   mesh = _core->scene->getMesh(path.c_str());
   if (mesh == nullptr)
@@ -35,9 +35,14 @@ Mesh::Mesh(Core* core,
   node->setMaterialTexture(0, texture);
   node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
   node->setScale(scale);
+  //
+  
+  selector = core->scene->createOctreeTriangleSelector(node->getMesh(), node, 128);
+  node->setTriangleSelector(selector);
 }
 
 Mesh::~Mesh()
 {
   node->remove();
+  selector->drop();
 }
