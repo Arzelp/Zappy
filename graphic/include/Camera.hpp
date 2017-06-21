@@ -5,14 +5,14 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue Jun 20 13:57:05 2017 arnaud.alies
-// Last update Wed Jun 21 15:33:04 2017 arnaud.alies
+// Last update Wed Jun 21 17:54:44 2017 arnaud.alies
 //
 
 #ifndef CAMERA_HPP_
 #define CAMERA_HPP_
 
 #define CAMERA_OFFSET (1000)
-#define CAMERA_SPEED (200)
+#define CAMERA_SPEED (100)
 
 #include "AEntity.hpp"
 
