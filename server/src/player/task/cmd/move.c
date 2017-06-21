@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:46:03 2017 Arthur Josso
-** Last update Sat Jun 17 21:03:06 2017 Arthur Josso
+** Last update Tue Jun 20 18:01:15 2017 Arthur Josso
 */
 
 #include <stdio.h>
@@ -23,11 +23,11 @@ void		get_relative_pos(t_player *player, t_pos *pos, t_move move)
 {
   uint8_t	relative_direction;
 
-  relative_direction = (player->dir + move) % DIR_NBR;
+  relative_direction = umod(player->dir + move, DIR_NBR);
   pos->x += relative_moves[relative_direction][COORD_X];
   pos->y += relative_moves[relative_direction][COORD_Y];
-  pos->x %= g_game->map_size.x;
-  pos->y %= g_game->map_size.y;
+  pos->x = umod(pos->x, g_game->map_size.x);
+  pos->y = umod(pos->y, g_game->map_size.y);
 }
 
 static void	move_player(t_player *player, t_move move)

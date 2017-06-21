@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 11:11:42 2017 Frederic Oddou
-** Last update Sun Jun 18 20:49:11 2017 Frederic Oddou
+** Last update Mon Jun 19 13:07:06 2017 Frederic Oddou
 */
 
 #pragma once
@@ -68,3 +68,10 @@ void		debug_message_confirm(const char *action, const char *opt,
 				      const char *answer);
 void		debug_message_error(const char *action, const char *opt,
 				    const char *answer);
+
+/*
+** @is_object.c
+** - is_object_on_case : Return true if the object is found on the case.
+*/
+
+bool		is_object_on_case(const char *str, enum e_obj obj);

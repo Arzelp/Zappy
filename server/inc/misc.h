@@ -5,13 +5,14 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Apr 20 20:19:40 2017 Arthur Josso
-** Last update Wed Jun  7 14:05:08 2017 Arthur Josso
+** Last update Tue Jun 20 20:04:58 2017 Arthur Josso
 */
 
 #pragma once
 
 #include <stddef.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 /*
 ** Allocation 
@@ -39,3 +40,11 @@ void	strcapitalize(char *s);
 */
 
 bool	is_nbr(const char *s);
+
+/*
+** Math
+*/
+
+#define GET_DIST(xa, ya, xb, yb)	(pow(xa - xb, 2) + pow(ya - yb, 2))
+
+int	umod(int a, int b);

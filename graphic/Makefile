@@ -18,6 +18,7 @@ Sources =	$(SRC)main.cpp \
 		$(SRC)AEntity.cpp \
 		$(SRC)EntityManager.cpp \
 		$(SRC)APlayer.cpp \
+		$(SRC)NetWork.cpp \
 		$(SRC)Box.cpp \
 
 IRRLITCHT = ./irrlicht-1.8.4/

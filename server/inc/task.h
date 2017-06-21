@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:23:40 2017 Arthur Josso
-** Last update Mon Jun 19 16:22:44 2017 Arthur Josso
+** Last update Tue Jun 20 17:33:07 2017 Arthur Josso
 */
 
 #pragma once
@@ -25,7 +25,12 @@ typedef enum
     TASK_LEFT,
     TASK_RIGHT,
     TASK_LOOK,
-    TASK_INVENTORY
+    TASK_INVENTORY,
+    TASK_EJECT,
+    TASK_TAKE,
+    TASK_SET,
+    TASK_INCANTATION,
+    TASK_BROADCAST
   } t_task_type;
 
 typedef struct s_task t_task;
@@ -68,6 +73,16 @@ typedef struct
 extern const t_task_list	task_list[];
 
 /*
+** Incantation
+*/
+typedef struct
+{
+  uint8_t	lvl;
+  uint8_t	nbr_player;
+  uint8_t	ressource[RES_NBR];
+} t_incantation;
+
+/*
 ** Functions
 */
 
@@ -76,3 +91,8 @@ bool	task_left(t_player *player, char *arg);
 bool	task_right(t_player *player, char *arg);
 bool	task_look(t_player *player, char *arg);
 bool	task_inventory(t_player *player, char *arg);
+bool	task_eject(t_player *player, char *arg);
+bool	task_take(t_player *player, char *arg);
+bool	task_set(t_player *player, char *arg);
+bool	task_incantation(t_player *player, char *arg);
+bool	task_broadcast(t_player *player, char *arg);
