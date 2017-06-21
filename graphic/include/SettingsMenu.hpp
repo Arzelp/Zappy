@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Wed Jun 21 11:42:16 2017 arnaud.alies
+// Last update Wed Jun 21 13:55:50 2017 arnaud.alies
 //
 
 #ifndef SETTINGSMENU_HPP_
@@ -15,7 +15,6 @@
 #include "Core.hpp"
 #include "State.hpp"
 #include "Image.hpp"
-#include "List.hpp"
 #include "Mesh.hpp"
 
 class SettingsMenu : public State

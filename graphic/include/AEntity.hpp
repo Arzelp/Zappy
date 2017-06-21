@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Fri May 26 10:41:20 2017 arnaud.alies
-// Last update Sun Jun  4 10:56:24 2017 arnaud.alies
+// Last update Wed Jun 21 13:32:08 2017 arnaud.alies
 //
 
 #ifndef AENTITY_HPP_
@@ -28,9 +28,9 @@ public:
   virtual void init(Core* core, Map* map, EntityManager* entity_manager);
   //pure virtual:
   virtual void setPos(irr::core::vector3df target) = 0;
-  virtual void getPosMap(int *x, int *y) const;
   virtual irr::core::vector3df getPos() const = 0;
   virtual void update() = 0;
+  virtual void getPosMap(int *x, int *y) const;
   virtual std::string getType() const;
   virtual void kill();
 };
