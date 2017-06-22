@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:40:33 2017 Arthur Josso
-** Last update Mon Jun 19 16:38:41 2017 Arthur Josso
+** Last update Wed Jun 21 14:09:45 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -16,7 +16,7 @@ static t_player	*init_player_data(t_team *team)
   t_player	*player;
 
   player = cleaner_malloc(sizeof(t_player));
-  player->id = g_player_id++;
+  player->id = g_server->player_id++;
   player->team = team;
   player->pos.x = rand() % g_game->map_size.x;
   player->pos.y = rand() % g_game->map_size.y;
