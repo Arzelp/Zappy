@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 23 17:24:51 2017 arnaud.alies
-// Last update Wed Jun 21 17:37:38 2017 arnaud.alies
+// Last update Thu Jun 22 16:07:33 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -15,11 +15,12 @@
 Mesh::Mesh(Core* core,
 	   std::string path,
 	   irr::core::vector3df scale,
-	   std::string texture_path) :
+	   std::string texture_path,
+	   bool collision) :
   _core(core)
 {
   irr::video::ITexture* texture = nullptr;
-
+  selector = nullptr;
   mesh = _core->scene->getMesh(path.c_str());
   if (mesh == nullptr)
     throw std::runtime_error("Not found : " + path);
@@ -36,13 +37,16 @@ Mesh::Mesh(Core* core,
   node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
   node->setScale(scale);
   //
-  
-  selector = core->scene->createOctreeTriangleSelector(node->getMesh(), node, 128);
-  node->setTriangleSelector(selector);
+  if (collision)
+    {
+      selector = core->scene->createOctreeTriangleSelector(node->getMesh(), node, 128);
+      node->setTriangleSelector(selector);
+    }
 }
 
 Mesh::~Mesh()
 {
   node->remove();
-  selector->drop();
+  if (selector != nullptr)
+    selector->drop();
 }

@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 15:13:35 2017 arnaud.alies
-// Last update Mon Jun 19 18:14:29 2017 arnaud.alies
+// Last update Thu Jun 22 15:55:40 2017 arnaud.alies
 //
 
 #include "APlayer.hpp"
@@ -39,7 +39,7 @@ void APlayer::kill()
 
 void APlayer::validMove(irr::core::vector3df dir)
 {
-  this->setPos(_map->getValidPos(this->getPos(), dir));
+  this->setPos(this->getPos() + dir);
 }
 
 void APlayer::update()

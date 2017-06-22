@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 12:36:35 2017 arnaud.alies
-// Last update Thu Jun 22 10:10:24 2017 arnaud.alies
+// Last update Thu Jun 22 15:01:19 2017 arnaud.alies
 //
 
 #include <chrono>
@@ -104,4 +104,37 @@ irr::core::rect<irr::s32> Core::getDim(float margin, int pos, int height)
   res = irr::core::rect<irr::s32>(WIDTH * margin, pos,
                                   WIDTH * (1.0 - margin), pos + height);
   return (res);
+}
+
+irr::scene::ISceneNode* Core::getNodeFromMouse()
+{
+  irr::scene::ISceneCollisionManager* scm = this->scene->getSceneCollisionManager();
+  irr::core::line3d<irr::f32> ray =
+    scm->getRayFromScreenCoordinates(this->device->getCursorControl()->getPosition(),
+				     this->cam);
+  irr::core::triangle3df tri;
+  irr::core::vector3df col;
+  irr::scene::ISceneNode* node = scm->getSceneNodeAndCollisionPointFromRay(ray, col, tri);
+  return (node);
+}
+
+irr::core::position2d<irr::s32> Core::getViewPos(irr::core::vector3df pos)
+{
+  irr::f32 transpos[4];
+  irr::core::matrix4 trans;
+  irr::core::position2d<irr::s32> pos2d;
+  irr::core::dimension2d<irr::u32> dim = this->video->getScreenSize();
+  dim.Width /= 2;
+  dim.Height /= 2;
+  trans *= this->scene->getActiveCamera()->getProjectionMatrix();
+  trans *= this->scene->getActiveCamera()->getViewMatrix();
+  transpos[0] = pos.X;
+  transpos[1] = pos.Y;
+  transpos[2] = pos.Z;
+  transpos[3] = 1.0f;
+  trans.multiplyWith1x4Matrix(transpos);
+  irr::f32 zDiv = transpos[3] == (0.0f ? 1.0f : (1.0f / transpos[3]));
+  pos2d.X = (irr::s32)(dim.Width * transpos[0] * zDiv) + dim.Width;
+  pos2d.Y = ((irr::s32)(dim.Height - (dim.Height * (transpos[1] * zDiv))));
+  return (pos2d);
 }
