@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 23 13:46:12 2017 arnaud.alies
-// Last update Wed Jun 21 13:08:36 2017 arnaud.alies
+// Last update Thu Jun 22 15:54:54 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -140,33 +140,4 @@ void Map::print() const
       }
       std::cout << std::endl;
     }
-}
-
-irr::core::vector3df Map::getValidPos(irr::core::vector3df pos, irr::core::vector3df dir) const
-{
-  irr::core::vector3df res;
-  int int_dir;
-  
-  res.Y = pos.Y;
-  if (dir.X != 0)
-    {
-      int_dir = (dir.X > 0 ? 1 : -1);
-      res.Z = Map::getAbs(0, Map::getY(pos)).Z;
-      if (this->get(Map::getX(pos + irr::core::vector3df(int_dir * (UNIT / 2), 0, 0)),
-		    Map::getY(pos))
-	  != M_EMPTY)
-	return (pos);
-      res.X = pos.X + dir.X;
-    }
-  else if (dir.Z != 0)
-    {
-      int_dir = (dir.Z > 0 ? 1 : -1);
-      res.X = Map::getAbs(Map::getX(pos), 0).X;
-      if (this->get(Map::getX(pos),
-		    Map::getY(pos + irr::core::vector3df(0, 0, int_dir * (UNIT / 2))))
-	  != M_EMPTY)
-	return (pos);
-      res.Z = pos.Z + dir.Z;
-    }
-  return (res);
 }
