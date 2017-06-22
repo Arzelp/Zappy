@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Wed Jun 21 11:50:52 2017 arnaud.alies
+// Last update Wed Jun 21 14:41:23 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -19,23 +19,20 @@
 #include "EntityManager.hpp"
 #include "AEntity.hpp"
 #include "Image.hpp"
-
-#define WAIT_AFTER_DEATH (1200)
+#include "Camera.hpp"
 
 class Zappy : public State
 {
 protected:
-  Map* _map;
+  Camera* _cam;
   Core* _core;
   EntityManager* _entity_manager;
-  bool _running;
-  int _time_end;
+  Map* _map;
 public:
   Zappy();
   virtual ~Zappy();
   State* update();
   void begin(Core*);
-  void spawnBoxes();
 };
 
 #endif

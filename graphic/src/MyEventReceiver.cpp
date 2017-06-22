@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 14:11:36 2017 arnaud.alies
-// Last update Mon Jun  5 13:53:02 2017 arnaud.alies
+// Last update Thu Jun 22 09:48:57 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -35,12 +35,11 @@ bool MyEventReceiver::OnEvent(const irr::SEvent& event)
     {irr::EKEY_CODE::KEY_DOWN, K_DOWN},
     {irr::EKEY_CODE::KEY_LEFT, K_LEFT},
     {irr::EKEY_CODE::KEY_RIGHT, K_RIGHT},
-    // p2 keys
-    {irr::EKEY_CODE::KEY_KEY_F, K_P2_SPACE},
-    {irr::EKEY_CODE::KEY_KEY_Z, K_P2_UP},
-    {irr::EKEY_CODE::KEY_KEY_S, K_P2_DOWN},
-    {irr::EKEY_CODE::KEY_KEY_Q, K_P2_LEFT},
-    {irr::EKEY_CODE::KEY_KEY_D, K_P2_RIGHT},
+    {irr::EKEY_CODE::KEY_KEY_F, K_F},
+    {irr::EKEY_CODE::KEY_KEY_Z, K_Z},
+    {irr::EKEY_CODE::KEY_KEY_S, K_S},
+    {irr::EKEY_CODE::KEY_KEY_Q, K_Q},
+    {irr::EKEY_CODE::KEY_KEY_D, K_D},
     //
     {irr::EKEY_CODE::KEY_RETURN, K_ENTER},
     {irr::EKEY_CODE::KEY_ESCAPE, K_ESCAPE}

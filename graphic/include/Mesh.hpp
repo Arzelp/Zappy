@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 23 17:11:32 2017 arnaud.alies
-// Last update Thu Jun  1 15:11:23 2017 arnaud.alies
+// Last update Wed Jun 21 17:32:00 2017 arnaud.alies
 //
 
 #ifndef MESH_HPP_
@@ -21,6 +21,7 @@ protected:
 public:
   irr::scene::IAnimatedMesh* mesh;
   irr::scene::IAnimatedMeshSceneNode* node;
+    irr::scene::ITriangleSelector* selector;
   Mesh(Core* core,
        std::string path,
        irr::core::vector3df scale = irr::core::vector3df(1,1,1),
