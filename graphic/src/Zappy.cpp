@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Wed Jun 21 17:26:11 2017 arnaud.alies
+// Last update Thu Jun 22 10:08:57 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -37,7 +37,7 @@ State *Zappy::update()
       //_cam->setPos(Map::getAbs(0, 0));
     }
   //
-  if (in == K_DOWN)
+  if (in == K_SPACE)
     {
       //scene::ITriangleSelector* selector;
       
@@ -49,9 +49,18 @@ State *Zappy::update()
       irr::core::vector3df col;
       irr::scene::ISceneNode* node = scm->getSceneNodeAndCollisionPointFromRay(ray, col, tri);
       if (node != nullptr)
-	_cam->setPos(node->getPosition());
+	_cam->setPosSlow(node->getPosition());
     }
   //
+  if (_core->receiver->keyState(K_UP))
+    _cam->move(irr::core::vector3df(1, 0, 0));
+  if (_core->receiver->keyState(K_DOWN))
+    _cam->move(irr::core::vector3df(-1, 0, 0));
+  if (_core->receiver->keyState(K_LEFT))
+    _cam->move(irr::core::vector3df(0, 0, 1));
+  if (_core->receiver->keyState(K_RIGHT))
+    _cam->move(irr::core::vector3df(0, 0, -1));
+  
   _entity_manager->update();
   return (nullptr);
 }

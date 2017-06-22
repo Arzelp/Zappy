@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Wed Jun 21 13:17:13 2017 arnaud.alies
-// Last update Thu Jun 22 09:38:42 2017 arnaud.alies
+// Last update Thu Jun 22 09:58:41 2017 arnaud.alies
 //
 
 #include "Camera.hpp"
@@ -33,17 +33,12 @@ void Camera::update()
   irr::core::vector3df diff = _target - curr;
   irr::core::vector3df move = diff / CAMERA_SPEED;
 
-  this->setPosFast(curr + move);
+  this->setPos(curr + move);
 }
 
-void Camera::setPos(irr::core::vector3df target)
+void Camera::setPosSlow(irr::core::vector3df target)
 {
-  _target = target;  
-  if (_first)
-    {
-      this->setPosFast(target);
-      _first = false;
-    }
+  _target = target;
 }
 
 irr::core::vector3df Camera::getPos() const
@@ -51,16 +46,20 @@ irr::core::vector3df Camera::getPos() const
   return (_core->cam->getPosition() - _offset);
 }
 
-void Camera::setPosFast(irr::core::vector3df target)
+void Camera::setPos(irr::core::vector3df target)
 {
+  if (_first)
+    _target = target;
+  _first = false;
   _core->cam->setPosition(target + _offset);
   _core->cam->setTarget(target);
 }
 
 void Camera::move(irr::core::vector3df add)
 {
-  this->setPosFast(this->getPos() + move);
-  _target = this->getPos();
+  //this->setPosSlow(this->getPos() + add);
+  //_target = this->getPos();
+  _target += (add * CAMERA_MOVE);
 }
 
 std::string Camera::getType() const
