@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 12:29:18 2017 arnaud.alies
-// Last update Tue Jun 13 16:09:35 2017 arnaud.alies
+// Last update Thu Jun 22 10:12:19 2017 arnaud.alies
 //
 
 #ifndef CORE_HPP_
@@ -42,6 +42,7 @@ public:
   void stop();
   static int getTime();
   static int getTimeMs();
+  static irr::core::rect<irr::s32> getDim(float margin, int pos, int height = 50);
 };
 
 #endif

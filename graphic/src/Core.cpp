@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 12:36:35 2017 arnaud.alies
-// Last update Wed Jun 21 14:12:23 2017 arnaud.alies
+// Last update Thu Jun 22 10:10:24 2017 arnaud.alies
 //
 
 #include <chrono>
@@ -13,19 +13,6 @@
 #include <iostream>
 #include "Core.hpp"
 #include "MainMenu.hpp"
-
-int Core::getTime()
-{
-  return (static_cast<long int>(std::time(nullptr)));
-}
-
-int Core::getTimeMs()
-{
-  std::chrono::milliseconds ms =
-    std::chrono::duration_cast<std::chrono::milliseconds>
-    (std::chrono::system_clock::now().time_since_epoch());
-  return (ms.count());
-}
 
 void Core::stop()
 {
@@ -95,4 +82,26 @@ void Core::run()
 	  click.play();
 	}
     }
+}
+
+int Core::getTime()
+{
+  return (static_cast<long int>(std::time(nullptr)));
+}
+
+int Core::getTimeMs()
+{
+  std::chrono::milliseconds ms =
+    std::chrono::duration_cast<std::chrono::milliseconds>
+    (std::chrono::system_clock::now().time_since_epoch());
+  return (ms.count());
+}
+
+irr::core::rect<irr::s32> Core::getDim(float margin, int pos, int height)
+{
+  irr::core::rect<irr::s32> res;
+
+  res = irr::core::rect<irr::s32>(WIDTH * margin, pos,
+                                  WIDTH * (1.0 - margin), pos + height);
+  return (res);
 }

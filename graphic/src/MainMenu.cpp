@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Wed Jun 21 11:36:21 2017 arnaud.alies
+// Last update Thu Jun 22 10:11:25 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -50,13 +50,13 @@ void	MainMenu::begin(Core* core)
 		   irr::core::position2d<irr::s32>(WIDTH / 2, HEIGHT / 3));
 
   int off = HEIGHT / 1.5;
-  _start_button = _core->gui->addButton(SettingsMenu::getDim(0.3, off),
+  _start_button = _core->gui->addButton(Core::getDim(0.3, off),
 					0, -1,
 					irr::core::stringw("Start").c_str());
-  _settings_button = _core->gui->addButton(SettingsMenu::getDim(0.3, off + 50),
+  _settings_button = _core->gui->addButton(Core::getDim(0.3, off + 50),
 					   0, -1,
 					   irr::core::stringw("Settings").c_str());
-  _exit_button = _core->gui->addButton(SettingsMenu::getDim(0.3, off + 100),
+  _exit_button = _core->gui->addButton(Core::getDim(0.3, off + 100),
 				       0, -1,
 				       irr::core::stringw("Exit").c_str());
 }
