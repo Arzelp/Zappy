@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:23:40 2017 Arthur Josso
-** Last update Thu Jun 22 14:56:55 2017 Arthur Josso
+** Last update Thu Jun 22 23:06:12 2017 Arthur Josso
 */
 
 #pragma once
@@ -30,7 +30,8 @@ typedef enum
     TASK_TAKE,
     TASK_SET,
     TASK_INCANTATION,
-    TASK_BROADCAST
+    TASK_BROADCAST,
+    TASK_FORK
   } t_task_type;
 
 typedef struct s_task t_task;
@@ -49,8 +50,8 @@ struct s_task
 */
 
 void	task_add(t_task **tasks, t_task_type type, const char *arg);
-void	task_rm(t_task *task);
-void	task_rm_all(t_task *task);
+void	task_rm(t_task **tasks, t_task *task);
+void	task_rm_all(t_task **tasks);
 void	task_run(t_task **tasks);
 
 /*
@@ -97,3 +98,4 @@ bool	task_take(t_player *player, char *arg);
 bool	task_set(t_player *player, char *arg);
 bool	task_incantation(t_player *player, char *arg);
 bool	task_broadcast(t_player *player, char *arg);
+bool	task_fork(t_player *player, char *arg);

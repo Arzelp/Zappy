@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 16:01:08 2017 Arthur Josso
-** Last update Fri Jun  9 14:39:08 2017 Arthur Josso
+** Last update Thu Jun 22 23:09:17 2017 Arthur Josso
 */
 
 #include <netdb.h>
@@ -41,6 +41,7 @@ void	run_server()
 	accept_client();
       client_poll_handler();
       client_for_each(&exec_client_behavior);
+      egg_check_hatch();
       usleep(5000);
     }
 }

@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:07:49 2017 Arthur Josso
-** Last update Sat Jun 17 16:27:40 2017 Arthur Josso
+** Last update Thu Jun 22 22:18:46 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -42,8 +42,10 @@ void		task_add(t_task **tasks, t_task_type type,
    *tasks = new;
 }
 
-void	task_rm(t_task *task)
+void	task_rm(t_task **tasks, t_task *task)
 {
+  if (*tasks == task)
+    *tasks = task->next;
   if (task->prev)
     task->prev->next = task->next;
   if (task->next)
@@ -53,14 +55,16 @@ void	task_rm(t_task *task)
   cleaner_rm_addr(task);
 }
 
-void		task_rm_all(t_task *task)
+void		task_rm_all(t_task **tasks)
 {
+  t_task	*tmp;
   t_task	*next;
 
-  while (task)
+  tmp = *tasks;
+  while (tmp)
     {
-      next = task->next;
-      task_rm(task);
-      task = next;
+      next = tmp->next;
+      task_rm(tasks, tmp);
+      tmp = next;
     }
 }

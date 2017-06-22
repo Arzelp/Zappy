@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 20:33:49 2017 Arthur Josso
-** Last update Fri Jun 16 20:58:09 2017 Arthur Josso
+** Last update Thu Jun 22 22:17:14 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -25,9 +25,7 @@ void		task_run(t_task **tasks)
 	  task->func(g_client->entity, task->arg);
 	  tmp = task;
 	  task = task->next;
-	  if (*tasks == tmp)
-	    *tasks = task;
-	  task_rm(tmp);
+	  task_rm(tasks, tmp);
 	}
       else
 	task = task->next;

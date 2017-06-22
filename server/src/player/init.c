@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:40:33 2017 Arthur Josso
-** Last update Wed Jun 21 14:09:45 2017 Arthur Josso
+** Last update Thu Jun 22 23:32:22 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -32,13 +32,14 @@ bool		client_player_init(t_team *team)
   t_player	*player;
   int		i;
 
-  if (team->nbr_players == team->max_players)
+  if (team->nbr_players >= team->max_players)
     {
       send_cmd(CMD_PLAYER_KO);
       g_client->callback = &client_entity_fini;
       return (true);
     }
   player = init_player_data(team);
+  egg_can_use_one(player);
   i = 0;
   while (team->players[i])
     i++;
@@ -53,8 +54,12 @@ bool		client_player_init(t_team *team)
 
 bool	client_player_welcome(t_player *player)
 {
-  send_cmd(CMD_PLAYER_NBR_FREE_SLOT,
-	   player->team->max_players - player->team->nbr_players);
+  int	nbr_slot;
+
+  nbr_slot = player->team->max_players - player->team->nbr_players;
+  if (nbr_slot < 0)
+    nbr_slot = 0;
+  send_cmd(CMD_PLAYER_NBR_FREE_SLOT, nbr_slot);
   send_cmd(CMD_PLAYER_MAP_SIZE, g_game->map_size.x, g_game->map_size.y);
   send_graphics_cmd(CMD_GRAPHIC_NEW_PLAYER, player->id, player->pos.x,
 		    player->pos.y, player->dir, player->lvl, player->team->name);
@@ -67,7 +72,7 @@ bool		client_player_fini(t_player *player)
   uint32_t	i;
 
   //send_cmd(CMD_PLAYER_DEAD);
-  task_rm_all(player->tasks);
+  task_rm_all(&player->tasks);
   i = 0;
   while (i < player->team->nbr_players &&
 	 player->team->players[i] != player)

@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun 20 13:54:50 2017 Arthur Josso
-** Last update Wed Jun 21 10:53:24 2017 Arthur Josso
+** Last update Thu Jun 22 23:06:53 2017 Arthur Josso
 */
 
 #include <stdio.h>
@@ -57,5 +57,12 @@ bool    cmd_player_Incantation(t_player *player, const char *arg)
 bool    cmd_player_Broadcast(t_player *player, const char *arg)
 {
   task_add(&player->tasks, TASK_BROADCAST, arg);
+  return (true);
+}
+
+bool	cmd_player_Fork(t_player *player, const char *arg)
+{
+  task_add(&player->tasks, TASK_FORK, arg);
+  send_graphics_cmd(CMD_GRAPHIC_FORK_START, player->id);
   return (true);
 }

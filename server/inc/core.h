@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Wed Jun 21 14:24:04 2017 Arthur Josso
+** Last update Thu Jun 22 19:39:45 2017 Arthur Josso
 */
 
 #pragma once
@@ -21,6 +21,7 @@
 #include "types.h"
 #include "default_values.h"
 #include "task.h"
+#include "egg.h"
 
 typedef struct s_client t_client;
 typedef struct s_game t_game;
@@ -60,6 +61,7 @@ struct s_game
   uint32_t	max_players_init;
   uint32_t	frequency;
   t_team	**team;
+  t_egg		*eggs;
 };
 
 struct s_server
