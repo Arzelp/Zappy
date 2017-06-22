@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun 20 17:30:52 2017 Arthur Josso
-** Last update Wed Jun 21 13:56:51 2017 Arthur Josso
+** Last update Thu Jun 22 14:54:59 2017 Arthur Josso
 */
 
 #include <math.h>
@@ -37,6 +37,11 @@ static const float	pi_dir[DIR_NBR] =
   };
 
 static const int8_t	tile_num[DIR_NBR] = {1, 7, 5, 3};
+
+int	get_tile_num_from_dir(t_direction player_dir, t_direction direction)
+{
+  return (tile_num[umod(direction - player_dir, DIR_NBR)]);
+}
 
 static t_pos	find_nearest_pos(t_pos pos)
 {
@@ -99,7 +104,7 @@ static bool	run_broadcast(t_client *client)
   player = client->entity;
   nearest = find_nearest_pos(player->pos);
   direction = define_direction(player->pos, nearest);
-  tile_from = tile_num[umod(direction - player->dir, DIR_NBR)];
+  tile_from = get_tile_num_from_dir(player->dir, direction);
   send_cmd(CMD_PLAYER_BROADCAST, tile_from, txt);
   return (true);
 }

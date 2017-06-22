@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Fri Jun 16 19:25:13 2017 Arthur Josso
+** Last update Wed Jun 21 14:24:04 2017 Arthur Josso
 */
 
 #pragma once
@@ -32,7 +32,6 @@ extern t_server		*g_server;
 extern t_game		*g_game;
 extern t_client		*g_client;
 extern const char	*g_ressources[];
-extern uint32_t		g_player_id;
 
 /*
 ** Core funcs
@@ -43,7 +42,7 @@ bool	init_server();
 void	run_server();
 
 /*
-** Game types
+** Core types
 */
 
 struct s_team
@@ -69,6 +68,8 @@ struct s_server
   int		fd;
   t_client	*clients;
   t_game	game;
+  uint32_t	player_id;
+  uint32_t	egg_id;
 };
 
 /*
