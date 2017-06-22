@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Thu Jun 22 15:03:31 2017 arnaud.alies
+// Last update Thu Jun 22 15:50:58 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -41,15 +41,13 @@ State *Zappy::update()
 	{
 	  _cam->setPosSlow(node->getPosition());
 
-	  //
+	  /*
 	  irr::core::position2d<irr::s32> pos2d = _core->getViewPos(node->getPosition());
-	  //if (_img != nullptr)
 	  delete _img;
-	  //_img = nullptr;
 	  _img = new Image(_core,
 			   _core->video->getTexture((char*)"./res/one.png"),
 			   pos2d);
-	  //
+	  */
 	}
     }
   
