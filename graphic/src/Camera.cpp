@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Wed Jun 21 13:17:13 2017 arnaud.alies
-// Last update Wed Jun 21 15:49:18 2017 arnaud.alies
+// Last update Thu Jun 22 09:38:42 2017 arnaud.alies
 //
 
 #include "Camera.hpp"
@@ -55,6 +55,12 @@ void Camera::setPosFast(irr::core::vector3df target)
 {
   _core->cam->setPosition(target + _offset);
   _core->cam->setTarget(target);
+}
+
+void Camera::move(irr::core::vector3df add)
+{
+  this->setPosFast(this->getPos() + move);
+  _target = this->getPos();
 }
 
 std::string Camera::getType() const

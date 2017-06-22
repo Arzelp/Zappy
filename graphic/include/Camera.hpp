@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue Jun 20 13:57:05 2017 arnaud.alies
-// Last update Wed Jun 21 17:54:44 2017 arnaud.alies
+// Last update Thu Jun 22 09:38:47 2017 arnaud.alies
 //
 
 #ifndef CAMERA_HPP_
@@ -32,6 +32,7 @@ public:
   void setPos(irr::core::vector3df target);
   //custom
   void setPosFast(irr::core::vector3df target);
+  void move(irr::core::vector3df add);
 };
 
 #endif
