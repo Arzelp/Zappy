@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Thu Jun 22 10:08:57 2017 arnaud.alies
+// Last update Thu Jun 22 15:03:31 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -18,6 +18,7 @@ Zappy::Zappy() :
   _core(nullptr),
   _entity_manager(nullptr)
 {
+  _img = nullptr;
 }
 
 Zappy::~Zappy()
@@ -32,26 +33,27 @@ State *Zappy::update()
 
   if (in == K_ESCAPE)
     return (new MainMenu());
-  if (in == K_UP)
-    {
-      //_cam->setPos(Map::getAbs(0, 0));
-    }
-  //
+  
   if (in == K_SPACE)
     {
-      //scene::ITriangleSelector* selector;
-      
-      irr::scene::ISceneCollisionManager* scm = _core->scene->getSceneCollisionManager();
-      irr::core::line3d<irr::f32> ray =
-	scm->getRayFromScreenCoordinates(_core->device->getCursorControl()->getPosition(),
-					 _core->cam);
-      irr::core::triangle3df tri;
-      irr::core::vector3df col;
-      irr::scene::ISceneNode* node = scm->getSceneNodeAndCollisionPointFromRay(ray, col, tri);
+      irr::scene::ISceneNode* node = _core->getNodeFromMouse();
       if (node != nullptr)
-	_cam->setPosSlow(node->getPosition());
+	{
+	  _cam->setPosSlow(node->getPosition());
+
+	  //
+	  irr::core::position2d<irr::s32> pos2d = _core->getViewPos(node->getPosition());
+	  //if (_img != nullptr)
+	  delete _img;
+	  //_img = nullptr;
+	  _img = new Image(_core,
+			   _core->video->getTexture((char*)"./res/one.png"),
+			   pos2d);
+	  //
+	}
     }
-  //
+  
+  //Camera move
   if (_core->receiver->keyState(K_UP))
     _cam->move(irr::core::vector3df(1, 0, 0));
   if (_core->receiver->keyState(K_DOWN))
@@ -71,8 +73,8 @@ void Zappy::begin(Core* core)
   _map = new Map(_core, SETTINGS.map_size, SETTINGS.map_size);
   _entity_manager = new	EntityManager(_core, _map);
   
-  int width = _map->getWidth() * UNIT;
-  int height = _map->getHeight() * UNIT;
+  //int width = _map->getWidth() * UNIT;
+  //int height = _map->getHeight() * UNIT;
 
   //_core->cam->setPosition(irr::core::vector3df(width / 4, width, height / 2));
   //_core->cam->setTarget(irr::core::vector3df(width / 2, 0, height / 2));

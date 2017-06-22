@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 12:29:18 2017 arnaud.alies
-// Last update Thu Jun 22 10:13:52 2017 arnaud.alies
+// Last update Thu Jun 22 14:26:55 2017 arnaud.alies
 //
 
 #ifndef CORE_HPP_
@@ -40,6 +40,9 @@ public:
   virtual ~Core();
   void run();
   void stop();
+  // MISC
+  irr::scene::ISceneNode* getNodeFromMouse();
+  irr::core::position2d<irr::s32> getViewPos(irr::core::vector3df pos);
   static int getTime();
   static int getTimeMs();
   static irr::core::rect<irr::s32> getDim(float margin, int pos, int height = 30);
