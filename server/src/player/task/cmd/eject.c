@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Mon Jun 19 16:59:10 2017 Arthur Josso
-** Last update Tue Jun 20 18:00:26 2017 Arthur Josso
+** Last update Thu Jun 22 14:53:53 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -16,6 +16,7 @@ static bool	is_alone;
 static bool	eject_player(t_client *client)
 {
   t_player	*other;
+  t_direction	dir;
 
   if (client->type != ENTITY_PLAYER || client->entity == act_player)
     return (true);
@@ -29,7 +30,8 @@ static bool	eject_player(t_client *client)
 	  is_alone = false;
 	}
       get_relative_pos(act_player, &other->pos, MOVE_FORWARD);
-      send_cmd(CMD_PLAYER_EJECT, umod(act_player->dir + 2, DIR_NBR));
+      dir = umod(act_player->dir + 2, DIR_NBR);
+      send_cmd(CMD_PLAYER_EJECT, get_tile_num_from_dir(other->dir, dir));
       send_graphics_cmd(CMD_GRAPHIC_PLAYER_POS, other->id,
 			other->pos.x, other->pos.y, other->dir);
     }

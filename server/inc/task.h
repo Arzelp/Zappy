@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:23:40 2017 Arthur Josso
-** Last update Tue Jun 20 17:33:07 2017 Arthur Josso
+** Last update Thu Jun 22 14:56:55 2017 Arthur Josso
 */
 
 #pragma once
@@ -59,6 +59,7 @@ void	task_run(t_task **tasks);
 
 t_time	task_get_current_time();
 void	get_relative_pos(t_player *player, t_pos *pos, t_move move);
+int	get_tile_num_from_dir(t_direction player_dir, t_direction direction);
 
 /*
 ** List
