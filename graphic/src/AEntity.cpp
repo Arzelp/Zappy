@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Sun May 28 18:20:34 2017 arnaud.alies
-// Last update Sun Jun  4 10:55:15 2017 arnaud.alies
+// Last update Thu Jun 22 16:14:46 2017 arnaud.alies
 //
 
 #include "AEntity.hpp"
@@ -23,6 +23,11 @@ void AEntity::init(Core* core, Map* map, EntityManager* entity_manager)
   _core = core;
   _map = map;
   _entity_manager = entity_manager;
+}
+
+void AEntity::setPosMap(int x, int y)
+{
+  this->setPos(Map::getAbs(x, y));
 }
 
 void AEntity::getPosMap(int *x, int *y) const
