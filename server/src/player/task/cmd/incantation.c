@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun 20 13:11:07 2017 Arthur Josso
-** Last update Wed Jun 21 11:25:59 2017 Arthur Josso
+** Last update Fri Jun 23 16:41:44 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -35,18 +35,17 @@ static const t_incantation	*get_incant(t_player *player)
   return (incant_tab + player->lvl - 1);
 }
 
-static bool	is_enough_ressource(t_player *player, const t_incantation *inc)
+static bool	is_enough_ressource(const t_pos *pos, const t_incantation *inc)
 {
   t_ressource	res;
 
   res = RES_FOOD;
   while (res != RES_NBR)
     {
-      if (player->inventory[res] < inc->ressource[res])
+      if (g_game->map[pos->y][pos->x][res] < inc->ressource[res])
 	{
 	  send_cmd(CMD_PLAYER_KO);
-	  send_graphics_cmd(CMD_GRAPHIC_INCANTATION_END,
-			    player->pos.x, player->pos.y, 0);
+	  send_graphics_cmd(CMD_GRAPHIC_INCANTATION_END, pos->x, pos->y, 0);
 	  return (false);
 	}
       res++;
@@ -106,7 +105,7 @@ bool			task_incantation(t_player *player, char *arg)
   (void)arg;
   if ((inc = get_incant(player)) == NULL)
     return (true);
-  if (!is_enough_ressource(player, inc))
+  if (!is_enough_ressource(&player->pos, inc))
     return (true);
   if (!is_enough_player(player, inc))
     return (true);
