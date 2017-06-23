@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Fri Jun 23 16:24:41 2017 arnaud.alies
+// Last update Fri Jun 23 16:28:39 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -77,13 +77,13 @@ State *Zappy::update()
   
   //Camera move
   if (_core->receiver->keyState(K_UP))
-    _cam->move(irr::core::vector3df(1, 0, 0));
-  if (_core->receiver->keyState(K_DOWN))
     _cam->move(irr::core::vector3df(-1, 0, 0));
+  if (_core->receiver->keyState(K_DOWN))
+    _cam->move(irr::core::vector3df(1, 0, 0));
   if (_core->receiver->keyState(K_LEFT))
-    _cam->move(irr::core::vector3df(0, 0, 1));
-  if (_core->receiver->keyState(K_RIGHT))
     _cam->move(irr::core::vector3df(0, 0, -1));
+  if (_core->receiver->keyState(K_RIGHT))
+    _cam->move(irr::core::vector3df(0, 0, 1));
   
   _entity_manager->update();
   return (nullptr);
