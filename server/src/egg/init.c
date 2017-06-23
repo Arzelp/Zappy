@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun 22 17:05:04 2017 Arthur Josso
-** Last update Fri Jun 23 16:52:50 2017 Arthur Josso
+** Last update Fri Jun 23 20:50:18 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -20,7 +20,7 @@ t_egg	*egg_add(t_player *layer)
    new->pos = layer->pos;
    new->is_hatched = false;
    new->team = layer->team;
-   new->hatching_time = task_get_current_time()
+   new->hatching_time = get_current_time()
      + ((HATCHING_DURATION * 1000) / g_game->frequency);
    new->next = g_game->eggs;
    if (g_game->eggs != NULL)

@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun 22 22:33:54 2017 Arthur Josso
-** Last update Fri Jun 23 19:58:00 2017 Arthur Josso
+** Last update Fri Jun 23 20:50:28 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -50,7 +50,7 @@ void	egg_for_each(t_egg_func callback)
 static bool	is_hatched(t_egg *egg)
 {
   if (!egg->is_hatched &&
-      task_get_current_time() >= egg->hatching_time)
+      get_current_time() >= egg->hatching_time)
     {
       egg->is_hatched = true;
       egg->team->max_players++;

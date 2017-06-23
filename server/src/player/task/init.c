@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:07:49 2017 Arthur Josso
-** Last update Fri Jun 23 19:43:04 2017 Arthur Josso
+** Last update Fri Jun 23 20:49:59 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -38,7 +38,7 @@ void		task_add(t_task **tasks, t_task_type type,
    if (*tasks != NULL)
      (*tasks)->prev = new;
    else
-     new->exec_time += task_get_current_time();
+     new->exec_time += get_current_time();
    new->prev = NULL;
    *tasks = new;
 }

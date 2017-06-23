@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:23:40 2017 Arthur Josso
-** Last update Thu Jun 22 23:06:12 2017 Arthur Josso
+** Last update Fri Jun 23 20:49:10 2017 Arthur Josso
 */
 
 #pragma once
@@ -14,9 +14,9 @@
 #include <stdint.h>
 #include <stddef.h>
 #include "types.h"
+#include "misc.h"
 
 typedef struct s_player t_player;
-typedef uint64_t t_time;
 typedef bool (*t_task_func)(t_player *player, char *arg);
 
 typedef enum

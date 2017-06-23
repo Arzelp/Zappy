@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 20:33:49 2017 Arthur Josso
-** Last update Fri Jun 23 19:49:47 2017 Arthur Josso
+** Last update Fri Jun 23 20:50:10 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -21,7 +21,7 @@ void		task_run(t_task **tasks)
     task = task->next;
   if (task == NULL)
     return;
-  now = task_get_current_time();
+  now = get_current_time();
   if (now < task->exec_time)
     return;
   task->func(g_client->entity, task->arg);

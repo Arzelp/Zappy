@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Fri Jun 23 20:39:01 2017 Arthur Josso
+## Last update Fri Jun 23 20:48:45 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -56,6 +56,7 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_UTILS)string.c		\
 		$(SRC_UTILS)checker.c		\
 		$(SRC_UTILS)math.c		\
+		$(SRC_UTILS)time.c		\
 		$(SRC_CORE)run.c		\
 		$(SRC_CORE)fd_list.c		\
 		$(SRC_CORE)init.c		\
@@ -90,7 +91,6 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_C_CMD)task_adder_2.c	\
 		$(SRC_TASK)init.c		\
 		$(SRC_TASK)list.c		\
-		$(SRC_TASK)time.c		\
 		$(SRC_TASK)run.c		\
 		$(SRC_T_CMD)move.c		\
 		$(SRC_T_CMD)look.c		\
