@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Thu Jun 22 19:39:45 2017 Arthur Josso
+** Last update Fri Jun 23 18:29:58 2017 Arthur Josso
 */
 
 #pragma once
@@ -166,7 +166,7 @@ char	*recv_cmd();
 ** Entity Commands
 */
 
-#define ADD_CMD_FUNC(type, func) {#func,(t_entity_cmd_func)&cmd_##type##_##func}
+#define ADD_CMD_FUNC(t, f) {#f, (t_entity_cmd_func)&cmd_##t##_##f}
 
 typedef bool (*t_entity_cmd_func)(void *entity, const char *arg);
 
