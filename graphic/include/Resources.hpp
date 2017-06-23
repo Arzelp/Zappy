@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu Jun 22 17:01:44 2017 arnaud.alies
-// Last update Fri Jun 23 12:45:54 2017 arnaud.alies
+// Last update Fri Jun 23 15:11:30 2017 arnaud.alies
 //
 
 #ifndef RESOURCES_HPP_
@@ -32,6 +32,7 @@ public:
   irr::core::vector3df getPos() const;
   void setPos(irr::core::vector3df target);
   void setValues(int* values);
+  std::string getType() const;
 };
 
 #endif

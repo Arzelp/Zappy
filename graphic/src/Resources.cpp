@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu Jun 22 17:07:19 2017 arnaud.alies
-// Last update Fri Jun 23 14:53:48 2017 arnaud.alies
+// Last update Fri Jun 23 15:38:29 2017 arnaud.alies
 //
 
 #include <vector>
@@ -62,8 +62,8 @@ irr::core::vector3df Resources::getPos() const
 void Resources::setPos(irr::core::vector3df t)
 {
   int space = 30;
-  int x_off = space;
-  int z_off = space;
+  int x_off = -UNIT / 1.5;
+  int z_off = -UNIT / 1.5;
 
   _pos = t;
   // cassez pas les couilles mdr
@@ -71,11 +71,11 @@ void Resources::setPos(irr::core::vector3df t)
     {
       if (x % 3 == 0)
 	{
-	  x_off = space;
+	  x_off = -UNIT / 1.5;
 	  z_off += space;
 	}
       x_off += space;
-      _meshes[x]->node->setPosition(t + _offset - irr::core::vector3df(x_off,
+      _meshes[x]->node->setPosition(t + _offset + irr::core::vector3df(x_off,
 								       0,
 								       z_off));
     }
@@ -89,4 +89,9 @@ void Resources::setValues(int* values)
 						      _scale * values[x],
 						      _scale));
     }
+}
+
+std::string Resources::getType() const
+{
+  return ("resources");
 }

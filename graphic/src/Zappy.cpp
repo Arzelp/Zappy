@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Fri Jun 23 14:59:08 2017 arnaud.alies
+// Last update Fri Jun 23 15:43:41 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -26,6 +26,15 @@ Zappy::~Zappy()
 {
   delete _entity_manager;
   delete _map;
+}
+
+void Zappy::spawnResources()
+{
+  for (int y = 0; y < _map->getHeight(); y += 1)
+    for (int x = 0; x < _map->getWidth(); x += 1)
+      {
+	_entity_manager->addEntityMap<Resources>(x, y);
+      }
 }
 
 State *Zappy::update()
@@ -75,11 +84,10 @@ void Zappy::begin(Core* core)
   //int width = _map->getWidth() * UNIT;
   //int height = _map->getHeight() * UNIT;
 
-  //_core->cam->setPosition(irr::core::vector3df(width / 4, width, height / 2));
-  //_core->cam->setTarget(irr::core::vector3df(width / 2, 0, height / 2));
-  
   _cam = _entity_manager->addEntityMap<Camera>(_map->getWidth() / 2, _map->getHeight() / 2);
 
+  this->spawnResources();
+  /*
   _entity_manager->addEntityMap<Resources>(1, 1);
   _entity_manager->addEntityMap<Resources>(2, 2);
   _entity_manager->addEntityMap<Resources>(2, 3);
@@ -87,4 +95,5 @@ void Zappy::begin(Core* core)
 
   int values[] = {1, 2, 3, 4, 5, 6, 7};
   res->setValues(values);
+  */
 }
