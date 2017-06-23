@@ -18,7 +18,7 @@ Sources =	$(SRC)main.cpp \
 		$(SRC)Camera.cpp \
 		$(SRC)EntityManager.cpp \
 		$(SRC)APlayer.cpp \
-		$(SRC)NetWork.cpp \
+		$(SRC)Network.cpp \
 		$(SRC)Box.cpp \
 
 IRRLITCHT = ./irrlicht-1.8.4/
@@ -26,6 +26,7 @@ IRRLITCHT = ./irrlicht-1.8.4/
 # general compiler settings
 CPPFLAGS = -I$(IRRLITCHT)include -I/usr/X11R6/include -I./include/
 CXXFLAGS = -O3 -ffast-math -g -std=c++11
+CXXFLAGS += -pthread
 #CXXFLAGS = -g -Wall
 
 #default target is Linux
