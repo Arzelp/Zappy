@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Thu Jun 22 15:50:58 2017 arnaud.alies
+// Last update Fri Jun 23 13:49:54 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -13,6 +13,7 @@
 #include "Zappy.hpp"
 #include "Box.hpp"
 #include "Random.hpp"
+#include "Resources.hpp"
 
 Zappy::Zappy() :
   _core(nullptr),
@@ -78,4 +79,13 @@ void Zappy::begin(Core* core)
   //_core->cam->setTarget(irr::core::vector3df(width / 2, 0, height / 2));
   
   _cam = _entity_manager->addEntityMap<Camera>(_map->getWidth() / 2, _map->getHeight() / 2);
+
+  _entity_manager->addEntityMap<Resources>(1, 1);
+  _entity_manager->addEntityMap<Resources>(2, 2);
+  _entity_manager->addEntityMap<Resources>(2, 3);
+  Resources* res = _entity_manager->addEntityMap<Resources>(3, 3);
+
+  int values[] = {1, 2, 3, 4, 5, 6, 7};
+  res->setValues(values);
+  _entity_manager->addEntityMap<Box>(3, 2);
 }
