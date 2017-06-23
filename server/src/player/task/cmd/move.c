@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:46:03 2017 Arthur Josso
-** Last update Thu Jun 22 14:32:53 2017 Arthur Josso
+** Last update Fri Jun 23 19:49:43 2017 Arthur Josso
 */
 
 #include <stdio.h>
@@ -51,6 +51,7 @@ bool	task_left(t_player *player, char *arg)
 {
   (void)arg;
   player->dir = umod(player->dir - 1, DIR_NBR);
+  send_cmd(CMD_PLAYER_OK);
   return (true);
 }
 
@@ -58,5 +59,6 @@ bool	task_right(t_player *player, char *arg)
 {
   (void)arg;
   player->dir =	umod(player->dir + 1, DIR_NBR);
+  send_cmd(CMD_PLAYER_OK);
   return (true);
 }
