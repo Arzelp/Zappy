@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Fri Jun 23 13:49:54 2017 arnaud.alies
+// Last update Fri Jun 23 14:59:08 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -87,5 +87,4 @@ void Zappy::begin(Core* core)
 
   int values[] = {1, 2, 3, 4, 5, 6, 7};
   res->setValues(values);
-  _entity_manager->addEntityMap<Box>(3, 2);
 }
