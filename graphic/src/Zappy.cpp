@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Fri Jun 23 15:43:41 2017 arnaud.alies
+// Last update Fri Jun 23 16:24:41 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -13,7 +13,6 @@
 #include "Zappy.hpp"
 #include "Box.hpp"
 #include "Random.hpp"
-#include "Resources.hpp"
 
 Zappy::Zappy() :
   _core(nullptr),
@@ -26,6 +25,14 @@ Zappy::~Zappy()
 {
   delete _entity_manager;
   delete _map;
+}
+
+Resources* Zappy::getResourcesAt(irr::core::vector3df pos)
+{
+  AEntity* ent;
+
+  ent = _entity_manager->getClosestEntity(pos, "resources");
+  return (static_cast<Resources*>(ent));
 }
 
 void Zappy::spawnResources()
@@ -50,6 +57,13 @@ State *Zappy::update()
       if (node != nullptr)
 	{
 	  _cam->setPosSlow(node->getPosition());
+
+	  Resources* res = this->getResourcesAt(node->getPosition());
+	  if (res != nullptr)
+	    {
+	      int values[] = {1, 2, 3, 4, 5, 6, 7};
+	      res->setValues(values);
+	    }
 
 	  /*
 	  irr::core::position2d<irr::s32> pos2d = _core->getViewPos(node->getPosition());
@@ -92,7 +106,6 @@ void Zappy::begin(Core* core)
   _entity_manager->addEntityMap<Resources>(2, 2);
   _entity_manager->addEntityMap<Resources>(2, 3);
   Resources* res = _entity_manager->addEntityMap<Resources>(3, 3);
-
   int values[] = {1, 2, 3, 4, 5, 6, 7};
   res->setValues(values);
   */

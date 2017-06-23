@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu Jun 22 17:07:19 2017 arnaud.alies
-// Last update Fri Jun 23 15:38:29 2017 arnaud.alies
+// Last update Fri Jun 23 16:22:25 2017 arnaud.alies
 //
 
 #include <vector>
@@ -40,7 +40,7 @@ void Resources::init(Core* core, Map* map, EntityManager* entity_manager)
     {
       _meshes[x] = new Mesh(_core,
 			    "./res/crate/crate1.obj",
-			    irr::core::vector3df(_scale, _scale, _scale),
+			    irr::core::vector3df(_scale, 0, _scale),
 			    "./res/resources/" + textures.at(x));
     }
 }

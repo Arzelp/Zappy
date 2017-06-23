@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Fri Jun 23 15:27:25 2017 arnaud.alies
+// Last update Fri Jun 23 16:21:31 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -20,6 +20,7 @@
 #include "AEntity.hpp"
 #include "Image.hpp"
 #include "Camera.hpp"
+#include "Resources.hpp"
 
 class Zappy : public State
 {
@@ -36,6 +37,7 @@ public:
   State* update();
   void begin(Core*);
   void spawnResources();
+  Resources* getResourcesAt(irr::core::vector3df pos);
 };
 
 #endif
