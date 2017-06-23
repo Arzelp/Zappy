@@ -5,12 +5,14 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun 22 17:05:42 2017 Arthur Josso
-** Last update Thu Jun 22 23:36:07 2017 Arthur Josso
+** Last update Fri Jun 23 16:52:21 2017 Arthur Josso
 */
 
 #pragma once
 
 #include "types.h"
+
+#define HATCHING_DURATION	(600)
 
 typedef struct s_egg t_egg;
 

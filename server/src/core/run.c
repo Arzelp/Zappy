@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 16:01:08 2017 Arthur Josso
-** Last update Thu Jun 22 23:09:17 2017 Arthur Josso
+** Last update Fri Jun 23 18:17:27 2017 Arthur Josso
 */
 
 #include <netdb.h>
@@ -28,6 +28,11 @@ static void		accept_client()
 
 static bool	exec_client_behavior(t_client *client)
 {
+  if (client->type == ENTITY_PLAYER)
+    {
+      if (player_is_dead(client->entity))
+	client->callback = &client_entity_fini;
+    }
   return (client->callback(client->entity));
 }
 
@@ -42,6 +47,6 @@ void	run_server()
       client_poll_handler();
       client_for_each(&exec_client_behavior);
       egg_check_hatch();
-      usleep(5000);
+      usleep(500);
     }
 }
