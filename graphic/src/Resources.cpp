@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu Jun 22 17:07:19 2017 arnaud.alies
-// Last update Fri Jun 23 16:22:25 2017 arnaud.alies
+// Last update Fri Jun 23 17:07:18 2017 arnaud.alies
 //
 
 #include <vector>
@@ -37,6 +37,8 @@ void Resources::init(Core* core, Map* map, EntityManager* entity_manager)
 				       "red.png",
 				       "yellow.png"};
   for (int x = 0; x < R_SIZE; x += 1)
+    _values[x] = 0;
+  for (int x = 0; x < R_SIZE; x += 1)
     {
       _meshes[x] = new Mesh(_core,
 			    "./res/crate/crate1.obj",
@@ -47,6 +49,17 @@ void Resources::init(Core* core, Map* map, EntityManager* entity_manager)
 
 void Resources::update()
 {
+  float diff_scale;
+  irr::core::vector3df target_scale;
+  
+  for (int x = 0; x < R_SIZE; x += 1)
+    {
+      diff_scale = ((_values[x] * _scale) - _meshes[x]->node->getScale().Y) / R_EFFECT_SPEED;
+      target_scale = irr::core::vector3df(_scale,
+				    _meshes[x]->node->getScale().Y + diff_scale,
+				    _scale);
+      _meshes[x]->node->setScale(target_scale);
+    }
   /*
   _food->node->setScale(irr::core::vector3df(_scale,
 					     _scale,
@@ -84,11 +97,15 @@ void Resources::setPos(irr::core::vector3df t)
 void Resources::setValues(int* values)
 {
   for (int x = 0; x < R_SIZE; x += 1)
+    _values[x] = values[x];
+  /*
+  for (int x = 0; x < R_SIZE; x += 1)
     {
       _meshes[x]->node->setScale(irr::core::vector3df(_scale,
 						      _scale * values[x],
 						      _scale));
     }
+  */
 }
 
 std::string Resources::getType() const
