@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 23 16:56:54 2017 Arthur Josso
-** Last update Fri Jun 23 18:18:48 2017 Arthur Josso
+** Last update Fri Jun 23 20:00:09 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -29,6 +29,7 @@ bool	player_is_dead(t_player *player)
 	{
 	  player->starve_time = PLAYER_DEAD;
 	  send_cmd(CMD_PLAYER_DEAD);
+	  send_graphics_cmd(CMD_GRAPHIC_DIE, player->id);
 	  return (true);
 	}
     }

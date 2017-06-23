@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun 22 22:33:54 2017 Arthur Josso
-** Last update Thu Jun 22 23:29:24 2017 Arthur Josso
+** Last update Fri Jun 23 19:58:00 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -21,6 +21,7 @@ static bool	search_for_available_egg(t_egg *egg)
     return (true);
   act_player->pos = egg->pos;
   egg->team->max_players--;
+  send_graphics_cmd(CMD_GRAPHIC_EGG_CONNECT, egg->id);
   return (false);
 }
 

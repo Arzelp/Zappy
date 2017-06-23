@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 16:01:08 2017 Arthur Josso
-** Last update Fri Jun 23 18:54:55 2017 Arthur Josso
+** Last update Fri Jun 23 20:39:33 2017 Arthur Josso
 */
 
 #include <netdb.h>
@@ -36,9 +36,15 @@ static bool	exec_client_behavior(t_client *client)
   return (client->callback(client->entity));
 }
 
+static bool	kill_everybody(t_client *client)
+{
+  client->callback = &client_entity_fini;
+  return (true);
+}
+
 void	run_server()
 {
-  while (1)
+  while (!is_there_a_winner())
     {
       if (poll(fd_list_get(), fd_list_get_nb(), -1) == -1)
 	fat_err("poll");
@@ -47,6 +53,15 @@ void	run_server()
       client_poll_handler();
       client_for_each(&exec_client_behavior);
       egg_check_hatch();
+      usleep(500);
+    }
+  client_for_each(&kill_everybody);
+  while (client_get_nbr() > 0)
+    {
+      if (poll(fd_list_get(), fd_list_get_nb(), -1) == -1)
+        fat_err("poll");
+      client_poll_handler();
+      client_for_each(&exec_client_behavior);
       usleep(500);
     }
 }

@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Fri Jun 23 17:05:14 2017 Arthur Josso
+## Last update Fri Jun 23 20:39:01 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -66,9 +66,11 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_CLIENT)cmd_io.c		\
 		$(SRC_CLIENT)entity_callback.c	\
 		$(SRC_CLIENT)entity_tool.c	\
+		$(SRC_CLIENT)tool.c		\
 		$(SRC_PLAYER)run.c		\
 		$(SRC_PLAYER)init.c		\
 		$(SRC_PLAYER)death.c		\
+		$(SRC_PLAYER)win.c		\
 		$(SRC_GRAPHIC)run.c		\
 		$(SRC_GRAPHIC)init.c		\
 		$(SRC_GRAPHIC)for_each.c	\

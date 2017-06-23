@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Fri Jun 23 18:29:58 2017 Arthur Josso
+** Last update Fri Jun 23 20:40:00 2017 Arthur Josso
 */
 
 #pragma once
@@ -41,6 +41,7 @@ extern const char	*g_ressources[];
 void	init_map();
 bool	init_server();
 void	run_server();
+bool	is_there_a_winner();
 
 /*
 ** Core types
@@ -52,6 +53,7 @@ struct s_team
   t_player	**players;
   uint32_t	nbr_players;
   uint32_t	max_players;
+  uint8_t	nbr_op_players;
 };
 
 struct s_game
@@ -135,6 +137,7 @@ void	client_add(int fd);
 bool	client_rm(t_client *client);
 void	client_for_each(t_client_callback callback);
 void	client_poll_handler();
+size_t	client_get_nbr();
 
 void	client_init(t_client *client, int fd);
 void	client_fini(t_client *client);
