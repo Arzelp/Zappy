@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 12:36:35 2017 arnaud.alies
-// Last update Thu Jun 22 15:01:19 2017 arnaud.alies
+// Last update Fri Jun 23 15:07:46 2017 arnaud.alies
 //
 
 #include <chrono>
@@ -69,7 +69,7 @@ void Core::run()
 
   while (device->run() && _running)
     {
-      video->beginScene(true, true, irr::video::SColor(255, 100, 101, 255));
+      video->beginScene(true, true, irr::video::SColor(255, 217, 189, 98));
       gui->drawAll();
       scene->drawAll();
       buff = state->update();
