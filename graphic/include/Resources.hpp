@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu Jun 22 17:01:44 2017 arnaud.alies
-// Last update Fri Jun 23 15:11:30 2017 arnaud.alies
+// Last update Fri Jun 23 17:08:07 2017 arnaud.alies
 //
 
 #ifndef RESOURCES_HPP_
@@ -15,6 +15,7 @@
 #include "AEntity.hpp"
 
 #define R_SIZE (7)
+#define R_EFFECT_SPEED (10.0)
 
 class Resources : public AEntity
 {
@@ -22,6 +23,7 @@ protected:
   float _scale;
   irr::core::vector3df _offset;
   irr::core::vector3df _pos;
+  float _values[R_SIZE];
 protected:
   Mesh* _meshes[R_SIZE];
 public:
