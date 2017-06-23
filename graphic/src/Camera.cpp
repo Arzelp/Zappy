@@ -5,14 +5,14 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Wed Jun 21 13:17:13 2017 arnaud.alies
-// Last update Thu Jun 22 09:58:41 2017 arnaud.alies
+// Last update Fri Jun 23 16:27:34 2017 arnaud.alies
 //
 
 #include "Camera.hpp"
 
 Camera::Camera()
 {
-  _offset = irr::core::vector3df(0, CAMERA_OFFSET, 0);
+  _offset = irr::core::vector3df(CAMERA_OFFSET / 3, CAMERA_OFFSET, 0);
   _first = true;
 }
 
