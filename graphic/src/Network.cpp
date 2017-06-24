@@ -5,7 +5,7 @@
 // Login   <frederic.oddou@epitech.eu>
 //
 // Started on  Tue Jun 20 09:05:24 2017 Frederic Oddou
-// Last update Fri Jun 23 11:19:44 2017 Frederic Oddou
+// Last update Sat Jun 24 22:12:26 2017 arnaud.alies
 //
 
 #include <netdb.h>
@@ -98,8 +98,33 @@ bool				Network::SendMsg(std::string str)
   return (true);
 }
 
-void				Network::ReceiveMsg()
+void		Network::ReceiveMsg()
 {
+  std::string	res;
+  char		c;
+  ssize_t	size;
+
+  while (!this->_endThread)
+    {
+      while ((size = recv(this->_socketFd, &c, 1, 0)) > 0 && c != '\n')
+	{
+	  res += c;
+	}
+      if (size == -1)
+	{
+	  std::cerr << "[Network] recv failed." << std::endl;
+	  this->_endThread = true;
+	}
+      if (res.length() > 0)
+	{
+	  this->_mutex.lock();
+	  std::cout << "Push" << std::endl;
+	  this->_queue.push(res);
+	  this->_mutex.unlock();
+	  res = "";
+	}
+    }
+  /*
   char				str[4096];
   ssize_t			size;
 
@@ -120,6 +145,7 @@ void				Network::ReceiveMsg()
 	  this->_mutex.unlock();
 	}
     }
+  */
 }
 
 void				Network::ReceiveStop()

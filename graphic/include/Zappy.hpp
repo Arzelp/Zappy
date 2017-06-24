@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Fri Jun 23 16:21:31 2017 arnaud.alies
+// Last update Sat Jun 24 21:43:23 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -21,10 +21,13 @@
 #include "Image.hpp"
 #include "Camera.hpp"
 #include "Resources.hpp"
+#include "Network.hpp"
 
 class Zappy : public State
 {
 protected:
+  bool _running;
+  Network* _network;
   Camera* _cam;
   Core* _core;
   EntityManager* _entity_manager;
@@ -38,6 +41,8 @@ public:
   void begin(Core*);
   void spawnResources();
   Resources* getResourcesAt(irr::core::vector3df pos);
+  //
+  void recv_msz(int width, int height);
 };
 
 #endif
