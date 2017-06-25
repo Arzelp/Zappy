@@ -5,9 +5,10 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Sun Jun 25 10:55:40 2017 arnaud.alies
+// Last update Sun Jun 25 13:30:04 2017 arnaud.alies
 //
 
+#include <map>
 #include <sstream>
 #include <vector>
 #include <iostream>
@@ -27,6 +28,8 @@ Zappy::Zappy() :
 
 Zappy::~Zappy()
 {
+  //_network->ReceiveStop();//boucle inf fredoudou?
+  delete _network;
   delete _entity_manager;
   delete _map;
 }
@@ -50,16 +53,26 @@ void Zappy::spawnResources()
 
 void Zappy::runQueue()
 {
+  std::map<std::string, t_command> command_map = {
+    {"msz", &Zappy::cmd_msz},
+    {"bct", &Zappy::cmd_bct}
+  };
+
   std::string str;
-  if ((str = _network->GetQueue()).size())
+  while ((str = _network->GetQueue()).size())
     {
       std::cout << str << "$" << std::endl;
       std::istringstream split(str);
       char delim = ' ';
       std::vector<std::string> tokens;
+      t_command cmd;
       for (std::string each;
            std::getline(split, each, delim);
            tokens.push_back(each));
+      cmd = command_map[tokens.at(0)];
+      if (cmd != nullptr)
+	(this->*(cmd))(tokens.size(), tokens);
+      /*
       if (tokens.at(0) == "msz")
         {
           this->run_msz(tokens.size(), tokens);
@@ -68,6 +81,7 @@ void Zappy::runQueue()
         {
           this->run_msz(tokens.size(), tokens);
         }
+      */
     }
 }
 
@@ -134,10 +148,11 @@ void Zappy::begin(Core* core)
   _network = new Network("localhost", 4242);
   _network->ReceiveStart();
   _network->SendMsg("GRAPHIC");
-  //_network->SendMsg("msz");
+  //
+  _network->SendMsg("mct");
 }
 
-void Zappy::run_msz(int ac, std::vector<std::string> av)
+void Zappy::cmd_msz(int ac, std::vector<std::string> av)
 {
   int width = 0;
   int height = 0;
@@ -157,10 +172,11 @@ void Zappy::run_msz(int ac, std::vector<std::string> av)
       _cam = _entity_manager->addEntityMap<Camera>(_map->getWidth() / 2, _map->getHeight() / 2);
       this->spawnResources();
       _running = true;
+      _entity_manager->update();
     }
 }
 
-void Zappy::run_bct(int ac, std::vector<std::string> av)
+void Zappy::cmd_bct(int ac, std::vector<std::string> av)
 {
   int values[R_SIZE];
   int x;

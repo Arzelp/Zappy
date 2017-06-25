@@ -5,7 +5,7 @@
 // Login   <frederic.oddou@epitech.eu>
 //
 // Started on  Tue Jun 20 09:05:24 2017 Frederic Oddou
-// Last update Sat Jun 24 22:12:26 2017 arnaud.alies
+// Last update Sun Jun 25 11:33:32 2017 arnaud.alies
 //
 
 #include <netdb.h>
@@ -118,7 +118,6 @@ void		Network::ReceiveMsg()
       if (res.length() > 0)
 	{
 	  this->_mutex.lock();
-	  std::cout << "Push" << std::endl;
 	  this->_queue.push(res);
 	  this->_mutex.unlock();
 	  res = "";
