@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Sun Jun 25 13:30:04 2017 arnaud.alies
+// Last update Sun Jun 25 13:34:43 2017 arnaud.alies
 //
 
 #include <map>
@@ -148,12 +148,12 @@ void Zappy::begin(Core* core)
   _network = new Network("localhost", 4242);
   _network->ReceiveStart();
   _network->SendMsg("GRAPHIC");
-  //
-  _network->SendMsg("mct");
+  //_network->SendMsg("mct");
 }
 
 void Zappy::cmd_msz(int ac, std::vector<std::string> av)
 {
+  /* INIT */
   int width = 0;
   int height = 0;
 
