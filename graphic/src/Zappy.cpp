@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Sun Jun 25 13:34:43 2017 arnaud.alies
+// Last update Sun Jun 25 20:25:29 2017 arnaud.alies
 //
 
 #include <map>
@@ -15,6 +15,7 @@
 #include "MainMenu.hpp"
 #include "Zappy.hpp"
 #include "Box.hpp"
+#include "Player.hpp"
 #include "Random.hpp"
 
 Zappy::Zappy() :
@@ -54,8 +55,9 @@ void Zappy::spawnResources()
 void Zappy::runQueue()
 {
   std::map<std::string, t_command> command_map = {
-    {"msz", &Zappy::cmd_msz},
-    {"bct", &Zappy::cmd_bct}
+    DEF_CMD(msz),
+    DEF_CMD(pnw),
+    DEF_CMD(bct)
   };
 
   std::string str;
@@ -72,16 +74,6 @@ void Zappy::runQueue()
       cmd = command_map[tokens.at(0)];
       if (cmd != nullptr)
 	(this->*(cmd))(tokens.size(), tokens);
-      /*
-      if (tokens.at(0) == "msz")
-        {
-          this->run_msz(tokens.size(), tokens);
-        }
-      if (tokens.at(0) == "bct")
-        {
-          this->run_msz(tokens.size(), tokens);
-        }
-      */
     }
 }
 
@@ -133,10 +125,6 @@ State *Zappy::update()
       if (_core->receiver->keyState(K_RIGHT))
 	_cam->move(irr::core::vector3df(0, 0, 1));
       _entity_manager->update();
-    }
-  else
-    {
-      // loading screen here
     }
   return (nullptr);
 }
@@ -195,4 +183,36 @@ void Zappy::cmd_bct(int ac, std::vector<std::string> av)
     {
       res->setValues(values);
     }
+}
+
+void Zappy::cmd_pnw(int ac, std::vector<std::string> av)
+{
+  Player* player;
+  int id, x, y, orientation, level;
+  std::string team;
+
+  if (ac != 7)
+    return ;
+  id = std::stoi("0" + av.at(1));
+  x = std::stoi("0" + av.at(2));
+  y = std::stoi("0" + av.at(3));
+  orientation = std::stoi("0" + av.at(4));
+  level = std::stoi("0" + av.at(5));
+  team = av.at(6);
+
+  std::vector<AEntity*> ents = _entity_manager->getAll("player");
+  for (auto ent : ents)
+    {
+      player = static_cast<Player*>(ent);
+      if (player->id == id)
+	{
+	  std::cerr << "Player already exists" << std::endl;
+	  return ;
+	}
+    }
+  
+  player = _entity_manager->addEntityMap<Player>(x, y);
+  player->id = id;
+  player->team = team;
+  player->level = level;
 }

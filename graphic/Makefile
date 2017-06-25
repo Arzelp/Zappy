@@ -18,7 +18,7 @@ Sources =	$(SRC)main.cpp \
 		$(SRC)Resources.cpp \
 		$(SRC)Camera.cpp \
 		$(SRC)EntityManager.cpp \
-		$(SRC)APlayer.cpp \
+		$(SRC)Player.cpp \
 		$(SRC)Network.cpp \
 		$(SRC)Box.cpp \
 

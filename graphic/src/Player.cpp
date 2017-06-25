@@ -5,51 +5,43 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 15:13:35 2017 arnaud.alies
-// Last update Thu Jun 22 15:55:40 2017 arnaud.alies
+// Last update Sun Jun 25 14:55:20 2017 arnaud.alies
 //
 
-#include "APlayer.hpp"
+#include "Player.hpp"
 #include "EntityManager.hpp"
 
-APlayer::APlayer() :
+Player::Player() :
   _offset(irr::core::vector3df(0, 50, 0)),
-  _state(S_IDLE),
-  _speed(10),
-  _alive(true),
-  _id(0)
+  _alive(true)
 {
+  id = 0;
 }
 
-void APlayer::init(Core* core, Map *map, EntityManager* entity_manager)
+void Player::init(Core* core, Map *map, EntityManager* entity_manager)
 {
   AEntity::init(core, map, entity_manager);
 }
 
-APlayer::~APlayer()
+Player::~Player()
 {
   delete _mesh;
 }
 
-void APlayer::kill()
+void Player::kill()
 {
   if (_alive)
     _mesh->node->setMD2Animation(irr::scene::EMAT_BOOM);
   _alive = false;
 }
 
-void APlayer::validMove(irr::core::vector3df dir)
-{
-  this->setPos(this->getPos() + dir);
-}
-
-void APlayer::update()
+void Player::update()
 {
   if (_alive == false)
     return ;
-  EState old_state = _state;
 
-  _state = this->getState();
   /* actions */
+  /*
   if (_state == S_RUN_UP)
     {
       this->validMove(irr::core::vector3df(_speed, 0, 0));
@@ -70,52 +62,39 @@ void APlayer::update()
       this->validMove(irr::core::vector3df(0, 0, -_speed));
       this->setRotation(irr::core::vector3df(0, 90, 0));
     }
-  else if (_state == S_PLANT)
-    {
-    }
+  */
   /* animations */
-  if (old_state != _state)
-    {
-      if (_state == S_RUN_UP
-	  || _state == S_RUN_DOWN
-	  || _state == S_RUN_RIGHT
-	  || _state == S_RUN_LEFT)
-	_mesh->node->setMD2Animation(irr::scene::EMAT_RUN);
-      if (_state == S_PLANT)
-	_mesh->node->setMD2Animation(irr::scene::EMAT_PAIN_A);
-      if (_state == S_IDLE)
-	_mesh->node->setMD2Animation(irr::scene::EMAT_STAND);
-    }
-  //_mesh->node->setRotation(rot + irr::core::vector3df(0, rot_speed, 0));
-  //pf("IN RANGE: %d\n", _entity_manager->getInRange(this->getPos(), UNIT).size());
+  //_mesh->node->setMD2Animation(irr::scene::EMAT_RUN);
+  //_mesh->node->setMD2Animation(irr::scene::EMAT_PAIN_A);
+  //_mesh->node->setMD2Animation(irr::scene::EMAT_STAND);
 }
 
-void APlayer::setPos(irr::core::vector3df target)
+void Player::setPos(irr::core::vector3df target)
 {
   _mesh->node->setPosition(target + _offset);
 }
 
-irr::core::vector3df APlayer::getPos() const
+irr::core::vector3df Player::getPos() const
 {
   return (_mesh->node->getPosition() - _offset);
 }
 
-irr::core::vector3df APlayer::getRotation() const
+irr::core::vector3df Player::getRotation() const
 {
   return (_mesh->node->getRotation());
 }
 
-void APlayer::setRotation(irr::core::vector3df rot)
+void Player::setRotation(irr::core::vector3df rot)
 {
   _mesh->node->setRotation(rot);
 }
 
-std::string APlayer::getType() const
+std::string Player::getType() const
 {
   return ("player");
 }
 
-bool APlayer::isAlive() const
+bool Player::isAlive() const
 {
   return (_alive);
 }

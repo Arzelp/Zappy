@@ -5,43 +5,32 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 14:56:43 2017 arnaud.alies
-// Last update Mon Jun 19 18:13:51 2017 arnaud.alies
+// Last update Sun Jun 25 20:19:05 2017 arnaud.alies
 //
 
-#ifndef APLAYER_HPP_
-#define APLAYER_HPP_
+#ifndef PLAYER_HPP_
+#define PLAYER_HPP_
 
 #include <vector>
 #include "AEntity.hpp"
 #include "Mesh.hpp"
 
-enum EState
-  {
-    S_IDLE = 0,
-    S_RUN_UP,
-    S_RUN_DOWN,
-    S_RUN_LEFT,
-    S_RUN_RIGHT,
-    S_PLANT
-  };
-
-class APlayer : public AEntity
+class Player : public AEntity
 {
 protected:
-  bool _alive;
-  int _id;
-  int _speed;
-  EState _state;
   Mesh* _mesh;
-  
   irr::core::vector3df _heading;
   irr::core::vector3df _offset;
+  bool _alive;
 public:
-  APlayer();
-  virtual ~APlayer();
+  int id;
+  std::string team;
+  int level;
+public:
+  Player();
+  virtual ~Player();
   virtual void init(Core*, Map*, EntityManager*);
   void update();
-  void validMove(irr::core::vector3df dir);
   irr::core::vector3df getPos() const;
   void setPos(irr::core::vector3df target);
   irr::core::vector3df getRotation() const;
@@ -49,8 +38,6 @@ public:
   std::string getType() const;
   void kill();
   bool isAlive() const;
-  /* pure virtual */
-  virtual EState getState() = 0;
 };
 
 #endif

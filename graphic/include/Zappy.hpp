@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Sun Jun 25 11:25:37 2017 arnaud.alies
+// Last update Sun Jun 25 20:02:08 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -22,6 +22,8 @@
 #include "Camera.hpp"
 #include "Resources.hpp"
 #include "Network.hpp"
+
+#define DEF_CMD(cmd) {#cmd, &Zappy::cmd_##cmd}
 
 class Zappy : public State
 {
@@ -45,6 +47,7 @@ public:
   void runQueue();
   void cmd_msz(int ac, std::vector<std::string> av);
   void cmd_bct(int ac, std::vector<std::string> av);
+  void cmd_pnw(int ac, std::vector<std::string> av);
 };
 
 typedef void(Zappy::*t_command)(int ac, std::vector<std::string> av);
