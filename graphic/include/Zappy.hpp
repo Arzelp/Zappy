@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Sat Jun 24 21:43:23 2017 arnaud.alies
+// Last update Sun Jun 25 10:56:07 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -42,7 +42,9 @@ public:
   void spawnResources();
   Resources* getResourcesAt(irr::core::vector3df pos);
   //
-  void recv_msz(int width, int height);
+  void runQueue();
+  void run_msz(int ac, std::vector<std::string> av);
+  void run_bct(int ac, std::vector<std::string> av);
 };
 
 #endif

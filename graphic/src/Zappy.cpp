@@ -5,9 +5,11 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Sat Jun 24 21:49:38 2017 arnaud.alies
+// Last update Sun Jun 25 10:55:40 2017 arnaud.alies
 //
 
+#include <sstream>
+#include <vector>
 #include <iostream>
 #include "MainMenu.hpp"
 #include "Zappy.hpp"
@@ -46,27 +48,44 @@ void Zappy::spawnResources()
       }
 }
 
+void Zappy::runQueue()
+{
+  std::string str;
+  if ((str = _network->GetQueue()).size())
+    {
+      std::cout << str << "$" << std::endl;
+      std::istringstream split(str);
+      char delim = ' ';
+      std::vector<std::string> tokens;
+      for (std::string each;
+           std::getline(split, each, delim);
+           tokens.push_back(each));
+      if (tokens.at(0) == "msz")
+        {
+          this->run_msz(tokens.size(), tokens);
+        }
+      if (tokens.at(0) == "bct")
+        {
+          this->run_msz(tokens.size(), tokens);
+        }
+    }
+}
+
 State *Zappy::update()
 {
   E_INPUT in = _core->receiver->lastKey();
 
   if (in == K_ESCAPE)
     return (new MainMenu());
-  //shit
-  std::string str;
-  if ((str = _network->GetQueue()).size())
-    {
-      std::cout << str << "$" << std::endl;
-      
-      /*
+  this->runQueue();
+  /*
       if (!_network->SendMsg("name1"))
 	{
 	  _network->ReceiveStop();
 	  return (1);
 	}
-      */
     }
-  //
+  */
   if (_running)
     {
       if (in == K_SPACE)
@@ -118,11 +137,46 @@ void Zappy::begin(Core* core)
   //_network->SendMsg("msz");
 }
 
-void Zappy::recv_msz(int width, int height)
+void Zappy::run_msz(int ac, std::vector<std::string> av)
 {
-    _map = new Map(_core, width, height);
-    _entity_manager = new EntityManager(_core, _map);
-    _cam = _entity_manager->addEntityMap<Camera>(_map->getWidth() / 2, _map->getHeight() / 2);
-    this->spawnResources();
-    _running = true;
+  int width = 0;
+  int height = 0;
+
+  if (ac != 3)
+    return ;
+  if (_running == false)
+    {
+      width = std::stoi("0" + av.at(1));
+      height = std::stoi("0" + av.at(2));
+      if (width < 0)
+	width = 3;
+      if (height < 0)
+	height = 3;
+      _map = new Map(_core, width, height);
+      _entity_manager = new EntityManager(_core, _map);
+      _cam = _entity_manager->addEntityMap<Camera>(_map->getWidth() / 2, _map->getHeight() / 2);
+      this->spawnResources();
+      _running = true;
+    }
+}
+
+void Zappy::run_bct(int ac, std::vector<std::string> av)
+{
+  int values[R_SIZE];
+  int x;
+  int y;
+
+  if (ac != 10)
+    return ;
+  x = std::stoi("0" + av.at(1));
+  y = std::stoi("0" + av.at(2));
+  for (int i = 0; i < R_SIZE; i += 1)
+    {
+      values[i] = std::stoi("0" + av.at(i + 3));
+    }
+  Resources* res = this->getResourcesAt(Map::getAbs(x, y));
+  if (res != nullptr)
+    {
+      res->setValues(values);
+    }
 }
