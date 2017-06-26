@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 **
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Tue Jun 20 22:25:49 2017 Paskal Arzel
+** Last update Fri Jun 23 14:47:28 2017 Paskal Arzel
 */
 
 #include <string.h>
@@ -15,6 +15,16 @@
 #include "parse.h"
 
 t_core	*g_core = NULL;
+t_elem	g_elem[] = {
+  {1, "linemate"},
+  {2, "deraumere"},
+  {3, "sibur"},
+  {4, "mendiane"},
+  {5, "phiras"},
+  {6, "thystame"},
+  {7, "food"},
+  {-1, NULL}
+};
 
 static void	init(t_core *core)
 {

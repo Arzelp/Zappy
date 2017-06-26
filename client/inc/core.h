@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Wed Jun 21 11:16:04 2017 Frederic Oddou
+** Last update Mon Jun 26 14:55:58 2017 Paskal Arzel
 */
 
 #pragma once
@@ -55,7 +55,14 @@ typedef struct
 
 typedef struct
 {
+  int		id;
+  char	*name;
+}t_elem;
+
+typedef struct
+{
   char			view[(DELT_MAX_LVL * DELT_MAX_LVL) + 1][BUFFER_SIZE];
+  char			rush[MAX_RUSH];
   int			client_num;
   int			inventory[OBJ_NB];
   int			level;
@@ -134,5 +141,9 @@ bool		ia_main(void);
 bool		check_mom(void);
 bool		init_new_player(void);
 bool		look(void);
+bool		set_rush(void);
+int			select_primary(void);
+int			**set_minimap(void);
 
 extern t_core		*g_core;
+extern t_elem		g_elem[];

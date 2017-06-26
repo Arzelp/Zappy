@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 13:47:22 2017 Frederic Oddou
-** Last update Wed Jun 21 11:19:01 2017 Frederic Oddou
+** Last update Mon Jun 26 14:49:24 2017 Paskal Arzel
 */
 
 #include <string.h>
@@ -24,7 +24,6 @@ static void	confirm_new_player()
 	      "is %d.\n", g_core->map_size[POS_X], g_core->map_size[POS_Y],
 	      g_core->player.client_num);
     }
-
 }
 
 bool		get_player(void)

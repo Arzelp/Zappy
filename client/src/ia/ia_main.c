@@ -5,11 +5,25 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Mon Jun 19 20:13:12 2017 Paskal Arzel
-** Last update Wed Jun 21 11:21:08 2017 Frederic Oddou
+** Last update Mon Jun 26 15:01:34 2017 Paskal Arzel
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "core.h"
+
+static void randomize()
+{
+  bool (*func[6])(const char *);
+
+  func[0] = &player_inventory;
+  func[1] = &player_left;
+  func[2] = &player_right;
+  func[3] = &player_forward;
+  func[4] = &player_look;
+  func[5] = NULL;
+  func[rand() % 5](NULL);
+}
 
 bool		ia_main(void)
 {
@@ -17,8 +31,9 @@ bool		ia_main(void)
   g_core->player.cd_fertility = START_FERT;
   while (g_core->player.is_alive)
     {
-      if (!check_mom())
-	look();
+      /*if (!check_mom())
+	look();*/
+      randomize();
     }
   return (true);
 }
