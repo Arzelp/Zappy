@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Mon Jun 26 16:20:01 2017 arnaud.alies
+// Last update Mon Jun 26 18:23:11 2017 arnaud.alies
 //
 
 #include <map>
@@ -31,7 +31,6 @@ Zappy::Zappy() :
 void Zappy::begin(Core* core)
 {
   _core = core;
-
   try
     {
       _network = new Network("localhost", 4242);
@@ -60,14 +59,6 @@ State *Zappy::update()
   if (in == K_ESCAPE || _network == nullptr)
     return (new MainMenu());
   this->runQueue();
-  /*
-      if (!_network->SendMsg("name1"))
-	{
-	  _network->ReceiveStop();
-	  return (1);
-	}
-    }
-  */
   if (_running)
     {
       if (in == K_SPACE)
@@ -142,6 +133,7 @@ void Zappy::runQueue()
     DEF_CMD(msz),
     DEF_CMD(pnw),
     DEF_CMD(ppo),
+    DEF_CMD(pdi),
     DEF_CMD(bct)
   };
 

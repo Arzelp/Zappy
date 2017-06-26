@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 14:56:43 2017 arnaud.alies
-// Last update Mon Jun 26 11:25:08 2017 arnaud.alies
+// Last update Mon Jun 26 17:14:48 2017 arnaud.alies
 //
 
 #ifndef PLAYER_HPP_
@@ -21,8 +21,10 @@ class Player : public AEntity
 {
 protected:
   Mesh* _mesh;
+  irr::scene::IBillboardTextSceneNode *_billboard;
   irr::core::vector3df _target;
   irr::core::vector3df _offset;
+  irr::core::vector3df _billboard_offset;
   bool _alive;
 public:
   int id;

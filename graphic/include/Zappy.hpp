@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Mon Jun 26 15:50:54 2017 arnaud.alies
+// Last update Mon Jun 26 18:23:24 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -52,6 +52,7 @@ public:
   void cmd_bct(int ac, std::vector<std::string> av);
   void cmd_pnw(int ac, std::vector<std::string> av);
   void cmd_ppo(int ac, std::vector<std::string> av);
+  void cmd_pdi(int ac, std::vector<std::string> av);
 };
 
 typedef void(Zappy::*t_command)(int ac, std::vector<std::string> av);
