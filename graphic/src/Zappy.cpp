@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Mon Jun 26 14:41:49 2017 arnaud.alies
+// Last update Mon Jun 26 15:59:09 2017 arnaud.alies
 //
 
 #include <map>
@@ -142,6 +142,7 @@ void Zappy::runQueue()
   std::map<std::string, t_command> command_map = {
     DEF_CMD(msz),
     DEF_CMD(pnw),
+    DEF_CMD(ppo),
     DEF_CMD(bct)
   };
 
@@ -162,6 +163,14 @@ void Zappy::runQueue()
     }
 }
 
+int Zappy::getInt(std::string str)
+{
+  if (str.size() <= 0)
+    return (0);
+  if (str[0] == '#')
+    str[0] = '0';
+  return (std::stoi("0" + str));
+}
 
 void Zappy::cmd_msz(int ac, std::vector<std::string> av)
 {
@@ -173,8 +182,8 @@ void Zappy::cmd_msz(int ac, std::vector<std::string> av)
     return ;
   if (_running == false)
     {
-      width = std::stoi("0" + av.at(1));
-      height = std::stoi("0" + av.at(2));
+      width = Zappy::getInt(av.at(1));
+      height = Zappy::getInt(av.at(2));
       if (width < 0)
 	width = 3;
       if (height < 0)
@@ -199,11 +208,11 @@ void Zappy::cmd_bct(int ac, std::vector<std::string> av)
 
   if (ac != 10 || _running == false)
     return ;
-  x = std::stoi("0" + av.at(1));
-  y = std::stoi("0" + av.at(2));
+  x = Zappy::getInt(av.at(1));
+  y = Zappy::getInt(av.at(2));
   for (int i = 0; i < R_SIZE; i += 1)
     {
-      values[i] = std::stoi("0" + av.at(i + 3));
+      values[i] = Zappy::getInt(av.at(i + 3));
     }
   Resources* res = this->getResourcesAt(Map::getAbs(x, y));
   if (res != nullptr)
@@ -220,11 +229,11 @@ void Zappy::cmd_pnw(int ac, std::vector<std::string> av)
 
   if (ac != 7 || _running == false)
     return ;
-  id = std::stoi("0" + av.at(1));
-  x = std::stoi("0" + av.at(2));
-  y = std::stoi("0" + av.at(3));
-  orientation = std::stoi("0" + av.at(4));
-  level = std::stoi("0" + av.at(5));
+  id = Zappy::getInt(av.at(1));
+  x = Zappy::getInt(av.at(2));
+  y = Zappy::getInt(av.at(3));
+  orientation = Zappy::getInt(av.at(4));
+  level = Zappy::getInt(av.at(5));
   team = av.at(6);
   if (this->getPlayerById(id) != nullptr)
     {
@@ -244,10 +253,10 @@ void Zappy::cmd_ppo(int ac, std::vector<std::string> av)
 
   if (ac != 5 || _running == false)
     return ;
-  id = std::stoi("0" + av.at(1));
-  x = std::stoi("0" + av.at(2));
-  y = std::stoi("0" + av.at(3));
-  orientation = std::stoi("0" + av.at(4));
+  id = Zappy::getInt(av.at(1));
+  x = Zappy::getInt(av.at(2));
+  y = Zappy::getInt(av.at(3));
+  orientation = Zappy::getInt(av.at(4));
   if ((player = this->getPlayerById(id)) == nullptr)
     return ;
   if (orientation == 1)

@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Mon Jun 26 10:49:13 2017 arnaud.alies
+// Last update Mon Jun 26 15:50:54 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -46,6 +46,7 @@ public:
   Resources* getResourcesAt(irr::core::vector3df pos);
   Player* getPlayerById(int id);
   //
+  static int getInt(std::string);
   void runQueue();
   void cmd_msz(int ac, std::vector<std::string> av);
   void cmd_bct(int ac, std::vector<std::string> av);
