@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 20 22:11:11 2017 Paskal Arzel
-** Last update Wed Jun 21 16:00:15 2017 Paskal Arzel
+** Last update Mon Jun 26 14:47:13 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
@@ -58,12 +58,8 @@ bool	look(void)
   if (!player_look(NULL))
     return (false);
   if (can_teamplay())
-    {
-      printf("I'll try a strat\n");
-    }
+    return (true);
   if (is_interesting())
-    {
-      return (true);
-    }
+      set_rush();
   return (true);
 }
