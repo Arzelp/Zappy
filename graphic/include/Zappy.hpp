@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Sun Jun 25 20:02:08 2017 arnaud.alies
+// Last update Mon Jun 26 10:49:13 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -22,6 +22,7 @@
 #include "Camera.hpp"
 #include "Resources.hpp"
 #include "Network.hpp"
+#include "Player.hpp"
 
 #define DEF_CMD(cmd) {#cmd, &Zappy::cmd_##cmd}
 
@@ -43,11 +44,13 @@ public:
   void begin(Core*);
   void spawnResources();
   Resources* getResourcesAt(irr::core::vector3df pos);
+  Player* getPlayerById(int id);
   //
   void runQueue();
   void cmd_msz(int ac, std::vector<std::string> av);
   void cmd_bct(int ac, std::vector<std::string> av);
   void cmd_pnw(int ac, std::vector<std::string> av);
+  void cmd_ppo(int ac, std::vector<std::string> av);
 };
 
 typedef void(Zappy::*t_command)(int ac, std::vector<std::string> av);

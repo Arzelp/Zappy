@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Sun Jun 25 20:25:29 2017 arnaud.alies
+// Last update Mon Jun 26 11:03:52 2017 arnaud.alies
 //
 
 #include <map>
@@ -15,7 +15,6 @@
 #include "MainMenu.hpp"
 #include "Zappy.hpp"
 #include "Box.hpp"
-#include "Player.hpp"
 #include "Random.hpp"
 
 Zappy::Zappy() :
@@ -33,6 +32,20 @@ Zappy::~Zappy()
   delete _network;
   delete _entity_manager;
   delete _map;
+}
+
+Player* Zappy::getPlayerById(int id)
+{
+  Player* player;
+  std::vector<AEntity*> ents = _entity_manager->getAll("player");
+
+  for (auto ent : ents)
+    {
+      player = static_cast<Player*>(ent);
+      if (player->id == id)
+	return (player);
+    }
+  return (nullptr);
 }
 
 Resources* Zappy::getResourcesAt(irr::core::vector3df pos)
@@ -199,20 +212,29 @@ void Zappy::cmd_pnw(int ac, std::vector<std::string> av)
   orientation = std::stoi("0" + av.at(4));
   level = std::stoi("0" + av.at(5));
   team = av.at(6);
-
-  std::vector<AEntity*> ents = _entity_manager->getAll("player");
-  for (auto ent : ents)
+  if (this->getPlayerById(id) != nullptr)
     {
-      player = static_cast<Player*>(ent);
-      if (player->id == id)
-	{
-	  std::cerr << "Player already exists" << std::endl;
-	  return ;
-	}
+      std::cerr << "Player already exists" << std::endl;
+      return ;
     }
-  
   player = _entity_manager->addEntityMap<Player>(x, y);
   player->id = id;
   player->team = team;
   player->level = level;
+}
+
+void Zappy::cmd_ppo(int ac, std::vector<std::string> av)
+{
+  Player* player;
+  int id, x, y, orientation, level;
+
+  if (ac != 5)
+    return ;
+  id = std::stoi("0" + av.at(1));
+  x = std::stoi("0" + av.at(2));
+  y = std::stoi("0" + av.at(3));
+  orientation = std::stoi("0" + av.at(4));
+  if ((player = this->getPlayerById(id)) == nullptr)
+    return ;
+  player->setPos(Map::getAbs(x, y));
 }

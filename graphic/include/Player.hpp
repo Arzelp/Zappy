@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 14:56:43 2017 arnaud.alies
-// Last update Sun Jun 25 20:19:05 2017 arnaud.alies
+// Last update Mon Jun 26 11:03:28 2017 arnaud.alies
 //
 
 #ifndef PLAYER_HPP_
@@ -38,6 +38,7 @@ public:
   std::string getType() const;
   void kill();
   bool isAlive() const;
+  //void walkTo(int, int);
 };
 
 #endif
