@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun 15 13:51:31 2017 Arthur Josso
-** Last update Thu Jun 22 14:10:42 2017 Arthur Josso
+** Last update Mon Jun 26 16:08:50 2017 Arthur Josso
 */
 
 #include <unistd.h>
@@ -36,7 +36,7 @@ static char	**get_team_start()
   int		i;
 
   i = 0;
-  while (g_av[i] != optarg)
+  while (g_av[i] && g_av[i] != optarg)
     i++;
   return (g_av + i);
 }
@@ -72,15 +72,15 @@ bool    parse_n_opt(t_parse_action action)
     g_game->team = NULL;
   else if (action == PARSE_FILL)
     {
-      start = get_team_start();
+      if ((start = get_team_start()) == NULL)
+	return (false);
       nbr_team = get_nbr_team(start);
       g_game->team = cleaner_malloc((nbr_team + 1) * sizeof(t_team*));
-      i = 0;
-      while (i < nbr_team)
+      i = -1;
+      while (++i < nbr_team)
 	{
 	  g_game->team[i] = cleaner_malloc(sizeof(t_team));
 	  g_game->team[i]->name = start[i];
-	  i++;
 	}
     }
   else if (action == PARSE_CHECK)
