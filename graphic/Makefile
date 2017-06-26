@@ -12,6 +12,7 @@ Sources =	$(SRC)main.cpp \
 		$(SRC)MainMenu.cpp \
 		$(SRC)SettingsMenu.cpp \
 		$(SRC)Zappy.cpp \
+		$(SRC)ZappyCmd.cpp \
 		$(SRC)Mesh.cpp \
 		$(SRC)Map.cpp \
 		$(SRC)AEntity.cpp \
