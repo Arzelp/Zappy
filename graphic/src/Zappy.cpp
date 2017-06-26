@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Mon Jun 26 11:03:52 2017 arnaud.alies
+// Last update Mon Jun 26 11:30:22 2017 arnaud.alies
 //
 
 #include <map>
@@ -22,8 +22,26 @@ Zappy::Zappy() :
   _entity_manager(nullptr),
   _map(nullptr),
   _img(nullptr),
+  _network(nullptr),
   _running(false)
 {
+}
+
+void Zappy::begin(Core* core)
+{
+  _core = core;
+
+  try
+    {
+      _network = new Network("localhost", 4242);
+      _network->ReceiveStart();
+      _network->SendMsg("GRAPHIC");
+      //_network->SendMsg("mct");
+    }
+  catch (std::runtime_error& ex)
+    {
+      _network = nullptr;
+    }
 }
 
 Zappy::~Zappy()
@@ -32,6 +50,59 @@ Zappy::~Zappy()
   delete _network;
   delete _entity_manager;
   delete _map;
+}
+
+
+State *Zappy::update()
+{
+  E_INPUT in = _core->receiver->lastKey();
+
+  if (in == K_ESCAPE || _network == nullptr)
+    return (new MainMenu());
+  this->runQueue();
+  /*
+      if (!_network->SendMsg("name1"))
+	{
+	  _network->ReceiveStop();
+	  return (1);
+	}
+    }
+  */
+  if (_running)
+    {
+      if (in == K_SPACE)
+	{
+	  irr::scene::ISceneNode* node = _core->getNodeFromMouse();
+	  if (node != nullptr)
+	    {
+	      _cam->setPosSlow(node->getPosition());
+	      Resources* res = this->getResourcesAt(node->getPosition());
+	      if (res != nullptr)
+		{
+		  int values[] = {1, 2, 3, 4, 5, 6, 7};
+		  res->setValues(values);
+		}
+	      /*
+		irr::core::position2d<irr::s32> pos2d = _core->getViewPos(node->getPosition());
+		delete _img;
+		_img = new Image(_core,
+		_core->video->getTexture((char*)"./res/one.png"),
+		pos2d);
+	      */
+	    }
+	}
+        // Camera moves
+      if (_core->receiver->keyState(K_UP))
+	_cam->move(irr::core::vector3df(-1, 0, 0));
+      if (_core->receiver->keyState(K_DOWN))
+	_cam->move(irr::core::vector3df(1, 0, 0));
+      if (_core->receiver->keyState(K_LEFT))
+	_cam->move(irr::core::vector3df(0, 0, -1));
+      if (_core->receiver->keyState(K_RIGHT))
+	_cam->move(irr::core::vector3df(0, 0, 1));
+      _entity_manager->update();
+    }
+  return (nullptr);
 }
 
 Player* Zappy::getPlayerById(int id)
@@ -90,67 +161,6 @@ void Zappy::runQueue()
     }
 }
 
-State *Zappy::update()
-{
-  E_INPUT in = _core->receiver->lastKey();
-
-  if (in == K_ESCAPE)
-    return (new MainMenu());
-  this->runQueue();
-  /*
-      if (!_network->SendMsg("name1"))
-	{
-	  _network->ReceiveStop();
-	  return (1);
-	}
-    }
-  */
-  if (_running)
-    {
-      if (in == K_SPACE)
-	{
-	  irr::scene::ISceneNode* node = _core->getNodeFromMouse();
-	  if (node != nullptr)
-	    {
-	      _cam->setPosSlow(node->getPosition());
-	      Resources* res = this->getResourcesAt(node->getPosition());
-	      if (res != nullptr)
-		{
-		  int values[] = {1, 2, 3, 4, 5, 6, 7};
-		  res->setValues(values);
-		}
-	      /*
-		irr::core::position2d<irr::s32> pos2d = _core->getViewPos(node->getPosition());
-		delete _img;
-		_img = new Image(_core,
-		_core->video->getTexture((char*)"./res/one.png"),
-		pos2d);
-	      */
-	    }
-	}
-        // Camera moves
-      if (_core->receiver->keyState(K_UP))
-	_cam->move(irr::core::vector3df(-1, 0, 0));
-      if (_core->receiver->keyState(K_DOWN))
-	_cam->move(irr::core::vector3df(1, 0, 0));
-      if (_core->receiver->keyState(K_LEFT))
-	_cam->move(irr::core::vector3df(0, 0, -1));
-      if (_core->receiver->keyState(K_RIGHT))
-	_cam->move(irr::core::vector3df(0, 0, 1));
-      _entity_manager->update();
-    }
-  return (nullptr);
-}
-
-void Zappy::begin(Core* core)
-{
-  _core = core;
-  
-  _network = new Network("localhost", 4242);
-  _network->ReceiveStart();
-  _network->SendMsg("GRAPHIC");
-  //_network->SendMsg("mct");
-}
 
 void Zappy::cmd_msz(int ac, std::vector<std::string> av)
 {
@@ -236,5 +246,5 @@ void Zappy::cmd_ppo(int ac, std::vector<std::string> av)
   orientation = std::stoi("0" + av.at(4));
   if ((player = this->getPlayerById(id)) == nullptr)
     return ;
-  player->setPos(Map::getAbs(x, y));
+  player->moveTo(x, y);
 }

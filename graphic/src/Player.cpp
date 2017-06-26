@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 15:13:35 2017 arnaud.alies
-// Last update Sun Jun 25 14:55:20 2017 arnaud.alies
+// Last update Mon Jun 26 11:25:00 2017 arnaud.alies
 //
 
 #include "Player.hpp"
@@ -39,7 +39,10 @@ void Player::update()
 {
   if (_alive == false)
     return ;
+  irr::core::vector3df pos = this->getPos();
+  irr::core::vector3df diff = _target - pos;
 
+  this->setPos((diff / PLAYER_SPEED) + pos);
   /* actions */
   /*
   if (_state == S_RUN_UP)
@@ -67,6 +70,11 @@ void Player::update()
   //_mesh->node->setMD2Animation(irr::scene::EMAT_RUN);
   //_mesh->node->setMD2Animation(irr::scene::EMAT_PAIN_A);
   //_mesh->node->setMD2Animation(irr::scene::EMAT_STAND);
+}
+
+void Player::moveTo(int x, int y)
+{
+  _target = Map::getAbs(x, y);
 }
 
 void Player::setPos(irr::core::vector3df target)
