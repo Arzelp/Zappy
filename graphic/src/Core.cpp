@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 12:36:35 2017 arnaud.alies
-// Last update Fri Jun 23 15:07:46 2017 arnaud.alies
+// Last update Mon Jun 26 17:04:05 2017 arnaud.alies
 //
 
 #include <chrono>
@@ -33,7 +33,7 @@ Core::Core()
   gui = device->getGUIEnvironment();
   //gui font
   irr::gui::IGUISkin* skin = gui->getSkin();
-  irr::gui::IGUIFont* font = gui->getFont("./res/font.bmp");
+  font = gui->getFont("./res/font.bmp");
   if (font)
     skin->setFont(font);
   else
