@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 15:13:35 2017 arnaud.alies
-// Last update Mon Jun 26 17:17:04 2017 arnaud.alies
+// Last update Mon Jun 26 18:11:22 2017 arnaud.alies
 //
 
 #include "Player.hpp"
@@ -28,9 +28,9 @@ void Player::init(Core* core, Map *map, EntityManager* entity_manager)
                    "./res/bomberman/Bomber.PCX");
   _mesh->node->setMD2Animation(irr::scene::EMAT_STAND);
   _billboard = _core->scene->addBillboardTextSceneNode(_core->font,
-						       irr::core::stringw("test").c_str(),
+						       irr::core::stringw("").c_str(),
 						       0,
-						       irr::core::dimension2d<irr::f32>(50.0f, 50.0f));
+						       irr::core::dimension2d<irr::f32>(100.0f, 50.0f));
 }
 
 Player::~Player()
@@ -54,6 +54,7 @@ void Player::update()
 
   this->setPos((diff / PLAYER_SPEED) + pos);
   _billboard->setPosition(this->getPos() + _billboard_offset);
+  _billboard->setText(irr::core::stringw(team.c_str()).c_str());
   /* actions */
   /*
   if (_state == S_RUN_UP)
