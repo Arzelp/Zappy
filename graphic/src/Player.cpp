@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 15:13:35 2017 arnaud.alies
-// Last update Mon Jun 26 18:11:22 2017 arnaud.alies
+// Last update Mon Jun 26 18:24:30 2017 arnaud.alies
 //
 
 #include "Player.hpp"
@@ -36,6 +36,7 @@ void Player::init(Core* core, Map *map, EntityManager* entity_manager)
 Player::~Player()
 {
   delete _mesh;
+  //delete billboard
 }
 
 void Player::kill()

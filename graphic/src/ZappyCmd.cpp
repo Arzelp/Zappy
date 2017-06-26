@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Mon Jun 26 16:01:18 2017 arnaud.alies
-// Last update Mon Jun 26 16:12:54 2017 arnaud.alies
+// Last update Mon Jun 26 18:22:44 2017 arnaud.alies
 //
 
 #include "Zappy.hpp"
@@ -109,3 +109,17 @@ void Zappy::cmd_ppo(int ac, std::vector<std::string> av)
     player->setRotation(irr::core::vector3df(0, -90, 0));
   player->moveTo(x, y);
 }
+
+void Zappy::cmd_pdi(int ac, std::vector<std::string> av)
+{
+  Player* player;
+  int id;
+  
+  if (ac != 2 || _running == false)
+    return ;
+  id = Zappy::getInt(av.at(1));
+  if ((player = this->getPlayerById(id)) == nullptr)
+    return ;
+  player->kill();
+}
+
