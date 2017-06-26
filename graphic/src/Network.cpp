@@ -5,7 +5,7 @@
 // Login   <frederic.oddou@epitech.eu>
 //
 // Started on  Tue Jun 20 09:05:24 2017 Frederic Oddou
-// Last update Sun Jun 25 11:33:32 2017 arnaud.alies
+// Last update Mon Jun 26 14:46:06 2017 Frederic Oddou
 //
 
 #include <netdb.h>
@@ -24,6 +24,7 @@ Network::Network(const std::string &host, int port)
   std::cout << "[Network] Opening Network connection." << std::endl;
   this->_host = host;
   this->_port = port;
+  this->_endThread = true;
 
   if (!this->GetIp() || !this->InitTcpSocket())
     throw std::runtime_error("[Network] Can't get ip and open socket.");
@@ -36,6 +37,7 @@ Network::~Network()
 {
   if (this->_socketFd)
     {
+      this->ReceiveStop();
       close(this->_socketFd);
       std::cout << "[Network] Closing connection from " << this->_host << ":" << this->_port << std::endl;
     }
@@ -88,6 +90,8 @@ bool				Network::SendMsg(std::string str)
   char				buffer[4096];
   int				size;
 
+  if (this->_socketFd <= 0)
+    return (false);
   if ((size = snprintf(buffer, 4096, "%s\n", str.c_str())) <= 0)
     return (false);
   if (send(this->_socketFd, buffer, size, MSG_NOSIGNAL) == -1)
@@ -104,6 +108,7 @@ void		Network::ReceiveMsg()
   char		c;
   ssize_t	size;
 
+  std::cout << "[Network] Starting to receive." << std::endl;
   while (!this->_endThread)
     {
       while ((size = recv(this->_socketFd, &c, 1, 0)) > 0 && c != '\n')
@@ -123,34 +128,16 @@ void		Network::ReceiveMsg()
 	  res = "";
 	}
     }
-  /*
-  char				str[4096];
-  ssize_t			size;
-
-  while (!this->_endThread)
-    {
-      std::memset(str, '\0', 4096);
-      if ((size = recv(this->_socketFd, str, 4096, 0)) == -1)
-	{
-	  std::cerr << "[Network] recv failed." << std::endl;
-	  this->_endThread = true;
-	}
-      else if (size > 0 && str[size - 1] == '\n')
-	{
-	  str[size - 1] = '\0';
-	  this->_mutex.lock();
-	  std::cout << "Push" << std::endl;
-	  this->_queue.push(std::string(str));
-	  this->_mutex.unlock();
-	}
-    }
-  */
+  std::cout << "[Network] End of receive." << std::endl;
 }
 
 void				Network::ReceiveStop()
 {
-  _endThread = true;
-  _thread.join();
+  if (!_endThread)
+    {
+      _endThread = true;
+      _thread.join();
+    }
 }
 
 void				Network::ReceiveStart()
@@ -180,19 +167,21 @@ std::string			Network::GetQueue(void)
 int		main()
 {
   std::string	str;
-  Network	nw("localhost", 10);
+  Network	*nw;
 
-  nw.ReceiveStart();
+  nw = new Network("localhost", 10);
+  nw->ReceiveStart();
   while (4)
     {
-      if ((str = nw.GetQueue()).size())
+      if ((str = nw->GetQueue()).size())
 	{
 	  std::cout << str << std::endl;
-	  if (!nw.SendMsg("name1"))
+	  if (str == "dead")
 	    {
-	      nw.ReceiveStop();
+              delete nw;
 	      return (1);
 	    }
+	  nw->SendMsg("name1");
 	  sleep(1);
 	}
     }
