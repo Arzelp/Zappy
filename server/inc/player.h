@@ -5,13 +5,16 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 18:03:11 2017 Arthur Josso
-** Last update Tue Jun 20 17:33:28 2017 Arthur Josso
+** Last update Fri Jun 23 18:19:16 2017 Arthur Josso
 */
 
 #pragma once
 
 #include "types.h"
 #include "task.h"
+
+#define STARVE_DURATION	(126)
+#define PLAYER_DEAD	((uint64_t)-1)
 
 typedef struct s_team t_team;
 typedef struct s_player t_player;
@@ -23,6 +26,7 @@ struct s_player
   uint8_t	lvl;
   t_pos		pos;
   uint16_t	inventory[RES_NBR];
+  t_time	starve_time;
   t_team	*team;
   t_task	*tasks;
 };
@@ -32,6 +36,9 @@ bool	client_player_init(t_team *team);
 bool	client_player_welcome(t_player *player);
 bool	client_player_run(t_player *player);
 bool	client_player_fini(t_player *player);
+
+bool	player_consume_food(t_player *player);
+bool	player_is_dead(t_player *player);
 
 /*
 ** Commands
@@ -48,3 +55,4 @@ bool	cmd_player_Take(t_player *player, const char *arg);
 bool	cmd_player_Set(t_player *player, const char *arg);
 bool	cmd_player_Incantation(t_player *player, const char *arg);
 bool	cmd_player_Broadcast(t_player *player, const char *arg);
+bool	cmd_player_Fork(t_player *player, const char *arg);

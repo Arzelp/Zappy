@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:40:33 2017 Arthur Josso
-** Last update Mon Jun 19 16:38:41 2017 Arthur Josso
+** Last update Fri Jun 23 17:46:50 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -16,7 +16,7 @@ static t_player	*init_player_data(t_team *team)
   t_player	*player;
 
   player = cleaner_malloc(sizeof(t_player));
-  player->id = g_player_id++;
+  player->id = g_server->player_id++;
   player->team = team;
   player->pos.x = rand() % g_game->map_size.x;
   player->pos.y = rand() % g_game->map_size.y;
@@ -24,6 +24,7 @@ static t_player	*init_player_data(t_team *team)
   player->lvl = 1;
   player->tasks = NULL;
   player->inventory[RES_FOOD] = 10;
+  player_consume_food(player);
   return (player);
 }
 
@@ -32,13 +33,14 @@ bool		client_player_init(t_team *team)
   t_player	*player;
   int		i;
 
-  if (team->nbr_players == team->max_players)
+  if (team->nbr_players >= team->max_players)
     {
       send_cmd(CMD_PLAYER_KO);
       g_client->callback = &client_entity_fini;
       return (true);
     }
   player = init_player_data(team);
+  egg_can_use_one(player);
   i = 0;
   while (team->players[i])
     i++;
@@ -53,8 +55,12 @@ bool		client_player_init(t_team *team)
 
 bool	client_player_welcome(t_player *player)
 {
-  send_cmd(CMD_PLAYER_NBR_FREE_SLOT,
-	   player->team->max_players - player->team->nbr_players);
+  int	nbr_slot;
+
+  nbr_slot = player->team->max_players - player->team->nbr_players;
+  if (nbr_slot < 0)
+    nbr_slot = 0;
+  send_cmd(CMD_PLAYER_NBR_FREE_SLOT, nbr_slot);
   send_cmd(CMD_PLAYER_MAP_SIZE, g_game->map_size.x, g_game->map_size.y);
   send_graphics_cmd(CMD_GRAPHIC_NEW_PLAYER, player->id, player->pos.x,
 		    player->pos.y, player->dir, player->lvl, player->team->name);
@@ -66,8 +72,7 @@ bool		client_player_fini(t_player *player)
 {
   uint32_t	i;
 
-  //send_cmd(CMD_PLAYER_DEAD);
-  task_rm_all(player->tasks);
+  task_rm_all(&player->tasks);
   i = 0;
   while (i < player->team->nbr_players &&
 	 player->team->players[i] != player)

@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 23 13:46:12 2017 arnaud.alies
-// Last update Wed Jun 21 13:08:36 2017 arnaud.alies
+// Last update Fri Jun 23 15:44:36 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -66,7 +66,8 @@ Mesh* Map::newFloor(int x, int y)
   Mesh *buff = new Mesh(_core,
 			"./res/floor/Sci-Fi-Floor-1-OBJ.obj",
 			irr::core::vector3df(52,52,52),
-			"./res/floor/floor.png");
+			"./res/floor/floor2.png",
+			true);
   buff->node->setPosition(Map::getAbs(x, y));
   return (buff);
 }
@@ -140,33 +141,4 @@ void Map::print() const
       }
       std::cout << std::endl;
     }
-}
-
-irr::core::vector3df Map::getValidPos(irr::core::vector3df pos, irr::core::vector3df dir) const
-{
-  irr::core::vector3df res;
-  int int_dir;
-  
-  res.Y = pos.Y;
-  if (dir.X != 0)
-    {
-      int_dir = (dir.X > 0 ? 1 : -1);
-      res.Z = Map::getAbs(0, Map::getY(pos)).Z;
-      if (this->get(Map::getX(pos + irr::core::vector3df(int_dir * (UNIT / 2), 0, 0)),
-		    Map::getY(pos))
-	  != M_EMPTY)
-	return (pos);
-      res.X = pos.X + dir.X;
-    }
-  else if (dir.Z != 0)
-    {
-      int_dir = (dir.Z > 0 ? 1 : -1);
-      res.X = Map::getAbs(Map::getX(pos), 0).X;
-      if (this->get(Map::getX(pos),
-		    Map::getY(pos + irr::core::vector3df(0, 0, int_dir * (UNIT / 2))))
-	  != M_EMPTY)
-	return (pos);
-      res.Z = pos.Z + dir.Z;
-    }
-  return (res);
 }

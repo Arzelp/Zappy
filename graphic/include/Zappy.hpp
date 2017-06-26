@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Wed Jun 21 14:41:23 2017 arnaud.alies
+// Last update Mon Jun 26 10:49:13 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -20,19 +20,39 @@
 #include "AEntity.hpp"
 #include "Image.hpp"
 #include "Camera.hpp"
+#include "Resources.hpp"
+#include "Network.hpp"
+#include "Player.hpp"
+
+#define DEF_CMD(cmd) {#cmd, &Zappy::cmd_##cmd}
 
 class Zappy : public State
 {
 protected:
+  bool _running;
+  Network* _network;
   Camera* _cam;
   Core* _core;
   EntityManager* _entity_manager;
   Map* _map;
+  //
+  Image* _img;
 public:
   Zappy();
   virtual ~Zappy();
   State* update();
   void begin(Core*);
+  void spawnResources();
+  Resources* getResourcesAt(irr::core::vector3df pos);
+  Player* getPlayerById(int id);
+  //
+  void runQueue();
+  void cmd_msz(int ac, std::vector<std::string> av);
+  void cmd_bct(int ac, std::vector<std::string> av);
+  void cmd_pnw(int ac, std::vector<std::string> av);
+  void cmd_ppo(int ac, std::vector<std::string> av);
 };
+
+typedef void(Zappy::*t_command)(int ac, std::vector<std::string> av);
 
 #endif

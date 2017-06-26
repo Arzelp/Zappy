@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:23:40 2017 Arthur Josso
-** Last update Tue Jun 20 17:33:07 2017 Arthur Josso
+** Last update Fri Jun 23 20:49:10 2017 Arthur Josso
 */
 
 #pragma once
@@ -14,9 +14,9 @@
 #include <stdint.h>
 #include <stddef.h>
 #include "types.h"
+#include "misc.h"
 
 typedef struct s_player t_player;
-typedef uint64_t t_time;
 typedef bool (*t_task_func)(t_player *player, char *arg);
 
 typedef enum
@@ -30,7 +30,8 @@ typedef enum
     TASK_TAKE,
     TASK_SET,
     TASK_INCANTATION,
-    TASK_BROADCAST
+    TASK_BROADCAST,
+    TASK_FORK
   } t_task_type;
 
 typedef struct s_task t_task;
@@ -49,8 +50,8 @@ struct s_task
 */
 
 void	task_add(t_task **tasks, t_task_type type, const char *arg);
-void	task_rm(t_task *task);
-void	task_rm_all(t_task *task);
+void	task_rm(t_task **tasks, t_task *task);
+void	task_rm_all(t_task **tasks);
 void	task_run(t_task **tasks);
 
 /*
@@ -59,6 +60,7 @@ void	task_run(t_task **tasks);
 
 t_time	task_get_current_time();
 void	get_relative_pos(t_player *player, t_pos *pos, t_move move);
+int	get_tile_num_from_dir(t_direction player_dir, t_direction direction);
 
 /*
 ** List
@@ -96,3 +98,4 @@ bool	task_take(t_player *player, char *arg);
 bool	task_set(t_player *player, char *arg);
 bool	task_incantation(t_player *player, char *arg);
 bool	task_broadcast(t_player *player, char *arg);
+bool	task_fork(t_player *player, char *arg);

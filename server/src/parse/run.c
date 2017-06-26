@@ -5,11 +5,12 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:32:34 2017 Arthur Josso
-** Last update Fri Jun 16 20:54:42 2017 Arthur Josso
+** Last update Wed Jun 21 14:11:17 2017 Arthur Josso
 */
 
 #include <unistd.h>
 #include <stdio.h>
+#include <string.h>
 #include "core.h"
 
 static t_parse_opt parse_opt[] =
@@ -74,6 +75,7 @@ static bool	check_opts(int ac, char **av)
 
 bool		parse_arg(int ac, char **av)
 {
+  memset(g_server, 0, sizeof(t_server));
   parse_team_set_av(av);
   if (!for_each_parse_func(PARSE_INIT, -1))
     return (false);

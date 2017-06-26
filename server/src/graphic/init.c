@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:40:33 2017 Arthur Josso
-** Last update Thu Jun 15 15:31:00 2017 Arthur Josso
+** Last update Thu Jun 22 23:38:05 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -28,6 +28,14 @@ static void	list_players()
     }
 }
 
+static bool	list_eggs(t_egg *egg)
+{
+  send_cmd(CMD_GRAPHIC_FORK_DROP,
+	   egg->id, egg->layer_id,
+	   egg->pos.x, egg->pos.y);
+  return (true);
+}
+
 bool	client_graphic_welcome(t_graphic *graphic)
 {
   (void)graphic;
@@ -36,7 +44,7 @@ bool	client_graphic_welcome(t_graphic *graphic)
   cmd_graphic_mct(graphic, "");
   cmd_graphic_tna(graphic, "");
   list_players();
-  // list eggs
+  egg_for_each(&list_eggs);
   g_client->callback = (t_entity_func)&client_graphic_run;
   return (true);
 }

@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Tue Jun 20 19:58:51 2017 Arthur Josso
+## Last update Fri Jun 23 20:48:45 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -37,6 +37,8 @@ SRC_GRAPHIC	=	$(SRC)graphic/
 
 SRC_TASK	=	$(SRC_PLAYER)task/
 
+SRC_EGG		=	$(SRC)egg/
+
 SRC_G_CMD	=	$(SRC_GRAPHIC)cmd/
 
 SRC_C_CMD	=	$(SRC_PLAYER)cmd/
@@ -54,6 +56,7 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_UTILS)string.c		\
 		$(SRC_UTILS)checker.c		\
 		$(SRC_UTILS)math.c		\
+		$(SRC_UTILS)time.c		\
 		$(SRC_CORE)run.c		\
 		$(SRC_CORE)fd_list.c		\
 		$(SRC_CORE)init.c		\
@@ -64,8 +67,11 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_CLIENT)cmd_io.c		\
 		$(SRC_CLIENT)entity_callback.c	\
 		$(SRC_CLIENT)entity_tool.c	\
+		$(SRC_CLIENT)tool.c		\
 		$(SRC_PLAYER)run.c		\
 		$(SRC_PLAYER)init.c		\
+		$(SRC_PLAYER)death.c		\
+		$(SRC_PLAYER)win.c		\
 		$(SRC_GRAPHIC)run.c		\
 		$(SRC_GRAPHIC)init.c		\
 		$(SRC_GRAPHIC)for_each.c	\
@@ -85,7 +91,6 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_C_CMD)task_adder_2.c	\
 		$(SRC_TASK)init.c		\
 		$(SRC_TASK)list.c		\
-		$(SRC_TASK)time.c		\
 		$(SRC_TASK)run.c		\
 		$(SRC_T_CMD)move.c		\
 		$(SRC_T_CMD)look.c		\
@@ -93,7 +98,10 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_T_CMD)eject.c		\
 		$(SRC_T_CMD)object.c		\
 		$(SRC_T_CMD)incantation.c	\
-		$(SRC_T_CMD)broadcast.c
+		$(SRC_T_CMD)broadcast.c		\
+		$(SRC_T_CMD)fork.c		\
+		$(SRC_EGG)init.c		\
+		$(SRC_EGG)run.c
 
 OBJS	=	$(SRCS:.c=.o)
 

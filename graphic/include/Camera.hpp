@@ -5,14 +5,18 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue Jun 20 13:57:05 2017 arnaud.alies
-// Last update Wed Jun 21 15:33:04 2017 arnaud.alies
+// Last update Thu Jun 22 09:58:26 2017 arnaud.alies
 //
 
 #ifndef CAMERA_HPP_
 #define CAMERA_HPP_
 
 #define CAMERA_OFFSET (1000)
-#define CAMERA_SPEED (200)
+
+//lower = faster
+#define CAMERA_SPEED (50)
+
+#define CAMERA_MOVE (15)
 
 #include "AEntity.hpp"
 
@@ -31,7 +35,8 @@ public:
   irr::core::vector3df getPos() const;
   void setPos(irr::core::vector3df target);
   //custom
-  void setPosFast(irr::core::vector3df target);
+  void setPosSlow(irr::core::vector3df target);
+  void move(irr::core::vector3df add);
 };
 
 #endif

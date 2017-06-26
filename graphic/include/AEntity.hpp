@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Fri May 26 10:41:20 2017 arnaud.alies
-// Last update Wed Jun 21 13:32:08 2017 arnaud.alies
+// Last update Thu Jun 22 16:13:04 2017 arnaud.alies
 //
 
 #ifndef AENTITY_HPP_
@@ -30,6 +30,7 @@ public:
   virtual void setPos(irr::core::vector3df target) = 0;
   virtual irr::core::vector3df getPos() const = 0;
   virtual void update() = 0;
+  virtual void setPosMap(int x, int y);
   virtual void getPosMap(int *x, int *y) const;
   virtual std::string getType() const;
   virtual void kill();

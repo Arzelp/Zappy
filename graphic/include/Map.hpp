@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 23 13:13:43 2017 arnaud.alies
-// Last update Wed May 31 13:58:01 2017 arnaud.alies
+// Last update Thu Jun 22 15:59:11 2017 arnaud.alies
 //
 
 #ifndef MAP_HPP_
@@ -20,8 +20,7 @@
 enum EMap
   {
     M_EMPTY = 0,
-    M_WALL,
-    M_OBS
+    M_WALL
   };
 
 class Map
@@ -48,7 +47,6 @@ public:
   int getHeight() const;
   EMap get(int x, int y) const;
   void set(int x, int y, EMap block);
-  irr::core::vector3df getValidPos(irr::core::vector3df pos, irr::core::vector3df dir) const;
   void print() const;
   void update();
 };

@@ -5,10 +5,11 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun 15 13:51:31 2017 Arthur Josso
-** Last update Thu Jun 15 16:22:45 2017 Arthur Josso
+** Last update Thu Jun 22 14:10:42 2017 Arthur Josso
 */
 
 #include <unistd.h>
+#include <string.h>
 #include "core.h"
 
 static char **g_av;
@@ -40,6 +41,27 @@ static char	**get_team_start()
   return (g_av + i);
 }
 
+static bool	name_collision()
+{
+  int		i;
+  int		j;
+
+  i = 0;
+  while (g_game->team[i])
+    {
+      j = 0;
+      while (g_game->team[j])
+	{
+	  if (i != j && strcmp(g_game->team[i]->name,
+			       g_game->team[j]->name) == 0)
+	    return (true);
+	  j++;
+	}
+      i++;
+    }
+  return (false);
+}
+
 bool    parse_n_opt(t_parse_action action)
 {
   char	**start;
@@ -63,7 +85,7 @@ bool    parse_n_opt(t_parse_action action)
     }
   else if (action == PARSE_CHECK)
     {
-      if (g_game->team == NULL || g_game->team[0] == NULL)
+      if (g_game->team == NULL || g_game->team[0] == NULL || name_collision())
         return (false);
     }
   return (true);

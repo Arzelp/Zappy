@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Apr 20 20:19:40 2017 Arthur Josso
-** Last update Tue Jun 20 20:04:58 2017 Arthur Josso
+** Last update Fri Jun 23 20:48:24 2017 Arthur Josso
 */
 
 #pragma once
@@ -48,3 +48,11 @@ bool	is_nbr(const char *s);
 #define GET_DIST(xa, ya, xb, yb)	(pow(xa - xb, 2) + pow(ya - yb, 2))
 
 int	umod(int a, int b);
+
+/*
+** Time
+*/
+
+typedef uint64_t t_time;
+
+t_time	get_current_time();

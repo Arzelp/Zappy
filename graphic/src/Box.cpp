@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Sun May 28 17:29:25 2017 arnaud.alies
-// Last update Mon Jun 19 18:03:12 2017 arnaud.alies
+// Last update Thu Jun 22 16:05:12 2017 arnaud.alies
 //
 
 #include "Random.hpp"
@@ -28,11 +28,13 @@ void Box::init(Core* core, Map *map, EntityManager* entity_manager)
 
 Box::~Box()
 {
+  /*
   int x, y;
 
   this->getPosMap(&x, &y);
   if (_map->get(x, y) == M_OBS)
     _map->set(x, y, M_EMPTY);
+  */
   delete _mesh;
 }
 
@@ -47,10 +49,12 @@ void Box::kill()
 void Box::update()
 {
   /* set map collision */
+  /*
   int x, y;
   this->getPosMap(&x, &y);
   if (_map->get(x, y) == M_EMPTY)
     _map->set(x, y, M_OBS);
+  */
 }
 
 void Box::setPos(irr::core::vector3df target)

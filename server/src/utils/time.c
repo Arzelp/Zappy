@@ -5,13 +5,13 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 20:20:58 2017 Arthur Josso
-** Last update Fri Jun 16 20:57:50 2017 Arthur Josso
+** Last update Fri Jun 23 20:48:03 2017 Arthur Josso
 */
 
 #include <time.h>
-#include "task.h"
+#include "misc.h"
 
-t_time			task_get_current_time()
+t_time			get_current_time()
 {
   struct timespec	spec;
   t_time		time;

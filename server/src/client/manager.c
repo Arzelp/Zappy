@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 16:27:14 2017 Arthur Josso
-** Last update Sun Jun 11 21:41:20 2017 Arthur Josso
+** Last update Fri Jun 23 20:37:14 2017 Arthur Josso
 */
 
 #include <stdio.h>
@@ -46,25 +46,6 @@ bool		client_rm(t_client *client)
   fprintf(stderr, "Leaving client on fd : %d\n", client->fd);
   cleaner_rm_addr(client);
   return (false);
-}
-
-void		client_for_each(t_client_callback callback)
-{
-  t_client	*client;
-  t_client	*tmp;
-  t_client	*save;
-
-  save = g_client;
-  client = g_server->clients;
-  while (client)
-    {
-      tmp = client->next;
-      g_client = client;
-      if (callback(client) == false)
-	client_rm(client);
-      client = tmp;
-    }
-  g_client = save;
 }
 
 void		client_poll_handler()

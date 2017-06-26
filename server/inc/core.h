@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Fri Jun 16 19:25:13 2017 Arthur Josso
+** Last update Fri Jun 23 20:40:00 2017 Arthur Josso
 */
 
 #pragma once
@@ -21,6 +21,7 @@
 #include "types.h"
 #include "default_values.h"
 #include "task.h"
+#include "egg.h"
 
 typedef struct s_client t_client;
 typedef struct s_game t_game;
@@ -32,7 +33,6 @@ extern t_server		*g_server;
 extern t_game		*g_game;
 extern t_client		*g_client;
 extern const char	*g_ressources[];
-extern uint32_t		g_player_id;
 
 /*
 ** Core funcs
@@ -41,9 +41,10 @@ extern uint32_t		g_player_id;
 void	init_map();
 bool	init_server();
 void	run_server();
+bool	is_there_a_winner();
 
 /*
-** Game types
+** Core types
 */
 
 struct s_team
@@ -52,6 +53,7 @@ struct s_team
   t_player	**players;
   uint32_t	nbr_players;
   uint32_t	max_players;
+  uint8_t	nbr_op_players;
 };
 
 struct s_game
@@ -61,6 +63,7 @@ struct s_game
   uint32_t	max_players_init;
   uint32_t	frequency;
   t_team	**team;
+  t_egg		*eggs;
 };
 
 struct s_server
@@ -69,6 +72,8 @@ struct s_server
   int		fd;
   t_client	*clients;
   t_game	game;
+  uint32_t	player_id;
+  uint32_t	egg_id;
 };
 
 /*
@@ -132,6 +137,7 @@ void	client_add(int fd);
 bool	client_rm(t_client *client);
 void	client_for_each(t_client_callback callback);
 void	client_poll_handler();
+size_t	client_get_nbr();
 
 void	client_init(t_client *client, int fd);
 void	client_fini(t_client *client);
@@ -163,7 +169,7 @@ char	*recv_cmd();
 ** Entity Commands
 */
 
-#define ADD_CMD_FUNC(type, func) {#func,(t_entity_cmd_func)&cmd_##type##_##func}
+#define ADD_CMD_FUNC(t, f) {#f, (t_entity_cmd_func)&cmd_##t##_##f}
 
 typedef bool (*t_entity_cmd_func)(void *entity, const char *arg);
 
