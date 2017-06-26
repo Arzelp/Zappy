@@ -15,6 +15,7 @@ Sources =	$(SRC)main.cpp \
 		$(SRC)Mesh.cpp \
 		$(SRC)Map.cpp \
 		$(SRC)AEntity.cpp \
+		$(SRC)Egg.cpp \
 		$(SRC)Resources.cpp \
 		$(SRC)Camera.cpp \
 		$(SRC)EntityManager.cpp \

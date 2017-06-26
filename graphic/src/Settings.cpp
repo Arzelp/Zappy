@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue Jun 13 14:10:47 2017 arnaud.alies
-// Last update Tue Jun 13 17:39:02 2017 arnaud.alies
+// Last update Mon Jun 26 13:47:11 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -29,9 +29,7 @@ void Settings::load()
   ifstream.open("settings.bin");
   if (ifstream.is_open() == false)
     {
-      _data.map_size = 11;
-      _data.music = true;
-      _data.max_level = 0;
+      _data.music = false;
     }
   else
     {

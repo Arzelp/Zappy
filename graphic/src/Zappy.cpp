@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Mon Jun 26 12:10:19 2017 arnaud.alies
+// Last update Mon Jun 26 14:41:49 2017 arnaud.alies
 //
 
 #include <map>
@@ -16,6 +16,7 @@
 #include "Zappy.hpp"
 #include "Box.hpp"
 #include "Random.hpp"
+#include "Egg.hpp"
 
 Zappy::Zappy() :
   _core(nullptr),
@@ -47,7 +48,7 @@ void Zappy::begin(Core* core)
 Zappy::~Zappy()
 {
   //_network->ReceiveStop();//boucle inf fredoudou?
-  delete _network;
+  //delete _network;
   delete _entity_manager;
   delete _map;
 }
@@ -184,6 +185,9 @@ void Zappy::cmd_msz(int ac, std::vector<std::string> av)
       this->spawnResources();
       _running = true;
       _entity_manager->update();
+      //
+      _entity_manager->addEntityMap<Egg>(1, 1);
+      //
     }
 }
 
@@ -193,7 +197,7 @@ void Zappy::cmd_bct(int ac, std::vector<std::string> av)
   int x;
   int y;
 
-  if (ac != 10)
+  if (ac != 10 || _running == false)
     return ;
   x = std::stoi("0" + av.at(1));
   y = std::stoi("0" + av.at(2));
@@ -214,7 +218,7 @@ void Zappy::cmd_pnw(int ac, std::vector<std::string> av)
   int id, x, y, orientation, level;
   std::string team;
 
-  if (ac != 7)
+  if (ac != 7 || _running == false)
     return ;
   id = std::stoi("0" + av.at(1));
   x = std::stoi("0" + av.at(2));
@@ -238,7 +242,7 @@ void Zappy::cmd_ppo(int ac, std::vector<std::string> av)
   Player* player;
   int id, x, y, orientation, level;
 
-  if (ac != 5)
+  if (ac != 5 || _running == false)
     return ;
   id = std::stoi("0" + av.at(1));
   x = std::stoi("0" + av.at(2));
