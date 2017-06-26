@@ -12,9 +12,11 @@ Sources =	$(SRC)main.cpp \
 		$(SRC)MainMenu.cpp \
 		$(SRC)SettingsMenu.cpp \
 		$(SRC)Zappy.cpp \
+		$(SRC)ZappyCmd.cpp \
 		$(SRC)Mesh.cpp \
 		$(SRC)Map.cpp \
 		$(SRC)AEntity.cpp \
+		$(SRC)Egg.cpp \
 		$(SRC)Resources.cpp \
 		$(SRC)Camera.cpp \
 		$(SRC)EntityManager.cpp \

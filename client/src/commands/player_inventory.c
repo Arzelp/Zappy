@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 21:29:39 2017 Frederic Oddou
-** Last update Sun Jun 18 18:18:07 2017 Frederic Oddou
+** Last update Mon Jun 26 15:02:07 2017 Paskal Arzel
 */
 
 #include <string.h>
