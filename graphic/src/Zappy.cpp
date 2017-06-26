@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Mon Jun 26 16:02:19 2017 arnaud.alies
+// Last update Mon Jun 26 16:20:01 2017 arnaud.alies
 //
 
 #include <map>
@@ -47,7 +47,6 @@ void Zappy::begin(Core* core)
 
 Zappy::~Zappy()
 {
-  //_network->ReceiveStop();//boucle inf fredoudou?
   //delete _network;
   delete _entity_manager;
   delete _map;
