@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed May 24 18:41:12 2017 Arthur Josso
-** Last update Tue Jun  6 17:19:30 2017 Arthur Josso
+** Last update Mon Jun 26 18:52:36 2017 Arthur Josso
 */
 
 #include <string.h>
@@ -14,17 +14,18 @@
 
 char	*cleaner_strcat(char *dest, const char *src)
 {
-  char	*tmp;
-
-  tmp = xmalloc((dest ? strlen(dest) : 0) + strlen(src) + 1);
-  cleaner_add_addr(tmp);
-  if (dest)
+  if (dest == NULL)
     {
-      strcat(tmp, dest);
-      cleaner_rm_addr(dest);
+      dest = xmalloc(strlen(src) + 1);
+      cleaner_add_addr(dest);
+      strcpy(dest, src);
     }
-  strcat(tmp, src);
-  return (tmp);
+  else
+    {
+      dest = cleaner_realloc(dest, strlen(dest) + strlen(src) + 1);
+      strcat(dest, src);
+    }
+  return (dest);
 }
 
 void	*cleaner_malloc(size_t size)

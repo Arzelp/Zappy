@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 16:27:08 2017 Arthur Josso
-** Last update Tue Jun  6 16:27:08 2017 Arthur Josso
+** Last update Mon Jun 26 18:33:04 2017 Arthur Josso
 */
 
 #include <unistd.h>
@@ -55,6 +55,8 @@ bool		read_on_client(t_client *client)
       if (read_ret == 0)
 	return (client_rm(client));
       buff[read_ret] = '\0';
+      if (strlen(client->ibuff) >= MAX_CMD_LENGTH)
+	client->ibuff[0] = '\0';
       client->ibuff = cleaner_strcat(client->ibuff, buff);
     }
   return (true);

@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 16:01:08 2017 Arthur Josso
-** Last update Mon Jun 26 16:13:31 2017 Arthur Josso
+** Last update Mon Jun 26 16:40:07 2017 Arthur Josso
 */
 
 #include <netdb.h>
@@ -17,6 +17,7 @@
 
 static void		accept_client()
 {
+  static bool		too_much_clients = false;
   struct sockaddr_in	s_in_client;
   socklen_t		s_in_size;
   int			fd_client;
@@ -27,10 +28,15 @@ static void		accept_client()
     {
       if (errno != EMFILE && errno != ENFILE)
 	fat_err("accept");
-      warn("%s", "accept");
+      if (!too_much_clients)
+	warn("%s", "accept");
+      too_much_clients = true;
     }
   else
-    client_add(fd_client);
+    {
+      client_add(fd_client);
+      too_much_clients = false;
+    }
 }
 
 static bool	exec_client_behavior(t_client *client)
