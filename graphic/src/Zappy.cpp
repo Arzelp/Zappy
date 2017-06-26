@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Mon Jun 26 11:30:22 2017 arnaud.alies
+// Last update Mon Jun 26 12:10:19 2017 arnaud.alies
 //
 
 #include <map>
@@ -38,7 +38,7 @@ void Zappy::begin(Core* core)
       _network->SendMsg("GRAPHIC");
       //_network->SendMsg("mct");
     }
-  catch (std::runtime_error& ex)
+  catch (const std::runtime_error& ex)
     {
       _network = nullptr;
     }
@@ -246,5 +246,13 @@ void Zappy::cmd_ppo(int ac, std::vector<std::string> av)
   orientation = std::stoi("0" + av.at(4));
   if ((player = this->getPlayerById(id)) == nullptr)
     return ;
+  if (orientation == 1)
+    player->setRotation(irr::core::vector3df(0, 0, 0));
+  else if (orientation == 2)
+    player->setRotation(irr::core::vector3df(0, 90, 0));
+  else if (orientation == 3)
+    player->setRotation(irr::core::vector3df(0, 180, 0));
+  else if (orientation == 4)
+    player->setRotation(irr::core::vector3df(0, -90, 0));
   player->moveTo(x, y);
 }
