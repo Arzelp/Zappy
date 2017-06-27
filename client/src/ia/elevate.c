@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 27 18:32:41 2017 Paskal Arzel
-** Last update Tue Jun 27 19:13:22 2017 Paskal Arzel
+** Last update Tue Jun 27 20:17:25 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
@@ -18,6 +18,7 @@ void	elevate(void)
 
   i = 0;
   need = elevation_get_infos();
+  player_inventory(NULL);
   printf("try elevate\n");
   while (i < FOOD)
   {
@@ -27,4 +28,5 @@ void	elevate(void)
   }
   printf("going to elevate\n");
   player_incantation(NULL);
+  player_inventory(NULL);
 }
