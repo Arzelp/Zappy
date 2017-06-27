@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 15:13:35 2017 arnaud.alies
-// Last update Tue Jun 27 10:57:14 2017 arnaud.alies
+// Last update Tue Jun 27 11:30:45 2017 arnaud.alies
 //
 
 #include "Player.hpp"
@@ -27,15 +27,24 @@ void Player::init(Core* core, Map *map, EntityManager* entity_manager)
                    irr::core::vector3df(3, 3, 3),
                    "./res/bomberman/Bomber.PCX");
   _mesh->node->setMD2Animation(irr::scene::EMAT_STAND);
-  _billboard = _core->scene->addBillboardTextSceneNode(_core->font,
+  _billboard_text = _core->scene->addBillboardTextSceneNode(_core->font,
 						       irr::core::stringw("").c_str(),
 						       0,
 						       irr::core::dimension2d<irr::f32>(140.0f, 50.0f));
+  _billboard = _core->scene->addBillboardSceneNode(0,
+						   irr::core::dimension2d<irr::f32>(140.0f, 50.0f),
+						   irr::core::vector3df(0, 0, 0),
+						   0,
+						   0x55000000,
+						   0x55000000);
+  _billboard->setMaterialType(irr::video::EMT_TRANSPARENT_VERTEX_ALPHA);
+  _billboard->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 }
 
 Player::~Player()
 {
   delete _mesh;
+  _billboard_text->remove();
   _billboard->remove();
 }
 
@@ -59,10 +68,11 @@ void Player::update()
   irr::core::vector3df diff = _target - pos;
 
   this->setPos((diff / PLAYER_SPEED) + pos);
+  _billboard_text->setPosition(this->getPos() + _billboard_offset);
   _billboard->setPosition(this->getPos() + _billboard_offset);
-  _billboard->setText(irr::core::stringw((team
-					  + ":"
-					  + std::to_string(level)).c_str()).c_str());
+  _billboard_text->setText(irr::core::stringw((team
+					       + ":"
+					       + std::to_string(level)).c_str()).c_str());
   /* animations */
   //_mesh->node->setMD2Animation(irr::scene::EMAT_RUN);
   //_mesh->node->setMD2Animation(irr::scene::EMAT_PAIN_A);
