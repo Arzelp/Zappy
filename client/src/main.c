@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 **
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Fri Jun 23 14:47:28 2017 Paskal Arzel
+** Last update Tue Jun 27 20:17:08 2017 Frederic Oddou
 */
 
 #include <string.h>
@@ -44,6 +44,7 @@ static void	usage(const char *name)
 void		test_server_features(void)
 {
   printf("Trying 12 actions:\n");
+  /*
   if (player_right(NULL))
     printf("1- Player turned right.\n");
   if (player_left(NULL))
@@ -66,6 +67,7 @@ void		test_server_features(void)
     printf("10- Eject.\n");
   if (player_fork(NULL))
     printf("11- Fork.\n");
+  */
   if (player_incantation(NULL))
     printf("12- Incantation.\n");
 }
