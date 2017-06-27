@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Mon Jun 26 16:01:18 2017 arnaud.alies
-// Last update Tue Jun 27 11:49:29 2017 arnaud.alies
+// Last update Tue Jun 27 14:38:22 2017 arnaud.alies
 //
 
 #include "Zappy.hpp"
@@ -41,6 +41,7 @@ void Zappy::cmd_msz(int ac, std::vector<std::string> av)
 
 void Zappy::cmd_bct(int ac, std::vector<std::string> av)
 {
+  /* map resource udpate */
   int values[R_SIZE];
   int x;
   int y;
@@ -62,6 +63,7 @@ void Zappy::cmd_bct(int ac, std::vector<std::string> av)
 
 void Zappy::cmd_pnw(int ac, std::vector<std::string> av)
 {
+  /* new player */
   Player* player;
   int id, x, y, orientation, level;
   std::string team;
@@ -87,6 +89,7 @@ void Zappy::cmd_pnw(int ac, std::vector<std::string> av)
 
 void Zappy::cmd_ppo(int ac, std::vector<std::string> av)
 {
+  /* player position */
   Player* player;
   int id, x, y, orientation, level;
 
@@ -111,6 +114,7 @@ void Zappy::cmd_ppo(int ac, std::vector<std::string> av)
 
 void Zappy::cmd_pdi(int ac, std::vector<std::string> av)
 {
+  /* player death */
   Player* player;
   int id;
   
@@ -124,6 +128,7 @@ void Zappy::cmd_pdi(int ac, std::vector<std::string> av)
 
 void Zappy::cmd_pex(int ac, std::vector<std::string> av)
 {
+  /* player kicked */
   Player* player;
   int id;
   
@@ -137,6 +142,7 @@ void Zappy::cmd_pex(int ac, std::vector<std::string> av)
 
 void Zappy::cmd_pfk(int ac, std::vector<std::string> av)
 {
+  /* player make egg */
   Player* player;
   int id;
   
@@ -145,11 +151,12 @@ void Zappy::cmd_pfk(int ac, std::vector<std::string> av)
   id = Zappy::getInt(av.at(1));
   if ((player = this->getPlayerById(id)) == nullptr)
     return ;
-  player->makeEgg();
+  player->animate(irr::scene::EMAT_PAIN_B, 500);
 }
 
 void Zappy::cmd_plv(int ac, std::vector<std::string> av)
 {
+  /* player lvl up */
   Player* player;
   int id;
   
@@ -160,5 +167,6 @@ void Zappy::cmd_plv(int ac, std::vector<std::string> av)
     return ;
   player->level = Zappy::getInt(av.at(2));
   //level up animation?
+  player->animate(irr::scene::EMAT_PAIN_A, 500);
 }
 

@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 15:13:35 2017 arnaud.alies
-// Last update Tue Jun 27 12:43:41 2017 arnaud.alies
+// Last update Tue Jun 27 14:41:14 2017 arnaud.alies
 //
 
 #include "Player.hpp"
@@ -17,7 +17,7 @@ Player::Player() :
   _alive(true)
 {
   id = 0;
-  _egg_time = 0;
+  _anim_time = 0;
 }
 
 void Player::init(Core* core, Map *map, EntityManager* entity_manager)
@@ -74,12 +74,12 @@ void Player::update()
   _billboard_text->setText(irr::core::stringw((team
 					       + ":"
 					       + std::to_string(level)).c_str()).c_str());
-  if (_egg_time != 0)
+  if (_anim_time != 0)
     {
-      if (_egg_time < Core::getTimeMs() - 1000)
+      if (_anim_time < Core::getTimeMs())
 	{
 	  _mesh->node->setMD2Animation(irr::scene::EMAT_STAND);
-	  _egg_time = 0;
+	  _anim_time = 0;
 	}
     }
   /* animations */
@@ -93,10 +93,10 @@ void Player::moveTo(int x, int y)
   _target = Map::getAbs(x, y);
 }
 
-void Player::makeEgg()
+void Player::animate(irr::scene::EMD2_ANIMATION_TYPE anim, int time)
 {
-  _mesh->node->setMD2Animation(irr::scene::EMAT_PAIN_A);
-  _egg_time = Core::getTimeMs();
+  _mesh->node->setMD2Animation(anim);
+  _anim_time = Core::getTimeMs() + time;
 }
 
 void Player::setPos(irr::core::vector3df target)
