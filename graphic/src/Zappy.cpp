@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Tue Jun 27 11:48:29 2017 Frederic Oddou
+// Last update Tue Jun 27 11:53:38 2017 Frederic Oddou
 //
 
 #include <map>
@@ -134,6 +134,8 @@ void Zappy::runQueue()
     DEF_CMD(pnw),
     DEF_CMD(ppo),
     DEF_CMD(pdi),
+    DEF_CMD(pex),
+    DEF_CMD(plv),
     DEF_CMD(bct)
   };
 
