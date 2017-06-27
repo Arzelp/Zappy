@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Tue Jun 27 20:27:26 2017 Frederic Oddou
+** Last update Tue Jun 27 23:20:26 2017 Frederic Oddou
 */
 
 #pragma once
@@ -16,16 +16,7 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include "default_values.h"
-
-#ifdef DEBUG_MODE
-# define DEBUG true
-#else
-# define DEBUG true
-#endif
-
-#define NAME_SIZE	256
-#define HOST_SIZE	2048
-#define BUFFER_SIZE	2048
+#include "utils.h"
 
 enum e_position
 {
@@ -55,9 +46,9 @@ typedef struct
 
 typedef struct
 {
-  int		id;
-  char	*name;
-}t_elem;
+  int			id;
+  char			*name;
+}			t_elem;
 
 typedef struct
 {
@@ -80,7 +71,16 @@ typedef struct
   char			host[HOST_SIZE];
   int			socket_fd;
   struct sockaddr_in	port_socket;
+  t_queue		queue;
 }			t_core;
+
+/*
+** @core.c
+*/
+
+void		core_init(t_core *core);
+void		core_destruct();
+void		core_usage(const char *name);
 
 /*
 ** @connect
@@ -137,11 +137,11 @@ int			elevation_need_object(enum e_obj obj_id);
 **
 */
 
-bool		ia_main(void);
-bool		check_mom(void);
-bool		init_new_player(void);
-bool		look(void);
-bool		set_rush(void);
+bool			ia_main(void);
+bool			check_mom(void);
+bool			init_new_player(void);
+bool			look(void);
+bool			set_rush(void);
 int			select_primary(void);
 int			**set_minimap(void);
 

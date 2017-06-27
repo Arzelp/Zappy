@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 13:34:54 2017 Frederic Oddou
-** Last update Mon Jun 26 16:46:57 2017 Frederic Oddou
+** Last update Tue Jun 27 23:26:18 2017 Frederic Oddou
 */
 
 #include <sys/socket.h>
@@ -34,6 +34,7 @@ bool		receive_msg(char *str, size_t len)
   if (!strcmp(str, "dead"))
     {
       fprintf(stderr, "Client die :(\n");
+      core_destruct();
       exit(EXIT_SUCCESS);
     }
   return (true);

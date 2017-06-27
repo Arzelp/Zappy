@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 **
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Tue Jun 27 20:25:15 2017 Frederic Oddou
+** Last update Tue Jun 27 23:19:19 2017 Frederic Oddou
 */
 
 #include <string.h>
@@ -26,34 +26,19 @@ t_elem	g_elem[] = {
   {-1, NULL}
 };
 
-static void	init(t_core *core)
-{
-  bzero(core, sizeof(*core));
-  g_core = core;
-}
-
-static void	usage(const char *name)
-{
-  fprintf(stderr, "USAGE: %s -p port -n name -h machine\n", name);
-  fprintf(stderr, "\tport\tis the port number\n");
-  fprintf(stderr, "\tname\tis the name of the team\n");
-  fprintf(stderr, "\tmachine\tis the name of the machine; "
-	  "localhost by default\n");
-}
-
 int		main(int ac, char **av)
 {
   t_core	core;
 
-  init(&core);
+  core_init(&core);
   if (!parse(ac, av))
     {
-      usage(av[0]);
+      core_usage(av[0]);
       return (EXIT_FAILURE);
     }
   if (!open_socket() || !get_player())
     return (EXIT_FAILURE);
   ia_main();
-  close_socket();
+  core_destruct();
   return (EXIT_SUCCESS);
 }

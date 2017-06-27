@@ -5,10 +5,20 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 11:26:36 2017 Frederic Oddou
-** Last update Fri Jun 23 16:59:24 2017 Paskal Arzel
+** Last update Tue Jun 27 22:47:16 2017 Frederic Oddou
 */
 
 #pragma once
+
+#ifdef DEBUG_MODE
+# define DEBUG true
+#else
+# define DEBUG true
+#endif
+
+#define NAME_SIZE		256
+#define HOST_SIZE		2048
+#define BUFFER_SIZE		2048
 
 #define DFLT_SERVER_PORT	4242
 #define DFLT_SERVER_HOST	"localhost"

@@ -5,12 +5,13 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 11:11:42 2017 Frederic Oddou
-** Last update Mon Jun 19 13:07:06 2017 Frederic Oddou
+** Last update Tue Jun 27 23:00:01 2017 Frederic Oddou
 */
 
 #pragma once
 
-#include "core.h"
+#include <stdbool.h>
+#include "default_values.h"
 
 /*
 ** @checker.c
@@ -48,12 +49,12 @@ char		*replace_letter(char *str, char find, char replace);
 
 typedef struct
 {
-  enum e_obj	obj_id;
+  short		obj_id;
   const char	*name;
 }		t_get_objects_type;
 
-const char	*get_object_name_from_type(enum e_obj obj_id);
-enum e_obj	get_object_id_from_name(const char *name);
+const char	*get_object_name_from_type(short obj_id);
+short		get_object_id_from_name(const char *name);
 
 extern const t_get_objects_type g_get_objects_type[];
 
@@ -74,4 +75,39 @@ void		debug_message_error(const char *action, const char *opt,
 ** - is_object_on_case : Return true if the object is found on the case.
 */
 
-bool		is_object_on_case(const char *str, enum e_obj obj);
+bool		is_object_on_case(const char *str, short obj);
+
+/*
+** @queue.c
+** - queue is like a cpp class but translated.
+*/
+
+typedef struct		s_queue_data
+{
+  void			*val;
+  struct s_queue_data	*next;
+}			t_queue_data;
+
+typedef struct		s_queue
+{
+  bool			(*construct)(struct s_queue *queue);
+  void			(*destruct)(struct s_queue *queue);
+  bool			(*empty)(struct s_queue *queue);
+  size_t		(*size)(struct s_queue *queue);
+  void			*(*front)(struct s_queue *queue);
+  void			*(*back)(struct s_queue *queue);
+  void			(*push)(struct s_queue *queue, void *val);
+  void			(*emplace)(struct s_queue *queue, void *val);
+  void			(*pop)(struct s_queue *queue);
+  t_queue_data		*data;
+}			t_queue;
+
+bool			queue_construct(t_queue *queue);
+void			queue_destruct(t_queue *queue);
+bool			queue_empty(t_queue *queue);
+size_t			queue_size(t_queue *queue);
+void			*queue_front(t_queue *queue);
+void			*queue_back(t_queue *queue);
+void			queue_push(t_queue *queue, void *val);
+void			queue_emplace(t_queue *queue, void *val);
+void			queue_pop(t_queue *queue);
