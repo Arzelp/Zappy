@@ -5,7 +5,7 @@
 // Login   <frederic.oddou@epitech.eu>
 //
 // Started on  Tue Jun 20 08:49:32 2017 Frederic Oddou
-// Last update Fri Jun 23 11:19:25 2017 Frederic Oddou
+// Last update Mon Jun 26 17:05:38 2017 Frederic Oddou
 //
 
 #pragma once
@@ -41,6 +41,5 @@ public:
   ~Network();
   bool				SendMsg(std::string str);
   std::string			GetQueue(void);
-  void				ReceiveStop();
   void				ReceiveStart();
 };
