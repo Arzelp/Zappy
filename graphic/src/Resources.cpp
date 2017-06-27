@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu Jun 22 17:07:19 2017 arnaud.alies
-// Last update Fri Jun 23 17:07:18 2017 arnaud.alies
+// Last update Tue Jun 27 16:28:50 2017 arnaud.alies
 //
 
 #include <vector>
@@ -14,16 +14,14 @@
 Resources::Resources() :
   _scale(0.2),
   _offset(irr::core::vector3df(0, 0, 0))
-  //_food(nullptr)
 {
-
+  _updated = true;
 }
 
 Resources::~Resources()
 {
   for (int x = 0; x < R_SIZE; x += 1)
     delete _meshes[x];
-  //delete _food;
 }
 
 void Resources::init(Core* core, Map* map, EntityManager* entity_manager)
@@ -51,20 +49,23 @@ void Resources::update()
 {
   float diff_scale;
   irr::core::vector3df target_scale;
-  
-  for (int x = 0; x < R_SIZE; x += 1)
+  float min_diff = 0;
+
+  if (_updated)
     {
-      diff_scale = ((_values[x] * _scale) - _meshes[x]->node->getScale().Y) / R_EFFECT_SPEED;
-      target_scale = irr::core::vector3df(_scale,
-				    _meshes[x]->node->getScale().Y + diff_scale,
-				    _scale);
-      _meshes[x]->node->setScale(target_scale);
+      for (int x = 0; x < R_SIZE; x += 1)
+	{
+	  diff_scale = ((_values[x] * _scale) - _meshes[x]->node->getScale().Y) / R_EFFECT_SPEED;
+	  if (min_diff < (diff_scale < 0 ? -diff_scale : diff_scale))
+	    min_diff = diff_scale;
+	  target_scale = irr::core::vector3df(_scale,
+					      _meshes[x]->node->getScale().Y + diff_scale,
+					      _scale);
+	  _meshes[x]->node->setScale(target_scale);
+	}
     }
-  /*
-  _food->node->setScale(irr::core::vector3df(_scale,
-					     _scale,
-					     _scale));
-  */
+  if (min_diff <= 0)
+    _updated = false;
 }
 
 irr::core::vector3df Resources::getPos() const
@@ -79,7 +80,6 @@ void Resources::setPos(irr::core::vector3df t)
   int z_off = -UNIT / 1.5;
 
   _pos = t;
-  // cassez pas les couilles mdr
   for (int x = 0; x < R_SIZE; x += 1)
     {
       if (x % 3 == 0)
@@ -96,16 +96,9 @@ void Resources::setPos(irr::core::vector3df t)
 
 void Resources::setValues(int* values)
 {
+  _updated = true;
   for (int x = 0; x < R_SIZE; x += 1)
     _values[x] = values[x];
-  /*
-  for (int x = 0; x < R_SIZE; x += 1)
-    {
-      _meshes[x]->node->setScale(irr::core::vector3df(_scale,
-						      _scale * values[x],
-						      _scale));
-    }
-  */
 }
 
 std::string Resources::getType() const
