@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Mon Jun 26 16:01:18 2017 arnaud.alies
-// Last update Tue Jun 27 14:38:22 2017 arnaud.alies
+// Last update Tue Jun 27 18:34:00 2017 arnaud.alies
 //
 
 #include "Zappy.hpp"
@@ -170,3 +170,15 @@ void Zappy::cmd_plv(int ac, std::vector<std::string> av)
   player->animate(irr::scene::EMAT_PAIN_A, 500);
 }
 
+void Zappy::cmd_pin(int ac, std::vector<std::string> av)
+{
+  Player* player;
+  int id;
+
+  if (ac != 11 || _running == false)
+    return ;
+  id = Zappy::getInt(av.at(1));
+  if ((player = this->getPlayerById(id)) == nullptr)
+    return ;
+  // to implement
+}

@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 14:56:43 2017 arnaud.alies
-// Last update Tue Jun 27 15:47:53 2017 arnaud.alies
+// Last update Tue Jun 27 18:20:12 2017 arnaud.alies
 //
 
 #ifndef PLAYER_HPP_

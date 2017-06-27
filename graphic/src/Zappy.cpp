@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Tue Jun 27 16:55:33 2017 arnaud.alies
+// Last update Tue Jun 27 18:33:28 2017 arnaud.alies
 //
 
 #include <map>
@@ -67,11 +67,11 @@ State *Zappy::update()
 	  if (node != nullptr)
 	    {
 	      _cam->setPosSlow(node->getPosition());
-	      Resources* res = this->getResourcesAt(node->getPosition());
-	      if (res != nullptr)
+	      Player* player =
+		static_cast<Player*>(_entity_manager->getClosestEntity(node->getPosition(), "player"));
+	      if (player != nullptr)
 		{
-		  int values[] = {1, 2, 3, 4, 5, 6, 7};
-		  res->setValues(values);
+		  _network->SendMsg("pin #" + std::to_string(player->id));
 		}
 	      /*
 		irr::core::position2d<irr::s32> pos2d = _core->getViewPos(node->getPosition());
@@ -80,6 +80,9 @@ State *Zappy::update()
 		_core->video->getTexture((char*)"./res/one.png"),
 		pos2d);
 	      */
+	    }
+	  else
+	    {
 	    }
 	}
         // Camera moves
@@ -137,6 +140,7 @@ void Zappy::runQueue()
     DEF_CMD(pex),
     DEF_CMD(plv),
     DEF_CMD(pfk),
+    DEF_CMD(pin),
     DEF_CMD(bct)
   };
 
