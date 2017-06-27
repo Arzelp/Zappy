@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 22:13:17 2017 Frederic Oddou
-** Last update Tue Jun 27 20:40:54 2017 Frederic Oddou
+** Last update Tue Jun 27 20:44:40 2017 Frederic Oddou
 */
 
 #include <string.h>
@@ -39,7 +39,7 @@ bool		player_incantation(const char *str)
       return (false);
     }
   printf("[Incantation] Recu 2/2 \"%s\".\n", buffer);
-  scanf(buffer, "Current level: %d", &g_core->player.level);
+  sscanf(buffer, "Current level: %d", &g_core->player.level);
   printf("[Incantation] Finaly avec %d\n", g_core->player.level);
   debug_message_confirm("Incantation", str, NULL);
   return (true);
