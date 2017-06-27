@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 14:56:43 2017 arnaud.alies
-// Last update Tue Jun 27 11:12:41 2017 arnaud.alies
+// Last update Tue Jun 27 12:05:54 2017 arnaud.alies
 //
 
 #ifndef PLAYER_HPP_
@@ -28,6 +28,7 @@ protected:
   irr::core::vector3df _billboard_offset;
   bool _alive;
   int _death_time;
+  int _egg_time;
 public:
   int id;
   std::string team;
@@ -45,6 +46,7 @@ public:
   void kill();
   bool isAlive() const;
   void moveTo(int, int);
+  void makeEgg();
 };
 
 #endif

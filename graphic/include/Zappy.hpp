@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Tue Jun 27 11:13:55 2017 arnaud.alies
+// Last update Tue Jun 27 12:04:02 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -37,6 +37,7 @@ protected:
   Map* _map;
   //
   Image* _img;
+  
 public:
   Zappy();
   virtual ~Zappy();
@@ -55,6 +56,7 @@ public:
   void cmd_pdi(int ac, std::vector<std::string> av);
   void cmd_pex(int ac, std::vector<std::string> av);
   void cmd_plv(int ac, std::vector<std::string> av);
+  void cmd_pfk(int ac, std::vector<std::string> av);
 };
 
 typedef void(Zappy::*t_command)(int ac, std::vector<std::string> av);

@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Mon Jun 26 16:01:18 2017 arnaud.alies
-// Last update Tue Jun 27 11:08:32 2017 arnaud.alies
+// Last update Tue Jun 27 11:49:29 2017 arnaud.alies
 //
 
 #include "Zappy.hpp"
@@ -133,6 +133,19 @@ void Zappy::cmd_pex(int ac, std::vector<std::string> av)
   if ((player = this->getPlayerById(id)) == nullptr)
     return ;
   _entity_manager->queueDeleteEntity(player);
+}
+
+void Zappy::cmd_pfk(int ac, std::vector<std::string> av)
+{
+  Player* player;
+  int id;
+  
+  if (ac != 2 || _running == false)
+    return ;
+  id = Zappy::getInt(av.at(1));
+  if ((player = this->getPlayerById(id)) == nullptr)
+    return ;
+  player->makeEgg();
 }
 
 void Zappy::cmd_plv(int ac, std::vector<std::string> av)
