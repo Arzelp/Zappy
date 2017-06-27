@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 14:09:48 2017 arnaud.alies
-// Last update Thu Jun 22 09:50:16 2017 arnaud.alies
+// Last update Tue Jun 27 16:53:10 2017 arnaud.alies
 //
 
 #ifndef MY_EVENT_RECEIVER
@@ -28,6 +28,7 @@ enum E_INPUT
     K_S,
     K_Q,
     K_D,
+    K_MOUSE_LEFT,
     K_MAX
   };
 

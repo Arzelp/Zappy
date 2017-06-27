@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Tue Jun 27 12:49:36 2017 arnaud.alies
+// Last update Tue Jun 27 16:55:33 2017 arnaud.alies
 //
 
 #include <map>
@@ -61,7 +61,7 @@ State *Zappy::update()
   this->runQueue();
   if (_running)
     {
-      if (in == K_SPACE)
+      if (in == K_MOUSE_LEFT)
 	{
 	  irr::scene::ISceneNode* node = _core->getNodeFromMouse();
 	  if (node != nullptr)

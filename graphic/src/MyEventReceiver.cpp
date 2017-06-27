@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 14:11:36 2017 arnaud.alies
-// Last update Thu Jun 22 09:48:57 2017 arnaud.alies
+// Last update Tue Jun 27 16:56:02 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -55,6 +55,18 @@ bool MyEventReceiver::OnEvent(const irr::SEvent& event)
 	  _keyMap[input] = event.KeyInput.PressedDown;
 	}
       //std::cout << event.KeyInput.Key << std::endl;
+    }
+  if (event.EventType == irr::EET_MOUSE_INPUT_EVENT)
+    {
+      if (event.MouseInput.Event == irr::EMOUSE_INPUT_EVENT::EMIE_LMOUSE_PRESSED_DOWN)
+	{
+	  _keyMap[K_MOUSE_LEFT] = true;
+	  _lastKey = K_MOUSE_LEFT;
+	}
+      if (event.MouseInput.Event == irr::EMOUSE_INPUT_EVENT::EMIE_LMOUSE_LEFT_UP)
+	{
+	  _keyMap[K_MOUSE_LEFT] = false;
+	}
     }
   return false;
 }

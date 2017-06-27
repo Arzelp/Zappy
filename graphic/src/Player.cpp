@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 15:13:35 2017 arnaud.alies
-// Last update Tue Jun 27 15:54:02 2017 arnaud.alies
+// Last update Tue Jun 27 16:29:46 2017 arnaud.alies
 //
 
 #include "Player.hpp"
@@ -26,7 +26,8 @@ void Player::init(Core* core, Map *map, EntityManager* entity_manager)
   _mesh = new Mesh(_core,
                    "./res/bomberman/tris.md2",
                    irr::core::vector3df(3, 3, 3),
-                   "./res/bomberman/Bomber.PCX");
+                   "./res/bomberman/Bomber.PCX",
+		   true);
   _mesh->node->setMD2Animation(irr::scene::EMAT_STAND);
   _hud_title = new HudText(core, "", 25);
 }
