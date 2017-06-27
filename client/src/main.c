@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 **
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Fri Jun 23 14:47:28 2017 Paskal Arzel
+** Last update Tue Jun 27 20:26:43 2017 Paskal Arzel
 */
 
 #include <string.h>
@@ -82,10 +82,8 @@ int		main(int ac, char **av)
     }
   if (!open_socket() || !get_player())
     return (EXIT_FAILURE);
-  if (DEBUG)
-    test_server_features();
-  else
-    ia_main();
+  test_server_features();
+  ia_main();
   close_socket();
   return (EXIT_SUCCESS);
 }
