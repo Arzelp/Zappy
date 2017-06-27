@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 22:09:32 2017 Frederic Oddou
-** Last update Sun Jun 18 18:04:39 2017 Frederic Oddou
+** Last update Tue Jun 27 20:52:11 2017 Frederic Oddou
 */
 
 #include <stdio.h>
@@ -20,7 +20,7 @@ bool		player_set(const char *str)
   snprintf(buffer, BUFFER_SIZE, "Set %s", str);
   if (!send_msg(buffer))
     return (false);
-  if (!receive_msg(buffer, BUFFER_SIZE) || !is_answer_ok(buffer))
+  if (!receive_msg(buffer, BUFFER_SIZE) || is_answer_ko(buffer))
     {
       debug_message_error("Set", str, NULL);
       return (false);

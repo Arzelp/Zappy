@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 14:25:07 2017 Frederic Oddou
-** Last update Wed Jun 21 11:18:44 2017 Frederic Oddou
+** Last update Tue Jun 27 20:48:50 2017 Frederic Oddou
 */
 
 #include <stdio.h>
@@ -19,7 +19,7 @@ bool		player_broadcast(const char *str)
   snprintf(buffer, BUFFER_SIZE, "Broadcast %s", str);
   if (!send_msg(buffer))
     return (false);
-  if (!receive_msg(buffer, BUFFER_SIZE) || !is_answer_ok(buffer))
+  if (!receive_msg(buffer, BUFFER_SIZE) || is_answer_ko(buffer))
     {
       debug_message_error("Broadcast", str, NULL);
       return (false);

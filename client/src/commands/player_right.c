@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 14:20:50 2017 Frederic Oddou
-** Last update Sun Jun 18 18:17:41 2017 Frederic Oddou
+** Last update Tue Jun 27 20:46:49 2017 Frederic Oddou
 */
 
 #include <stdlib.h>
@@ -18,7 +18,7 @@ bool		player_right(const char *str)
 
   if (!send_msg("Right"))
     return (false);
-  if (!receive_msg(buffer, BUFFER_SIZE) || !is_answer_ok(buffer))
+  if (!receive_msg(buffer, BUFFER_SIZE) || is_answer_ko(buffer))
     {
       debug_message_error("Right", str, NULL);
       return (false);
