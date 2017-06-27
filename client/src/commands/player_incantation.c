@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 22:13:17 2017 Frederic Oddou
-** Last update Tue Jun 27 20:30:38 2017 Frederic Oddou
+** Last update Tue Jun 27 20:36:37 2017 Frederic Oddou
 */
 
 #include <string.h>
@@ -24,8 +24,12 @@ bool		player_incantation(const char *str)
       debug_message_error("Incantation", str, buffer);
       return (false);
     }
-  if (strcmp(buffer, "Elevation underway") ||
-      !receive_msg(buffer, BUFFER_SIZE))
+  if (strcmp(buffer, "Elevation underway"))
+    {
+      debug_message_error("Incantation", str, buffer);
+      return (false);
+    }
+  if (!receive_msg(buffer, BUFFER_SIZE))
     {
       debug_message_error("Incantation", str, buffer);
       return (false);
