@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Mon Jun 26 14:55:58 2017 Paskal Arzel
+** Last update Tue Jun 27 20:27:26 2017 Frederic Oddou
 */
 
 #pragma once
@@ -20,7 +20,7 @@
 #ifdef DEBUG_MODE
 # define DEBUG true
 #else
-# define DEBUG false
+# define DEBUG true
 #endif
 
 #define NAME_SIZE	256
