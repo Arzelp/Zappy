@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 13:47:22 2017 Frederic Oddou
-** Last update Mon Jun 26 14:49:24 2017 Paskal Arzel
+** Last update Mon Jun 26 16:33:09 2017 Frederic Oddou
 */
 
 #include <string.h>
@@ -29,7 +29,6 @@ static void	confirm_new_player()
 bool		get_player(void)
 {
   char		buffer[BUFFER_SIZE];
-  char		*line1;
   char		*line2;
 
   if (!receive_msg(buffer, BUFFER_SIZE) || strcmp(buffer, "WELCOME"))
@@ -38,11 +37,10 @@ bool		get_player(void)
     return (false);
   if (!receive_msg(buffer, BUFFER_SIZE))
     return (false);
-  if ((line1 = strtok(buffer, "\n")) == NULL || !is_nbr(line1))
+  g_core->player.client_num = atoi(buffer);
+  if (!receive_msg(buffer, BUFFER_SIZE))
     return (false);
-  g_core->player.client_num = atoi(line1);
-  if ((line1 = strtok(NULL, "\n")) == NULL ||
-      (line2 = strtok(line1, " ")) == NULL || !is_nbr(line2))
+  if ((line2 = strtok(buffer, " ")) == NULL || !is_nbr(line2))
     return (false);
   g_core->map_size[POS_X] = atoi(line2);
   if ((line2 = strtok(NULL, " ")) == NULL || !is_nbr(line2))

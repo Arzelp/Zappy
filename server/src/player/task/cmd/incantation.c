@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun 20 13:11:07 2017 Arthur Josso
-** Last update Fri Jun 23 16:41:44 2017 Arthur Josso
+** Last update Mon Jun 26 14:04:39 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -42,7 +42,7 @@ static bool	is_enough_ressource(const t_pos *pos, const t_incantation *inc)
   res = RES_FOOD;
   while (res != RES_NBR)
     {
-      if (g_game->map[pos->y][pos->x][res] < inc->ressource[res])
+      if (g_game->map[pos->y][pos->x][res] != inc->ressource[res])
 	{
 	  send_cmd(CMD_PLAYER_KO);
 	  send_graphics_cmd(CMD_GRAPHIC_INCANTATION_END, pos->x, pos->y, 0);
@@ -73,7 +73,7 @@ static bool	is_enough_player(t_player *player, const t_incantation *inc)
 	}
       client = client->next;
     }
-  if (nbr_player >= inc->nbr_player)
+  if (nbr_player == inc->nbr_player)
     return (true);
   send_cmd(CMD_PLAYER_KO);
   send_graphics_cmd(CMD_GRAPHIC_INCANTATION_END,

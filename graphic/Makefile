@@ -1,5 +1,5 @@
 
-Target = hitler
+Target = graphic
 
 SRC = ./src/
 
@@ -7,11 +7,13 @@ Sources =	$(SRC)main.cpp \
 		$(SRC)Random.cpp \
 		$(SRC)Settings.cpp \
 		$(SRC)Core.cpp \
+		$(SRC)HudText.cpp \
 		$(SRC)Image.cpp \
 		$(SRC)MyEventReceiver.cpp \
 		$(SRC)MainMenu.cpp \
 		$(SRC)SettingsMenu.cpp \
 		$(SRC)Zappy.cpp \
+		$(SRC)ZappyCmd.cpp \
 		$(SRC)Mesh.cpp \
 		$(SRC)Map.cpp \
 		$(SRC)AEntity.cpp \

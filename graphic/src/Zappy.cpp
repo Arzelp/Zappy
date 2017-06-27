@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Mon Jun 26 14:41:49 2017 arnaud.alies
+// Last update Tue Jun 27 18:33:28 2017 arnaud.alies
 //
 
 #include <map>
@@ -31,7 +31,6 @@ Zappy::Zappy() :
 void Zappy::begin(Core* core)
 {
   _core = core;
-
   try
     {
       _network = new Network("localhost", 4242);
@@ -47,8 +46,7 @@ void Zappy::begin(Core* core)
 
 Zappy::~Zappy()
 {
-  //_network->ReceiveStop();//boucle inf fredoudou?
-  //delete _network;
+  delete _network;
   delete _entity_manager;
   delete _map;
 }
@@ -61,27 +59,19 @@ State *Zappy::update()
   if (in == K_ESCAPE || _network == nullptr)
     return (new MainMenu());
   this->runQueue();
-  /*
-      if (!_network->SendMsg("name1"))
-	{
-	  _network->ReceiveStop();
-	  return (1);
-	}
-    }
-  */
   if (_running)
     {
-      if (in == K_SPACE)
+      if (in == K_MOUSE_LEFT)
 	{
 	  irr::scene::ISceneNode* node = _core->getNodeFromMouse();
 	  if (node != nullptr)
 	    {
 	      _cam->setPosSlow(node->getPosition());
-	      Resources* res = this->getResourcesAt(node->getPosition());
-	      if (res != nullptr)
+	      Player* player =
+		static_cast<Player*>(_entity_manager->getClosestEntity(node->getPosition(), "player"));
+	      if (player != nullptr)
 		{
-		  int values[] = {1, 2, 3, 4, 5, 6, 7};
-		  res->setValues(values);
+		  _network->SendMsg("pin #" + std::to_string(player->id));
 		}
 	      /*
 		irr::core::position2d<irr::s32> pos2d = _core->getViewPos(node->getPosition());
@@ -90,6 +80,9 @@ State *Zappy::update()
 		_core->video->getTexture((char*)"./res/one.png"),
 		pos2d);
 	      */
+	    }
+	  else
+	    {
 	    }
 	}
         // Camera moves
@@ -142,6 +135,12 @@ void Zappy::runQueue()
   std::map<std::string, t_command> command_map = {
     DEF_CMD(msz),
     DEF_CMD(pnw),
+    DEF_CMD(ppo),
+    DEF_CMD(pdi),
+    DEF_CMD(pex),
+    DEF_CMD(plv),
+    DEF_CMD(pfk),
+    DEF_CMD(pin),
     DEF_CMD(bct)
   };
 
@@ -162,101 +161,11 @@ void Zappy::runQueue()
     }
 }
 
-
-void Zappy::cmd_msz(int ac, std::vector<std::string> av)
+int Zappy::getInt(std::string str)
 {
-  /* INIT */
-  int width = 0;
-  int height = 0;
-
-  if (ac != 3)
-    return ;
-  if (_running == false)
-    {
-      width = std::stoi("0" + av.at(1));
-      height = std::stoi("0" + av.at(2));
-      if (width < 0)
-	width = 3;
-      if (height < 0)
-	height = 3;
-      _map = new Map(_core, width, height);
-      _entity_manager = new EntityManager(_core, _map);
-      _cam = _entity_manager->addEntityMap<Camera>(_map->getWidth() / 2, _map->getHeight() / 2);
-      this->spawnResources();
-      _running = true;
-      _entity_manager->update();
-      //
-      _entity_manager->addEntityMap<Egg>(1, 1);
-      //
-    }
-}
-
-void Zappy::cmd_bct(int ac, std::vector<std::string> av)
-{
-  int values[R_SIZE];
-  int x;
-  int y;
-
-  if (ac != 10 || _running == false)
-    return ;
-  x = std::stoi("0" + av.at(1));
-  y = std::stoi("0" + av.at(2));
-  for (int i = 0; i < R_SIZE; i += 1)
-    {
-      values[i] = std::stoi("0" + av.at(i + 3));
-    }
-  Resources* res = this->getResourcesAt(Map::getAbs(x, y));
-  if (res != nullptr)
-    {
-      res->setValues(values);
-    }
-}
-
-void Zappy::cmd_pnw(int ac, std::vector<std::string> av)
-{
-  Player* player;
-  int id, x, y, orientation, level;
-  std::string team;
-
-  if (ac != 7 || _running == false)
-    return ;
-  id = std::stoi("0" + av.at(1));
-  x = std::stoi("0" + av.at(2));
-  y = std::stoi("0" + av.at(3));
-  orientation = std::stoi("0" + av.at(4));
-  level = std::stoi("0" + av.at(5));
-  team = av.at(6);
-  if (this->getPlayerById(id) != nullptr)
-    {
-      std::cerr << "Player already exists" << std::endl;
-      return ;
-    }
-  player = _entity_manager->addEntityMap<Player>(x, y);
-  player->id = id;
-  player->team = team;
-  player->level = level;
-}
-
-void Zappy::cmd_ppo(int ac, std::vector<std::string> av)
-{
-  Player* player;
-  int id, x, y, orientation, level;
-
-  if (ac != 5 || _running == false)
-    return ;
-  id = std::stoi("0" + av.at(1));
-  x = std::stoi("0" + av.at(2));
-  y = std::stoi("0" + av.at(3));
-  orientation = std::stoi("0" + av.at(4));
-  if ((player = this->getPlayerById(id)) == nullptr)
-    return ;
-  if (orientation == 1)
-    player->setRotation(irr::core::vector3df(0, 0, 0));
-  else if (orientation == 2)
-    player->setRotation(irr::core::vector3df(0, 90, 0));
-  else if (orientation == 3)
-    player->setRotation(irr::core::vector3df(0, 180, 0));
-  else if (orientation == 4)
-    player->setRotation(irr::core::vector3df(0, -90, 0));
-  player->moveTo(x, y);
+  if (str.size() <= 0)
+    return (0);
+  if (str[0] == '#')
+    str[0] = '0';
+  return (std::stoi("0" + str));
 }

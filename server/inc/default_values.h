@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:57:01 2017 Arthur Josso
-** Last update Fri Jun 23 20:43:57 2017 Arthur Josso
+** Last update Mon Jun 26 18:32:57 2017 Arthur Josso
 */
 
 #pragma once
@@ -14,13 +14,15 @@
 ** Static limits
 */
 
+#define MAX_CMD_LENGTH		8192
+
 #define MAX_PARALLEL_TASKS	10
 
 #define MAX_PENDING_CONNECTIONS	0x100
 
-#define MAX_MAP_SIZE		0x400
-#define MAX_PLAYERS		0x80
-#define MAX_FREQUENCY		1e5
+#define MAX_MAP_SIZE		60
+#define MAX_PLAYERS		100
+#define MAX_FREQUENCY		1e4
 
 /*
 ** Default game values

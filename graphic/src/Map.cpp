@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 23 13:46:12 2017 arnaud.alies
-// Last update Fri Jun 23 15:44:36 2017 arnaud.alies
+// Last update Tue Jun 27 17:54:02 2017 arnaud.alies
 //
 
 #include <iostream>
@@ -67,7 +67,7 @@ Mesh* Map::newFloor(int x, int y)
 			"./res/floor/Sci-Fi-Floor-1-OBJ.obj",
 			irr::core::vector3df(52,52,52),
 			"./res/floor/floor2.png",
-			true);
+			false);
   buff->node->setPosition(Map::getAbs(x, y));
   return (buff);
 }

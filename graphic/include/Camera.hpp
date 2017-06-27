@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue Jun 20 13:57:05 2017 arnaud.alies
-// Last update Thu Jun 22 09:58:26 2017 arnaud.alies
+// Last update Tue Jun 27 16:54:05 2017 arnaud.alies
 //
 
 #ifndef CAMERA_HPP_
@@ -14,7 +14,7 @@
 #define CAMERA_OFFSET (1000)
 
 //lower = faster
-#define CAMERA_SPEED (50)
+#define CAMERA_SPEED (25)
 
 #define CAMERA_MOVE (15)
 

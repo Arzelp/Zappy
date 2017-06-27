@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu Jun 22 17:01:44 2017 arnaud.alies
-// Last update Fri Jun 23 17:08:07 2017 arnaud.alies
+// Last update Tue Jun 27 16:22:16 2017 arnaud.alies
 //
 
 #ifndef RESOURCES_HPP_
@@ -24,6 +24,7 @@ protected:
   irr::core::vector3df _offset;
   irr::core::vector3df _pos;
   float _values[R_SIZE];
+  bool _updated;
 protected:
   Mesh* _meshes[R_SIZE];
 public:

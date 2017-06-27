@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 12:29:18 2017 arnaud.alies
-// Last update Thu Jun 22 14:26:55 2017 arnaud.alies
+// Last update Mon Jun 26 17:04:01 2017 arnaud.alies
 //
 
 #ifndef CORE_HPP_
@@ -34,6 +34,7 @@ public:
   irr::scene::ISceneManager* scene;
   irr::gui::IGUIEnvironment* gui;
   irr::scene::ICameraSceneNode* cam;
+  irr::gui::IGUIFont* font;
   Settings settings;
 public:
   Core();

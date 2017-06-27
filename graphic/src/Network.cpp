@@ -5,7 +5,7 @@
 // Login   <frederic.oddou@epitech.eu>
 //
 // Started on  Tue Jun 20 09:05:24 2017 Frederic Oddou
-// Last update Mon Jun 26 14:46:06 2017 Frederic Oddou
+// Last update Mon Jun 26 17:05:10 2017 Frederic Oddou
 //
 
 #include <netdb.h>
@@ -37,7 +37,7 @@ Network::~Network()
 {
   if (this->_socketFd)
     {
-      this->ReceiveStop();
+      this->_thread.detach();
       close(this->_socketFd);
       std::cout << "[Network] Closing connection from " << this->_host << ":" << this->_port << std::endl;
     }
@@ -129,15 +129,6 @@ void		Network::ReceiveMsg()
 	}
     }
   std::cout << "[Network] End of receive." << std::endl;
-}
-
-void				Network::ReceiveStop()
-{
-  if (!_endThread)
-    {
-      _endThread = true;
-      _thread.join();
-    }
 }
 
 void				Network::ReceiveStart()

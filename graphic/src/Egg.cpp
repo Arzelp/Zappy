@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Mon Jun 26 14:09:25 2017 arnaud.alies
-// Last update Mon Jun 26 15:03:14 2017 arnaud.alies
+// Last update Mon Jun 26 15:06:39 2017 arnaud.alies
 //
 
 #include "Egg.hpp"
@@ -34,7 +34,7 @@ void Egg::init(Core* core, Map* map, EntityManager* entity_manager)
   AEntity::init(core, map, entity_manager);
   _mesh = new Mesh(_core,
                    "./res/egg/egg.obj",
-                   irr::core::vector3df(1, 1, 1),
+                   irr::core::vector3df(10, 10, 10),
                    "");
 }
 

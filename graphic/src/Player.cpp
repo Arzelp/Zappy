@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 15:13:35 2017 arnaud.alies
-// Last update Mon Jun 26 14:34:42 2017 arnaud.alies
+// Last update Tue Jun 27 17:27:13 2017 arnaud.alies
 //
 
 #include "Player.hpp"
@@ -13,9 +13,11 @@
 
 Player::Player() :
   _offset(irr::core::vector3df(0, 50, 0)),
+  _billboard_offset(irr::core::vector3df(0, 150, 0)),
   _alive(true)
 {
   id = 0;
+  _anim_time = 0;
 }
 
 void Player::init(Core* core, Map *map, EntityManager* entity_manager)
@@ -24,13 +26,16 @@ void Player::init(Core* core, Map *map, EntityManager* entity_manager)
   _mesh = new Mesh(_core,
                    "./res/bomberman/tris.md2",
                    irr::core::vector3df(3, 3, 3),
-                   "./res/bomberman/Bomber.PCX");
+                   "./res/bomberman/Bomber.PCX",
+		   true);
   _mesh->node->setMD2Animation(irr::scene::EMAT_STAND);
+  _hud_title = new HudText(core, "", 25);
 }
 
 Player::~Player()
 {
   delete _mesh;
+  delete _hud_title;
 }
 
 void Player::kill()
@@ -38,39 +43,31 @@ void Player::kill()
   if (_alive)
     _mesh->node->setMD2Animation(irr::scene::EMAT_BOOM);
   _alive = false;
+  _death_time = Core::getTimeMs();
 }
 
 void Player::update()
 {
   if (_alive == false)
-    return ;
+    {
+      if (_death_time < Core::getTimeMs() - 1000)
+	_entity_manager->queueDeleteEntity(this);
+      return ;
+    }
   irr::core::vector3df pos = this->getPos();
   irr::core::vector3df diff = _target - pos;
 
   this->setPos((diff / PLAYER_SPEED) + pos);
-  /* actions */
-  /*
-  if (_state == S_RUN_UP)
+  _hud_title->setPos(this->getPos() + _billboard_offset);
+  _hud_title->setText(team + ":" + std::to_string(level));
+  if (_anim_time != 0)
     {
-      this->validMove(irr::core::vector3df(_speed, 0, 0));
-      this->setRotation(irr::core::vector3df(0, 0, 0));
+      if (_anim_time < Core::getTimeMs())
+	{
+	  _mesh->node->setMD2Animation(irr::scene::EMAT_STAND);
+	  _anim_time = 0;
+	}
     }
-  else if (_state == S_RUN_DOWN)
-    {
-      this->validMove(irr::core::vector3df(-_speed, 0, 0));
-      this->setRotation(irr::core::vector3df(0, 180, 0));
-    }
-  else if (_state == S_RUN_LEFT)
-    {
-      this->validMove(irr::core::vector3df(0, 0, _speed));
-      this->setRotation(irr::core::vector3df(0, -90, 0));
-    }
-  else if (_state == S_RUN_RIGHT)
-    {
-      this->validMove(irr::core::vector3df(0, 0, -_speed));
-      this->setRotation(irr::core::vector3df(0, 90, 0));
-    }
-  */
   /* animations */
   //_mesh->node->setMD2Animation(irr::scene::EMAT_RUN);
   //_mesh->node->setMD2Animation(irr::scene::EMAT_PAIN_A);
@@ -80,6 +77,12 @@ void Player::update()
 void Player::moveTo(int x, int y)
 {
   _target = Map::getAbs(x, y);
+}
+
+void Player::animate(irr::scene::EMD2_ANIMATION_TYPE anim, int time)
+{
+  _mesh->node->setMD2Animation(anim);
+  _anim_time = Core::getTimeMs() + time;
 }
 
 void Player::setPos(irr::core::vector3df target)
