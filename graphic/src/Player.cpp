@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 15:13:35 2017 arnaud.alies
-// Last update Mon Jun 26 18:24:30 2017 arnaud.alies
+// Last update Tue Jun 27 10:57:14 2017 arnaud.alies
 //
 
 #include "Player.hpp"
@@ -30,13 +30,13 @@ void Player::init(Core* core, Map *map, EntityManager* entity_manager)
   _billboard = _core->scene->addBillboardTextSceneNode(_core->font,
 						       irr::core::stringw("").c_str(),
 						       0,
-						       irr::core::dimension2d<irr::f32>(100.0f, 50.0f));
+						       irr::core::dimension2d<irr::f32>(140.0f, 50.0f));
 }
 
 Player::~Player()
 {
   delete _mesh;
-  //delete billboard
+  _billboard->remove();
 }
 
 void Player::kill()
@@ -44,41 +44,25 @@ void Player::kill()
   if (_alive)
     _mesh->node->setMD2Animation(irr::scene::EMAT_BOOM);
   _alive = false;
+  _death_time = Core::getTimeMs();
 }
 
 void Player::update()
 {
   if (_alive == false)
-    return ;
+    {
+      if (_death_time < Core::getTimeMs() - 1000)
+	_entity_manager->queueDeleteEntity(this);
+      return ;
+    }
   irr::core::vector3df pos = this->getPos();
   irr::core::vector3df diff = _target - pos;
 
   this->setPos((diff / PLAYER_SPEED) + pos);
   _billboard->setPosition(this->getPos() + _billboard_offset);
-  _billboard->setText(irr::core::stringw(team.c_str()).c_str());
-  /* actions */
-  /*
-  if (_state == S_RUN_UP)
-    {
-      this->validMove(irr::core::vector3df(_speed, 0, 0));
-      this->setRotation(irr::core::vector3df(0, 0, 0));
-    }
-  else if (_state == S_RUN_DOWN)
-    {
-      this->validMove(irr::core::vector3df(-_speed, 0, 0));
-      this->setRotation(irr::core::vector3df(0, 180, 0));
-    }
-  else if (_state == S_RUN_LEFT)
-    {
-      this->validMove(irr::core::vector3df(0, 0, _speed));
-      this->setRotation(irr::core::vector3df(0, -90, 0));
-    }
-  else if (_state == S_RUN_RIGHT)
-    {
-      this->validMove(irr::core::vector3df(0, 0, -_speed));
-      this->setRotation(irr::core::vector3df(0, 90, 0));
-    }
-  */
+  _billboard->setText(irr::core::stringw((team
+					  + ":"
+					  + std::to_string(level)).c_str()).c_str());
   /* animations */
   //_mesh->node->setMD2Animation(irr::scene::EMAT_RUN);
   //_mesh->node->setMD2Animation(irr::scene::EMAT_PAIN_A);
