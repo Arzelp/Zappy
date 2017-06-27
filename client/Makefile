@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ##
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Mon Jun 26 14:43:02 2017 Paskal Arzel
+## Last update Tue Jun 27 18:34:13 2017 Paskal Arzel
 ##
 
 NAME	=	zappy_ai
@@ -15,7 +15,7 @@ CC	=	gcc
 INC	=	./inc/
 
 CFLAGS	+=	-I$(INC)		\
-		-Wall -Wextra
+		-Wall -Wextra -g
 
 LDFLAGS	+= -lm
 
@@ -61,6 +61,10 @@ SRCS	=	$(SRC)main.c			\
 		$(IA)set_rush.c \
 		$(IA)set_minimap.c \
 		$(IA)select_elem.c \
+		$(IA)loot_case.c \
+		$(IA)move.c \
+		$(IA)elevate.c \
+		$(IA)find_direction.c \
 		$(GAME)elevation.c
 
 OBJS	=	$(SRCS:.c=.o)

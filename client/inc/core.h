@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Mon Jun 26 14:55:58 2017 Paskal Arzel
+** Last update Tue Jun 27 18:33:13 2017 Paskal Arzel
 */
 
 #pragma once
@@ -52,6 +52,12 @@ typedef struct
   int			nb_player;
   enum e_obj		object[OBJ_NB];
 }			t_elevation;
+
+typedef struct
+{
+  int		x;
+  int		y;
+}t_pos;
 
 typedef struct
 {
@@ -143,7 +149,15 @@ bool		init_new_player(void);
 bool		look(void);
 bool		set_rush(void);
 int			select_primary(void);
+int 		select_secondary(int primary);
 int			**set_minimap(void);
+void 		loot_case(int value);
+void		check_and_move(int **minimap, t_pos *position,
+		       int primary, int secondary);
+void		move_left(t_pos *position);
+void		move_forward(t_pos *position);
+void		move_right(t_pos *position);
+void		elevate(void);
 
 extern t_core		*g_core;
 extern t_elem		g_elem[];
