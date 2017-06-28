@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 14:28:31 2017 Arthur Josso
-** Last update Fri Jun 23 20:40:00 2017 Arthur Josso
+** Last update Wed Jun 28 17:38:01 2017 Arthur Josso
 */
 
 #pragma once
@@ -16,6 +16,7 @@
 #include <limits.h>
 #include "player.h"
 #include "graphic.h"
+#include "admin.h"
 #include "misc.h"
 #include "cleaner.h"
 #include "types.h"

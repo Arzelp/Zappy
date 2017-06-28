@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Apr 20 20:19:40 2017 Arthur Josso
-** Last update Fri Jun 23 20:48:24 2017 Arthur Josso
+** Last update Wed Jun 28 17:52:43 2017 Arthur Josso
 */
 
 #pragma once
@@ -56,3 +56,10 @@ int	umod(int a, int b);
 typedef uint64_t t_time;
 
 t_time	get_current_time();
+
+/*
+** Hash
+*/
+
+uint32_t	hash_djb2(const char *str);
+
