@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Tue Jun 27 23:20:26 2017 Frederic Oddou
+** Last update Wed Jun 28 09:33:02 2017 Frederic Oddou
 */
 
 #pragma once
@@ -115,6 +115,8 @@ bool		player_fork(const char *str);
 bool		player_take(const char *str);
 bool		player_set(const char *str);
 bool		player_connect_nbr(const char *str);
+bool		cmd_checker(char *buffer, bool (*func_check)(const char *str));
+bool		cmd_ok_or_ko(const char *str);
 
 /*
 ** @game

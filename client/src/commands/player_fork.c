@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 22:22:49 2017 Frederic Oddou
-** Last update Tue Jun 27 20:48:12 2017 Frederic Oddou
+** Last update Wed Jun 28 09:34:08 2017 Frederic Oddou
 */
 
 #include <stdlib.h>
@@ -19,7 +19,7 @@ bool		player_fork(const char *str)
 
   if (!send_msg("Fork"))
     return (false);
-  if (!receive_msg(buffer, BUFFER_SIZE) || is_answer_ko(buffer))
+  if (!cmd_checker(buffer, &cmd_ok_or_ko) || is_answer_ko(buffer))
     {
       debug_message_error("Fork", str, NULL);
       return (false);

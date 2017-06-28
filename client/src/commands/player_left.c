@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 14:21:25 2017 Frederic Oddou
-** Last update Tue Jun 27 20:47:02 2017 Frederic Oddou
+** Last update Wed Jun 28 09:33:51 2017 Frederic Oddou
 */
 
 #include <stdlib.h>
@@ -18,7 +18,7 @@ bool		player_left(const char *str)
 
   if (!send_msg("Left"))
     return (false);
-  if (!receive_msg(buffer, BUFFER_SIZE) || is_answer_ko(buffer))
+  if (!cmd_checker(buffer, &cmd_ok_or_ko) || is_answer_ko(buffer))
     {
       debug_message_error("Left", str, NULL);
       return (false);

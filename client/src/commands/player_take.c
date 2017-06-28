@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 21:54:30 2017 Frederic Oddou
-** Last update Tue Jun 27 20:52:15 2017 Frederic Oddou
+** Last update Wed Jun 28 09:33:21 2017 Frederic Oddou
 */
 
 #include <stdio.h>
@@ -20,7 +20,7 @@ bool		player_take(const char *str)
   snprintf(buffer, BUFFER_SIZE, "Take %s", str);
   if (!send_msg(buffer))
     return (false);
-  if (!receive_msg(buffer, BUFFER_SIZE) || is_answer_ko(buffer))
+  if (!cmd_checker(buffer, &cmd_ok_or_ko) || is_answer_ko(buffer))
     {
       debug_message_error("Take", str, NULL);
       return (false);

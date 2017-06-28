@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 11:11:42 2017 Frederic Oddou
-** Last update Tue Jun 27 23:00:01 2017 Frederic Oddou
+** Last update Wed Jun 28 10:12:36 2017 Frederic Oddou
 */
 
 #pragma once
@@ -69,6 +69,7 @@ void		debug_message_confirm(const char *action, const char *opt,
 				      const char *answer);
 void		debug_message_error(const char *action, const char *opt,
 				    const char *answer);
+void		debug_message(const char *type, const char *str);
 
 /*
 ** @is_object.c

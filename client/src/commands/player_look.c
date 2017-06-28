@@ -5,12 +5,19 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 13:25:57 2017 Frederic Oddou
-** Last update Tue Jun 27 20:52:41 2017 Frederic Oddou
+** Last update Wed Jun 28 10:06:35 2017 Frederic Oddou
 */
 
 #include <string.h>
 #include "core.h"
 #include "utils.h"
+
+static bool	player_look_answer_check(const char *str)
+{
+  if (is_answer_ko(str) || *str == '[')
+    return (true);
+  return (false);
+}
 
 static bool	separate(char *buffer)
 {
@@ -35,8 +42,11 @@ bool		player_look(const char *str)
 
   if (!send_msg("Look"))
     return (false);
-  if (!receive_msg(buffer, BUFFER_SIZE))
-    return (false);
+  if (!cmd_checker(buffer, &player_look_answer_check) || is_answer_ko(buffer))
+    {
+      debug_message_error("Look", str, buffer);
+      return (false);
+    }
   bzero(g_core->player.view, sizeof(g_core->player.view));
   debug_message_confirm("Look", str, buffer);
   separate(buffer + 1);

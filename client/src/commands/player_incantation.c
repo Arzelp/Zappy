@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 22:13:17 2017 Frederic Oddou
-** Last update Tue Jun 27 20:53:11 2017 Frederic Oddou
+** Last update Wed Jun 28 09:54:20 2017 Frederic Oddou
 */
 
 #include <string.h>
@@ -13,23 +13,29 @@
 #include "core.h"
 #include "utils.h"
 
+static bool	player_incantation_answer_check(const char *str)
+{
+  if (is_answer_ko(str) ||
+      !strcmp(str, "Elevation underway") ||
+      !strncmp(str, "Current level: ", strlen("Current level: ")))
+    return (true);
+  return (false);
+}
+
 bool		player_incantation(const char *str)
 {
   char		buffer[BUFFER_SIZE];
 
   if (!send_msg("Incantation"))
     return (false);
-  if (!receive_msg(buffer, BUFFER_SIZE) || is_answer_ko(buffer))
+  if (!cmd_checker(buffer, &player_incantation_answer_check) ||
+      is_answer_ko(buffer) || !strcmp(buffer, "Elevation underway"))
     {
       debug_message_error("Incantation", str, buffer);
       return (false);
     }
-  if (strcmp(buffer, "Elevation underway"))
-    {
-      debug_message_error("Incantation", str, buffer);
-      return (false);
-    }
-  if (!receive_msg(buffer, BUFFER_SIZE))
+  if (!cmd_checker(buffer, &player_incantation_answer_check) ||
+      !strncmp(str, "Current level: ", strlen("Current level: ")))
     {
       debug_message_error("Incantation", str, buffer);
       return (false);
