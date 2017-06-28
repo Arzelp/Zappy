@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 11:26:36 2017 Frederic Oddou
-** Last update Tue Jun 27 22:47:16 2017 Frederic Oddou
+** Last update Wed Jun 28 14:46:34 2017 Paskal Arzel
 */
 
 #pragma once
@@ -25,8 +25,12 @@
 #define DELT_MAX_LVL		8
 
 #define START_FERT		30
-#define MIN_SAFE_FOOD		5
+#define MIN_SAFE_FOOD	5
 #define MAX_RUSH			20
+#define MAX_FOOD			75
+
+#define PRIMARY_FACT		5
+#define SECONDARY_FACT	3
 
 /*
 ** @Action's cost

@@ -5,14 +5,14 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Mon Jun 19 20:13:12 2017 Paskal Arzel
-** Last update Mon Jun 26 15:01:34 2017 Paskal Arzel
+** Last update Mon Jun 26 15:44:15 2017 Paskal Arzel
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "core.h"
 
-static void randomize()
+/*static void randomize()
 {
   bool (*func[6])(const char *);
 
@@ -23,7 +23,7 @@ static void randomize()
   func[4] = &player_look;
   func[5] = NULL;
   func[rand() % 5](NULL);
-}
+}*/
 
 bool		ia_main(void)
 {
@@ -31,9 +31,8 @@ bool		ia_main(void)
   g_core->player.cd_fertility = START_FERT;
   while (g_core->player.is_alive)
     {
-      /*if (!check_mom())
-	look();*/
-      randomize();
+      if (!check_mom())
+				look();
     }
   return (true);
 }

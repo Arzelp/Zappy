@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 **
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Tue Jun 27 23:19:19 2017 Frederic Oddou
+** Last update Wed Jun 28 14:46:05 2017 Paskal Arzel
 */
 
 #include <string.h>
