@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Wed Jun 28 14:19:36 2017 arnaud.alies
+// Last update Wed Jun 28 15:57:45 2017 arnaud.alies
 //
 
 #include <map>
@@ -54,7 +54,6 @@ Zappy::~Zappy()
   delete _inventory;
 }
 
-
 State *Zappy::update()
 {
   E_INPUT in = _core->receiver->lastKey();
@@ -72,9 +71,7 @@ State *Zappy::update()
 	      _selected =
 		static_cast<Player*>(_entity_manager->getClosestEntity(node->getPosition(), "player"));
 	      if (_selected != nullptr)
-		{
-		  _network->SendMsg("pin #" + std::to_string(_selected->id));
-		}
+		_network->SendMsg("pin #" + std::to_string(_selected->id));
 	    }
 	  else
 	    {
@@ -86,7 +83,7 @@ State *Zappy::update()
       if (_inventory != nullptr && _entity_manager->exists(_selected))
 	{
 	  _cam->setPosSlow(_selected->getPos());
-	  _inventory->setPos(_selected->getPos() + irr::core::vector3df(0, 190, 0));
+	  _inventory->setPos(_selected->getPos() + irr::core::vector3df(20, 100, 0));
 	}
       else
 	{
@@ -149,6 +146,8 @@ void Zappy::runQueue()
     DEF_CMD(plv),
     DEF_CMD(pfk),
     DEF_CMD(pin),
+    DEF_CMD(pgt),
+    DEF_CMD(pdr),
     DEF_CMD(bct)
   };
 

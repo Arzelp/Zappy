@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 15:13:35 2017 arnaud.alies
-// Last update Tue Jun 27 17:27:13 2017 arnaud.alies
+// Last update Wed Jun 28 15:34:59 2017 arnaud.alies
 //
 
 #include "Player.hpp"
@@ -29,7 +29,7 @@ void Player::init(Core* core, Map *map, EntityManager* entity_manager)
                    "./res/bomberman/Bomber.PCX",
 		   true);
   _mesh->node->setMD2Animation(irr::scene::EMAT_STAND);
-  _hud_title = new HudText(core, "", 25);
+  _hud_title = new HudText(core, "", 20);
 }
 
 Player::~Player()

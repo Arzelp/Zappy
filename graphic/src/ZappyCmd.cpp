@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Mon Jun 26 16:01:18 2017 arnaud.alies
-// Last update Wed Jun 28 13:51:46 2017 arnaud.alies
+// Last update Wed Jun 28 15:58:14 2017 arnaud.alies
 //
 
 #include "Zappy.hpp"
@@ -167,7 +167,7 @@ void Zappy::cmd_plv(int ac, std::vector<std::string> av)
     return ;
   player->level = Zappy::getInt(av.at(2));
   //level up animation?
-  player->animate(irr::scene::EMAT_PAIN_A, 500);
+  player->animate(irr::scene::EMAT_PAIN_A, 800);
 }
 
 void Zappy::cmd_pin(int ac, std::vector<std::string> av)
@@ -184,9 +184,35 @@ void Zappy::cmd_pin(int ac, std::vector<std::string> av)
     return ;
   delete _inventory;
   res = "I";
-  for (int x = 2; x < 11; x += 1)
+  for (int x = 4; x < 11; x += 1)
     res += ":\n" + av.at(x);
-  _inventory = new HudText(_core, res);
+  _inventory = new HudText(_core, res, 20);
   //_inventory->setPos(player->getPos() + irr::core::vector3df(0, 190, 0));
-  // to implement
+}
+
+void Zappy::cmd_pgt(int ac, std::vector<std::string> av)
+{
+  /* player pickup res */
+  Player* player;
+  int id;
+
+  if (ac != 3 || _running == false)
+    return ;
+  id = Zappy::getInt(av.at(1));
+  if ((player = this->getPlayerById(id)) == nullptr)
+    return ;
+  player->animate(irr::scene::EMAT_CROUCH_STAND, 700);
+}
+
+void Zappy::cmd_pdr(int ac, std::vector<std::string> av)
+{
+  Player* player;
+  int id;
+
+  if (ac != 3 || _running == false)
+    return ;
+  id = Zappy::getInt(av.at(1));
+  if ((player = this->getPlayerById(id)) == nullptr)
+    return ;
+  player->animate(irr::scene::EMAT_PAIN_C, 700);
 }
