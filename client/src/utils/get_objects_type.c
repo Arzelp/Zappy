@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 21:55:59 2017 Frederic Oddou
-** Last update Sun Jun 18 20:42:36 2017 Frederic Oddou
+** Last update Tue Jun 27 22:45:05 2017 Frederic Oddou
 */
 
 #include <string.h>
@@ -23,7 +23,7 @@ const t_get_objects_type	g_get_objects_type[] = {
   {OBJ_NB, NULL}
 };
 
-const char	*get_object_name_from_type(enum e_obj obj_id)
+const char	*get_object_name_from_type(short obj_id)
 {
   size_t	i;
 
@@ -37,7 +37,7 @@ const char	*get_object_name_from_type(enum e_obj obj_id)
   return (NULL);
 }
 
-enum e_obj	get_object_id_from_name(const char *name)
+short		get_object_id_from_name(const char *name)
 {
   size_t	i;
 

@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 22:21:02 2017 Frederic Oddou
-** Last update Sun Jun 18 18:17:11 2017 Frederic Oddou
+** Last update Wed Jun 28 09:34:15 2017 Frederic Oddou
 */
 
 #include <stdlib.h>
@@ -18,7 +18,7 @@ bool		player_eject(const char *str)
 
   if (!send_msg("Eject"))
     return (false);
-  if (!receive_msg(buffer, BUFFER_SIZE) || !is_answer_ok(buffer))
+  if (!cmd_checker(buffer, &cmd_ok_or_ko) || is_answer_ko(buffer))
     {
       debug_message_error("Eject", str, NULL);
       return (false);

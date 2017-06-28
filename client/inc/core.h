@@ -5,7 +5,11 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
+<<<<<<< HEAD
 ** Last update Tue Jun 27 20:28:06 2017 Paskal Arzel
+=======
+** Last update Wed Jun 28 09:33:02 2017 Frederic Oddou
+>>>>>>> ebf5c74caf3cc062e2f852d7bf3d5b97554fa9dc
 */
 
 #pragma once
@@ -16,16 +20,7 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include "default_values.h"
-
-#ifdef DEBUG_MODE
-# define DEBUG true
-#else
-# define DEBUG true
-#endif
-
-#define NAME_SIZE	256
-#define HOST_SIZE	2048
-#define BUFFER_SIZE	2048
+#include "utils.h"
 
 enum e_position
 {
@@ -55,15 +50,15 @@ typedef struct
 
 typedef struct
 {
-  int		x;
-  int		y;
-}t_pos;
+  int			id;
+  char			*name;
+}			t_elem;
 
 typedef struct
 {
-  int		id;
-  char	*name;
-}t_elem;
+  int			x;
+  int			y;
+}			t_pos;
 
 typedef struct
 {
@@ -86,7 +81,16 @@ typedef struct
   char			host[HOST_SIZE];
   int			socket_fd;
   struct sockaddr_in	port_socket;
+  t_queue		queue;
 }			t_core;
+
+/*
+** @core.c
+*/
+
+void		core_init(t_core *core);
+void		core_destruct();
+void		core_usage(const char *name);
 
 /*
 ** @connect
@@ -121,6 +125,8 @@ bool		player_fork(const char *str);
 bool		player_take(const char *str);
 bool		player_set(const char *str);
 bool		player_connect_nbr(const char *str);
+bool		cmd_checker(char *buffer, bool (*func_check)(const char *str));
+bool		cmd_ok_or_ko(const char *str);
 
 /*
 ** @game
@@ -143,11 +149,11 @@ int			elevation_need_object(enum e_obj obj_id);
 **
 */
 
-bool		ia_main(void);
-bool		check_mom(void);
-bool		init_new_player(void);
-bool		look(void);
-bool		set_rush(void);
+bool			ia_main(void);
+bool			check_mom(void);
+bool			init_new_player(void);
+bool			look(void);
+bool			set_rush(void);
 int			select_primary(void);
 int 		select_secondary(int primary);
 int			**set_minimap(void);

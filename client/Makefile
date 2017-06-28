@@ -5,12 +5,12 @@
 ## Login   <arthur.josso@epitech.eu>
 ##
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Tue Jun 27 18:34:13 2017 Paskal Arzel
+## Last update Wed Jun 28 14:47:28 2017 Paskal Arzel
 ##
 
 NAME	=	zappy_ai
 
-CC	=	gcc
+CC	=	gcc -g
 
 INC	=	./inc/
 
@@ -22,13 +22,15 @@ LDFLAGS	+= -lm
 SRC	=	./src/
 PARSE	=	$(SRC)parse/
 UTILS	=	$(SRC)utils/
+QUEUE	=	$(UTILS)queue/
 CONNECT	=	$(SRC)connect/
 CMD	=	$(SRC)commands/
 GAME	=	$(SRC)game/
-IA = $(SRC)ia/
-IA_INIT = $(IA)init/
+IA	= 	$(SRC)ia/
+IA_INIT = 	$(IA)init/
 
 SRCS	=	$(SRC)main.c			\
+		$(SRC)core.c			\
 		$(UTILS)checker.c		\
 		$(UTILS)trim.c			\
 		$(UTILS)strtok_single.c		\
@@ -36,6 +38,9 @@ SRCS	=	$(SRC)main.c			\
 		$(UTILS)get_objects_type.c	\
 		$(UTILS)is_object.c		\
 		$(UTILS)debug.c			\
+		$(QUEUE)queue_class.c		\
+		$(QUEUE)queue_get.c		\
+		$(QUEUE)queue_insert.c		\
 		$(PARSE)parse.c			\
 		$(PARSE)funcs.c			\
 		$(CONNECT)open_socket.c		\
@@ -43,6 +48,7 @@ SRCS	=	$(SRC)main.c			\
 		$(CONNECT)get_player.c		\
 		$(CONNECT)send_msg.c		\
 		$(CONNECT)receive_msg.c		\
+		$(CMD)cmd_checker.c		\
 		$(CMD)player_forward.c		\
 		$(CMD)player_broadcast.c	\
 		$(CMD)player_inventory.c	\
@@ -55,7 +61,7 @@ SRCS	=	$(SRC)main.c			\
 		$(CMD)player_take.c		\
 		$(CMD)player_set.c		\
 		$(CMD)player_look.c		\
-		$(IA)ia_main.c		\
+		$(IA)ia_main.c			\
 		$(IA)check_mom.c		\
 		$(IA)look.c		\
 		$(IA)set_rush.c \

@@ -5,14 +5,14 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Mon Jun 19 13:02:41 2017 Frederic Oddou
-** Last update Mon Jun 19 13:05:16 2017 Frederic Oddou
+** Last update Tue Jun 27 22:45:52 2017 Frederic Oddou
 */
 
 #include <string.h>
 #include "core.h"
 #include "utils.h"
 
-bool		is_object_on_case(const char *str, enum e_obj obj)
+bool		is_object_on_case(const char *str, short obj)
 {
   const char	*obj_name;
 

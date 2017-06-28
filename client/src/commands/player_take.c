@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 21:54:30 2017 Frederic Oddou
-** Last update Tue Jun 27 20:45:15 2017 Paskal Arzel
+** Last update Wed Jun 28 14:46:16 2017 Paskal Arzel
 */
 
 #include <stdio.h>
@@ -20,15 +20,15 @@ bool		player_take(const char *str)
   snprintf(buffer, BUFFER_SIZE, "Take %s", str);
   if (!send_msg(buffer))
     return (false);
-  if (!receive_msg(buffer, BUFFER_SIZE) || is_answer_ko(buffer))
+  if (!cmd_checker(buffer, &cmd_ok_or_ko) || is_answer_ko(buffer))
     {
-      debug_message_error("Take", str, buffer);
+      debug_message_error("Take", str, NULL);
       return (false);
     }
   if ((obj_id = get_object_id_from_name(str)) != OBJ_NB)
     g_core->player.inventory[obj_id] += 1;
   else
     player_inventory(NULL);
-  debug_message_confirm("Take", str, buffer);
+  debug_message_confirm("Take", str, NULL);
   return (true);
 }

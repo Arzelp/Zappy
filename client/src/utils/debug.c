@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sun Jun 18 17:51:14 2017 Frederic Oddou
-** Last update Sun Jun 18 18:13:23 2017 Frederic Oddou
+** Last update Wed Jun 28 10:12:21 2017 Frederic Oddou
 */
 
 #include <stdio.h>
@@ -42,5 +42,17 @@ void		debug_message_error(const char *action, const char *opt,
       if (answer)
 	fprintf(stderr, "[Answer \"%s\"]", answer);
       fprintf(stderr, "\n");
+    }
+}
+
+void		debug_message(const char *type, const char *str)
+{
+  char		buffer[BUFFER_SIZE];
+
+  if (DEBUG)
+    {
+      snprintf(buffer, BUFFER_SIZE, "[\e[33m%s\e[0m]", type);
+      fprintf(stderr, "%s %-25s", DEBUG_OK, buffer);
+      fprintf(stderr, "%s\n", str);
     }
 }
