@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 20 20:19:07 2017 Paskal Arzel
-** Last update Tue Jun 20 22:16:52 2017 Paskal Arzel
+** Last update Wed Jun 28 16:13:43 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
@@ -29,6 +29,7 @@ bool	check_mom(void)
   {
     if (!player_fork(NULL))
 	    return (false);
+    g_core->player.cd_fertility = CD_FERTILITY;
     return (true);
   }
   return (false);
