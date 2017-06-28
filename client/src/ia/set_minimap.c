@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Jun 21 17:52:21 2017 Paskal Arzel
-** Last update Mon Jun 26 14:57:20 2017 Paskal Arzel
+** Last update Mon Jun 26 18:25:39 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
@@ -39,7 +39,7 @@ static int		get_value(char *ptr)
   while (g_elem[i].id != -1)
   {
     if (!strncasecmp(ptr, g_elem[i].name, strlen(g_elem[i].name)))
-	    return (pow(10, g_elem[i].id));
+	    return (pow(10, g_elem[i].id - 1));
     i++;
   }
   return (0);

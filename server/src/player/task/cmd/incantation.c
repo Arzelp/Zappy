@@ -1,9 +1,9 @@
 /*
 ** incantation.c for lol in /home/tetra/rendu/psu/PSU_2016_zappy/server
-** 
+**
 ** Made by Arthur Josso
 ** Login   <arthur.josso@epitech.eu>
-** 
+**
 ** Started on  Tue Jun 20 13:11:07 2017 Arthur Josso
 ** Last update Mon Jun 26 14:04:39 2017 Arthur Josso
 */
