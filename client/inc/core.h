@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Wed Jun 28 15:06:44 2017 Paskal Arzel
+** Last update Wed Jun 28 17:18:20 2017 Paskal Arzel
 */
 
 #pragma once
@@ -160,6 +160,7 @@ void		move_left(t_pos *position);
 void		move_forward(t_pos *position);
 void		move_right(t_pos *position);
 void		elevate(void);
+int			calc_value(char *str);
 
 extern t_core		*g_core;
 extern t_elem		g_elem[];

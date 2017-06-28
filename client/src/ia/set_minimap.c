@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Jun 21 17:52:21 2017 Paskal Arzel
-** Last update Mon Jun 26 18:25:39 2017 Paskal Arzel
+** Last update Wed Jun 28 17:18:10 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
@@ -45,7 +45,7 @@ static int		get_value(char *ptr)
   return (0);
 }
 
-static int		calc_value(char *str)
+int		calc_value(char *str)
 {
   int		res;
   char	*ptr;
