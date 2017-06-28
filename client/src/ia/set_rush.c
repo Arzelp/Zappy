@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Jun 21 16:09:27 2017 Paskal Arzel
-** Last update Tue Jun 27 19:15:56 2017 Paskal Arzel
+** Last update Wed Jun 28 17:57:35 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
@@ -45,7 +45,6 @@ static void go_rush(int **minimap, int primary, int secondary)
   {
     check_and_move(minimap, &position, primary, secondary);
     elevate();
-    printf("new turn\n");
     turns++;
   }
 }
