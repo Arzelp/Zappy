@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Wed Jun 28 15:57:32 2017 arnaud.alies
+// Last update Wed Jun 28 18:12:37 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -23,6 +23,7 @@
 #include "Resources.hpp"
 #include "Network.hpp"
 #include "Player.hpp"
+#include "Egg.hpp"
 
 #define DEF_CMD(cmd) {#cmd, &Zappy::cmd_##cmd}
 
@@ -47,6 +48,7 @@ public:
   void spawnResources();
   Resources* getResourcesAt(irr::core::vector3df pos);
   Player* getPlayerById(int id);
+  Egg* getEggById(int id);
   //
   static int getInt(std::string);
   void runQueue();
@@ -61,6 +63,8 @@ public:
   void cmd_pin(int ac, std::vector<std::string> av);
   void cmd_pgt(int ac, std::vector<std::string> av);
   void cmd_pdr(int ac, std::vector<std::string> av);
+  void cmd_ebo(int ac, std::vector<std::string> av);
+  void cmd_enw(int ac, std::vector<std::string> av);
 };
 
 typedef void(Zappy::*t_command)(int ac, std::vector<std::string> av);

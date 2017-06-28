@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 14:56:43 2017 arnaud.alies
-// Last update Tue Jun 27 18:20:12 2017 arnaud.alies
+// Last update Wed Jun 28 16:49:58 2017 arnaud.alies
 //
 
 #ifndef PLAYER_HPP_
@@ -31,6 +31,7 @@ protected:
   irr::core::vector3df _offset;
   irr::core::vector3df _billboard_offset;
   bool _alive;
+  bool _first;
   int _death_time;
   int _anim_time;
 public:

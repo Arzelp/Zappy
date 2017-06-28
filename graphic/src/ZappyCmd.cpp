@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Mon Jun 26 16:01:18 2017 arnaud.alies
-// Last update Wed Jun 28 15:58:14 2017 arnaud.alies
+// Last update Wed Jun 28 18:30:55 2017 arnaud.alies
 //
 
 #include "Zappy.hpp"
@@ -154,6 +154,18 @@ void Zappy::cmd_pfk(int ac, std::vector<std::string> av)
   player->animate(irr::scene::EMAT_PAIN_B, 500);
 }
 
+void Zappy::cmd_ebo(int ac, std::vector<std::string> av)
+{
+  /* delete egg - new player for egg*/
+  
+}
+
+void Zappy::cmd_enw(int ac, std::vector<std::string> av)
+{
+  /* new egg */
+  
+}
+
 void Zappy::cmd_plv(int ac, std::vector<std::string> av)
 {
   /* player lvl up */
@@ -181,6 +193,8 @@ void Zappy::cmd_pin(int ac, std::vector<std::string> av)
     return ;
   id = Zappy::getInt(av.at(1));
   if ((player = this->getPlayerById(id)) == nullptr)
+    return ;
+  if (player != _selected)
     return ;
   delete _inventory;
   res = "I";

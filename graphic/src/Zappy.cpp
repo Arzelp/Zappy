@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Wed Jun 28 15:57:45 2017 arnaud.alies
+// Last update Wed Jun 28 18:16:42 2017 arnaud.alies
 //
 
 #include <map>
@@ -118,6 +118,20 @@ Player* Zappy::getPlayerById(int id)
   return (nullptr);
 }
 
+Egg* Zappy::getEggById(int id)
+{
+  Egg* egg;
+  std::vector<AEntity*> ents = _entity_manager->getAll("egg");
+
+  for (auto ent : ents)
+    {
+      egg = static_cast<Egg*>(ent);
+      if (egg->id == id)
+	return (egg);
+    }
+  return (nullptr);
+}
+
 Resources* Zappy::getResourcesAt(irr::core::vector3df pos)
 {
   AEntity* ent;
@@ -148,6 +162,8 @@ void Zappy::runQueue()
     DEF_CMD(pin),
     DEF_CMD(pgt),
     DEF_CMD(pdr),
+    DEF_CMD(ebo),
+    DEF_CMD(enw),
     DEF_CMD(bct)
   };
 
