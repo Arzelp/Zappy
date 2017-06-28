@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 16:27:08 2017 Arthur Josso
-** Last update Mon Jun 26 19:44:56 2017 Arthur Josso
+** Last update Wed Jun 28 13:54:10 2017 Arthur Josso
 */
 
 #include <unistd.h>
@@ -32,7 +32,7 @@ bool		write_on_client(t_client *client)
       write_ret = send(client->fd, buff, buff_len, MSG_NOSIGNAL);
       if (write_ret == -1)
 	{
-	  if (errno != EPIPE && errno != ECONNRESET)
+	  if (errno != EPIPE && errno != ECONNRESET && errno != EINTR)
 	    fat_err("write");
 	  return (false);
 	}
@@ -51,7 +51,11 @@ bool		read_on_client(t_client *client)
     {
       read_ret = recv(client->fd, buff, BUFF_SIZE, 0);
       if (read_ret == -1)
-	fat_err("read");
+	{
+	  if (errno != EINTR)
+	    fat_err("read");
+	  return (false);
+	}
       if (read_ret == 0)
 	return (client_rm(client));
       buff[read_ret] = '\0';

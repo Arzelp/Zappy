@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Mon Jun 19 16:59:10 2017 Arthur Josso
-** Last update Thu Jun 22 14:53:53 2017 Arthur Josso
+** Last update Wed Jun 28 14:18:40 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -33,7 +33,7 @@ static bool	eject_player(t_client *client)
       dir = umod(act_player->dir + 2, DIR_NBR);
       send_cmd(CMD_PLAYER_EJECT, get_tile_num_from_dir(other->dir, dir));
       send_graphics_cmd(CMD_GRAPHIC_PLAYER_POS, other->id,
-			other->pos.x, other->pos.y, other->dir);
+			other->pos.x, other->pos.y, other->dir + 1);
     }
   return (true);
 }

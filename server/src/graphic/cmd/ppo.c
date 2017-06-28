@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Mon Jun 12 22:00:58 2017 Arthur Josso
-** Last update Tue Jun 13 15:54:14 2017 Arthur Josso
+** Last update Wed Jun 28 14:18:53 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -36,6 +36,6 @@ bool		cmd_graphic_ppo(t_graphic *graphic, const char *arg)
   if (client == NULL)
     return (ret_on_bad_arg());
   p = client->entity;
-  send_cmd(CMD_GRAPHIC_PLAYER_POS, p->id, p->pos.x, p->pos.y, p->dir);
+  send_cmd(CMD_GRAPHIC_PLAYER_POS, p->id, p->pos.x, p->pos.y, p->dir + 1);
   return (true);
 }
