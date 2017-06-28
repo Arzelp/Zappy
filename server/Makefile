@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Wed Jun 28 15:04:27 2017 Arthur Josso
+## Last update Wed Jun 28 17:47:03 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -35,6 +35,8 @@ SRC_PLAYER	=	$(SRC)player/
 
 SRC_GRAPHIC	=	$(SRC)graphic/
 
+SRC_ADMIN	=	$(SRC)admin/
+
 SRC_TASK	=	$(SRC_PLAYER)task/
 
 SRC_EGG		=	$(SRC)egg/
@@ -44,6 +46,8 @@ SRC_G_CMD	=	$(SRC_GRAPHIC)cmd/
 SRC_C_CMD	=	$(SRC_PLAYER)cmd/
 
 SRC_T_CMD	=	$(SRC_TASK)cmd/
+
+SRC_A_CMD	=	$(SRC_ADMIN)cmd/
 
 SRCS	=	$(SRC)main.c			\
 		$(SRC_PARSE)run.c		\
@@ -57,6 +61,7 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_UTILS)checker.c		\
 		$(SRC_UTILS)math.c		\
 		$(SRC_UTILS)time.c		\
+		$(SRC_UTILS)hash.c		\
 		$(SRC_CORE)run.c		\
 		$(SRC_CORE)fd_list.c		\
 		$(SRC_CORE)init.c		\
@@ -101,7 +106,10 @@ SRCS	=	$(SRC)main.c			\
 		$(SRC_T_CMD)broadcast.c		\
 		$(SRC_T_CMD)fork.c		\
 		$(SRC_EGG)init.c		\
-		$(SRC_EGG)run.c
+		$(SRC_EGG)run.c			\
+		$(SRC_ADMIN)init.c		\
+		$(SRC_ADMIN)run.c		\
+		$(SRC_A_CMD)test.c
 
 OBJS	=	$(SRCS:.c=.o)
 
