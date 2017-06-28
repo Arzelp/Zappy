@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 18:03:11 2017 Arthur Josso
-** Last update Fri Jun 23 18:19:16 2017 Arthur Josso
+** Last update Wed Jun 28 18:28:22 2017 Arthur Josso
 */
 
 #pragma once
@@ -39,6 +39,14 @@ bool	client_player_fini(t_player *player);
 
 bool	player_consume_food(t_player *player);
 bool	player_is_dead(t_player *player);
+
+/*
+** Tools
+*/
+
+typedef bool (*t_player_callback)(t_player *player);
+
+void	player_for_each(bool set_current, t_player_callback callback);
 
 /*
 ** Commands

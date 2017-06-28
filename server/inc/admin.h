@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun 28 17:30:27 2017 Arthur Josso
-** Last update Wed Jun 28 17:53:29 2017 Arthur Josso
+** Last update Wed Jun 28 18:14:07 2017 Arthur Josso
 */
 
 #pragma once
@@ -26,4 +26,4 @@ bool	client_admin_fini(t_admin *admin);
 ** Commands
 */
 
-bool	cmd_admin_test(t_admin *admin, const char *arg);
+bool	cmd_admin_list(t_admin *admin, const char *arg);
