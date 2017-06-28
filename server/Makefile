@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ## 
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Fri Jun 23 20:48:45 2017 Arthur Josso
+## Last update Wed Jun 28 15:04:27 2017 Arthur Josso
 ##
 
 NAME	=	zappy_server
@@ -19,7 +19,7 @@ CFLAGS	+=	-I$(INC)	\
 
 LDFLAGS	+=	-lm
 
-DEV_FLAG	=	-g
+DEV_FLAG	=
 
 SRC		=	./src/
 
