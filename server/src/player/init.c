@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:40:33 2017 Arthur Josso
-** Last update Fri Jun 23 17:46:50 2017 Arthur Josso
+** Last update Wed Jun 28 14:16:47 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -63,7 +63,8 @@ bool	client_player_welcome(t_player *player)
   send_cmd(CMD_PLAYER_NBR_FREE_SLOT, nbr_slot);
   send_cmd(CMD_PLAYER_MAP_SIZE, g_game->map_size.x, g_game->map_size.y);
   send_graphics_cmd(CMD_GRAPHIC_NEW_PLAYER, player->id, player->pos.x,
-		    player->pos.y, player->dir, player->lvl, player->team->name);
+		    player->pos.y, player->dir + 1,
+		    player->lvl, player->team->name);
   g_client->callback = (t_entity_func)&client_player_run;
   return (true);
 }
