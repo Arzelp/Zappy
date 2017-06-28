@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun 16 19:46:03 2017 Arthur Josso
-** Last update Fri Jun 23 19:49:43 2017 Arthur Josso
+** Last update Wed Jun 28 15:35:24 2017 Arthur Josso
 */
 
 #include <stdio.h>
@@ -34,7 +34,10 @@ static void	move_player(t_player *player, t_move move)
 {
   char		buff[BUFF_SIZE];
 
-  get_relative_pos(player, &player->pos, move);
+  if (move == MOVE_FORWARD)
+    get_relative_pos(player, &player->pos, move);
+  else
+    player->dir = umod(player->dir + move, DIR_NBR);
   send_cmd(CMD_PLAYER_OK);
   sprintf(buff, "#%d", player->id);
   for_each_graphic(&cmd_graphic_ppo, buff);
@@ -50,15 +53,13 @@ bool	task_forward(t_player *player, char *arg)
 bool	task_left(t_player *player, char *arg)
 {
   (void)arg;
-  player->dir = umod(player->dir - 1, DIR_NBR);
-  send_cmd(CMD_PLAYER_OK);
+   move_player(player, MOVE_LEFT);
   return (true);
 }
 
 bool	task_right(t_player *player, char *arg)
 {
   (void)arg;
-  player->dir =	umod(player->dir + 1, DIR_NBR);
-  send_cmd(CMD_PLAYER_OK);
+   move_player(player, MOVE_RIGHT);
   return (true);
 }
