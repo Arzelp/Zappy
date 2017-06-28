@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sat Jun 17 22:13:17 2017 Frederic Oddou
-** Last update Wed Jun 28 17:47:05 2017 Frederic Oddou
+** Last update Wed Jun 28 17:50:21 2017 Frederic Oddou
 */
 
 #include <string.h>
@@ -35,7 +35,7 @@ bool		player_incantation(const char *str)
       return (false);
     }
   if (!cmd_checker(buffer, &player_incantation_answer_check) ||
-      !strncmp(str, "Current level: ", strlen("Current level: ")))
+      !strncmp(buffer, "Current level: ", strlen("Current level: ")))
     {
       debug_message_error("Incantation", str, buffer);
       return (false);
