@@ -5,11 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-<<<<<<< HEAD
-** Last update Tue Jun 27 20:28:06 2017 Paskal Arzel
-=======
-** Last update Wed Jun 28 09:33:02 2017 Frederic Oddou
->>>>>>> ebf5c74caf3cc062e2f852d7bf3d5b97554fa9dc
+** Last update Wed Jun 28 15:06:44 2017 Paskal Arzel
 */
 
 #pragma once
@@ -51,7 +47,7 @@ typedef struct
 typedef struct
 {
   int			id;
-  char			*name;
+  char		*name;
 }			t_elem;
 
 typedef struct
@@ -64,12 +60,12 @@ typedef struct
 {
   char			view[(DELT_MAX_LVL * DELT_MAX_LVL) + 1][BUFFER_SIZE];
   char			rush[MAX_RUSH];
-  int			client_num;
-  int			inventory[OBJ_NB];
-  int			level;
-  int			connect_nbr;
-  int			cd_fertility;
-  bool    		is_alive;
+  int				client_num;
+  int				inventory[OBJ_NB];
+  int				level;
+  int				connect_nbr;
+  int				cd_fertility;
+  bool    	is_alive;
 }			t_player;
 
 typedef struct

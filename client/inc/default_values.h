@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 11:26:36 2017 Frederic Oddou
-** Last update Wed Jun 28 14:46:34 2017 Paskal Arzel
+** Last update Wed Jun 28 16:13:24 2017 Paskal Arzel
 */
 
 #pragma once
@@ -24,7 +24,8 @@
 #define DFLT_SERVER_HOST	"localhost"
 #define DELT_MAX_LVL		8
 
-#define START_FERT		30
+#define START_FERT		10
+#define CD_FERTILITY	30
 #define MIN_SAFE_FOOD	5
 #define MAX_RUSH			20
 #define MAX_FOOD			75
