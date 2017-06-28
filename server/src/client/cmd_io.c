@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 17:11:02 2017 Arthur Josso
-** Last update Tue Jun 20 20:37:52 2017 Arthur Josso
+** Last update Wed Jun 28 18:42:13 2017 Arthur Josso
 */
 
 #include <stdarg.h>
@@ -48,6 +48,11 @@ static t_cmd_fmt cmd_fmt[] =
     {CMD_GRAPHIC_EGG_CONNECT, "ebo #%d\n"},
     {CMD_GRAPHIC_EGG_DIES, "edi #%d\n"},
     {CMD_GRAPHIC_END, "seg %s\n"},
+    {CMD_ADMIN_BAD_CMD, "Unknown command\n"},
+    {CMD_ADMIN_CMD_OK, "Command successfull\n"},
+    {CMD_ADMIN_CMD_KO, "Command failed\n"},
+    {CMD_ADMIN_LIST, "list: ID:%d Team:%s Position:%d/%d " \
+     "Direction:%d Level:%d Inventory:%d/%d/%d/%d/%d/%d/%d\n"},
     {CMD_NONE, NULL}
   };
 

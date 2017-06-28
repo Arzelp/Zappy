@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sun Jun 18 18:27:53 2017 Frederic Oddou
-** Last update Mon Jun 26 16:20:39 2017 Paskal Arzel
+** Last update Wed Jun 28 18:05:40 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
@@ -31,6 +31,7 @@ const t_elevation	*elevation_get_infos(void)
     {
       if (g_elevation[i].level == g_core->player.level)
 	return (&g_elevation[i]);
+      i++;
     }
   return (NULL);
 }

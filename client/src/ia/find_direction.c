@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 27 15:20:53 2017 Paskal Arzel
-** Last update Tue Jun 27 17:38:08 2017 Paskal Arzel
+** Last update Wed Jun 28 18:11:17 2017 Paskal Arzel
 */
 
 #include <math.h>

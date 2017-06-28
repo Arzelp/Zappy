@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 19:42:15 2017 Arthur Josso
-** Last update Thu Jun 15 14:20:42 2017 Arthur Josso
+** Last update Wed Jun 28 17:57:14 2017 Arthur Josso
 */
 
 #include <string.h>
@@ -53,6 +53,12 @@ bool	client_entity_define(void *entity)
   type = recv_cmd();
   if (type == NULL)
     return (true);
+  if (hash_djb2(type) == ADMIN_HASH)
+    {
+      client_admin_init();
+      cleaner_rm_addr(type);
+      return (true);
+    }
   if (strcmp(type, "GRAPHIC") == 0)
     {
       client_graphic_init();
