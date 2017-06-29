@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Thu Jun 29 16:20:56 2017 arnaud.alies
+// Last update Thu Jun 29 16:55:38 2017 arnaud.alies
 //
 
 #include <map>
@@ -101,9 +101,9 @@ State *Zappy::update()
       if (_core->receiver->keyState(K_RIGHT))
 	_cam->move(irr::core::vector3df(0, 0, 1));
       if (_core->receiver->keyState(K_Z))
-	_cam->move(irr::core::vector3df(0, 1, 0));
-      if (_core->receiver->keyState(K_S))
 	_cam->move(irr::core::vector3df(0, -1, 0));
+      if (_core->receiver->keyState(K_S))
+	_cam->move(irr::core::vector3df(0, 1, 0));
       if (_core->receiver->keyState(K_UP)
 	  || _core->receiver->keyState(K_DOWN)
 	  || _core->receiver->keyState(K_LEFT)
