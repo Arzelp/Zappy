@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 15:13:35 2017 arnaud.alies
-// Last update Tue Jun 27 17:27:13 2017 arnaud.alies
+// Last update Wed Jun 28 17:16:48 2017 arnaud.alies
 //
 
 #include "Player.hpp"
@@ -14,7 +14,9 @@
 Player::Player() :
   _offset(irr::core::vector3df(0, 50, 0)),
   _billboard_offset(irr::core::vector3df(0, 150, 0)),
-  _alive(true)
+  _alive(true),
+  _first(true),
+  _target(true)
 {
   id = 0;
   _anim_time = 0;
@@ -29,7 +31,7 @@ void Player::init(Core* core, Map *map, EntityManager* entity_manager)
                    "./res/bomberman/Bomber.PCX",
 		   true);
   _mesh->node->setMD2Animation(irr::scene::EMAT_STAND);
-  _hud_title = new HudText(core, "", 25);
+  _hud_title = new HudText(core, "", 20);
 }
 
 Player::~Player()
@@ -87,7 +89,10 @@ void Player::animate(irr::scene::EMD2_ANIMATION_TYPE anim, int time)
 
 void Player::setPos(irr::core::vector3df target)
 {
+  if (_first)
+    _target = target;
   _mesh->node->setPosition(target + _offset);
+  _first = false;
 }
 
 irr::core::vector3df Player::getPos() const

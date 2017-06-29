@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Tue Jun 27 18:33:28 2017 arnaud.alies
+// Last update Thu Jun 29 11:24:37 2017 arnaud.alies
 //
 
 #include <map>
@@ -24,6 +24,8 @@ Zappy::Zappy() :
   _map(nullptr),
   _img(nullptr),
   _network(nullptr),
+  _inventory(nullptr),
+  _selected(nullptr),
   _running(false)
 {
 }
@@ -49,8 +51,8 @@ Zappy::~Zappy()
   delete _network;
   delete _entity_manager;
   delete _map;
+  delete _inventory;
 }
-
 
 State *Zappy::update()
 {
@@ -66,24 +68,27 @@ State *Zappy::update()
 	  irr::scene::ISceneNode* node = _core->getNodeFromMouse();
 	  if (node != nullptr)
 	    {
-	      _cam->setPosSlow(node->getPosition());
-	      Player* player =
+	      _selected =
 		static_cast<Player*>(_entity_manager->getClosestEntity(node->getPosition(), "player"));
-	      if (player != nullptr)
-		{
-		  _network->SendMsg("pin #" + std::to_string(player->id));
-		}
-	      /*
-		irr::core::position2d<irr::s32> pos2d = _core->getViewPos(node->getPosition());
-		delete _img;
-		_img = new Image(_core,
-		_core->video->getTexture((char*)"./res/one.png"),
-		pos2d);
-	      */
+	      if (_selected != nullptr)
+		_network->SendMsg("pin #" + std::to_string(_selected->id));
 	    }
 	  else
 	    {
+	      delete _inventory;
+	      _inventory = nullptr;
+	      _selected = nullptr;
 	    }
+	}
+      if (_inventory != nullptr && _entity_manager->exists(_selected))
+	{
+	  _cam->setPosSlow(_selected->getPos());
+	  _inventory->setPos(_selected->getPos() + irr::core::vector3df(20, 100, 0));
+	}
+      else
+	{
+	  delete _inventory;
+	  _inventory = nullptr;
 	}
         // Camera moves
       if (_core->receiver->keyState(K_UP))
@@ -109,6 +114,20 @@ Player* Zappy::getPlayerById(int id)
       player = static_cast<Player*>(ent);
       if (player->id == id)
 	return (player);
+    }
+  return (nullptr);
+}
+
+Egg* Zappy::getEggById(int id)
+{
+  Egg* egg;
+  std::vector<AEntity*> ents = _entity_manager->getAll("egg");
+
+  for (auto ent : ents)
+    {
+      egg = static_cast<Egg*>(ent);
+      if (egg->id == id)
+	return (egg);
     }
   return (nullptr);
 }
@@ -141,6 +160,12 @@ void Zappy::runQueue()
     DEF_CMD(plv),
     DEF_CMD(pfk),
     DEF_CMD(pin),
+    DEF_CMD(pgt),
+    DEF_CMD(pdr),
+    DEF_CMD(ebo),
+    DEF_CMD(enw),
+    DEF_CMD(pie),
+    DEF_CMD(pic),
     DEF_CMD(bct)
   };
 

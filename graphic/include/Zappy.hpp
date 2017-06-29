@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Tue Jun 27 18:33:43 2017 arnaud.alies
+// Last update Thu Jun 29 11:24:06 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -23,12 +23,15 @@
 #include "Resources.hpp"
 #include "Network.hpp"
 #include "Player.hpp"
+#include "Egg.hpp"
 
 #define DEF_CMD(cmd) {#cmd, &Zappy::cmd_##cmd}
 
 class Zappy : public State
 {
 protected:
+  HudText* _inventory;
+  Player* _selected;
   bool _running;
   Network* _network;
   Camera* _cam;
@@ -45,6 +48,7 @@ public:
   void spawnResources();
   Resources* getResourcesAt(irr::core::vector3df pos);
   Player* getPlayerById(int id);
+  Egg* getEggById(int id);
   //
   static int getInt(std::string);
   void runQueue();
@@ -57,6 +61,12 @@ public:
   void cmd_plv(int ac, std::vector<std::string> av);
   void cmd_pfk(int ac, std::vector<std::string> av);
   void cmd_pin(int ac, std::vector<std::string> av);
+  void cmd_pgt(int ac, std::vector<std::string> av);
+  void cmd_pdr(int ac, std::vector<std::string> av);
+  void cmd_ebo(int ac, std::vector<std::string> av);
+  void cmd_enw(int ac, std::vector<std::string> av);
+  void cmd_pic(int ac, std::vector<std::string> av);
+  void cmd_pie(int ac, std::vector<std::string> av);
 };
 
 typedef void(Zappy::*t_command)(int ac, std::vector<std::string> av);

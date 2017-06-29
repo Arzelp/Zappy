@@ -5,12 +5,14 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun  7 14:08:32 2017 Arthur Josso
-** Last update Wed Jun 28 17:40:35 2017 Arthur Josso
+** Last update Wed Jun 28 18:52:27 2017 Arthur Josso
 */
 
 #pragma once
 
 #include <poll.h>
+
+#define BAD_ID	((uint32_t)-1)
 
 typedef struct pollfd t_poll;
 
@@ -102,5 +104,8 @@ typedef enum
     CMD_GRAPHIC_EGG_CONNECT,
     CMD_GRAPHIC_EGG_DIES,
     CMD_GRAPHIC_END,
-    CMD_ADMIN_BAD_CMD
+    CMD_ADMIN_BAD_CMD,
+    CMD_ADMIN_CMD_OK,
+    CMD_ADMIN_CMD_KO,
+    CMD_ADMIN_LIST
   } t_cmd_type;
