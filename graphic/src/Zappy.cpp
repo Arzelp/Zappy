@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Thu Jun 29 10:13:02 2017 arnaud.alies
+// Last update Thu Jun 29 11:24:37 2017 arnaud.alies
 //
 
 #include <map>
@@ -164,6 +164,8 @@ void Zappy::runQueue()
     DEF_CMD(pdr),
     DEF_CMD(ebo),
     DEF_CMD(enw),
+    DEF_CMD(pie),
+    DEF_CMD(pic),
     DEF_CMD(bct)
   };
 

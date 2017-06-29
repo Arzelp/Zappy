@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Mon Jun 26 16:01:18 2017 arnaud.alies
-// Last update Thu Jun 29 11:06:16 2017 arnaud.alies
+// Last update Thu Jun 29 11:23:49 2017 arnaud.alies
 //
 
 #include "Zappy.hpp"
@@ -253,4 +253,16 @@ void Zappy::cmd_pdr(int ac, std::vector<std::string> av)
   if ((player = this->getPlayerById(id)) == nullptr)
     return ;
   player->animate(irr::scene::EMAT_PAIN_C, 700);
+}
+
+void Zappy::cmd_pic(int ac, std::vector<std::string> av)
+{
+  /* incantation */
+  
+}
+
+void Zappy::cmd_pie(int ac, std::vector<std::string> av)
+{
+  /* incantation end */
+  
 }
