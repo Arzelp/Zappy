@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 15:13:35 2017 arnaud.alies
-// Last update Wed Jun 28 17:16:48 2017 arnaud.alies
+// Last update Thu Jun 29 15:46:02 2017 arnaud.alies
 //
 
 #include "Player.hpp"
@@ -27,7 +27,7 @@ void Player::init(Core* core, Map *map, EntityManager* entity_manager)
   AEntity::init(core, map, entity_manager);
   _mesh = new Mesh(_core,
                    "./res/bomberman/tris.md2",
-                   irr::core::vector3df(3, 3, 3),
+                   irr::core::vector3df(2.5, 2.5, 2.5),
                    "./res/bomberman/Bomber.PCX",
 		   true);
   _mesh->node->setMD2Animation(irr::scene::EMAT_STAND);

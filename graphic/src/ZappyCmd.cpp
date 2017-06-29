@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Mon Jun 26 16:01:18 2017 arnaud.alies
-// Last update Thu Jun 29 11:23:49 2017 arnaud.alies
+// Last update Thu Jun 29 15:31:07 2017 arnaud.alies
 //
 
 #include "Zappy.hpp"
@@ -238,7 +238,7 @@ void Zappy::cmd_pgt(int ac, std::vector<std::string> av)
   id = Zappy::getInt(av.at(1));
   if ((player = this->getPlayerById(id)) == nullptr)
     return ;
-  player->animate(irr::scene::EMAT_CROUCH_STAND, 700);
+  player->animate(irr::scene::EMAT_CROUCH_STAND, 1000);
 }
 
 void Zappy::cmd_pdr(int ac, std::vector<std::string> av)
@@ -258,6 +258,35 @@ void Zappy::cmd_pdr(int ac, std::vector<std::string> av)
 void Zappy::cmd_pic(int ac, std::vector<std::string> av)
 {
   /* incantation */
+  int x, y;
+  int level;
+  Player* player;
+
+  if (ac < 5)
+    return ;
+  x = Zappy::getInt(av.at(1));
+  y = Zappy::getInt(av.at(2));
+  level = Zappy::getInt(av.at(3));
+  for (int x = 4; x < ac; x += 1)
+    {
+      if ((player = this->getPlayerById(Zappy::getInt(av.at(x)))) != nullptr)
+	{
+	  player->animate(irr::scene::EMAT_JUMP, 1000);
+	}
+    }
+}
+
+void Zappy::cmd_pbc(int ac, std::vector<std::string> av)
+{
+  /* player broadcast */
+  Player* player;
+  int id;
+
+  if (ac != 3 || _running == false)
+    return ;
+  id = Zappy::getInt(av.at(1));
+  if ((player = this->getPlayerById(id)) == nullptr)
+    return ;
   
 }
 

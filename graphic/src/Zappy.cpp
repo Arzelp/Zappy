@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Thu Jun 29 11:24:37 2017 arnaud.alies
+// Last update Thu Jun 29 16:20:56 2017 arnaud.alies
 //
 
 #include <map>
@@ -13,6 +13,7 @@
 #include <vector>
 #include <iostream>
 #include "MainMenu.hpp"
+#include "ErrorMenu.hpp"
 #include "Zappy.hpp"
 #include "Box.hpp"
 #include "Random.hpp"
@@ -59,7 +60,7 @@ State *Zappy::update()
   E_INPUT in = _core->receiver->lastKey();
 
   if (in == K_ESCAPE || _network == nullptr)
-    return (new MainMenu());
+    return (new ErrorMenu("CONNECTION ERROR"));
   this->runQueue();
   if (_running)
     {
@@ -99,6 +100,20 @@ State *Zappy::update()
 	_cam->move(irr::core::vector3df(0, 0, -1));
       if (_core->receiver->keyState(K_RIGHT))
 	_cam->move(irr::core::vector3df(0, 0, 1));
+      if (_core->receiver->keyState(K_Z))
+	_cam->move(irr::core::vector3df(0, 1, 0));
+      if (_core->receiver->keyState(K_S))
+	_cam->move(irr::core::vector3df(0, -1, 0));
+      if (_core->receiver->keyState(K_UP)
+	  || _core->receiver->keyState(K_DOWN)
+	  || _core->receiver->keyState(K_LEFT)
+	  || _core->receiver->keyState(K_RIGHT)
+	  || _core->receiver->keyState(K_Z)
+	  || _core->receiver->keyState(K_S))
+	{
+	  delete _inventory;
+          _inventory = nullptr;
+	}
       _entity_manager->update();
     }
   return (nullptr);
@@ -166,6 +181,7 @@ void Zappy::runQueue()
     DEF_CMD(enw),
     DEF_CMD(pie),
     DEF_CMD(pic),
+    DEF_CMD(pbc),
     DEF_CMD(bct)
   };
 
