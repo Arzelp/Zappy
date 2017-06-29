@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue Jun 27 14:58:50 2017 arnaud.alies
-// Last update Tue Jun 27 16:05:44 2017 arnaud.alies
+// Last update Thu Jun 29 09:59:17 2017 arnaud.alies
 //
 
 #include "HudText.hpp"
@@ -28,8 +28,8 @@ HudText::HudText(Core* core, std::string text, int size) :
                                                    dim,
                                                    irr::core::vector3df(0, 0, 0),
                                                    0,
-                                                   0x55000000,
-                                                   0x55000000);
+                                                   0x44000000,
+                                                   0x44000000);
   _billboard->setMaterialType(irr::video::EMT_TRANSPARENT_VERTEX_ALPHA);
   _billboard->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 }

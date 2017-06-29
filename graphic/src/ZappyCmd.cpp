@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Mon Jun 26 16:01:18 2017 arnaud.alies
-// Last update Wed Jun 28 18:30:55 2017 arnaud.alies
+// Last update Thu Jun 29 11:06:16 2017 arnaud.alies
 //
 
 #include "Zappy.hpp"
@@ -157,13 +157,36 @@ void Zappy::cmd_pfk(int ac, std::vector<std::string> av)
 void Zappy::cmd_ebo(int ac, std::vector<std::string> av)
 {
   /* delete egg - new player for egg*/
-  
+  int id;
+  Egg* egg;
+
+  id = Zappy::getInt(av.at(1));
+  if ((egg = this->getEggById(id)) == nullptr)
+    return ;
+  egg->kill();
 }
 
 void Zappy::cmd_enw(int ac, std::vector<std::string> av)
 {
   /* new egg */
-  
+  Player* player;
+  Egg* egg;
+  int egg_id;
+  int player_id;
+  int x, y;
+
+  egg_id = Zappy::getInt(av.at(1));
+  player_id = Zappy::getInt(av.at(2));
+  x = Zappy::getInt(av.at(3));
+  y = Zappy::getInt(av.at(4));
+  egg = _entity_manager->addEntityMap<Egg>(x, y);
+  egg->id = egg_id;
+  if ((player = this->getPlayerById(player_id)) == nullptr)
+    {
+      std::cerr << "Warning: Egg doesn't have team" << std::endl;
+      return ;
+    }
+  egg->team = player->team;
 }
 
 void Zappy::cmd_plv(int ac, std::vector<std::string> av)
@@ -220,6 +243,7 @@ void Zappy::cmd_pgt(int ac, std::vector<std::string> av)
 
 void Zappy::cmd_pdr(int ac, std::vector<std::string> av)
 {
+  /* player throwing res */
   Player* player;
   int id;
 
