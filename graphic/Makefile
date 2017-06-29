@@ -11,6 +11,7 @@ Sources =	$(SRC)main.cpp \
 		$(SRC)Image.cpp \
 		$(SRC)MyEventReceiver.cpp \
 		$(SRC)MainMenu.cpp \
+		$(SRC)ErrorMenu.cpp \
 		$(SRC)SettingsMenu.cpp \
 		$(SRC)Zappy.cpp \
 		$(SRC)ZappyCmd.cpp \
