@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ##
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Thu Jun 29 16:23:54 2017 Paskal Arzel
+## Last update Thu Jun 29 17:21:55 2017 Paskal Arzel
 ##
 
 NAME	=	zappy_ai
@@ -27,7 +27,7 @@ CONNECT	=	$(SRC)connect/
 CMD	=	$(SRC)commands/
 GAME	=	$(SRC)game/
 IA	= 	$(SRC)ia/
-IA_INIT = 	$(IA)init/
+IATP	=	$(IA)teamplay/
 
 SRCS	=	$(SRC)main.c			\
 		$(SRC)core.c			\
@@ -72,6 +72,7 @@ SRCS	=	$(SRC)main.c			\
 		$(IA)move.c \
 		$(IA)elevate.c \
 		$(IA)find_direction.c \
+		$(IATP)teamplay.c \
 		$(GAME)elevation.c
 
 OBJS	=	$(SRCS:.c=.o)

@@ -5,18 +5,13 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 20 22:11:11 2017 Paskal Arzel
-** Last update Mon Jun 26 14:47:13 2017 Paskal Arzel
+** Last update Thu Jun 29 17:28:15 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include "core.h"
-
-static bool	can_teamplay(void)
-{
-  return (false);
-}
 
 static int	get_nb_obj(char *objects)
 {
@@ -36,6 +31,24 @@ static int	get_nb_obj(char *objects)
   return (res);
 }
 
+static bool	is_needing(void)
+{
+  int	i;
+  const t_elevation *need;
+
+  i = 0;
+  need = elevation_get_infos();
+  if (g_core->player.inventory[FOOD] < MIN_SAFE_FOOD)
+    return (true);
+  while (i < FOOD)
+    {
+      if (g_core->player.inventory[i] < (int)need->object[i])
+				return (true);
+      i++;
+    }
+  return (false);
+}
+
 static bool	is_interesting(void)
 {
   int i;
@@ -43,11 +56,15 @@ static bool	is_interesting(void)
 
   i = 0;
   nb_obj = 0;
+  if (g_core->player.level < 2)
+    return (true);
   while (i < DELT_MAX_LVL * DELT_MAX_LVL)
     {
       nb_obj += get_nb_obj(g_core->player.view[i]);
       i++;
     }
+  if (!is_needing())
+    return (false);
   if (nb_obj >= g_core->player.level * 2)
     return (true);
   return (false);
@@ -57,9 +74,7 @@ bool	look(void)
 {
   if (!player_look(NULL))
     return (false);
-  if (can_teamplay())
-    return (true);
   if (is_interesting())
       set_rush();
-  return (true);
+  return (manage_message());
 }
