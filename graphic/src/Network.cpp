@@ -5,7 +5,7 @@
 // Login   <frederic.oddou@epitech.eu>
 //
 // Started on  Tue Jun 20 09:05:24 2017 Frederic Oddou
-// Last update Mon Jun 26 17:05:10 2017 Frederic Oddou
+// Last update Fri Jun 30 17:01:36 2017 arnaud.alies
 //
 
 #include <netdb.h>
@@ -115,12 +115,11 @@ void		Network::ReceiveMsg()
 	{
 	  res += c;
 	}
-      if (size == -1)
+      if (size <= 0)
 	{
-	  std::cerr << "[Network] recv failed." << std::endl;
 	  this->_endThread = true;
 	}
-      if (res.length() > 0)
+      else if (res.length() > 0)
 	{
 	  this->_mutex.lock();
 	  this->_queue.push(res);
@@ -131,7 +130,7 @@ void		Network::ReceiveMsg()
   std::cout << "[Network] End of receive." << std::endl;
 }
 
-void				Network::ReceiveStart()
+void Network::ReceiveStart()
 {
   _endThread = false;
   _thread = std::thread(&Network::ReceiveMsg, this);
