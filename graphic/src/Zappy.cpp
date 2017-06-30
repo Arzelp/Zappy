@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Fri Jun 30 13:37:24 2017 arnaud.alies
+// Last update Fri Jun 30 17:44:27 2017 arnaud.alies
 //
 
 #include <map>
@@ -19,7 +19,7 @@
 #include "Random.hpp"
 #include "Egg.hpp"
 
-Zappy::Zappy() :
+Zappy::Zappy(std::string host, std::string port) :
   _core(nullptr),
   _entity_manager(nullptr),
   _map(nullptr),
@@ -27,7 +27,9 @@ Zappy::Zappy() :
   _network(nullptr),
   _inventory(nullptr),
   _selected(nullptr),
-  _running(false)
+  _running(false),
+  _host(host),
+  _port(port)
 {
 }
 
@@ -36,7 +38,7 @@ void Zappy::begin(Core* core)
   _core = core;
   try
     {
-      _network = new Network("localhost", 4242);
+      _network = new Network(_host, Zappy::getInt(_port));
       _network->ReceiveStart();
       _network->SendMsg("GRAPHIC");
       //_network->SendMsg("mct");

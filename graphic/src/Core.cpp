@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 12:36:35 2017 arnaud.alies
-// Last update Mon Jun 26 17:04:05 2017 arnaud.alies
+// Last update Fri Jun 30 18:47:18 2017 arnaud.alies
 //
 
 #include <chrono>
@@ -59,7 +59,7 @@ void Core::run()
   sf::Sound click;
   click.setBuffer(click_buffer);
 
-  if (sound_buffer.loadFromFile("./res/sounds/yallah.ogg"))
+  if (sound_buffer.loadFromFile("./res/sounds/bork.ogg"))
     {
       sound.setBuffer(sound_buffer);
       sound.setLoop(true);
