@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun 28 17:35:38 2017 Arthur Josso
-** Last update Fri Jun 30 13:17:00 2017 Arthur Josso
+** Last update Fri Jun 30 14:04:25 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -20,7 +20,6 @@ static bool	kill_player(t_player *player)
       concerned_id = BAD_ID;
       player->starve_time = PLAYER_DEAD;
       send_cmd(CMD_PLAYER_DEAD);
-      send_graphics_cmd(CMD_GRAPHIC_DIE, player->id);
       g_client->callback = &client_entity_fini;
     }
   return (true);
