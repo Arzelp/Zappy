@@ -5,33 +5,30 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun 28 17:35:38 2017 Arthur Josso
-** Last update Fri Jun 30 13:17:00 2017 Arthur Josso
+** Last update Fri Jun 30 13:16:56 2017 Arthur Josso
 */
 
 #include "core.h"
 
 static uint32_t	concerned_id;
 
-static bool	kill_player(t_player *player)
+static bool	lvlup_player(t_player *player)
 {
-  if (player->id == concerned_id)
+  if (player->id == concerned_id &&
+      player->lvl < 8)
     {
-      player->inventory[RES_FOOD] = 0;
+      player->lvl++;
       concerned_id = BAD_ID;
-      player->starve_time = PLAYER_DEAD;
-      send_cmd(CMD_PLAYER_DEAD);
-      send_graphics_cmd(CMD_GRAPHIC_DIE, player->id);
-      g_client->callback = &client_entity_fini;
     }
   return (true);
 }
 
-bool	cmd_admin_kill(t_admin *admin, const char *arg)
+bool	cmd_admin_lvlup(t_admin *admin, const char *arg)
 {
   (void)admin;
   if ((concerned_id = admin_get_id(arg)) == BAD_ID)
     return (true);
-  player_for_each(true, &kill_player);
+  player_for_each(true, &lvlup_player);
   if (concerned_id == BAD_ID)
     send_cmd(CMD_ADMIN_CMD_OK);
   else
