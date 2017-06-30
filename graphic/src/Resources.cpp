@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu Jun 22 17:07:19 2017 arnaud.alies
-// Last update Tue Jun 27 16:28:50 2017 arnaud.alies
+// Last update Thu Jun 29 10:22:24 2017 arnaud.alies
 //
 
 #include <vector>
@@ -53,7 +53,7 @@ void Resources::update()
 
   if (_updated)
     {
-      for (int x = 0; x < R_SIZE; x += 1)
+      for (register int x = 0; x < R_SIZE; x += 1)
 	{
 	  diff_scale = ((_values[x] * _scale) - _meshes[x]->node->getScale().Y) / R_EFFECT_SPEED;
 	  if (min_diff < (diff_scale < 0 ? -diff_scale : diff_scale))
@@ -63,9 +63,9 @@ void Resources::update()
 					      _scale);
 	  _meshes[x]->node->setScale(target_scale);
 	}
+      if (min_diff <= 0)
+	  _updated = false;
     }
-  if (min_diff <= 0)
-    _updated = false;
 }
 
 irr::core::vector3df Resources::getPos() const

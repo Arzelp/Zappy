@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue Jun 27 14:46:59 2017 arnaud.alies
-// Last update Tue Jun 27 16:00:07 2017 arnaud.alies
+// Last update Wed Jun 28 10:32:41 2017 arnaud.alies
 //
 
 #ifndef HUDTEXT_HPP_
@@ -24,7 +24,7 @@ protected:
   int _size;
   Core* _core;
 public:
-  HudText(Core* core, std::string text, int size);
+  HudText(Core* core, std::string text, int size = 25);
   virtual ~HudText();
   void setPos(irr::core::vector3df pos);
   irr::core::vector3df getPos();

@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 27 18:32:41 2017 Paskal Arzel
-** Last update Wed Jun 28 18:10:05 2017 Paskal Arzel
+** Last update Thu Jun 29 16:32:47 2017 Paskal Arzel
 */
 
 #include <math.h>
@@ -48,6 +48,8 @@ void	elevate(void)
     i++;
   }
   if (!player_look(NULL))
+    return;
+  if (count_player(g_core->player.view[0]) < need->nb_player)
     return;
   drop_elevation(need);
   player_incantation(NULL);
