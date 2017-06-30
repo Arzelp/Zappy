@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Wed Jun 28 17:18:20 2017 Paskal Arzel
+** Last update Thu Jun 29 17:24:27 2017 Paskal Arzel
 */
 
 #pragma once
@@ -59,6 +59,7 @@ typedef struct
 typedef struct
 {
   char			view[(DELT_MAX_LVL * DELT_MAX_LVL) + 1][BUFFER_SIZE];
+  char			call[MAX_CALLS][BUFFER_SIZE];
   char			rush[MAX_RUSH];
   int				client_num;
   int				inventory[OBJ_NB];
@@ -145,11 +146,11 @@ int			elevation_need_object(enum e_obj obj_id);
 **
 */
 
-bool			ia_main(void);
-bool			check_mom(void);
-bool			init_new_player(void);
-bool			look(void);
-bool			set_rush(void);
+bool		ia_main(void);
+bool		check_mom(void);
+bool		init_new_player(void);
+bool		look(void);
+bool		set_rush(void);
 int			select_primary(void);
 int 		select_secondary(int primary);
 int			**set_minimap(void);
@@ -161,6 +162,8 @@ void		move_forward(t_pos *position);
 void		move_right(t_pos *position);
 void		elevate(void);
 int			calc_value(char *str);
+int			count_player(char *str);
+bool		manage_message(void);
 
 extern t_core		*g_core;
 extern t_elem		g_elem[];

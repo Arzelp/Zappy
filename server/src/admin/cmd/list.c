@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Wed Jun 28 17:35:38 2017 Arthur Josso
-** Last update Wed Jun 28 18:32:55 2017 Arthur Josso
+** Last update Fri Jun 30 12:23:32 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -27,5 +27,6 @@ bool    cmd_admin_list(t_admin *admin, const char *arg)
   (void)admin;
   (void)arg;
   player_for_each(false, &describe_player);
+  send_cmd(CMD_ADMIN_CMD_OK);
   return (true);
 }
