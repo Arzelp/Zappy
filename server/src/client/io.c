@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 16:27:08 2017 Arthur Josso
-** Last update Wed Jun 28 14:50:43 2017 Arthur Josso
+** Last update Fri Jun 30 14:12:46 2017 Arthur Josso
 */
 
 #include <unistd.h>
@@ -53,7 +53,7 @@ bool		read_on_client(t_client *client)
       if (read_ret == -1)
 	{
 	  if (errno != EINTR)
-	    fat_err("read");
+	    fat_err("recv");
 	  return (false);
 	}
       if (read_ret == 0)
