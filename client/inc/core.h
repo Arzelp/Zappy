@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Thu Jun 29 17:24:27 2017 Paskal Arzel
+** Last update Sat Jul  1 00:39:07 2017 Paskal Arzel
 */
 
 #pragma once
@@ -55,6 +55,13 @@ typedef struct
   int			x;
   int			y;
 }			t_pos;
+
+typedef struct
+{
+  int			dir;
+  char		key[KEY_SIZE];
+  char		core[BUFFER_SIZE];
+}t_message;
 
 typedef struct
 {
@@ -163,7 +170,20 @@ void		move_right(t_pos *position);
 void		elevate(void);
 int			calc_value(char *str);
 int			count_player(char *str);
+
+/*
+** @message
+**   -teamplay.c : Check if a message has been sent.
+**   -read_message.c : Decrypt the message.
+**   -action.c : Make a decision and an action from the message.
+**   -send_message.c : Encrypt and send a message.
+*/
+
 bool		manage_message(void);
+void		read_message(const char *data);
+void		send_message(char *str);
+int			calc_pos(int pos, char dec);
+bool		get_message(const char	*data, t_message	*message);
 
 extern t_core		*g_core;
 extern t_elem		g_elem[];

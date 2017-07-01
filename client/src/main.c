@@ -5,12 +5,13 @@
 ** Login   <arthur.josso@epitech.eu>
 **
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Wed Jun 28 14:46:05 2017 Paskal Arzel
+** Last update Thu Jun 29 22:10:43 2017 Paskal Arzel
 */
 
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #include "core.h"
 #include "parse.h"
 
@@ -30,6 +31,7 @@ int		main(int ac, char **av)
 {
   t_core	core;
 
+  srand(time(NULL));
   core_init(&core);
   if (!parse(ac, av))
     {

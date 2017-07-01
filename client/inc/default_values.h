@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 11:26:36 2017 Frederic Oddou
-** Last update Thu Jun 29 17:25:05 2017 Paskal Arzel
+** Last update Thu Jun 29 18:42:15 2017 Paskal Arzel
 */
 
 #pragma once
@@ -19,6 +19,7 @@
 #define NAME_SIZE		256
 #define HOST_SIZE		2048
 #define BUFFER_SIZE		2048
+#define KEY_SIZE		15
 
 #define DFLT_SERVER_PORT	4242
 #define DFLT_SERVER_HOST	"localhost"
