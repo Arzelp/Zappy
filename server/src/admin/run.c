@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Thu Jun  8 21:04:50 2017 Arthur Josso
-** Last update Wed Jun 28 18:43:59 2017 Arthur Josso
+** Last update Fri Jun 30 15:47:04 2017 Arthur Josso
 */
 
 #include "core.h"
@@ -14,6 +14,8 @@ static const t_entity_cmd	cmd_admin[] =
   {
     ADD_CMD_FUNC(admin, list),
     ADD_CMD_FUNC(admin, kill),
+    ADD_CMD_FUNC(admin, quit),
+    ADD_CMD_FUNC(admin, lvlup),
     {NULL, NULL}
   };
 

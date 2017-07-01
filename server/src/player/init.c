@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Fri Jun  9 14:40:33 2017 Arthur Josso
-** Last update Wed Jun 28 14:16:47 2017 Arthur Josso
+** Last update Fri Jun 30 14:07:33 2017 Arthur Josso
 */
 
 #include <stdlib.h>
@@ -82,5 +82,6 @@ bool		client_player_fini(t_player *player)
   player->team->nbr_players--;
   g_client->callback = &client_entity_fini;
   g_client->callback_dtor = NULL;
+  send_graphics_cmd(CMD_GRAPHIC_DIE, player->id);
   return (true);
 }

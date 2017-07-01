@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Tue May 30 14:56:43 2017 arnaud.alies
-// Last update Wed Jun 28 16:49:58 2017 arnaud.alies
+// Last update Fri Jun 30 17:32:01 2017 arnaud.alies
 //
 
 #ifndef PLAYER_HPP_
@@ -16,7 +16,7 @@
 #include "Mesh.hpp"
 #include "HudText.hpp"
 
-#define PLAYER_SPEED (50)
+#define PLAYER_SPEED (25)
 
 class Player : public AEntity
 {

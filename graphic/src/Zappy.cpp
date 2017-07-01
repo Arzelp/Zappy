@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:46:49 2017 arnaud.alies
-// Last update Thu Jun 29 16:20:56 2017 arnaud.alies
+// Last update Fri Jun 30 17:44:27 2017 arnaud.alies
 //
 
 #include <map>
@@ -19,7 +19,7 @@
 #include "Random.hpp"
 #include "Egg.hpp"
 
-Zappy::Zappy() :
+Zappy::Zappy(std::string host, std::string port) :
   _core(nullptr),
   _entity_manager(nullptr),
   _map(nullptr),
@@ -27,7 +27,9 @@ Zappy::Zappy() :
   _network(nullptr),
   _inventory(nullptr),
   _selected(nullptr),
-  _running(false)
+  _running(false),
+  _host(host),
+  _port(port)
 {
 }
 
@@ -36,7 +38,7 @@ void Zappy::begin(Core* core)
   _core = core;
   try
     {
-      _network = new Network("localhost", 4242);
+      _network = new Network(_host, Zappy::getInt(_port));
       _network->ReceiveStart();
       _network->SendMsg("GRAPHIC");
       //_network->SendMsg("mct");
@@ -59,8 +61,10 @@ State *Zappy::update()
 {
   E_INPUT in = _core->receiver->lastKey();
 
-  if (in == K_ESCAPE || _network == nullptr)
+  if (_network == nullptr)
     return (new ErrorMenu("CONNECTION ERROR"));
+  else if (in == K_ESCAPE)
+    return (new MainMenu());
   this->runQueue();
   if (_running)
     {
@@ -101,9 +105,9 @@ State *Zappy::update()
       if (_core->receiver->keyState(K_RIGHT))
 	_cam->move(irr::core::vector3df(0, 0, 1));
       if (_core->receiver->keyState(K_Z))
-	_cam->move(irr::core::vector3df(0, 1, 0));
-      if (_core->receiver->keyState(K_S))
 	_cam->move(irr::core::vector3df(0, -1, 0));
+      if (_core->receiver->keyState(K_S))
+	_cam->move(irr::core::vector3df(0, 1, 0));
       if (_core->receiver->keyState(K_UP)
 	  || _core->receiver->keyState(K_DOWN)
 	  || _core->receiver->keyState(K_LEFT)
@@ -113,6 +117,7 @@ State *Zappy::update()
 	{
 	  delete _inventory;
           _inventory = nullptr;
+	  _selected = nullptr;
 	}
       _entity_manager->update();
     }

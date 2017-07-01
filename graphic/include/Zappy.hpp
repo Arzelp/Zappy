@@ -5,7 +5,7 @@
 // Login   <arnaud.alies@epitech.eu>
 // 
 // Started on  Thu May  4 10:45:13 2017 arnaud.alies
-// Last update Thu Jun 29 14:45:46 2017 arnaud.alies
+// Last update Fri Jun 30 17:41:40 2017 arnaud.alies
 //
 
 #ifndef ZAPPY_HPP_
@@ -40,8 +40,10 @@ protected:
   Map* _map;
   //
   Image* _img;
+  std::string _host;
+  std::string _port;
 public:
-  Zappy();
+  Zappy(std::string host, std::string port);
   virtual ~Zappy();
   State* update();
   void begin(Core*);

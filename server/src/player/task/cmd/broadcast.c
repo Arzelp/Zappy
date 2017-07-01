@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 ** 
 ** Started on  Tue Jun 20 17:30:52 2017 Arthur Josso
-** Last update Thu Jun 22 14:54:59 2017 Arthur Josso
+** Last update Fri Jun 30 17:40:47 2017 Arthur Josso
 */
 
 #include <math.h>
@@ -119,6 +119,7 @@ bool	task_broadcast(t_player *player, char *arg)
   txt = arg;
   act_player = player;
   client_for_each(&run_broadcast);
+  send_cmd(CMD_PLAYER_OK);
   send_graphics_cmd(CMD_GRAPHIC_BROADCAST, player->id, arg);
   return (true);
 }
