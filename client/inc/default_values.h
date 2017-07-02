@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 11:26:36 2017 Frederic Oddou
-** Last update Thu Jun 29 18:42:15 2017 Paskal Arzel
+** Last update Sun Jul  2 16:03:34 2017 Frederic Oddou
 */
 
 #pragma once
@@ -13,7 +13,7 @@
 #ifdef DEBUG_MODE
 # define DEBUG true
 #else
-# define DEBUG true
+# define DEBUG false
 #endif
 
 #define NAME_SIZE		256

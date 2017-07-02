@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Sat Jul  1 00:39:07 2017 Paskal Arzel
+** Last update Sun Jul  2 16:04:49 2017 Frederic Oddou
 */
 
 #pragma once
@@ -47,7 +47,7 @@ typedef struct
 typedef struct
 {
   int			id;
-  char		*name;
+  char			*name;
 }			t_elem;
 
 typedef struct
@@ -59,21 +59,21 @@ typedef struct
 typedef struct
 {
   int			dir;
-  char		key[KEY_SIZE];
-  char		core[BUFFER_SIZE];
-}t_message;
+  char			key[KEY_SIZE];
+  char			core[BUFFER_SIZE];
+}			t_message;
 
 typedef struct
 {
   char			view[(DELT_MAX_LVL * DELT_MAX_LVL) + 1][BUFFER_SIZE];
   char			call[MAX_CALLS][BUFFER_SIZE];
   char			rush[MAX_RUSH];
-  int				client_num;
-  int				inventory[OBJ_NB];
-  int				level;
-  int				connect_nbr;
-  int				cd_fertility;
-  bool    	is_alive;
+  int			client_num;
+  int			inventory[OBJ_NB];
+  int			level;
+  int			connect_nbr;
+  int			cd_fertility;
+  bool    		is_alive;
 }			t_player;
 
 typedef struct
@@ -158,18 +158,18 @@ bool		check_mom(void);
 bool		init_new_player(void);
 bool		look(void);
 bool		set_rush(void);
-int			select_primary(void);
+int		select_primary(void);
 int 		select_secondary(int primary);
-int			**set_minimap(void);
+int		**set_minimap(void);
 void 		loot_case(int value);
 void		check_and_move(int **minimap, t_pos *position,
-		       int primary, int secondary);
+			       int primary, int secondary);
 void		move_left(t_pos *position);
 void		move_forward(t_pos *position);
 void		move_right(t_pos *position);
 void		elevate(void);
-int			calc_value(char *str);
-int			count_player(char *str);
+int		calc_value(char *str);
+int		count_player(char *str);
 
 /*
 ** @message
@@ -182,8 +182,8 @@ int			count_player(char *str);
 bool		manage_message(void);
 void		read_message(const char *data);
 void		send_message(char *str);
-int			calc_pos(int pos, char dec);
-bool		get_message(const char	*data, t_message	*message);
+int		calc_pos(int pos, char dec);
+bool		get_message(const char	*data, t_message *message);
 
 extern t_core		*g_core;
 extern t_elem		g_elem[];

@@ -1,0 +1,43 @@
+{% include 'Global_Header.html' %}
+
+<div class="container">
+    <h2>Servers</h2>
+    <div class="row">
+        {% for value in Servers %}
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-block">
+                        <h3 class="card-title">{{ value.Host }}:{{ value.Port }} (ID:{{ value.ID }})</h3>
+                        <a href="?page=Infos&amp;id={{ value.ID }}" class="btn btn-primary">See</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <br /><br />
+
+    <h2>Actions</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Server</th>
+                <th>Command</th>
+                <th>Status</th>
+            </tr>
+        </thread>
+        <tbody>
+            {% for value in Action %}
+                <tr>
+                    <th scope="row">{{ value.ID }}</th>
+                    <td>{{ value.Server }}</td>
+                    <td>{{ value.Type }} {{ value.Values }}</td>
+                    <td>{% if value.Status == "ok" %}<span class="badge badge-success">OK</span>{% elseif value.Status == "list" %}<span class="badge badge-warning">Waiting</span>{% else %}<span class="badge badge-danger">KO</span>{% endif %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include 'Global_Bottom.html' %}
