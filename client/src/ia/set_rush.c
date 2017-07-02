@@ -5,30 +5,11 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Jun 21 16:09:27 2017 Paskal Arzel
-** Last update Wed Jun 28 17:57:35 2017 Paskal Arzel
+** Last update Sun Jul  2 11:19:27 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
 #include "core.h"
-
-/*void	print_mini(int **minimap)
-{
-  int i;
-  int j;
-
-  i = 0;
-  while (minimap[i] != NULL)
-  {
-    j = 0;
-    while (j < g_core->player.level * 2 + 1)
-    {
-      printf("%d, ", minimap[i][j]);
-      j++;
-    }
-    printf("\n");
-    i++;
-  }
-}*/
 
 static void go_rush(int **minimap, int primary, int secondary)
 {

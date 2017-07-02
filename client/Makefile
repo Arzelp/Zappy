@@ -5,7 +5,7 @@
 ## Login   <arthur.josso@epitech.eu>
 ##
 ## Started on  Tue Jun  6 13:53:16 2017 Arthur Josso
-## Last update Sat Jul  1 01:11:12 2017 Paskal Arzel
+## Last update Sun Jul  2 17:03:39 2017 Paskal Arzel
 ##
 
 NAME	=	zappy_ai
@@ -76,7 +76,22 @@ SRCS	=	$(SRC)main.c			\
 		$(IATP)read_message.c \
 		$(IATP)send_message.c \
 		$(IATP)calc_pos.c \
+		$(IATP)call_timeout.c \
+		$(IATP)lead_team.c \
+		$(IATP)execute_call.c \
+		$(IATP)listen_calls.c \
+		$(IATP)exec_call.c \
+		$(IATP)count_players.c \
+		$(IATP)exec_counter.c \
 		$(IATP)get_message.c \
+		$(IATP)group_elevation.c \
+		$(IATP)check_ressources.c \
+		$(IATP)send_ping.c \
+		$(IATP)drop_all.c \
+		$(IATP)level_up.c \
+		$(IATP)wait_pongs.c \
+		$(IATP)exec_regroup.c \
+		$(IATP)change_dir.c \
 		$(GAME)elevation.c
 
 OBJS	=	$(SRCS:.c=.o)

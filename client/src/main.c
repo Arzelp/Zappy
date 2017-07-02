@@ -5,7 +5,7 @@
 ** Login   <arthur.josso@epitech.eu>
 **
 ** Started on  Tue Jun  6 13:55:14 2017 Arthur Josso
-** Last update Thu Jun 29 22:10:43 2017 Paskal Arzel
+** Last update Sun Jul  2 00:26:16 2017 Paskal Arzel
 */
 
 #include <string.h>
@@ -24,6 +24,12 @@ t_elem	g_elem[] = {
   {5, "phiras"},
   {6, "thystame"},
   {7, "food"},
+  {-1, NULL}
+};
+t_call	g_call[] = {
+  {0, CALL},
+  {1, COUNTER},
+  {2, REGROUP},
   {-1, NULL}
 };
 

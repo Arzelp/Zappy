@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Sun Jun 18 18:27:53 2017 Frederic Oddou
-** Last update Wed Jun 28 18:05:40 2017 Paskal Arzel
+** Last update Sun Jul  2 14:49:49 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
@@ -18,9 +18,25 @@ const t_elevation	g_elevation[] = {
   {4, 4, {1, 1, 2, 0, 1, 0, 0}},
   {5, 4, {1, 2, 1, 3, 0, 0, 0}},
   {6, 6, {1, 2, 3, 0, 1, 0, 0}},
-  {7, 6, {2, 2, 2, 2, 2, 0, 0}},
+  {7, 6, {2, 2, 2, 2, 2, 1, 0}},
+  {8, 6, {9, 8, 10, 5, 6, 1, 0}},
+  {0, 2, {2, 1, 1, 0, 0, 0, 0}},
   {-1, -1, {-1}}
 };
+
+const t_elevation	*elevation_get_infos_lvl(int lvl)
+{
+  size_t		i;
+
+  i = 0;
+  while (g_elevation[i].level != -1)
+    {
+      if (g_elevation[i].level == lvl)
+	return (&g_elevation[i]);
+      i++;
+    }
+  return (NULL);
+}
 
 const t_elevation	*elevation_get_infos(void)
 {

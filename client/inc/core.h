@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Sat Jul  1 00:39:07 2017 Paskal Arzel
+** Last update Sun Jul  2 17:09:05 2017 Paskal Arzel
 */
 
 #pragma once
@@ -65,12 +65,19 @@ typedef struct
 
 typedef struct
 {
+  int			id;
+  char		*name;
+}t_call;
+
+typedef struct
+{
   char			view[(DELT_MAX_LVL * DELT_MAX_LVL) + 1][BUFFER_SIZE];
   char			call[MAX_CALLS][BUFFER_SIZE];
   char			rush[MAX_RUSH];
   int				client_num;
   int				inventory[OBJ_NB];
   int				level;
+  int				cd_captain;
   int				connect_nbr;
   int				cd_fertility;
   bool    	is_alive;
@@ -143,6 +150,7 @@ bool		cmd_ok_or_ko(const char *str);
 */
 
 const t_elevation	*elevation_get_infos(void);
+const t_elevation	*elevation_get_infos_lvl(int lvl);
 int			elevation_need_object(enum e_obj obj_id);
 
 /*
@@ -179,11 +187,31 @@ int			count_player(char *str);
 **   -send_message.c : Encrypt and send a message.
 */
 
-bool		manage_message(void);
-void		read_message(const char *data);
-void		send_message(char *str);
-int			calc_pos(int pos, char dec);
-bool		get_message(const char	*data, t_message	*message);
+bool			manage_message(void);
+bool			check_message(t_message *message);
+void			read_message(t_message *message, const char *data);
+void			send_message(char *str);
+int				calc_pos(int pos, char dec);
+bool			get_message(const char	*data, t_message	*message);
+void			lead_team(void);
+bool			call_timeout(time_t start, time_t max);
+void			listen_calls(t_message *message);
+bool			execute_call(t_message *message, int pos);
+bool			exec_call(void);
+bool			exec_counter(void);
+void			group_elevation(t_message	*message);
+bool			has_players(int players);
+int				count_players(void);
+void			loot(char	*str);
+void			send_ping(void);
+bool			wait_pongs(t_message	*message);
+bool			exec_regroup(void);
+void			change_dir(t_message *message);
+void			force_loot(char	*str);
+void			drop_all(void);
+void			level_up_noob(void);
+void			level_up_captain(void);
 
 extern t_core		*g_core;
 extern t_elem		g_elem[];
+extern t_call		g_call[];

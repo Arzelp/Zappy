@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Thu Jun 29 18:07:22 2017 Paskal Arzel
-** Last update Sat Jul  1 18:57:36 2017 Paskal Arzel
+** Last update Sat Jul  1 20:12:06 2017 Paskal Arzel
 */
 
 #include "core.h"
@@ -30,10 +30,8 @@ void	decrypt_message(t_message *message)
   message->core[i] = '\0';
 }
 
-void	read_message(const char *data)
+void	read_message(t_message *message, const char *data)
 {
-  t_message	message;
-
-  get_message(data, &message);
-  decrypt_message(&message);
+  get_message(data, message);
+  decrypt_message(message);
 }

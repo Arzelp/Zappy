@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Sat Jul  1 00:36:53 2017 Paskal Arzel
-** Last update Sat Jul  1 18:29:55 2017 Paskal Arzel
+** Last update Sat Jul  1 20:10:07 2017 Paskal Arzel
 */
 
 #include <string.h>
@@ -37,11 +37,9 @@ bool		get_message(const char	*data, t_message	*message)
 {
   int	i;
   int	j;
-  int	pos;
 
   i = 0;
   j = 0;
-  pos = 0;
   if (strncmp(data, "message ", strlen("message ")))
     return (false);
   i = strlen("message n, ");
