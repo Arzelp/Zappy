@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Wed Jun 28 09:27:08 2017 Frederic Oddou
-** Last update Wed Jun 28 10:21:15 2017 Frederic Oddou
+** Last update Thu Jun 29 17:44:51 2017 Frederic Oddou
 */
 
 #include <stdio.h>
@@ -30,8 +30,8 @@ bool		cmd_checker(char *buffer, bool (*func_check)(const char *str))
 	{
 	  if (strlen(buffer))
 	    {
-	      g_core->queue.push(&g_core->queue, strdup(buffer));
 	      debug_message("Adding to Broadcast Queue", buffer);
+	      g_core->queue.push(&g_core->queue, strdup(buffer));
 	    }
 	}
     }

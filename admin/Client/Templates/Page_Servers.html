@@ -1,0 +1,39 @@
+{% include 'Global_Header.html' %}
+
+<div class="container">
+    <h2>Servers</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Host</th>
+                <th>Port</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thread>
+        <tbody>
+            {% for value in List %}
+                <tr>
+                    <th scope="row">{{ value.ID }}</th>
+                    <td>{{ value.Host }}</td>
+                    <td>{{ value.Port }}</td>
+                    <td>{% if value.Status == "connected" %}<span class="badge badge-success">Connected</span>{% elseif value.Status == "disconnected" %}<span class="badge badge-warning">Disconnected</span>{% else %}<span class="badge badge-danger">Lost</span>{% endif %}</td>
+                    <td>{% if value.Status == "connected" %}<a href="?page=Servers&amp;mode=close&amp;id={{ value.ID }}"><i class="material-icons" style="color:red;">close</i></a>{% else %}<a href="?page=Servers&amp;mode=reload&amp;id={{ value.ID }}"><i class="material-icons" style="color:lime;">autorenew</i></a>{% endif %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form class="form-inline" role="form" id='form' method="post" action="?page=Servers&amp;mode=add">
+        <label for="host" class="col-sm-2 col-form-label">Host</label>
+        <input type="text" class="form-control" id="host" placeholder="Hostname" name="hostname" />
+
+        <label for="port" class="col-sm-2 col-form-label">Port</label>
+        <input type="text" class="form-control" id="port" placeholder="Port" name="port" />
+
+        <label for="submit" class="col-sm-2 col-form-label"><button type="submit" class="btn btn-primary">Add</button></label>
+    </form>
+</div>
+
+{% include 'Global_Bottom.html' %}

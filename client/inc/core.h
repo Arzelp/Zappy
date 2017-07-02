@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 13 17:11:24 2017 Paskal Arzel
-** Last update Sun Jul  2 17:09:05 2017 Paskal Arzel
+** Last update Sun Jul  2 18:19:05 2017 Paskal Arzel
 */
 
 #pragma once
@@ -47,7 +47,7 @@ typedef struct
 typedef struct
 {
   int			id;
-  char		*name;
+  char			*name;
 }			t_elem;
 
 typedef struct
@@ -59,9 +59,9 @@ typedef struct
 typedef struct
 {
   int			dir;
-  char		key[KEY_SIZE];
-  char		core[BUFFER_SIZE];
-}t_message;
+  char			key[KEY_SIZE];
+  char			core[BUFFER_SIZE];
+}			t_message;
 
 typedef struct
 {
@@ -80,7 +80,9 @@ typedef struct
   int				cd_captain;
   int				connect_nbr;
   int				cd_fertility;
+  int				need_player;
   bool    	is_alive;
+  bool			ended_tp;
 }			t_player;
 
 typedef struct
@@ -166,18 +168,18 @@ bool		check_mom(void);
 bool		init_new_player(void);
 bool		look(void);
 bool		set_rush(void);
-int			select_primary(void);
+int		select_primary(void);
 int 		select_secondary(int primary);
-int			**set_minimap(void);
+int		**set_minimap(void);
 void 		loot_case(int value);
 void		check_and_move(int **minimap, t_pos *position,
-		       int primary, int secondary);
+			       int primary, int secondary);
 void		move_left(t_pos *position);
 void		move_forward(t_pos *position);
 void		move_right(t_pos *position);
 void		elevate(void);
-int			calc_value(char *str);
-int			count_player(char *str);
+int		calc_value(char *str);
+int		count_player(char *str);
 
 /*
 ** @message
@@ -211,6 +213,8 @@ void			force_loot(char	*str);
 void			drop_all(void);
 void			level_up_noob(void);
 void			level_up_captain(void);
+int				get_nb_players(void);
+bool			check_ressources(t_message	*message);
 
 extern t_core		*g_core;
 extern t_elem		g_elem[];

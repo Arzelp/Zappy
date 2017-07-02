@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 20 22:11:11 2017 Paskal Arzel
-** Last update Thu Jun 29 17:28:15 2017 Paskal Arzel
+** Last update Sun Jul  2 20:29:08 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
@@ -72,9 +72,14 @@ static bool	is_interesting(void)
 
 bool	look(void)
 {
+  static int i;
+
+  i++;
   if (!player_look(NULL))
     return (false);
   if (is_interesting())
       set_rush();
-  return (manage_message());
+  if (manage_message() == false)
+    	loot(g_core->player.view[0]);
+  return (true);
 }

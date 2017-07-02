@@ -5,31 +5,35 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Sun Jul  2 14:44:25 2017 Paskal Arzel
-** Last update Sun Jul  2 17:09:35 2017 Paskal Arzel
+** Last update Sun Jul  2 20:36:10 2017 Paskal Arzel
 */
 
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
 #include "core.h"
 
-static void	wait_confirmation(void)
+static bool	wait_confirmation(void)
 {
   char	msg[BUFFER_SIZE];
   t_message	message;
   time_t	start;
   bool	ended;
 
-  snprintf(msg, BUFFER_SIZE, "%s C %s", g_core->name_team, "loot ok.");
+  start = time(NULL);
+  snprintf(msg, BUFFER_SIZE, "%s %d C %s", g_core->name_team,
+  g_core->player.level, "loot ok.");
   ended = false;
   while (!ended && !call_timeout(start, STANDARD_TIMEOUT))
   {
     check_message(&message);
-    printf("message : %s\n", message.core);
     if (!strcmp(msg, message.core))
 			ended = true;
   }
-  if (ended)
-    printf("Ok confirmation\n");
-  return;
+  if (call_timeout(start, STANDARD_TIMEOUT))
+    return (false);
+  return (true);
 }
 
 void	drop_all(void)
@@ -48,7 +52,7 @@ void	drop_all(void)
     }
     i++;
   }
-  printf("dropped all.\n");
-  wait_confirmation();
+  if (!wait_confirmation())
+    return;
   level_up_noob();
 }

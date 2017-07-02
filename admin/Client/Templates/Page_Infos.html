@@ -1,0 +1,37 @@
+{% include 'Global_Header.html' %}
+
+<div class="container">
+    <h2>Server informations</h2>
+
+    {% for team in List %}
+        <br /><br />
+        <h4>Team <i>{{ team.name }} (ID:{{ team.ID }})</i></h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Position</th>
+                    <th>Level</th>
+                    <th>Inventary</th>
+                    <th>Action</th>
+                </tr>
+            </thread>
+            <tbody>
+                {% for player in team.players %}
+                    <tr>
+                        <th scope="row">{{ player.ID }} (SID:{{ player.real_id }})</th>
+                        <td>{{ player.pos_x }}:{{ player.pos_y }} {{ player.direction }}</td>
+                        <td>{{ player.level }}</td>
+                        <td>{{ player.inventary }}</td>
+                        <td>
+                            <a href="?page=Infos&amp;id={{ id }}&amp;mode=lvlup&amp;uid={{ player.real_id }}"><i class="material-icons" style="color:lime;">arrow_upward</i></a>
+                            <a href="?page=Infos&amp;id={{ id }}&amp;mode=kill&amp;uid={{ player.real_id }}"><i class="material-icons" style="color:red;">clear</i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+</div>
+
+{% include 'Global_Bottom.html' %}

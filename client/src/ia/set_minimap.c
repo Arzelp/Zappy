@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Wed Jun 21 17:52:21 2017 Paskal Arzel
-** Last update Thu Jun 29 16:27:39 2017 Paskal Arzel
+** Last update Sun Jul  2 20:35:56 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
@@ -47,7 +47,8 @@ int		**set_minimap(void)
   i = 0;
   while (i <= g_core->player.level)
   {
-    if ((minimap[i] = malloc((g_core->player.level * 2 + 2) * sizeof(int))) == NULL)
+    if ((minimap[i] = malloc((g_core->player.level * 2 + 2)
+    * sizeof(int))) == NULL)
 			return (NULL);
     j = 0;
     while (j <= g_core->player.level * 2 + 1)

@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Sun Jul  2 11:13:43 2017 Paskal Arzel
-** Last update Sun Jul  2 14:19:41 2017 Paskal Arzel
+** Last update Sun Jul  2 18:12:11 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
@@ -19,7 +19,6 @@ int	count_players()
 
 bool	has_players(int players)
 {
-  printf("players on case : %d\n", count_players());
   if (count_players() >= players)
     return (true);
   return (false);

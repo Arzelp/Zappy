@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Sat Jul  1 23:40:08 2017 Paskal Arzel
-** Last update Sun Jul  2 15:45:57 2017 Paskal Arzel
+** Last update Sun Jul  2 19:53:21 2017 Paskal Arzel
 */
 
 #include <string.h>
@@ -21,7 +21,8 @@ static bool	receive_command(t_message *message)
     return (false);
   if (message->core[0] == '\0')
     return (false);
-  snprintf(msg, BUFFER_SIZE, "%s C ", g_core->name_team);
+  snprintf(msg, BUFFER_SIZE, "%s %d C ", g_core->name_team,
+  g_core->player.level);
   if (!strncmp(message->core, msg, strlen(msg)))
     return (true);
   return (false);
@@ -31,7 +32,8 @@ static bool	is_ended(t_message *message)
 {
   char	msg[BUFFER_SIZE];
 
-  snprintf(msg, BUFFER_SIZE, "%s C %s", g_core->name_team, "ended.");
+  snprintf(msg, BUFFER_SIZE, "%s %d C %s", g_core->name_team,
+  g_core->player.level, "ended.");
   if (!strcmp(msg, message->core))
     return (true);
   return (false);
@@ -43,12 +45,11 @@ void	listen_calls(t_message *message)
   bool		ended;
 
   ended = false;
-  while (!ended)
+  while (!ended && !g_core->player.ended_tp)
   {
-    if (execute_call(message, strlen(g_core->name_team) + 3) == true)
-			printf("call executed.\n");
-    else
-			printf("no call or failed.\n");
+    execute_call(message, strlen(g_core->name_team) + 5);
+    if (g_core->player.ended_tp)
+			return;
     start = time(NULL);
     check_message(message);
     while (!receive_command(message) && !call_timeout(start, STANDARD_TIMEOUT))

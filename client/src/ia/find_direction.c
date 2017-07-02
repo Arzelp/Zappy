@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 27 15:20:53 2017 Paskal Arzel
-** Last update Wed Jun 28 18:11:17 2017 Paskal Arzel
+** Last update Sun Jul  2 20:35:50 2017 Paskal Arzel
 */
 
 #include <math.h>
@@ -28,7 +28,8 @@ static int		get_relative_value(int value, int primary, int secondary)
     if (primary == i)
 	    res += PRIMARY_FACT * (value % (int)pow(10, i + 1)) / (int)pow(10, i);
     else if (secondary == i)
-			res += SECONDARY_FACT * (value % (int)pow(10, i + 1)) / (int)pow(10, i);
+			res += SECONDARY_FACT * (value % (int)pow(10, i + 1))
+      / (int)pow(10, i);
     else
 			res += (value % (int)pow(10, i + 1)) / (int)pow(10, i);
     i++;
@@ -43,10 +44,12 @@ static short	find_best_case(int **minimap, t_pos *position,
   short dir;
   int		maxvalue;
   int		val;
+  int		lvl;
 
   dir = 0;
-  maxvalue = get_relative_value(minimap[g_core->player.level - position->y]
-    [g_core->player.level - position->x - 1], primary, secondary);
+  lvl = g_core->player.level;
+  maxvalue = get_relative_value(
+    minimap[lvl - position->y][lvl - position->x - 1], primary, secondary);
   if (g_core->player.level - position->y - 1 >= 0)
   {
     val = get_relative_value(minimap[g_core->player.level - position->y - 1]
@@ -60,7 +63,8 @@ static short	find_best_case(int **minimap, t_pos *position,
   return (dir);
 }
 
-void	check_and_move(int **minimap, t_pos *position, int primary, int secondary)
+void	check_and_move(int **minimap, t_pos *position,
+  int primary, int secondary)
 {
   short	dir;
   void	(*func[4])(t_pos *);

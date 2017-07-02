@@ -5,7 +5,7 @@
 ** Login   <frederic.oddou@epitech.eu>
 **
 ** Started on  Fri Jun 16 11:26:36 2017 Frederic Oddou
-** Last update Sun Jul  2 17:17:25 2017 Paskal Arzel
+** Last update Sun Jul  2 17:28:42 2017 Paskal Arzel
 */
 
 #pragma once
@@ -39,7 +39,7 @@
 #define PRIMARY_FACT		5
 #define SECONDARY_FACT	3
 
-#define NB_PLAYER_CALL	3
+#define NB_PLAYER_CALL	2
 #define	NB_CALLS			3
 #define CALL					"call"
 #define COUNTER				"count"

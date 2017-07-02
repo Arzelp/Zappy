@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Tue Jun 27 18:32:41 2017 Paskal Arzel
-** Last update Thu Jun 29 16:32:47 2017 Paskal Arzel
+** Last update Sun Jul  2 20:33:21 2017 Paskal Arzel
 */
 
 #include <math.h>
@@ -22,7 +22,8 @@ static void	drop_elevation(const t_elevation *need)
   casevalue = calc_value(g_core->player.view[0]);
   while (i < FOOD)
 	{
-    todrop = (int)(need->object[i] - (casevalue % (int)pow(10, i + 1)) / pow(10, i));
+    todrop = (int)(need->object[i] -
+      (casevalue % (int)pow(10, i + 1)) / pow(10, i));
     while (todrop > 0)
     {
       if (!player_set(g_elem[i].name))

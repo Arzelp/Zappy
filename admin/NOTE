@@ -1,0 +1,13 @@
+Client:
+- Web interface
+- Connexion from Src/Constants.php
+
+Server:
+- Multiple server management
+- Send and receive the messages from the zappy_server
+
+Extract.sh
+- Twig library : very fat
+
+Zappy.sql
+- Contains the database to launch the communication between the client and the server

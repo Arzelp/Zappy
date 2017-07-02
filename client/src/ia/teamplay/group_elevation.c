@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Sun Jul  2 11:04:05 2017 Paskal Arzel
-** Last update Sun Jul  2 17:09:23 2017 Paskal Arzel
+** Last update Sun Jul  2 20:31:26 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
@@ -13,11 +13,12 @@
 #include <time.h>
 #include "core.h"
 
-static void	call_regroup(t_message *message)
+static void	call_regroup()
 {
   char	msg[BUFFER_SIZE];
 
-  snprintf(msg, BUFFER_SIZE, "%s C %s", g_core->name_team, REGROUP);
+  snprintf(msg, BUFFER_SIZE, "%s %d C %s", g_core->name_team,
+  g_core->player.level, REGROUP);
   send_message(msg);
 }
 
@@ -25,16 +26,16 @@ static void	send_ok(void)
 {
   char	msg[BUFFER_SIZE];
 
-  snprintf(msg, BUFFER_SIZE, "%s C %s", g_core->name_team, "ok go drop.");
+  snprintf(msg, BUFFER_SIZE, "%s %d C %s", g_core->name_team,
+  g_core->player.level, "ok go drop.");
   send_message(msg);
-  printf("message sent : %s\n", msg);
 }
 
 static bool	loot_all(void)
 {
   int					i;
   bool				ended;
-  t_elevation	*need;
+  const t_elevation	*need;
   time_t			start;
 
   need = elevation_get_infos_lvl(0);
@@ -46,16 +47,13 @@ static bool	loot_all(void)
     player_look(NULL);
     while (i < FOOD)
     {
-      if (need->object[i] > g_core->player.inventory[i])
+      if ((int)need->object[i] > g_core->player.inventory[i])
 	    	i = FOOD + 1;
       i++;
     }
     ended = (i == FOOD) ? true : false;
-    printf("%s\n", g_core->player.view[0]);
     loot(g_core->player.view[0]);
   }
-  if (ended)
-    printf("ok loot\n");
   if (!ended && call_timeout(start, STANDARD_TIMEOUT))
     return (false);
   return (true);
@@ -65,17 +63,16 @@ static void	send_confirmation(void)
 {
   char		msg[BUFFER_SIZE];
 
-  snprintf(msg, BUFFER_SIZE, "%s C %s", g_core->name_team, "loot ok.");
+  snprintf(msg, BUFFER_SIZE, "%s %d C %s", g_core->name_team,
+  g_core->player.level, "loot ok.");
   send_message(msg);
-  printf("Confirmation sent.\n");
 }
 
 void	group_elevation(t_message	*message)
 {
-  printf("in group elevation\n");
   call_regroup(message);
-  printf("regroup called\n");
-  while (!has_players(NB_PLAYER_CALL))
+  g_core->player.need_player = get_nb_players();
+  while (!has_players(g_core->player.need_player))
     {
       player_look(NULL);
       force_loot(g_core->player.view[0]);
@@ -84,19 +81,12 @@ void	group_elevation(t_message	*message)
       player_set("food");
       send_ping();
       if (!wait_pongs(message))
-      {
-        printf("Pongs aren't ok");
         return;
-      }
-      printf("new turn \n");
     }
-  printf("lol\n");
   send_ping();
   if (!wait_pongs(message))
     return;
   send_ok();
-  printf("We're together.\n");
-  printf("my case : %s\n", g_core->player.view[0]);
   if (loot_all() == false)
     return;
   send_confirmation();

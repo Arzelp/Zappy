@@ -5,7 +5,7 @@
 ** Login   <paskal.arzel@epitech.eu>
 **
 ** Started on  Sun Jul  2 00:05:20 2017 Paskal Arzel
-** Last update Sun Jul  2 15:37:12 2017 Paskal Arzel
+** Last update Sun Jul  2 18:12:50 2017 Paskal Arzel
 */
 
 #include <stdlib.h>
@@ -32,7 +32,6 @@ bool	execute_call(t_message *message, int pos)
   bool	(*func[NB_CALLS + 1])(void);
   int		nb_call;
 
-  printf("Will execute the call. : %s\n", message->core);
   func[0] = &exec_call;
   func[1] = &exec_counter;
   func[2] = &exec_regroup;
